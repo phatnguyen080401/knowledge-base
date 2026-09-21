@@ -1,0 +1,390 @@
+{
+  "main": {
+    "id": "abe731dadc629cdb",
+    "type": "split",
+    "children": [
+      {
+        "id": "3e64e5df48556532",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3fcb564ee2b2e72e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Linux/Linux.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Linux"
+            }
+          },
+          {
+            "id": "824daa0d896c29db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Version Control/GitLab/Mitigating incidents in a GitLab repository.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mitigating incidents in a GitLab repository"
+            }
+          },
+          {
+            "id": "4aca20917c5dcc0e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Graceful shutdown for streaming.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Graceful shutdown for streaming"
+            }
+          },
+          {
+            "id": "25ff01aafceb3f04",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.14"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.14"
+            }
+          },
+          {
+            "id": "4635d97a6eb12ac1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "f770393f4a0694f6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "e7921e834137418a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Kubernetes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Kubernetes"
+            }
+          },
+          {
+            "id": "cc39ead67f801811",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Docker/Docker technique.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Docker technique"
+            }
+          },
+          {
+            "id": "62d4909e4a937c09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Docker/Linux.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Linux"
+            }
+          },
+          {
+            "id": "79b1a1edc682f1c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AI Engineer/The GIST of RAG - Embeddings, Vector Database and Retrieval.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "The GIST of RAG - Embeddings, Vector Database and Retrieval"
+            }
+          },
+          {
+            "id": "faa6e428595d4a39",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.13.7"
+            }
+          },
+          {
+            "id": "1e7be792053a4d6a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Digital Superintelligence.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Digital Superintelligence"
+            }
+          }
+        ],
+        "currentTab": 11
+      },
+      {
+        "id": "beba7ad483f881eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd2e47dc86163c2f",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5fdefed8c6543908",
+    "type": "split",
+    "children": [
+      {
+        "id": "8eb10bb6817c333a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c7c6c72827125176",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d8ed8626aed42877",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8413ff919a44bb6a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "345fd107b4dcc127",
+    "type": "split",
+    "children": [
+      {
+        "id": "2733e4f2a563d12c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ea0d1faf76e2c5da",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "DevOps/DevOps.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for DevOps"
+            }
+          },
+          {
+            "id": "af0b01b9926ee0ea",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "DevOps/Linux/Manage Systemd Targets.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Manage Systemd Targets"
+            }
+          },
+          {
+            "id": "2d9b6d658c589629",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "10e6dbcc0fa66905",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "DevOps/DevOps.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of DevOps"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "1e7be792053a4d6a",
+  "lastOpenFiles": [
+    "Trivy.md",
+    "Untitled 1.base",
+    "Untitled.base",
+    "Semantic Layer vs Ontology Layer.md",
+    "Renovate Bot.md",
+    "Digital Superintelligence.md",
+    "AI Engineer/The GIST of RAG - Embeddings, Vector Database and Retrieval.md",
+    "AI Engineer/Prompt Engineer.md",
+    "DevOps/Docker/Linux.md",
+    "AI Engineer",
+    "DevOps/Docker/Docker technique.md",
+    "DevOps/Docker/Docker stop vs Docker kill.md",
+    "Graceful shutdown for streaming.md",
+    "Real-time analytics database.md",
+    "Kubernetes.md",
+    "Exactly Once Delivery and Processing.md",
+    "Data structures.md",
+    "Change file permissions using GIT.md",
+    "Async Barrier Snapshots for Distributed Dataflows.md",
+    "Brainboard.md",
+    "api-protocols.gif",
+    "Apache Flink.md",
+    "Networking/Protocol/Network protocol.md",
+    "Networking/Protocol/Network protocol.png",
+    "Networking/Protocol/gRPC Flow.png",
+    "DevOps/Container Orchestration/K8S/Kubernetes.md",
+    "DevOps/Docker/Docker.md",
+    "DevOps/Docker/docker command.png",
+    "DevOps/Docker/docker run -it.png",
+    "Termination Grace Period Seconds.png",
+    "What are different among stdio streams stdin, stdout, and stderr.md",
+    "2026-04-25.md",
+    "Pasted image 20260413214542.png",
+    "DevOps/Infrastructure as Code/Terraform.md",
+    "DevOps/Linux/Linux.md",
+    "Networking/Protocol",
+    "Version Control/GitLab",
+    "Databricks",
+    "DevOps/CICD/Github",
+    "DevOps/CICD/GitLab",
+    "Data Engineer/Dbt/Adapters",
+    "WTest",
+    "Data Engineer/Untitled.canvas"
+  ]
+}
