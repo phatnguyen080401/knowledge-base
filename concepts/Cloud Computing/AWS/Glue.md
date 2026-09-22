@@ -1,1 +1,0 @@
-**Job bookmarks**: allow to track the last-processed data in the job without reprocessing of old data. By enabling job bookmarks, Glue keeps track of the processed data and automatically resumes processing from where it left off in subsequent job runs.

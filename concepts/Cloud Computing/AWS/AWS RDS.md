@@ -1,1 +1,0 @@
-Stop instance for a maximum of 7 consecutive days, after 7 days it will auto start.

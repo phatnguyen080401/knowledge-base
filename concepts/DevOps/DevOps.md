@@ -1,7 +1,0 @@
-[[Github Actions]]
-[[GitLab CICD]]
-[[Docker]]
-[[DevOps/Container Orchestration/K8S/Kubernetes]]
-[[Terraform]]
-[[DevOps/Linux/Linux]]
-[[Observer]]
