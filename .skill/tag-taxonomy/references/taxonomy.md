@@ -36,6 +36,7 @@ A specific subject within the domain. Add one only if it says something the doma
 | Tag              | Use for                                                            |
 | ---------------- | ------------------------------------------------------------------ |
 | `access-control` | Permissions, roles, RBAC/ABAC, authorization models                |
+| `api-protocols`  | API styles and wire protocols: REST, GraphQL, gRPC, messaging, streaming |
 | `cataloging`     | Data catalogs, discovery, asset inventories                        |
 | `compliance`     | Regulatory obligations, audits, regulated-data handling            |
 | `data-modeling`  | Conceptual, logical, and physical schema design                    |
@@ -116,6 +117,7 @@ A removal must never empty the mandatory set — if it would, assign a proper fa
 
 | Note                                 | Mandatory tags                                   | With optional user tags                                          |
 | ------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------------- |
+| `api_integration_protocols.md`       | `[data-architecture, api-protocols]`             | —                                                                |
 | `data_governance.md`                 | `[data-governance]`                              | `[data-governance, exam-prep]`                                   |
 | `data_quality.md`                    | `[data-governance, data-quality]`                | `[data-governance, data-quality, dama-dmbok, exam-prep]`         |
 | `data_stewardship.md`                | `[data-governance, stewardship]`                 | —                                                                |

@@ -9,10 +9,6 @@ updated: 2026-09-23 11:43:24
 
 **Data stewardship is the operational, people-centric execution arm of [[concepts/data_governance|Data Governance]].** Where governance defines *decision rights, policies, and accountabilities*, stewardship is the day-to-day work of applying those policies to real data assets: defining what a term means, deciding whether a record is a duplicate, approving an access request, triaging a failed quality check, and chasing the fix.
 
-A useful one-line definition for an interview:
-
-> *Data stewardship is the formal assignment of accountability to named individuals for the definition, quality, security, and appropriate use of a specific set of data assets, on behalf of the organization rather than on behalf of any one team.*
-
 The word *steward* is deliberate. A steward does not **own** the data — the organization does. A steward **cares for** an asset that belongs to someone else, under an agreed set of rules.
 
 ---
