@@ -41,6 +41,7 @@ A specific subject within the domain. Add one only if it says something the doma
 | `compliance`     | Regulatory obligations, audits, regulated-data handling            |
 | `data-modeling`  | Conceptual, logical, and physical schema design                    |
 | `data-quality`   | Accuracy, completeness, consistency, quality dimensions and rules  |
+| `data-structures`| Index and storage structures and the algorithms over them: trees, filters, tries, log-structured layouts |
 | `integration`    | Moving and reconciling data across systems, ETL/ELT, interop       |
 | `lineage`        | Provenance, upstream/downstream tracing, impact analysis           |
 | `master-data`    | Golden records, reference data, entity resolution, MDM             |
@@ -125,6 +126,8 @@ A removal must never empty the mandatory set — if it would, assign a proper fa
 | `master_data_management.md`          | `[data-management, master-data]`                 | `[data-management, master-data, project-atlas]`                  |
 | `data_architecture.md`               | `[data-architecture]`                            | —                                                                |
 | `data_security.md`                   | `[data-security, access-control]`                | —                                                                |
+| `data_structures.md`                 | `[data-architecture, data-structures]`           | —                                                                |
+| `b_plus_tree.md`                     | `[data-architecture, data-structures]`           | —                                                                |
 
 Note the pattern: the mandatory set places the note in the vault and never paraphrases the title;
 optional user tags (`exam-prep`, `dama-dmbok`, `project-atlas`) are the user's own cross-cutting

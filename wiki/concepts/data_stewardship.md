@@ -28,8 +28,6 @@ Most governance programs fail not because the policy document was bad, but becau
 
 ## Data Stewardship vs. Adjacent Concepts
 
-A very common interview question is *"what's the difference between an owner, a steward, and a custodian?"* Know this cold.
-
 | Role | Who they usually are | Accountable for | Typical decision |
 |---|---|---|---|
 | **Data Owner** | Senior business leader (VP Marketing, CFO) | Ultimate accountability for a data domain; funds and approves policy | "Yes, we will treat email address as a critical data element." |
@@ -37,8 +35,6 @@ A very common interview question is *"what's the difference between an owner, a 
 | **Data Custodian** | IT / platform / DBA / data engineer | The technical environment: storage, backup, uptime, enforcing controls | "The access control list and encryption at rest are configured per policy." |
 | **Data Producer** | Any team/system creating data | Data entered or generated correctly at source | "We added validation to the CRM entry form." |
 | **Data Consumer** | Analysts, data scientists, business users | Using data within its documented purpose and limits | "I used the certified revenue mart, not my personal extract." |
-
-Analogy that lands well in interviews: **the owner is the landlord, the steward is the property manager, the custodian is the building maintenance crew, and consumers are the tenants.**
 
 Other distinctions worth articulating:
 
@@ -89,8 +85,6 @@ Think of these as the six buckets a steward's week falls into.
 
 ## Types of Data Stewards
 
-Interviewers like to hear that stewardship is not one job title.
-
 - **Business Data Steward** — the most common. A domain SME (finance, HR, supply chain) who owns definitions and business rules. Usually a part-time role layered on a day job.
 - **Technical Data Steward** — often a data engineer/analytics engineer; implements the rules as tests, constraints, and pipeline logic; maintains technical metadata and lineage.
 - **Domain Data Steward** — accountable for an entire subject area (Customer, Product, Finance) end-to-end across systems.
@@ -101,8 +95,6 @@ Interviewers like to hear that stewardship is not one job title.
 ---
 
 ## Operating Models
-
-How stewardship is organized is a classic "it depends" interview answer — give the trade-offs.
 
 | Model | How it works | Pros | Cons | Best for |
 |---|---|---|---|---|
@@ -203,31 +195,6 @@ Stewards do not need to code, but they live in these categories of tools:
 - **Document decisions, not just data.** The *why* behind a definition is the most perishable and valuable metadata.
 - **Build a steward community**: regular forum, shared templates, peer review, visible recognition.
 - **Shift left**: embed quality checks and metadata requirements into CI/CD for pipelines so issues never reach consumers.
-
----
-
-## Interview Cheat Sheet
-
-**"What is data stewardship in one sentence?"**
-The formal, day-to-day accountability for defining, protecting, and maintaining the quality and appropriate use of specific data assets on the organization's behalf.
-
-**"Owner vs. steward vs. custodian?"**
-Owner = accountable business executive (approves and funds). Steward = business SME doing the daily definition/quality/access work. Custodian = IT operating the technical environment and enforcing the controls.
-
-**"How would you start a stewardship program from zero?"**
-Find a painful business problem → scope one domain and its critical data elements → define the RACI and appoint funded stewards → stand up glossary/catalog and quality checks on those CDEs → run a weekly issue triage cadence → publish a scorecard → expand.
-
-**"How do you measure success?"**
-Coverage (% CDEs with steward/definition/classification), effectiveness (quality trend, MTTR, % fixed at source), and value (reconciliation hours saved, duplicate reduction, audit findings closed).
-
-**"Two departments disagree on a metric definition — what do you do?"**
-Understand each use case first; if the need is genuinely different, publish two qualified terms with explicit scope rather than forcing one; if it's the same need, escalate to the data owner/council for a decision and record the rationale in the glossary.
-
-**"How does stewardship change in a data mesh / self-service world?"**
-It moves into domain data product teams; the central function shifts from doing the work to setting standards and encoding them as automated, platform-level checks (federated computational governance).
-
-**"What's the most common reason stewardship fails?"**
-No allocated time and no executive air cover — stewardship becomes a title with no capacity behind it.
 
 ---
 
