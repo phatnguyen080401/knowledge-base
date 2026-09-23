@@ -1,8 +1,8 @@
 ---
 title: Data Quality
-tags: [data-governance, concepts]
+tags: [data-governance, data-quality]
 created: 2026-09-22 00:00:00
-updated: 2026-09-22 00:00:00
+updated: 2026-09-23 11:43:24
 ---
 # Data Quality
 

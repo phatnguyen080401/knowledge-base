@@ -1,10 +1,8 @@
 ---
 title: Data Stewardship
-tags:
-  - data-governance
-  - roles
+tags: [data-governance, stewardship]
 created: 2026-09-23 00:00:00
-updated: 2026-09-23 00:00:00
+updated: 2026-09-23 11:43:24
 ---
 
 # Data Stewardship

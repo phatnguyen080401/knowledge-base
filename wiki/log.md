@@ -1,5 +1,6 @@
 # Activity Log
 
+- **2026-09-23**: Updated `[[concepts/data_architecture]]`, `[[concepts/data_quality]]`, `[[concepts/data_security]]`, `[[concepts/data_stewardship]]`, `[[concepts/master_data_management]]`, and `[[concepts/metadata_management]]` — normalized tags to the controlled vocabulary: removed banned tags (`concept`, `concepts`, `data`), remapped aliases (`architecture`→`data-architecture`, `security`→`data-security`, `mdm`→`master-data`, `roles`→`stewardship`), added missing domain/topic facets, and converted the `data_stewardship` block tag list to an inline list.
 - **2026-09-23**: Authored the full `[[concepts/data_stewardship]]` note (previously an empty stub) with detailed, interview-oriented sections: definition, role comparisons (owner/steward/custodian), core responsibilities, steward types, operating models, program build-out, workflows, metrics, tooling, challenges, best practices, and an interview cheat sheet.
 - **2026-09-22**: Standardized the `created` and `updated` frontmatter to `YYYY-MM-DD HH:mm:ss` format across all files in `[[concepts/]]` for better compatibility.
 - **2026-09-22**: Replaced 'Related Concepts' with 'Core Pillars' section in `[[concepts/data_governance]]`.

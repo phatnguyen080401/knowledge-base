@@ -1,8 +1,8 @@
 ---
 title: Master Data Management (MDM)
-tags: [concept, data, mdm, stub]
+tags: [data-management, master-data, stub]
 created: 2026-09-22 09:11:46
-updated: 2026-09-22 09:11:46
+updated: 2026-09-23 11:43:24
 ---
 
 # Master Data Management (MDM)
