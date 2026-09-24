@@ -16,7 +16,10 @@
 
 ## Data Engineering
 
+### dbt (Data Build Tool)
+
 - [[concepts/dbt|dbt (Data Build Tool)]]
+- [[concepts/dbt_bigquery_adapter|dbt-bigquery Adapter]]
 - [[concepts/dbt_databricks_adapter|dbt-databricks Adapter]]
 
 ## Data Structures and Algorithms

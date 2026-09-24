@@ -2,7 +2,7 @@
 title: dbt (Data Build Tool)
 tags: [data-engineering, integration, data-modeling]
 created: 2026-09-24 10:10:13
-updated: 2026-09-24 10:25:03
+updated: 2026-09-24 10:32:52
 ---
 
 # dbt (Data Build Tool)
@@ -200,7 +200,7 @@ dbt groups adapters by who stands behind them: **dbt Labs–maintained**, **vend
 
 | Package                                             | Platform                              | What it brings                                                             |
 | --------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- |
-| `dbt-bigquery`                                      | Google BigQuery                       | Partitioning and clustering configs; partition-level `insert_overwrite`    |
+| [[concepts/dbt_bigquery_adapter\|dbt-bigquery]]      | Google BigQuery                       | Partitioning and clustering configs; partition-level `insert_overwrite`    |
 | [[concepts/dbt_databricks_adapter\|dbt-databricks]] | Databricks Lakehouse                  | Unity Catalog namespacing, Delta by default, OAuth auth, per-model compute |
 
 ## Strengths and Limits
