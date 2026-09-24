@@ -192,7 +192,7 @@ Every invocation writes artifacts to `target/` — `manifest.json` (the full pro
 
 Teams commonly start on Core with Airflow or Dagster invoking it, and move to Cloud when the scheduling, CI, and permissions plumbing stops being worth maintaining.
 
-## Adapters
+## Trusted Adapters
 
 An adapter is the plugin that translates dbt's generic materialization logic into a specific platform's SQL dialect, DDL, and connection protocol. dbt Core on its own cannot connect to anything — exactly one adapter is installed per target platform with `pip install dbt-<platform>`, and its minor version tracks the dbt Core minor version.
 
