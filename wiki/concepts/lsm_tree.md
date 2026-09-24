@@ -4,7 +4,7 @@ tags:
   - data-structures
   - algorithms
 created: 2026-09-23 13:30:09
-updated: 2026-09-23 15:19:41
+updated: 2026-09-24 10:57:07
 ---
 
 # Log-Structured Merge-Tree (LSM Tree)
@@ -30,7 +30,7 @@ write ──> WAL (append, for durability)
                                        Level 1, 2, 3 ... (larger, older)
 ```
 
-1. **Write-ahead log.** Every write is appended to a sequential log first, so an unflushed memtable can be replayed after a crash.
+1. **Write-ahead log.** Every write is appended to a sequential log first, so an unflushed memtable can be replayed after a crash. This log is what makes the durability and atomicity guarantees of [[concepts/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] possible on top of an otherwise in-memory write path.
 2. **Memtable.** The write is applied to a sorted in-memory structure — usually a skip list or a red-black tree, because both keep keys ordered under concurrent inserts.
 3. **Flush.** When the memtable exceeds its size threshold it becomes immutable, a new one takes over, and the old one is written out sequentially as an **SSTable** (Sorted String Table): a file of key-value pairs in sorted order, with a sparse index and a Bloom filter alongside it.
 4. **Compaction.** A background process merges SSTables, discarding superseded versions and deletion markers.
@@ -99,6 +99,7 @@ Every LSM discussion reduces to balancing these, and you can only ever pick two 
 - [[concepts/bloom_filter|Bloom Filter]] — the component that keeps LSM read amplification survivable
 - [[concepts/data_structures_algorithms|Data Structures and Algorithms]] — the read/write/space trade-off this structure is an extreme point of
 - [[concepts/data_architecture|Data Architecture]] — choosing an LSM-backed store is a platform-level architectural commitment
+- [[concepts/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — the guarantees the write-ahead log exists to provide; immutability means this structure has no torn-page problem to protect against
 
 ## References
 

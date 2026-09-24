@@ -43,12 +43,14 @@ A specific subject within the domain. Add one only if it says something the doma
 | `data-modeling`  | Conceptual, logical, and physical schema design                    |
 | `data-quality`   | Accuracy, completeness, consistency, quality dimensions and rules  |
 | `data-structures`| The index and storage structures themselves: trees, filters, tries, log-structured layouts |
+| `databases`      | Database engine runtime guarantees: transactions, concurrency control, recovery, replication semantics |
 | `integration`    | Moving and reconciling data across systems, ETL/ELT, interop       |
 | `lineage`        | Provenance, upstream/downstream tracing, impact analysis           |
 | `master-data`    | Golden records, reference data, entity resolution, MDM             |
 | `metadata`       | Descriptive, technical, and operational metadata                   |
 | `privacy`        | PII, consent, anonymization, data subject rights                   |
 | `stewardship`    | Steward and owner roles, accountability, operating models          |
+| `transactions`   | Transactional correctness: ACID, isolation levels, concurrency anomalies, commit and recovery protocols |
 
 ## Facet 3 — Lifecycle (optional, zero or one)
 

@@ -14,6 +14,13 @@
 - [[concepts/api_integration_protocols|API and Integration Protocols]]
 - [[concepts/data_architecture|Data Architecture]]
 
+## Databases
+
+- [[concepts/acid|ACID (Atomicity, Consistency, Isolation, Durability)]]
+- [[concepts/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]]
+- [[concepts/cap_theorem|CAP Theorem]]
+- [[concepts/isolation_levels|Transaction Isolation Levels]]
+
 ## Data Engineering
 
 ### dbt (Data Build Tool)

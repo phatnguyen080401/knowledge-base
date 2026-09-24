@@ -4,7 +4,7 @@ tags:
   - data-structures
   - algorithms
 created: 2026-09-23 13:30:09
-updated: 2026-09-23 15:19:41
+updated: 2026-09-24 10:57:07
 ---
 
 # B+ Tree
@@ -68,6 +68,7 @@ Leaves:  [5,10,15] -> [20,30,40] -> [50,60,85]   -> next...
 - **Index size is not free.** Every secondary index is another B+ tree that must be maintained on every write. This is the concrete cost behind "don't index every column".
 - **Left-prefix rule.** A composite index on `(a, b, c)` orders leaves by `a`, then `b`, then `c`, so it can serve predicates on `a`, on `(a, b)`, and on `(a, b, c)` — but not on `b` alone.
 - **Concurrency.** Real implementations use B-link trees (Lehman & Yao): each node carries a high key and a right-link, so a reader that arrives during a split can follow the link sideways instead of holding a lock on the parent. PostgreSQL's `nbtree` is exactly this.
+- **In-place updates need protecting.** Because pages are overwritten rather than appended, a power loss mid-write can tear a page. Engines guard against this in the write-ahead log — PostgreSQL writes a full page image after each checkpoint — which is a significant part of why B+ tree write amplification is what it is. See [[concepts/acid|ACID (Atomicity, Consistency, Isolation, Durability)]].
 
 ## B+ Tree vs. LSM Tree
 
@@ -86,6 +87,7 @@ Leaves:  [5,10,15] -> [20,30,40] -> [50,60,85]   -> next...
 - [[concepts/data_structures_algorithms|Data Structures and Algorithms]] — the comparison of this against the write-optimized alternatives
 - [[concepts/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — the structure chosen when write throughput outranks read predictability
 - [[concepts/data_architecture|Data Architecture]] — index strategy is part of the physical design layer
+- [[concepts/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — why this structure is the default for transactional workloads, and what its in-place writes cost the recovery log
 
 ## References
 
