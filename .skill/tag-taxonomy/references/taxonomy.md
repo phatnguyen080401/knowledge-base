@@ -26,6 +26,7 @@ The field of practice the note belongs to.
 | `data-governance`   | Policy, ownership, accountability, standards, compliance over data            |
 | `data-management`   | Day-to-day operational handling of data assets across their lifecycle         |
 | `data-security`     | Protecting data: access control, encryption, privacy, threat mitigation       |
+| `data-structures`   | The design and analysis of storage, indexing, and in-memory structures themselves: trees, filters, tries, log-structured layouts |
 
 If two domains fit equally well, the note likely covers two concepts — split it (`AGENTS.md` §4.3).
 
@@ -42,14 +43,15 @@ A specific subject within the domain. Add one only if it says something the doma
 | `compliance`     | Regulatory obligations, audits, regulated-data handling            |
 | `data-modeling`  | Conceptual, logical, and physical schema design                    |
 | `data-quality`   | Accuracy, completeness, consistency, quality dimensions and rules  |
-| `data-structures`| The index and storage structures themselves: trees, filters, tries, log-structured layouts |
 | `databases`      | Database engine runtime guarantees: transactions, concurrency control, recovery, replication semantics |
+| `distributed-systems` | Behaviour that only arises across multiple nodes: replication, consensus, partition tolerance, coordination and clock trade-offs |
 | `integration`    | Moving and reconciling data across systems, ETL/ELT, interop       |
 | `lineage`        | Provenance, upstream/downstream tracing, impact analysis           |
 | `master-data`    | Golden records, reference data, entity resolution, MDM             |
 | `metadata`       | Descriptive, technical, and operational metadata                   |
 | `privacy`        | PII, consent, anonymization, data subject rights                   |
 | `stewardship`    | Steward and owner roles, accountability, operating models          |
+| `system-design`  | Whole-system design reasoning — component selection and scale/failure trade-offs across an architecture, rather than one data asset or discipline |
 | `transactions`   | Transactional correctness: ACID, isolation levels, concurrency anomalies, commit and recovery protocols |
 
 ## Facet 3 — Lifecycle (optional, zero or one)
@@ -129,8 +131,8 @@ A removal must never empty the mandatory set — if it would, assign a proper fa
 | `master_data_management.md`          | `[data-management, master-data]`                 | `[data-management, master-data, project-atlas]`                  |
 | `data_architecture.md`               | `[data-architecture]`                            | —                                                                |
 | `data_security.md`                   | `[data-security, access-control]`                | —                                                                |
-| `data_structures_algorithms.md`      | `[data-architecture, data-structures, algorithms]` | —                                                              |
-| `b_plus_tree.md`                     | `[data-architecture, data-structures, algorithms]` | —                                                              |
+| `data_structures_algorithms.md`      | `[data-structures, algorithms]`                  | —                                                              |
+| `b_plus_tree.md`                     | `[data-structures, algorithms]`                  | —                                                              |
 
 Note the pattern: the mandatory set places the note in the vault and never paraphrases the title;
 optional user tags (`exam-prep`, `dama-dmbok`, `project-atlas`) are the user's own cross-cutting

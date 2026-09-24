@@ -1,10 +1,8 @@
 ---
 title: Log-Structured Merge-Tree (LSM Tree)
-tags:
-  - data-structures
-  - algorithms
+tags: [data-structures, algorithms]
 created: 2026-09-23 13:30:09
-updated: 2026-09-24 10:57:07
+updated: 2026-09-24 11:51:57
 ---
 
 # Log-Structured Merge-Tree (LSM Tree)
