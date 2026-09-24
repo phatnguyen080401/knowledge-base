@@ -14,6 +14,10 @@
 - [[concepts/api_integration_protocols|API and Integration Protocols]]
 - [[concepts/data_architecture|Data Architecture]]
 
+## Data Engineering
+
+- [[concepts/dbt|dbt (Data Build Tool)]]
+
 ## Data Structures and Algorithms
 
 - [[concepts/data_structures_algorithms|Data Structures and Algorithms]]

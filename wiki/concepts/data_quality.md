@@ -2,7 +2,7 @@
 title: Data Quality
 tags: [data-governance, data-quality]
 created: 2026-09-22 00:00:00
-updated: 2026-09-23 11:43:24
+updated: 2026-09-24 10:10:13
 ---
 # Data Quality
 
@@ -86,7 +86,7 @@ Several tools can help automate and streamline the data quality lifecycle. Here 
 
 ### dbt (Data Build Tool)
 
-*   **Description**: dbt is a transformation workflow tool that lets teams quickly and collaboratively deploy analytics code following software engineering best practices like modularity, portability, CI/CD, and documentation. It allows you to build and test data models in SQL.
+*   **Description**: [[concepts/dbt|dbt]] is a transformation workflow tool that lets teams quickly and collaboratively deploy analytics code following software engineering best practices like modularity, portability, CI/CD, and documentation. It allows you to build and test data models in SQL.
 *   **Pros**:
     *   Integrated testing framework allows you to define and run data quality tests directly within your transformation pipeline.
     *   Strong community and extensive documentation.
