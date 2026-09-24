@@ -2,7 +2,7 @@
 title: dbt (Data Build Tool)
 tags: [data-engineering, integration, data-modeling]
 created: 2026-09-24 10:10:13
-updated: 2026-09-24 10:10:13
+updated: 2026-09-24 10:25:03
 ---
 
 # dbt (Data Build Tool)
@@ -192,7 +192,16 @@ Every invocation writes artifacts to `target/` — `manifest.json` (the full pro
 
 Teams commonly start on Core with Airflow or Dagster invoking it, and move to Cloud when the scheduling, CI, and permissions plumbing stops being worth maintaining.
 
-**Adapters** connect dbt to a platform; the widely used ones are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB. SQL dialect differences leak through, so models are only as portable as the macros used to write them.
+## Adapters
+
+An adapter is the plugin that translates dbt's generic materialization logic into a specific platform's SQL dialect, DDL, and connection protocol. dbt Core on its own cannot connect to anything — exactly one adapter is installed per target platform with `pip install dbt-<platform>`, and its minor version tracks the dbt Core minor version.
+
+dbt groups adapters by who stands behind them: **dbt Labs–maintained**, **vendor- or partner-maintained** (often labelled verified or trusted), and **community-maintained**. The tier matters mostly for how quickly an adapter follows a dbt Core release and how much support exists when it breaks.
+
+| Package                                             | Platform                              | What it brings                                                             |
+| --------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- |
+| `dbt-bigquery`                                      | Google BigQuery                       | Partitioning and clustering configs; partition-level `insert_overwrite`    |
+| [[concepts/dbt_databricks_adapter\|dbt-databricks]] | Databricks Lakehouse                  | Unity Catalog namespacing, Delta by default, OAuth auth, per-model compute |
 
 ## Strengths and Limits
 
