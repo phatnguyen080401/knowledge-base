@@ -1,8 +1,8 @@
 ---
 title: CAP Theorem
-tags: [data-architecture, databases, distributed-systems, system-design]
+tags: [databases, distributed-systems]
 created: 2026-09-24 10:57:07
-updated: 2026-09-24 11:57:30
+updated: 2026-09-29 16:51:15
 ---
 
 # CAP Theorem

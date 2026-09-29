@@ -1,139 +1,102 @@
 # Tag Taxonomy — Controlled Vocabulary
 
-The complete, authoritative list of tags an agent may assign in `wiki/concepts/` frontmatter.
-Every **mandatory** tag must come from this file; adding an entry requires user approval
-(see "Adding a New Tag" in `SKILL.md`).
+This is the complete list of tags an agent may assign to a note in `wiki/concepts/`. A tag that
+does not appear in one of the three facet tables below may not be used unless the user explicitly
+asked for it by name (see `SKILL.md`, Core Rule 3).
 
-**Mandatory set — every note, always:** exactly one `domain`, zero to two `topic`, zero or one
-`lifecycle` — 1 to 4 tags total, written in that order.
-
-**Optional user tags:** the user may add further tags of their own choosing after the mandatory set.
-They do not need to appear in this file and do not count toward the 1–4 limit, but they must be
-lowercase `kebab-case` and must not be a banned tag. Never add or remove one without the user
-asking.
+Every note carries **exactly one `domain` tag**, **at least one `topic` tag**, and **zero or one
+`lifecycle` tag**, written in that order. A note never exceeds **10 tags in total**, counting any
+optional user tags.
 
 ---
 
-## Facet 1 — Domain (required, exactly one)
+## Facet: `domain` — exactly one per note
 
-The field of practice the note belongs to.
+The field the note belongs to. These are mutually exclusive; if two feel equally right, the note
+probably covers two concepts and should be split (`AGENTS.md` §4.3).
 
-| Tag                 | Use for                                                                       |
-| ------------------- | ----------------------------------------------------------------------------- |
-| `analytics`         | Reporting, BI, metrics, dashboards, analytical modeling                       |
-| `data-architecture` | Structural design of data systems: platforms, storage, pipelines, topology    |
-| `data-engineering`  | Building and operating pipelines, ingestion, transformation, orchestration    |
-| `data-governance`   | Policy, ownership, accountability, standards, compliance over data            |
-| `data-management`   | Day-to-day operational handling of data assets across their lifecycle         |
-| `data-security`     | Protecting data: access control, encryption, privacy, threat mitigation       |
-| `data-structures`   | The design and analysis of storage, indexing, and in-memory structures themselves: trees, filters, tries, log-structured layouts |
+| Tag                 | Covers                                                                                                | Excludes                                                                  |
+| ------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `data-architecture` | Structural design of a data platform: layering, interfaces, semantic and ontology tiers, system topology | Engine-internal behaviour (`databases`); pipeline tooling (`data-engineering`) |
+| `data-engineering`  | Building and operating pipelines and transformation tooling — ingestion, ELT, orchestration, adapters | The design of the platform those pipelines run on (`data-architecture`)   |
+| `data-governance`   | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy                          |
+| `data-structures`   | Computer-science structures and the algorithms over them, independent of any product                  | Product-specific storage behaviour (`databases`)                          |
+| `databases`         | Database and storage-engine behaviour: transactions, consistency models, replication, query execution | Vendor-neutral structure theory (`data-structures`)                       |
 
-If two domains fit equally well, the note likely covers two concepts — split it (`AGENTS.md` §4.3).
+---
 
-## Facet 2 — Topic (optional)
+## Facet: `topic` — at least one per note
 
-A specific subject within the domain. Add one only if it says something the domain tag does not.
+At least one is required: it narrows the note within its domain. Pick the most specific tag that
+honestly fits, then add further topics only while each one carries information the others do not —
+never pad the set by restating the domain or the note's own title. If no topic below fits a note you
+are writing, that is a signal the vocabulary has a gap; propose a new tag rather than forcing a poor
+match.
 
-| Tag              | Use for                                                            |
-| ---------------- | ------------------------------------------------------------------ |
-| `access-control` | Permissions, roles, RBAC/ABAC, authorization models                |
-| `algorithms`     | The procedures operating on a structure and their cost: search, insert, split, merge, compaction, complexity analysis |
-| `api-protocols`  | API styles and wire protocols: REST, GraphQL, gRPC, messaging, streaming |
-| `cataloging`     | Data catalogs, discovery, asset inventories                        |
-| `compliance`     | Regulatory obligations, audits, regulated-data handling            |
-| `data-modeling`  | Conceptual, logical, and physical schema design                    |
-| `data-quality`   | Accuracy, completeness, consistency, quality dimensions and rules  |
-| `databases`      | Database engine runtime guarantees: transactions, concurrency control, recovery, replication semantics |
-| `distributed-systems` | Behaviour that only arises across multiple nodes: replication, consensus, partition tolerance, coordination and clock trade-offs |
-| `integration`    | Moving and reconciling data across systems, ETL/ELT, interop       |
-| `lineage`        | Provenance, upstream/downstream tracing, impact analysis           |
-| `master-data`    | Golden records, reference data, entity resolution, MDM             |
-| `metadata`       | Descriptive, technical, and operational metadata                   |
-| `privacy`        | PII, consent, anonymization, data subject rights                   |
-| `stewardship`    | Steward and owner roles, accountability, operating models          |
-| `system-design`  | Whole-system design reasoning — component selection and scale/failure trade-offs across an architecture, rather than one data asset or discipline |
-| `transactions`   | Transactional correctness: ACID, isolation levels, concurrency anomalies, commit and recovery protocols |
+| Tag                   | Covers                                                                                           | Excludes                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `api-protocols`       | Interface and messaging styles for system-to-system exchange: REST, gRPC, SOAP, webhooks, queues | Internal representation of the data being exchanged (`data-modeling`)   |
+| `data-modeling`       | Designing logical and semantic representations: entities, relationships, metrics, dimensional and warehouse models | Physical storage layout (`indexing`)                                    |
+| `data-quality`        | Fitness for use — dimensions, profiling, validation rules, quality measurement and remediation   | Who is accountable for quality (that is the `data-governance` domain)   |
+| `data-security`       | Protecting data from unauthorized access, loss, or misuse: access control, encryption, masking   | General platform reliability or availability                            |
+| `data-warehouse`      | Cloud warehouse and lakehouse platforms: their storage/compute split, SQL dialects, and platform-specific behaviour | Vendor-neutral engine theory (`transactions`, `distributed-systems`)    |
+| `distributed-systems` | Behaviour that only arises when data spans multiple nodes: partitioning, replication, consensus, network partitions | Single-node transactional semantics (`transactions`)                    |
+| `indexing`            | Structures and techniques for locating records quickly: search trees, prefix trees, probabilistic filters, write-optimized stores | Abstract algorithm analysis unrelated to lookup                         |
+| `master-data`         | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies           | Descriptive metadata about datasets (`metadata`)                        |
+| `metadata`            | Data about data: catalogs, lineage, schema registries, business glossaries                        | The business data itself (`master-data`)                                |
+| `transactions`        | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC    | Multi-node coordination concerns (`distributed-systems`)                |
 
-## Facet 3 — Lifecycle (optional, zero or one)
+---
 
-State of the note itself, not its subject. Remove as soon as it stops being true.
+## Facet: `lifecycle` — zero or one per note
 
-| Tag            | Use for                                                                      |
-| -------------- | ---------------------------------------------------------------------------- |
-| `needs-review` | Content is unverified, thin in places, or conflicts with another page        |
-| `stub`         | Placeholder — little more than a definition and a couple of links            |
+| Tag            | Meaning                                                                             | Removed when                                          |
+| -------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `needs-review` | Content is unverified, extrapolated, or conflicts with another page                  | The claim is confirmed or the conflict is resolved    |
+| `stub`         | Placeholder — a definition and links, but no substantive body                        | The note gains real sections beyond the definition    |
 
 ---
 
 ## Banned Tags
 
-**Never tag a note with a general, useless, arbitrary, ambiguous, or uninformative tag.** A tag
-earns its place only if it tells a reader something the note's location, title, and other tags do
-not already say. If a tag would apply to almost every note in the vault, or if you cannot state in
-one sentence what it excludes, it is uninformative — leave it off.
+Never assign these. Each is general, arbitrary, or uninformative — it would apply to nearly every
+note in the vault and so tells a reader nothing. If the user requests one, say so and propose a
+specific alternative before writing (`SKILL.md`, Core Rule 4).
 
-This rule binds mandatory tags and optional user tags alike. If a user asks for a tag that fails it,
-say so and propose a specific alternative before writing.
-
-| Category                   | Never use                                                          | Why                                                     |
-| -------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------- |
-| Structural / already known | `concept`, `concepts`, `note`, `notes`, `page`, `wiki`, `vault`     | Encoded by the file's location in `wiki/concepts/`      |
-| Universally true           | `data`, `datum`, `information`, `knowledge`, `topic`, `subject`     | Applies to every note; separates nothing                |
-| Catch-all                  | `general`, `misc`, `miscellaneous`, `other`, `various`, `stuff`     | Names the absence of a category, not a category         |
-| Vague quality / priority   | `important`, `useful`, `interesting`, `key`, `core`, `basic`, `advanced` | Subjective and unstable; means nothing to a later reader |
-| Ambiguous                  | `model`, `system`, `process`, `management`, `type`, `level`         | Too many readings; pick the precise facet tag instead   |
-| Workflow noise             | `todo`, `fixme`, `temp`, `test`, `untagged`, `new`, `old`           | Ephemeral; use `stub` or `needs-review`, or a real task |
-
-The list is illustrative, not exhaustive — reject any tag matching the spirit of these categories,
-including plurals, synonyms, and casing variants.
+| Banned tag                                              | Why                                                       | Use instead                          |
+| ------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------ |
+| `concept`, `note`, `wiki`, `knowledge`, `reference`     | Every file in `wiki/concepts/` is one                     | A `domain` tag                       |
+| `data`, `tech`, `technology`, `general`, `misc`, `other`| Describes the whole vault, not the note                   | A `domain` tag                       |
+| `important`, `interesting`, `useful`                    | Subjective; states nothing about the subject              | Nothing                              |
+| `todo`, `wip`, `draft`                                  | Task state masquerading as a subject tag                  | `stub` or `needs-review`             |
+| `system-design`                                         | Applies to almost every architecture note                 | `data-architecture` or `distributed-systems` |
+| `database-concepts`, `programming`, `computer-science`  | Too broad to narrow a search                              | `databases` or `data-structures`     |
 
 ---
 
 ## Alias Map
 
-Tags previously seen in this vault or commonly typed, and their canonical replacement.
-When normalizing, rewrite the left side to the right side.
+Tags found in the vault that are not approved. Rewrite each to its canonical form during a tag
+audit. `(retired)` means the tag carries no information the note's other tags do not already give —
+drop it and confirm the mandatory set is still complete.
 
-| Found tag       | Action                                                                  |
-| --------------- | ----------------------------------------------------------------------- |
-| `architecture`  | → `data-architecture`                                                   |
-| `concept`       | remove (banned)                                                         |
-| `concepts`      | remove (banned)                                                         |
-| `data`          | remove (banned)                                                         |
-| `dataquality`   | → `data-quality`                                                        |
-| `data_quality`  | → `data-quality`                                                        |
-| `general`       | remove (banned)                                                         |
-| `governance`    | → `data-governance`                                                     |
-| `important`     | remove (banned)                                                         |
-| `mdm`           | → `master-data`                                                         |
-| `misc`          | remove (banned)                                                         |
-| `pii`           | → `privacy`                                                             |
-| `quality`       | → `data-quality`                                                        |
-| `security`      | → `data-security`                                                       |
-| `steward`       | → `stewardship`                                                         |
-| `todo`          | remove (banned)                                                         |
-| `WIP`           | → `stub`                                                                |
-
-Deduplicate after mapping: if an alias resolves to a tag the note already carries, drop the duplicate.
-A removal must never empty the mandatory set — if it would, assign a proper facet tag in its place.
+| Found tag             | Rewrite to                                                                     | Reason                                                              |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `algorithm`           | `indexing`, or `(retired)`                                                      | Singular form; usually implied by the `data-structures` domain      |
+| `algorithms`          | `indexing`, or `(retired)`                                                      | Implied by the `data-structures` domain; use `indexing` when the note is about lookup structures |
+| `data_quality`        | `data-quality`                                                                  | `snake_case` → `kebab-case`                                         |
+| `data-management`     | `data-governance`                                                               | Merged; the vault files management disciplines under governance     |
+| `data-qualities`      | `data-quality`                                                                  | Plural form                                                         |
+| `database`, `db`      | `databases`                                                                     | Canonical domain name                                               |
+| `integration`         | `api-protocols` when the note is about system-to-system interfaces; `(retired)` on tooling notes | Ambiguous — conflates protocols, connectors, and ELT                |
+| `stewardship`         | `(retired)`                                                                     | Implied by the `data-governance` domain                             |
+| `system-design`       | `data-architecture` or `distributed-systems`                                    | Banned — too general                                                |
 
 ---
 
-## Worked Examples
+## Adding a Tag
 
-| Note                                 | Mandatory tags                                   | With optional user tags                                          |
-| ------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------------- |
-| `api_integration_protocols.md`       | `[data-architecture, api-protocols]`             | —                                                                |
-| `data_governance.md`                 | `[data-governance]`                              | `[data-governance, exam-prep]`                                   |
-| `data_quality.md`                    | `[data-governance, data-quality]`                | `[data-governance, data-quality, dama-dmbok, exam-prep]`         |
-| `data_stewardship.md`                | `[data-governance, stewardship]`                 | —                                                                |
-| `metadata_management.md`             | `[data-management, metadata, cataloging]`        | —                                                                |
-| `master_data_management.md`          | `[data-management, master-data]`                 | `[data-management, master-data, project-atlas]`                  |
-| `data_architecture.md`               | `[data-architecture]`                            | —                                                                |
-| `data_security.md`                   | `[data-security, access-control]`                | —                                                                |
-| `data_structures_algorithms.md`      | `[data-structures, algorithms]`                  | —                                                              |
-| `b_plus_tree.md`                     | `[data-structures, algorithms]`                  | —                                                              |
-
-Note the pattern: the mandatory set places the note in the vault and never paraphrases the title;
-optional user tags (`exam-prep`, `dama-dmbok`, `project-atlas`) are the user's own cross-cutting
-labels and always come last.
+Follow the "Adding a New Tag" section of `SKILL.md`. A candidate needs user approval, must apply to
+three or more notes, must not be covered by an existing tag or combination, and must fit exactly one
+facet. On approval, insert it into the correct table above in alphabetical order with a one-line
+**Covers** and **Excludes** definition, then log the vocabulary change in `wiki/log.md`.

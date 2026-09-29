@@ -1,8 +1,8 @@
 ---
 title: Data Architecture
-tags: [data-architecture, stub]
+tags: [data-architecture, data-modeling, stub]
 created: 2026-09-22 09:11:46
-updated: 2026-09-29 15:39:23
+updated: 2026-09-29 16:51:15
 ---
 
 # Data Architecture

@@ -1,8 +1,8 @@
 ---
 title: Transaction Isolation Levels
-tags: [data-architecture, databases, transactions]
+tags: [databases, transactions]
 created: 2026-09-24 10:57:07
-updated: 2026-09-24 11:24:31
+updated: 2026-09-29 16:51:15
 ---
 
 # Transaction Isolation Levels

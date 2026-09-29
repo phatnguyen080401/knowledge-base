@@ -1,8 +1,8 @@
 ---
 title: Data Governance
-tags: [data-governance]
+tags: [data-governance, data-quality, data-security]
 created: 2026-09-22 08:59:02
-updated: 2026-09-22 09:18:25
+updated: 2026-09-29 16:51:15
 ---
 
 # Data Governance

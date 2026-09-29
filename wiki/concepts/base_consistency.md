@@ -1,8 +1,8 @@
 ---
 title: BASE (Basically Available, Soft State, Eventual Consistency)
-tags: [data-architecture, databases, transactions]
+tags: [databases, transactions]
 created: 2026-09-24 10:57:07
-updated: 2026-09-24 11:16:13
+updated: 2026-09-29 16:51:15
 ---
 
 # BASE (Basically Available, Soft State, Eventual Consistency)

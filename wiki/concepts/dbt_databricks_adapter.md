@@ -1,8 +1,8 @@
 ---
 title: dbt-databricks Adapter
-tags: [data-engineering, integration]
+tags: [data-engineering, data-warehouse]
 created: 2026-09-24 10:19:20
-updated: 2026-09-24 10:19:20
+updated: 2026-09-29 16:51:15
 ---
 
 # dbt-databricks Adapter

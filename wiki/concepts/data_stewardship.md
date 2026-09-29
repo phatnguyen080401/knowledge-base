@@ -1,8 +1,8 @@
 ---
 title: Data Stewardship
-tags: [data-governance, stewardship]
+tags: [data-governance, data-quality]
 created: 2026-09-23 00:00:00
-updated: 2026-09-23 11:43:24
+updated: 2026-09-29 16:51:15
 ---
 
 # Data Stewardship
