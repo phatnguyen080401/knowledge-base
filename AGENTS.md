@@ -95,7 +95,7 @@ such as [[concepts/data_governance|Data Governance]].
 **Frontmatter rules**
 
 - `title` — string; must match the note's H1 heading.
-- `tags` — YAML inline list, lowercase `kebab-case`. Every note carries 1–4 topical tags. Add `stub` while the note is a placeholder and **remove it** once the note is substantive.
+- `tags` — YAML inline list, lowercase `kebab-case`. Every note carries at least 1 topical tags. Add `stub` while the note is a placeholder and **remove it** once the note is substantive.
 - `created` — `YYYY-MM-DD HH:mm:ss`. Set once, never changed.
 - `updated` — `YYYY-MM-DD HH:mm:ss`. Set on every content change.
 - Timestamps must come from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`). Never invent or copy a timestamp.
@@ -185,7 +185,7 @@ override it (see Precedence).
 | Skill                                                    | What it covers                                                                                                | Read it when                                                                                                                             |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | [`obsidian-markdown`](.skill/obsidian-markdown/SKILL.md) | Obsidian Flavored Markdown: wikilinks, embeds, callouts, frontmatter properties, comments, and block references | Writing or editing any note body; the user mentions wikilinks, callouts, embeds, or frontmatter; a link or embed is not rendering right   |
-| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The controlled tag vocabulary, the mandatory 1–4 tag set, banned tags, and the tag audit workflow             | **Every time you assign or change a tag**; the user says "fix my tags", "normalize tags", "tag audit", "my tags are a mess", or asks what tags to use or how to add one |
+| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The controlled tag vocabulary, the mandatory tag set, banned tags, and the tag audit workflow             | **Every time you assign or change a tag**; the user says "fix my tags", "normalize tags", "tag audit", "my tags are a mess", or asks what tags to use or how to add one |
 
 **Adding a skill:** create `.skill/<skill-name>/SKILL.md` with `name` and `description` frontmatter, put any long reference material in `.skill/<skill-name>/references/`, and add a row to the table above. A skill that is not listed here will not be found.
 

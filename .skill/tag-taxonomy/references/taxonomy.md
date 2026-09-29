@@ -30,7 +30,7 @@ The field of practice the note belongs to.
 
 If two domains fit equally well, the note likely covers two concepts — split it (`AGENTS.md` §4.3).
 
-## Facet 2 — Topic (optional, zero to two)
+## Facet 2 — Topic (optional)
 
 A specific subject within the domain. Add one only if it says something the domain tag does not.
 

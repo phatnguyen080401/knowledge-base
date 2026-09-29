@@ -13,6 +13,9 @@
 
 - [[concepts/api_integration_protocols|API and Integration Protocols]]
 - [[concepts/data_architecture|Data Architecture]]
+- [[concepts/ontology_layer|Ontology Layer]]
+- [[concepts/semantic_layer|Semantic Layer]]
+- [[concepts/semantic_layer_vs_ontology_layer|Semantic Layer vs. Ontology Layer]]
 
 ## Databases
 

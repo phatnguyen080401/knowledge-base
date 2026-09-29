@@ -1,5 +1,15 @@
 # Activity Log
 
+- **2026-09-29**: Updated `[[concepts/semantic_layer]]` — retagged the domain facet from `analytics` to `data-architecture` at the user's request, matching `[[concepts/ontology_layer]]` and `[[concepts/semantic_layer_vs_ontology_layer]]` so all three sit in one domain.
+
+- **2026-09-29**: Created `[[concepts/semantic_layer_vs_ontology_layer]]` — moved the comparison out of `[[concepts/semantic_layer]]` into a dedicated note, expanded with the core distinction (measurement contract vs. vocabulary contract), a widened comparison table, how the two compose via `[[concepts/master_data_management]]`, and guidance on which to reach for.
+- **2026-09-29**: Updated `[[concepts/semantic_layer]]` and `[[concepts/ontology_layer]]` — replaced the inline comparison table with a short summary pointing at the new note, and linked it from both Related Concepts sections.
+
+- **2026-09-29**: Created `[[concepts/semantic_layer]]` — the governed translation tier between warehouse models and consumers: entities, dimensions, metrics, grain and access rules, tool-embedded vs. headless deployment, and the contrast table against the ontology layer.
+- **2026-09-29**: Created `[[concepts/ontology_layer]]` — the formal domain vocabulary: classes, properties, hierarchy, axioms, the RDF/OWL vs. property-graph vs. taxonomy spectrum, and why inference is what separates it from a schema.
+- **2026-09-29**: Updated `[[concepts/data_architecture]]` — added inbound wikilinks to `[[concepts/semantic_layer]]` and `[[concepts/ontology_layer]]` so both new notes are reachable from the existing vault.
+- **2026-09-29**: Updated `[[INDEX]]` — filed both new notes under the `## Data Architecture` group.
+
 - **2026-09-24**: Updated `[[concepts/cap_theorem]]` — retagged to `[data-architecture, databases, distributed-systems]`; `distributed-systems` now carries the meaning `transactions` was standing in for, and the set fits the one-domain, two-topic facet limit now that both new tags count toward it.
 - **2026-09-24**: Updated the tag taxonomy — added `distributed-systems` (multi-node behaviour: replication, consensus, partition tolerance, coordination) and `system-design` (whole-system component and trade-off reasoning) to the Facet 2 topic vocabulary in `.skill/tag-taxonomy/references/taxonomy.md` at the user's request. Noted at the time that `system-design` is broad enough to risk the "uninformative tag" rule; it was added deliberately and is currently unused.
 

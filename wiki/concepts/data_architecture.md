@@ -2,7 +2,7 @@
 title: Data Architecture
 tags: [data-architecture, stub]
 created: 2026-09-22 09:11:46
-updated: 2026-09-24 11:22:34
+updated: 2026-09-29 15:39:23
 ---
 
 # Data Architecture
@@ -17,3 +17,5 @@ Data architecture is the set of rules, policies, standards, and models that gove
 - [[concepts/api_integration_protocols|API and Integration Protocols]] — the interface and messaging choices that determine how systems in the architecture exchange data
 - [[concepts/data_structures_algorithms|Data Structures and Algorithms]] — the storage and indexing structures underneath the architecture, which fix its performance envelope
 - [[concepts/cap_theorem|CAP Theorem]] — the constraint that forces the consistency-versus-availability choice once the architecture spans more than one node
+- [[concepts/ontology_layer|Ontology Layer]] — the formal vocabulary that gives the architecture's entities shared meaning
+- [[concepts/semantic_layer|Semantic Layer]] — the governed translation tier between the physical models and their consumers
