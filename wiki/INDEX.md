@@ -31,6 +31,7 @@
 - [[concepts/dbt|dbt (Data Build Tool)]]
 - [[concepts/dbt_bigquery_adapter|dbt-bigquery Adapter]]
 - [[concepts/dbt_databricks_adapter|dbt-databricks Adapter]]
+- [[concepts/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]]
 
 ## Data Structures and Algorithms
 
