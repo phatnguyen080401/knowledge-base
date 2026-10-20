@@ -26,6 +26,8 @@
 
 ## Data Engineering
 
+- [[concepts/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]]
+
 ### dbt (Data Build Tool)
 
 - [[concepts/dbt|dbt (Data Build Tool)]]
