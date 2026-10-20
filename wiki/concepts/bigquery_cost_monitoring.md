@@ -129,3 +129,4 @@ Job history tells you what happened; preventing a repeat needs separate mechanis
 - [BigQuery pricing](https://cloud.google.com/bigquery/pricing)
 - [BigQuery — Custom cost controls](https://cloud.google.com/bigquery/docs/custom-quotas)
 - [Google Cloud SKU reference — BigQuery analysis](https://cloud.google.com/skus/?currency=USD&filter=bigquery+analysis)
+
