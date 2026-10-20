@@ -35,6 +35,10 @@
 - [[concepts/dbt_databricks_adapter|dbt-databricks Adapter]]
 - [[concepts/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]]
 
+## Software Engineering
+
+- [[concepts/semantic_versioning|Semantic Versioning (SemVer)]]
+
 ## Data Structures and Algorithms
 
 - [[concepts/data_structures_algorithms|Data Structures and Algorithms]]

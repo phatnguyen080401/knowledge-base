@@ -22,6 +22,7 @@ probably covers two concepts and should be split (`AGENTS.md` §4.3).
 | `data-governance`   | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy                          |
 | `data-structures`   | Computer-science structures and the algorithms over them, independent of any product                  | Product-specific storage behaviour (`databases`)                          |
 | `databases`         | Database and storage-engine behaviour: transactions, consistency models, replication, query execution | Vendor-neutral structure theory (`data-structures`)                       |
+| `software-architecture` | Design and engineering practice for software systems generally, independent of the data they carry: release and dependency management, versioning schemes, API contracts, module boundaries, deployment patterns | Structural design of a *data* platform (`data-architecture`); pipeline and transformation tooling (`data-engineering`) |
 
 ---
 
@@ -45,6 +46,7 @@ match.
 | `master-data`         | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies           | Descriptive metadata about datasets (`metadata`)                        |
 | `metadata`            | Data about data: catalogs, lineage, schema registries, business glossaries                        | The business data itself (`master-data`)                                |
 | `transactions`        | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC    | Multi-node coordination concerns (`distributed-systems`)                |
+| `versioning`          | How artifacts are numbered, released, and depended upon: version schemes, compatibility contracts, pinning and lockfiles, deprecation windows | The design of the interface being versioned (`api-protocols`)           |
 
 ---
 
