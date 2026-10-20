@@ -172,6 +172,7 @@ flowchart LR
     CloudRun <-->|"Mounts dbt artifacts<br/>Reads prior state and<br/>saves manifest"| GCS
     CloudRun --> BQ
     CloudRun .-> |"Export dbt build results to Elementary"| BQ
+    BQ ~~~ CloudRun_EDR
     CloudRun_EDR --> BQ
 ```
 
