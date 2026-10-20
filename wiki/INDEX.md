@@ -11,7 +11,6 @@
 
 ## Data Architecture
 
-- [[concepts/api_integration_protocols|API and Integration Protocols]]
 - [[concepts/data_architecture|Data Architecture]]
 - [[concepts/ontology_layer|Ontology Layer]]
 - [[concepts/semantic_layer|Semantic Layer]]
@@ -37,6 +36,8 @@
 
 ## Software Engineering
 
+- [[concepts/api_integration_protocols|API and Integration Protocols]]
+- [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]]
 - [[concepts/semantic_versioning|Semantic Versioning (SemVer)]]
 
 ## Data Structures and Algorithms

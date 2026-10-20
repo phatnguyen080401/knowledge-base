@@ -1,13 +1,13 @@
 ---
 title: API and Integration Protocols
-tags: [data-architecture, api-protocols]
+tags: [software-architecture, api-protocols]
 created: 2026-09-23 11:54:32
-updated: 2026-09-23 13:16:00
+updated: 2026-10-20 15:13:41
 ---
 
 # API and Integration Protocols
 
-API and integration protocols are the agreed conventions — transport, message format, and interaction pattern — that let one system exchange data with another. The choice of protocol is an architectural decision that shapes latency, coupling, scalability, and operability, which is why it belongs to [[concepts/data_architecture|Data Architecture]] rather than to any single application.
+API and integration protocols are the agreed conventions — transport, message format, and interaction pattern — that let one system exchange data with another. The choice of protocol is a software-architecture decision that shapes latency, coupling, scalability, and operability, and one that [[concepts/data_architecture|Data Architecture]] inherits wholesale at every boundary where a platform ingests or publishes data.
 
 ## Why It Matters
 
@@ -129,6 +129,8 @@ EDI is the decades-old standard for exchanging **structured business documents**
 - **Character:** rigid positional or delimited segments, trading-partner agreements that specify every field, and mandatory acknowledgements (997/CONTRL).
 - **Use when:** you have no choice — retail, logistics, healthcare, and automotive supply chains still run on it. EDI is usually translated into JSON or a warehouse schema at the edge, and its trading-partner identifiers are a classic source of [[concepts/master_data_management|Master Data Management (MDM)]] work.
 
+Capital markets have their own equivalent: the [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]], a session-oriented tag=value standard for orders, executions, and market data that is likewise adopted because counterparties mandate it rather than on technical merit.
+
 ## Comparison at a Glance
 
 | Protocol | Direction | Transport | Payload | Delivery guarantee | Typical use |
@@ -151,7 +153,7 @@ EDI is the decades-old standard for exchanging **structured business documents**
 3. **How bad is a lost message?** Tolerable → REST or webhooks with retries. Unacceptable → AMQP or MQTT QoS 1+ with durable storage and idempotent consumers.
 4. **How constrained is the network or device?** Severely → MQTT.
 5. **Who is the consumer — your own services or the outside world?** Internal and performance-sensitive → gRPC. Public, browser-facing, or partner-facing → REST or GraphQL.
-6. **Does an external standard already dictate the answer?** Partner mandates SOAP or EDI → that discussion is over.
+6. **Does an external standard already dictate the answer?** Partner mandates SOAP, EDI, or FIX → that discussion is over.
 7. **Who owns the contract?** Whatever you choose, the schema is a governed asset: version it, publish it, and monitor breaking changes.
 
 ## Governance and Security Considerations
@@ -166,7 +168,8 @@ EDI is the decades-old standard for exchanging **structured business documents**
 
 ## Related Concepts
 
-- [[concepts/data_architecture|Data Architecture]] — integration protocols are one of the structural choices architecture governs
+- [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — the capital-markets protocol worked through in detail, and a case study in session-stateful, dialect-ridden industry standards
+- [[concepts/data_architecture|Data Architecture]] — the protocols chosen here become structural commitments of the data platform
 - [[concepts/data_security|Data Security]] — every API and broker is an access point that must be authenticated, encrypted, and rate limited
 - [[concepts/metadata_management|Metadata Management]] — API and event schemas are governed metadata that belong in the catalog
 - [[concepts/master_data_management|Master Data Management (MDM)]] — cross-system integration is where identifier mismatches surface and golden records are reconciled
