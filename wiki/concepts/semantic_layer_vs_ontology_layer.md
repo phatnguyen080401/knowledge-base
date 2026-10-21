@@ -1,8 +1,8 @@
 ---
 title: Semantic Layer vs. Ontology Layer
-tags: [data-architecture, data-modeling]
+tags: [data-architecture, data-modeling, metric-definition, knowledge-graph, comparison]
 created: 2026-09-29 15:42:29
-updated: 2026-09-29 15:42:29
+updated: 2026-10-21 14:23:04
 ---
 
 # Semantic Layer vs. Ontology Layer

@@ -1,8 +1,8 @@
 ---
 title: BASE (Basically Available, Soft State, Eventual Consistency)
-tags: [databases, transactions]
+tags: [databases, transactions, distributed-systems, consistency-models, replication]
 created: 2026-09-24 10:57:07
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # BASE (Basically Available, Soft State, Eventual Consistency)

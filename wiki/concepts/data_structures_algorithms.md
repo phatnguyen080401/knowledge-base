@@ -1,8 +1,8 @@
 ---
 title: Data Structures and Algorithms
-tags: [data-structures, indexing]
+tags: [data-structures, indexing, search-trees, write-optimization, probabilistic-structures, prefix-structures, overview]
 created: 2026-09-23 13:30:09
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # Data Structures and Algorithms

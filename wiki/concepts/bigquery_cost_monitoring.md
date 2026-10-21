@@ -1,8 +1,8 @@
 ---
 title: BigQuery Usage and Cost Monitoring
-tags: [data-engineering, data-warehouse]
+tags: [data-engineering, cost-management, query-optimization, bigquery]
 created: 2026-10-20 14:40:40
-updated: 2026-10-20 14:40:40
+updated: 2026-10-21 14:23:04
 ---
 # BigQuery Usage and Cost Monitoring
 

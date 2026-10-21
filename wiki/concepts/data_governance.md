@@ -1,8 +1,8 @@
 ---
 title: Data Governance
-tags: [data-governance, data-quality, data-security]
+tags: [data-governance, data-quality, data-security, stewardship-roles, overview]
 created: 2026-09-22 08:59:02
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # Data Governance

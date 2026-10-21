@@ -1,8 +1,8 @@
 ---
 title: dbt-bigquery Adapter
-tags: [data-engineering, data-warehouse]
+tags: [data-engineering, dbt, bigquery]
 created: 2026-09-24 10:32:52
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # dbt-bigquery Adapter

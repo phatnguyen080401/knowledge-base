@@ -1,8 +1,8 @@
 ---
 title: dbt (Data Build Tool)
-tags: [data-engineering, data-modeling]
+tags: [data-engineering, data-modeling, data-validation, data-lineage, dbt]
 created: 2026-09-24 10:10:13
-updated: 2026-10-20 10:18:50
+updated: 2026-10-21 14:23:04
 ---
 
 # dbt (Data Build Tool)

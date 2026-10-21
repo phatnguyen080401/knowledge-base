@@ -1,8 +1,8 @@
 ---
 title: Semantic Versioning (SemVer)
-tags: [software-architecture, versioning]
+tags: [software-architecture, versioning, compatibility-contracts]
 created: 2026-10-20 14:50:33
-updated: 2026-10-20 16:09:59
+updated: 2026-10-21 14:23:04
 ---
 
 # Semantic Versioning (SemVer)

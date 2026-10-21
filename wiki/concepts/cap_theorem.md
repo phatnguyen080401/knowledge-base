@@ -1,8 +1,8 @@
 ---
 title: CAP Theorem
-tags: [databases, distributed-systems]
+tags: [databases, distributed-systems, consistency-models, fault-tolerance, replication]
 created: 2026-09-24 10:57:07
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # CAP Theorem

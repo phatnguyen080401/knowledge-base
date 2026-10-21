@@ -1,8 +1,8 @@
 ---
 title: Master Data Management (MDM)
-tags: [data-governance, master-data]
+tags: [data-governance, master-data, entity-resolution]
 created: 2026-09-22 09:11:46
-updated: 2026-10-21 11:22:46
+updated: 2026-10-21 14:23:04
 ---
 
 # Master Data Management (MDM)

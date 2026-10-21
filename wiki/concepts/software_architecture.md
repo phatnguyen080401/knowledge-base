@@ -1,8 +1,8 @@
 ---
 title: Software Architecture
-tags: [software-architecture, system-design]
+tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-20 16:09:59
+updated: 2026-10-21 14:23:04
 ---
 
 # Software Architecture

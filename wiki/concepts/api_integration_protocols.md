@@ -1,8 +1,8 @@
 ---
 title: API and Integration Protocols
-tags: [software-architecture, api-protocols]
+tags: [software-architecture, api-protocols, overview]
 created: 2026-09-23 11:54:32
-updated: 2026-10-20 16:09:59
+updated: 2026-10-21 14:23:04
 ---
 
 # API and Integration Protocols

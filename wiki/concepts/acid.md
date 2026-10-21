@@ -1,8 +1,8 @@
 ---
 title: ACID (Atomicity, Consistency, Isolation, Durability)
-tags: [databases, transactions]
+tags: [databases, transactions, concurrency-control, consistency-models]
 created: 2026-09-24 10:57:07
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # ACID (Atomicity, Consistency, Isolation, Durability)

@@ -1,8 +1,8 @@
 ---
 title: Transaction Isolation Levels
-tags: [databases, transactions]
+tags: [databases, transactions, concurrency-control]
 created: 2026-09-24 10:57:07
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # Transaction Isolation Levels

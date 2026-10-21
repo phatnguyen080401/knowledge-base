@@ -1,8 +1,8 @@
 ---
 title: Data Architecture
-tags: [data-architecture, data-modeling]
+tags: [data-architecture, data-modeling, architecture-patterns, overview]
 created: 2026-09-22 09:11:46
-updated: 2026-10-21 11:22:46
+updated: 2026-10-21 14:23:04
 ---
 
 # Data Architecture

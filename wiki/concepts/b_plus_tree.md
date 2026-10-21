@@ -1,8 +1,8 @@
 ---
 title: B+ Tree
-tags: [data-structures, indexing]
+tags: [data-structures, indexing, search-trees]
 created: 2026-09-23 13:30:09
-updated: 2026-09-29 16:51:15
+updated: 2026-10-21 14:23:04
 ---
 
 # B+ Tree

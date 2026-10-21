@@ -2,7 +2,7 @@
 title: Ontology Layer
 tags: [data-architecture, data-modeling]
 created: 2026-09-29 15:39:23
-updated: 2026-09-29 15:42:29
+updated: 2026-10-21 14:23:04
 ---
 
 # Ontology Layer

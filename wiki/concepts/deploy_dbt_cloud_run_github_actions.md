@@ -1,8 +1,8 @@
 ---
 title: Deploy dbt and Elementary to Cloud Run with GitHub Actions
-tags: [data-engineering, data-warehouse]
+tags: [data-engineering, deployment, ci-cd, dbt, cloud-run, github-actions, elementary, how-to]
 created: 2026-10-20 10:18:50
-updated: 2026-10-20 13:52:10
+updated: 2026-10-21 14:23:04
 ---
 # Deploy dbt and Elementary to Cloud Run with GitHub Actions
 

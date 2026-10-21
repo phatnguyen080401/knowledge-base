@@ -1,8 +1,8 @@
 ---
 title: FIX Protocol (Financial Information eXchange)
-tags: [software-architecture, api-protocols]
+tags: [software-architecture, api-protocols, compatibility-contracts, fix-protocol]
 created: 2026-10-20 15:08:33
-updated: 2026-10-20 16:09:59
+updated: 2026-10-21 14:23:04
 ---
 
 # FIX Protocol (Financial Information eXchange)
