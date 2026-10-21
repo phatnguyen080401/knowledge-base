@@ -2,7 +2,7 @@
 title: API and Integration Protocols
 tags: [software-architecture, api-protocols]
 created: 2026-09-23 11:54:32
-updated: 2026-10-20 15:13:41
+updated: 2026-10-20 16:09:59
 ---
 
 # API and Integration Protocols
@@ -168,6 +168,7 @@ Capital markets have their own equivalent: the [[concepts/fix_protocol|FIX Proto
 
 ## Related Concepts
 
+- [[concepts/software_architecture|Software Architecture]] — the parent discipline; protocol choice is the component-communication decision at the centre of it
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — the capital-markets protocol worked through in detail, and a case study in session-stateful, dialect-ridden industry standards
 - [[concepts/data_architecture|Data Architecture]] — the protocols chosen here become structural commitments of the data platform
 - [[concepts/data_security|Data Security]] — every API and broker is an access point that must be authenticated, encrypted, and rate limited

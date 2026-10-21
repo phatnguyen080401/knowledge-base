@@ -39,6 +39,7 @@
 - [[concepts/api_integration_protocols|API and Integration Protocols]]
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]]
 - [[concepts/semantic_versioning|Semantic Versioning (SemVer)]]
+- [[concepts/software_architecture|Software Architecture]]
 
 ## Data Structures and Algorithms
 

@@ -2,7 +2,7 @@
 title: FIX Protocol (Financial Information eXchange)
 tags: [software-architecture, api-protocols]
 created: 2026-10-20 15:08:33
-updated: 2026-10-20 15:13:41
+updated: 2026-10-20 16:09:59
 ---
 
 # FIX Protocol (Financial Information eXchange)
@@ -130,6 +130,7 @@ For a data platform, FIX is an ingestion problem with sharp edges:
 ## Related Concepts
 
 - [[concepts/api_integration_protocols|API and Integration Protocols]] — FIX is the capital-markets entry in the broader protocol landscape, and shares EDI's character as a mandated industry standard
+- [[concepts/software_architecture|Software Architecture]] — FIX is what an interface decision looks like thirty years on: dialects, session state, and a contract nobody can unilaterally change
 - [[concepts/data_security|Data Security]] — FIX provides no encryption or real authentication of its own, so sessions must be secured at the transport and network layers
 - [[concepts/metadata_management|Metadata Management]] — FIX data dictionaries and counterparty rules of engagement are governed metadata without which messages cannot be interpreted
 - [[concepts/master_data_management|Master Data Management (MDM)]] — instrument symbology and counterparty identifiers must be reconciled across venues
