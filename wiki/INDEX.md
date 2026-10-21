@@ -77,3 +77,9 @@ Folder: `wiki/concepts/software_architecture/`
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
 - [[concepts/software_architecture/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
+
+## Version Control
+
+Folder: `wiki/concepts/version_control/`
+
+- [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` message format, the two specified types and the conventional rest, breaking-change signalling, and the mechanical mapping onto SemVer releases.

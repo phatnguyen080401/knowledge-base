@@ -30,6 +30,7 @@ probably covers two concepts and should be split (`AGENTS.md` §4.3).
 | `databases`         | Database and storage-engine behaviour: transactions, consistency models, replication, query execution | Vendor-neutral structure theory (`data-structures`)                       |
 | `devops`            | Building, shipping, and operating software: CI/CD pipelines, artifacts and registries, infrastructure provisioning, and supply-chain and runtime security | The design of the software being shipped (`software-architecture`); pipelines that move *data* rather than code (`data-engineering`) |
 | `software-architecture` | Design and engineering practice for software systems generally, independent of the data they carry: release and dependency management, versioning schemes, API contracts, module boundaries, deployment patterns | Structural design of a *data* platform (`data-architecture`); pipeline and transformation tooling (`data-engineering`); the tooling that actually builds, ships, and secures an artifact (`devops`) |
+| `version-control`   | Managing source history in a repository: commit conventions and messages, branching and merge strategies, tags, rebasing, history rewriting, and the review workflows built on them | The pipelines a commit triggers (`devops`); how the resulting artifact is numbered and depended upon (`software-architecture`) |
 
 ---
 
@@ -117,6 +118,7 @@ Seed list — add a row once a second note uses the tag:
 | `databricks`     | Databricks lakehouse, Unity Catalog, Delta tables              |
 | `dbt`            | dbt Core and dbt Cloud: models, tests, macros, adapters        |
 | `fix-protocol`   | The FIX financial messaging standard                           |
+| `git`            | The Git version-control system: commits, branches, tags, trailers, rebase |
 | `github-actions` | GitHub Actions workflows, runners, and secrets                 |
 | `python`         | The Python language and CPython runtime: stdlib modules, interpreter behaviour |
 
