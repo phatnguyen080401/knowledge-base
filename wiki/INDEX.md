@@ -46,6 +46,7 @@ shortlist from the summaries here, then open only the pages you need.
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
 - [[concepts/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
 - [[concepts/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
+- [[concepts/trivy|Trivy]] — tool overview: one open-source scanner for CVEs, IaC misconfiguration, secrets and licences across images, repos, clusters and SBOMs, and where the CI gate belongs.
 
 ## Data Structures and Algorithms
 
