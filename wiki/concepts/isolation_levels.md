@@ -2,7 +2,7 @@
 title: Transaction Isolation Levels
 tags: [databases, transactions, concurrency-control]
 created: 2026-09-24 10:57:07
-updated: 2026-10-21 14:23:04
+updated: 2026-10-21 14:47:07
 ---
 
 # Transaction Isolation Levels
@@ -238,6 +238,7 @@ Write skew is harder: only options 3 and 5 address it, because the row you write
 - [[concepts/data_architecture|Data Architecture]] — the level a workload runs at is a design decision, not an operational detail
 - [[concepts/b_plus_tree|B+ Tree]] — the index structure that range and gap locks are taken on, which is why MySQL's phantom prevention depends on the query's index plan
 - [[concepts/data_quality|Data Quality]] — isolation bugs surface downstream as accuracy and consistency defects that no data test can attribute to their cause
+- [[concepts/concurrency_and_parallelism|Concurrency and Parallelism]] — the same anomalies one level down, in application memory, where lost update and write skew are plain race conditions and the locks are yours to take
 
 ## References
 

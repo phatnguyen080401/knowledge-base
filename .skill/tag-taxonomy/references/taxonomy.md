@@ -44,6 +44,7 @@ match.
 | --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | `api-protocols`       | Interface and messaging styles for system-to-system exchange: REST, gRPC, SOAP, webhooks, queues | Internal representation of the data being exchanged (`data-modeling`)   |
 | `architecture-patterns` | Recurring structural shapes of a system: layering, module boundaries, coupling, deployment topology | The named technology realizing the pattern (a `tech` tag)           |
+| `concurrency`         | Executing work simultaneously inside one system: threads, processes, event loops, synchronization primitives, races, and runtime constraints on parallelism | Coordination across nodes (`distributed-systems`); database transaction semantics (`transactions`) |
 | `cost-management`     | Spend visibility and control: pricing models, cost attribution, budgets, slot and credit usage   | Making a query faster for its own sake (`query-optimization`)           |
 | `data-modeling`       | Designing logical and semantic representations: entities, relationships, metrics, dimensional and warehouse models | Physical storage layout (`indexing`)                                    |
 | `data-quality`        | Fitness for use — dimensions, profiling, validation rules, quality measurement and remediation   | Who is accountable for quality (that is the `data-governance` domain)   |
@@ -116,6 +117,7 @@ Seed list — add a row once a second note uses the tag:
 | `dbt`            | dbt Core and dbt Cloud: models, tests, macros, adapters        |
 | `fix-protocol`   | The FIX financial messaging standard                           |
 | `github-actions` | GitHub Actions workflows, runners, and secrets                 |
+| `python`         | The Python language and CPython runtime: stdlib modules, interpreter behaviour |
 
 ---
 
@@ -153,7 +155,7 @@ specific alternative before writing (`SKILL.md`, Core Rule 5).
 | `data`, `tech`, `technology`, `general`, `misc`, `other`| Describes the whole vault, not the note                   | A `domain` tag                       |
 | `important`, `interesting`, `useful`                    | Subjective; states nothing about the subject              | Nothing                              |
 | `todo`, `wip`, `draft`                                  | Task state masquerading as a subject tag                  | `stub` or `needs-review`             |
-| `architecture`, `design`               | Applies to almost every architecture note                 | `architecture-patterns`, `data-architecture`, `system-design`, or `distributed-systems` |
+| `architecture`, `design`, `system-design` | Applies to almost every architecture note              | `architecture-patterns`, `concurrency`, `data-architecture`, or `distributed-systems` |
 | `database-concepts`, `programming`, `computer-science`  | Too broad to narrow a search                              | `databases` or `data-structures`     |
 | `cloud`, `platform`, `tool`, `framework`, `warehouse`   | A category, not a product — a `tech` tag must name one    | The product's own name, or a `topic` tag |
 | `dbt-1-8`, `python-3-12`, any version-numbered tag      | Pins the tag to a release the note will outlive           | The unversioned `tech` tag; put the version in the body |

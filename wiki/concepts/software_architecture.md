@@ -2,7 +2,7 @@
 title: Software Architecture
 tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-21 14:23:04
+updated: 2026-10-21 14:47:07
 ---
 
 # Software Architecture
@@ -72,7 +72,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 
 ## Cross-Cutting Decisions
 
-- **Synchronous or asynchronous.** The single most consequential inter-component choice: a synchronous call binds the caller's availability to the callee's, an event does not.
+- **Synchronous or asynchronous.** The single most consequential inter-component choice: a synchronous call binds the caller's availability to the callee's, an event does not. The same question recurs *inside* a component as the choice of execution model — see [[concepts/concurrency_and_parallelism|Concurrency and Parallelism]].
 - **Contract evolution.** Breaking changes must be deliberate and announced. A MAJOR version bump, a parallel `/v2` endpoint, or a new event type with a deprecation window — not a silent field change.
 - **Failure handling.** Timeouts, retries with jitter, circuit breakers, and idempotency keys belong to the architecture; added per-call after the fact, they never cover the whole surface.
 - **Security posture.** Authentication, authorization, and encryption at each boundary, designed in rather than bolted on. See [[concepts/data_security|Data Security]].
@@ -97,6 +97,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 
 - [[concepts/data_architecture|Data Architecture]] — the same structural discipline applied to a data platform; the two constrain each other at every boundary where software produces or consumes data
 - [[concepts/api_integration_protocols|API and Integration Protocols]] — how the components chosen here actually talk to one another
+- [[concepts/concurrency_and_parallelism|Concurrency and Parallelism]] — the execution model inside a component: threads, processes, or an event loop, and which races each one admits
 - [[concepts/semantic_versioning|Semantic Versioning (SemVer)]] — the compatibility contract that makes an interface safe to depend on across releases
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — a long-lived industry standard, and a case study in what interface decisions cost decades later
 - [[concepts/cap_theorem|CAP Theorem]] — the hard limit on what a distributed architecture can promise during a network partition

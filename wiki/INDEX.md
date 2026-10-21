@@ -41,7 +41,9 @@ shortlist from the summaries here, then open only the pages you need.
 
 - [[concepts/software_architecture|Software Architecture]] — hub: quality attributes, architectural styles and their costs, decomposition, cross-cutting decisions, ADRs and C4.
 - [[concepts/api_integration_protocols|API and Integration Protocols]] — REST, GraphQL, gRPC, SOAP, webhooks, SSE, WebSockets, MQTT, AMQP, and EDI, organized by interaction style.
+- [[concepts/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- against CPU-bound workloads, race conditions with worked interleavings, and the synchronization primitives and deadlock conditions.
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
+- [[concepts/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
 - [[concepts/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
 
 ## Data Structures and Algorithms
