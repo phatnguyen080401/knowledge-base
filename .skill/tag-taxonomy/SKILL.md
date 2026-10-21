@@ -140,7 +140,7 @@ Triggered by "fix my tags", "normalize tags", "clean up tags", "tag audit", "my 
 5. **Apply.** For each approved change, rewrite the `tags` line and set `updated` to the real
    current time from `date +"%Y-%m-%d %H:%M:%S"`. Touch nothing else in the note.
 6. **Log.** Append one `wiki/log.md` entry per logical action, newest first:
-   `- **YYYY-MM-DD HH:mm:ss** · maintain · Updated \`[[concepts/note_name]]\` — retagged to the six-facet vocabulary.`
+   `- **YYYY-MM-DD HH:mm:ss** · maintain · Updated \`[[concepts/<folder>/note_name]]\` — retagged to the six-facet vocabulary.`
    A vault-wide sweep may be logged as a single entry that names the affected notes.
 7. **Verify.** Re-run step 1 and confirm every note has exactly one `domain` tag, at least one
    `topic` tag, a `concept` or `tech` tag where the rule requires it, facets in order, no more than

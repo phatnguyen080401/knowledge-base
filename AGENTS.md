@@ -48,18 +48,39 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 └── wiki/                      # The compiled knowledge base
     ├── INDEX.md               # Master index of every wiki page, grouped by topic
     ├── log.md                 # Reverse-chronological activity log
-    ├── concepts/              # Atomic notes — one file per concept
+    ├── concepts/              # Atomic notes — one file per concept, filed by domain
+    │   ├── data_architecture/
+    │   ├── data_engineering/
+    │   │   └── dbt/
+    │   ├── data_governance/
+    │   ├── data_structures/
+    │   ├── databases/
+    │   ├── devops/
+    │   └── software_architecture/
     └── assets/                # Images, PDFs, and other binaries linked from notes
 ```
+
+**Filing a note into a folder**
+
+Every note lives in the folder named after its `domain` tag (`.skill/tag-taxonomy/`), in
+`snake_case` — `databases` → `concepts/databases/`, `software-architecture` →
+`concepts/software_architecture/`. The folder and the tag must always agree; if you change one,
+change the other in the same action. A note never sits loose at the root of `concepts/`.
+
+Subfolders are permitted one level deeper and only to cluster a **tech family** that has three or
+more notes — `concepts/data_engineering/dbt/` holds the dbt notes. Create one only when the third
+note arrives; two notes stay flat in the domain folder. A new *domain* folder requires a new
+`domain` tag, which needs user approval (§1, Prohibited).
 
 **Naming conventions**
 
 | Item                | Rule                                                                         | Example                                   |
 | ------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
+| Folder name         | `snake_case` of the note's `domain` tag; one level of tech subfolder allowed | `databases/`, `data_engineering/dbt/`     |
 | Concept filename    | `snake_case.md`, singular, no dates, no numbering                            | `master_data_management.md`               |
 | `title` frontmatter | Title Case, human-readable, may include an acronym                           | `Master Data Management (MDM)`            |
 | Asset filename      | `snake_case` with extension, prefixed by related concept                     | `data_quality_dimensions.png`             |
-| Wikilink            | `[[concepts/file_name\|Display Text]]` — always vault-relative, always piped | `[[concepts/data_quality\|Data Quality]]` |
+| Wikilink            | `[[concepts/<folder>/file_name\|Display Text]]` — always the full vault-relative path, always piped | `[[concepts/data_governance/data_quality\|Data Quality]]` |
 
 ---
 
@@ -79,7 +100,7 @@ updated: 2026-09-23 10:25:15
 # Data Quality
 
 One- or two-sentence definition or high-level summary of what this note contains that stands alone, linking the parent concept
-such as [[concepts/data_governance|Data Governance]].
+such as [[concepts/data_governance/data_governance|Data Governance]].
 
 ## Why It Matters
 
@@ -91,8 +112,8 @@ such as [[concepts/data_governance|Data Governance]].
 
 ## Related Concepts
 
-- [[concepts/data_stewardship|Data Stewardship]] — who is accountable for quality
-- [[concepts/metadata_management|Metadata Management]] — where quality rules are documented
+- [[concepts/data_governance/data_stewardship|Data Stewardship]] — who is accountable for quality
+- [[concepts/data_governance/metadata_management|Metadata Management]] — where quality rules are documented
   
 ## References
 - Additional outside URLs or citations go here.
@@ -184,7 +205,7 @@ question that produced something worth keeping leave the vault unchanged.
 Append-only, newest entry first, immediately under the `# Activity Log` heading. One line per logical action:
 
 ```markdown
-- **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/note_name]]` — <what changed and why>. Source: `raw/processed/<file>`.
+- **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/<folder>/note_name]]` — <what changed and why>. Source: `raw/processed/<file>`.
 ```
 
 - **Timestamp** — full date *and* time, from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`), so the log records *when* the vault changed and entries written on the same day stay ordered. Never invent or copy a timestamp.
@@ -195,24 +216,35 @@ Append-only, newest entry first, immediately under the `# Activity Log` heading.
 A `query` entry names the question, the pages read, and what was filed:
 
 ```markdown
-- **YYYY-MM-DD HH:mm:ss** · query · Answered "<question>". Read: `[[concepts/a]]`, `[[concepts/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
+- **YYYY-MM-DD HH:mm:ss** · query · Answered "<question>". Read: `[[concepts/<folder>/a]]`, `[[concepts/<folder>/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
 ```
 
 **The log is append-only.** Never edit, reorder, reformat, or condense a past entry; only correct a factual typo. Entries written before this format was adopted use a date-only `- **YYYY-MM-DD**:` prefix and are left exactly as they are — the mixed format is the expected state, not a defect to clean up.
 
 ### `wiki/INDEX.md`
 
-The complete list of every page in `wiki/concepts/` — no more, no less. Group under `##` topic headings, alphabetize within each group, and use piped wikilinks. **Every entry carries a one-line summary** after an em dash, written so the agent can shortlist from the index alone without opening files (§5.1). Append `**Stub.**` to the summary of any page tagged `stub`. A hub page may be listed first in its group, ahead of alphabetical order:
+The complete list of every page in `wiki/concepts/` — no more, no less. **The index mirrors the
+folder tree:** one `##` group per domain folder, one `###` subgroup per tech subfolder, each
+carrying a `Folder:` line with its path. Groups are ordered as the folders sort; pages are
+alphabetized within each group, and use piped wikilinks. **Every entry carries a one-line summary**
+after an em dash, written so the agent can shortlist from the index alone without opening files
+(§5.1). Append `**Stub.**` to the summary of any page tagged `stub`. A hub page may be listed first
+in its group, ahead of alphabetical order:
 
 ```markdown
 # Index
 
 ## Data Governance
 
-- [[concepts/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
+Folder: `wiki/concepts/data_governance/`
+
+- [[concepts/data_governance/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
 ```
 
-Each page belongs to exactly one group. Create a new `##` group only when three or more pages justify it; otherwise use `## General`. Rewrite a page's summary whenever its scope changes, and drop `**Stub.**` when the `stub` tag goes. After every write, verify the index matches the directory listing exactly.
+Each page belongs to exactly one group, and that group is the folder it is in — the index can never
+disagree with the directory tree. Rewrite a page's summary whenever its scope changes, and drop
+`**Stub.**` when the `stub` tag goes. After every write, verify the index matches the recursive
+directory listing exactly.
 
 ---
 
