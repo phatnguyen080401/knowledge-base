@@ -184,16 +184,21 @@ question that produced something worth keeping leave the vault unchanged.
 Append-only, newest entry first, immediately under the `# Activity Log` heading. One line per logical action:
 
 ```markdown
-- **YYYY-MM-DD**: <Verb> `[[concepts/note_name]]` — <what changed and why>. Source: `raw/processed/<file>`.
+- **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/note_name]]` — <what changed and why>. Source: `raw/processed/<file>`.
 ```
 
-Use `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (§5), or `Audited` (§7 lint pass) as the verb. Omit the `Source:` clause for direct requests. Never edit or reorder past entries.
+- **Timestamp** — full date *and* time, from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`), so the log records *when* the vault changed and entries written on the same day stay ordered. Never invent or copy a timestamp.
+- **Operation** — exactly one of `ingest`, `query`, `lint`, or `maintain`, matching the workflow that produced the entry. The `·` separators make the log greppable by operation: `grep ' · lint · ' wiki/log.md`.
+- **Verb** — `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (§5), or `Audited` (§7 lint pass).
+- Omit the `Source:` clause for direct requests.
 
-An `Answered` entry names the question, the pages read, and what was filed:
+A `query` entry names the question, the pages read, and what was filed:
 
 ```markdown
-- **YYYY-MM-DD**: Answered — "<question>". Read: `[[concepts/a]]`, `[[concepts/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
+- **YYYY-MM-DD HH:mm:ss** · query · Answered "<question>". Read: `[[concepts/a]]`, `[[concepts/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
 ```
+
+**The log is append-only.** Never edit, reorder, reformat, or condense a past entry; only correct a factual typo. Entries written before this format was adopted use a date-only `- **YYYY-MM-DD**:` prefix and are left exactly as they are — the mixed format is the expected state, not a defect to clean up.
 
 ### `wiki/INDEX.md`
 
@@ -265,7 +270,7 @@ Mechanical, verifiable by inspection. Run on every write, and across all notes i
 - [ ] Every wikilink resolves to a file that exists; none are broken or unpiped.
 - [ ] New notes are reachable from at least one existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files present in `wiki/concepts/`, each with a current one-line summary.
-- [ ] `wiki/log.md` has one correctly formatted, correctly dated entry per logical action — including `Answered` and `Audited` actions, not only writes.
+- [ ] `wiki/log.md` has one entry per logical action, timestamped from the real clock and carrying its `ingest`/`query`/`lint`/`maintain` operation field — including `Answered` and `Audited` actions, not only writes. No past entry was edited or reformatted.
 - [ ] Every ingested source is recorded in the note's `sources` frontmatter and is still present in `raw/processed/`.
 - [ ] Successfully ingested sources were moved to `raw/processed/`; failed ones remain in `raw/`.
 - [ ] Every `stub` tag is on a genuine placeholder; every `needs-review` tag has a matching non-empty `## Open Questions & Disagreements` section, and vice versa.

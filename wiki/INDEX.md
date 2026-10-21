@@ -7,14 +7,14 @@ shortlist from the summaries here, then open only the pages you need.
 
 - [[concepts/data_governance|Data Governance]] — the operating model for data: principles, roles, frameworks, and the pillars it coordinates.
 - [[concepts/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
-- [[concepts/data_security|Data Security]] — protecting data from unauthorized access, disclosure, and alteration. **Stub.**
+- [[concepts/data_security|Data Security]] — classification, access control models, encryption and key management, the de-identification techniques, and the pipeline-specific leaks.
 - [[concepts/data_stewardship|Data Stewardship]] — who is accountable: steward vs. owner vs. custodian, operating models, workflows, and metrics.
-- [[concepts/master_data_management|Master Data Management (MDM)]] — golden records for the business's critical entities. **Stub.**
-- [[concepts/metadata_management|Metadata Management]] — the glossary, dictionary, catalog, and lineage that give data assets context. **Stub.**
+- [[concepts/master_data_management|Master Data Management (MDM)]] — golden records, entity resolution and survivorship, the four implementation styles, and hierarchy management.
+- [[concepts/metadata_management|Metadata Management]] — the four metadata types, glossary vs. dictionary vs. catalog, lineage capture methods, and active vs. passive metadata.
 
 ## Data Architecture
 
-- [[concepts/data_architecture|Data Architecture]] — the rules, models, and standards governing how data is collected, stored, and integrated. **Stub.**
+- [[concepts/data_architecture|Data Architecture]] — hub: the three model levels, platform layers, reference patterns, table formats, serving-layer modelling, and how decisions get recorded.
 - [[concepts/ontology_layer|Ontology Layer]] — the formal domain vocabulary: classes, properties, axioms, and why inference separates it from a schema.
 - [[concepts/semantic_layer|Semantic Layer]] — the governed translation tier between warehouse models and consumers: entities, metrics, grain, access rules.
 - [[concepts/semantic_layer_vs_ontology_layer|Semantic Layer vs. Ontology Layer]] — measurement contract vs. vocabulary contract, how the two compose, and which to reach for.
