@@ -2,7 +2,7 @@
 title: Software Architecture
 tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-21 14:47:07
+updated: 2026-10-21 15:02:01
 ---
 
 # Software Architecture
@@ -84,6 +84,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - **Architecture Decision Records (ADRs).** One short file per decision: context, the options considered, the decision, and its consequences. Immutable once accepted — a reversal is a new ADR that supersedes the old one. ADRs preserve *why*, which diagrams never do.
 - **C4 model.** Four nested diagram levels — system context, container, component, code — so each audience reads one level rather than one diagram trying to serve everyone.
 - **Fitness functions.** Automated checks that assert an architectural property still holds: dependency-direction tests, latency budgets in CI, bundle-size limits. Architecture that is not tested decays into whatever the code happens to do.
+- **Generated diagrams.** The only diagram guaranteed to be current is one derived from the system itself — from code, from infrastructure state, or from a tool where the design *is* the deployable artifact, as [[concepts/brainboard|Brainboard]] attempts for cloud infrastructure.
 
 ## Common Pitfalls
 
@@ -102,6 +103,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - [[concepts/fix_protocol|FIX Protocol (Financial Information eXchange)]] — a long-lived industry standard, and a case study in what interface decisions cost decades later
 - [[concepts/cap_theorem|CAP Theorem]] — the hard limit on what a distributed architecture can promise during a network partition
 - [[concepts/data_security|Data Security]] — the controls each architectural boundary has to enforce
+- [[concepts/brainboard|Brainboard]] — a tool overview: visual cloud-infrastructure design that generates the Terraform, aimed at the diagram-versus-reality gap described above
 
 ## References
 
