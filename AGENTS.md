@@ -18,7 +18,7 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 2. **Agent-driven.** You are the runtime. The file system is the only state. Read the vault to learn its state; write to the vault to change it.
 3. **Compile, don't retrieve.** The wiki is pre-compiled knowledge, not an archive of clippings. Merge new information into the existing page. Never append a redundant section, never create a near-duplicate page, never paste raw source text verbatim.
 4. **Atomic, complete transactions.** A task is finished only when the note, its wikilinks, `wiki/INDEX.md`, and `wiki/log.md` are all consistent. Never leave the audit trail half-updated.
-5. **Every write is audited.** Any create, update, rename, or delete under `wiki/` MUST produce a `wiki/log.md` entry and a correct `wiki/INDEX.md`.
+5. **Every write under `wiki/` is audited — and only those.** Any create, update, rename, or delete under `wiki/` MUST produce a `wiki/log.md` entry and a correct `wiki/INDEX.md`. The log's scope is the `wiki/` folder and nothing else: a change to `AGENTS.md`, to anything under `.skill/`, or to any other file outside `wiki/` gets **no log entry**. When such a change accompanies a wiki change, name it in one clause of that entry instead of giving it its own.
 6. **Required frontmatter.** Every file under `wiki/concepts/` MUST have `title`, `tags`, `created`, and `updated` (see §3).
 7. **Connect with wikilinks.** Every page must link to at least one related page, and be reachable from at least one other page. A page with no links is a defect.
 8. **Single source of truth.** Exactly one page per concept. If two pages cover the same concept, merge them (see §7).
@@ -213,13 +213,29 @@ Append-only, newest entry first, immediately under the `# Activity Log` heading.
 - **Verb** — `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (§5), or `Audited` (§7 lint pass).
 - Omit the `Source:` clause for direct requests.
 
+#### What gets logged
+
+The log is the audit trail of **the `wiki/` folder**, not of the repository. Per §1.5, write an entry when, and only when, a request changed something under `wiki/` — the sole exception being the `query` entry §5.6 requires, which records a question answered *from* the wiki even when nothing was filed.
+
+| Change                                                                | Log entry? |
+| --------------------------------------------------------------------- | ---------- |
+| Any note under `wiki/concepts/`, `wiki/INDEX.md`, or `wiki/assets/`   | Yes        |
+| A question answered from the vault (§5), including `Filed: nothing`   | Yes        |
+| `AGENTS.md` — a rule, workflow, or routing-table change               | No         |
+| Anything under `.skill/` — a new skill, a reworded procedure, a vocabulary addition | No |
+| Repository plumbing — `.gitignore`, `README.md`, CI config, tooling   | No         |
+
+A change outside `wiki/` that lands *alongside* a wiki change is not a separate entry and not a separate line: fold it into the one entry as a trailing clause, and only when it explains the wiki change. A request that touched nothing under `wiki/` leaves the log untouched — the git history is the record for those files.
+
+Entries written before this rule took effect log `AGENTS.md` and `.skill/` changes. The log is append-only, so they stay exactly as written.
+
 #### Keep entries short
 
 An entry is a **pointer to a change, not a copy of it**. The content lives in the note, which is where it is read; restating it here doubles the writing and ages badly the moment the note is edited. One sentence, ceiling about 40 words. If an entry needs a paragraph, the detail belongs in the note.
 
 - Log **what changed, where, and why** — never *what the note now says*. A section-by-section tour of the tables, callouts, and arguments a note contains is the note, pasted twice.
 - **Fold routine companion edits in.** Updating `INDEX.md`, adding backlinks, bumping `updated`, appending `sources`, and archiving the raw file are required by §4 on every write — they are not news and never get their own entry. Mention one only when it was unusual (a new index group, links repointed vault-wide).
-- **Split only for genuinely separate actions** — two unrelated notes, or a vocabulary change alongside a note. Not for each file a single change touched.
+- **Split only for genuinely separate actions** — two unrelated notes changed in one request. Not for each file a single change touched, and never for a file outside `wiki/`.
 - Record a judgement call or deviation in **one clause**. Anything longer belongs under `## Open Questions & Disagreements` in the note, where it will actually be found.
 
 ```markdown
@@ -318,7 +334,7 @@ Mechanical, verifiable by inspection. Run on every write, and across all notes i
 - [ ] Every wikilink resolves to a file that exists; none are broken or unpiped.
 - [ ] New notes are reachable from at least one existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files present in `wiki/concepts/`, each with a current one-line summary.
-- [ ] `wiki/log.md` has one entry for the request — one headline line of about 40 words, no section-by-section restatement of the note, routine companion edits folded in — timestamped from the real clock and carrying its `ingest`/`query`/`lint`/`maintain` operation field. `Answered` and `Audited` actions are logged too, not only writes. No past entry was edited or reformatted.
+- [ ] `wiki/log.md` has one entry for the request — one headline line of about 40 words, no section-by-section restatement of the note, routine companion edits folded in — timestamped from the real clock and carrying its `ingest`/`query`/`lint`/`maintain` operation field. `Answered` and `Audited` actions are logged too, not only writes. A request that changed nothing under `wiki/` has **no** entry (§6, What gets logged). No past entry was edited or reformatted.
 - [ ] Every ingested source is recorded in the note's `sources` frontmatter and is still present in `raw/processed/`.
 - [ ] Successfully ingested sources were moved to `raw/processed/`; failed ones remain in `raw/`.
 - [ ] Every `stub` tag is on a genuine placeholder; every `needs-review` tag has a matching non-empty `## Open Questions & Disagreements` section, and vice versa.
