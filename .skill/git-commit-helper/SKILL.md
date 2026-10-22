@@ -1,6 +1,6 @@
 ---
 name: git-commit-helper
-description: Generate Conventional Commits 1.0.0 messages automatically by reading the actual diff. Use this skill whenever the user runs or asks you to run `git commit`, stages changes, says "commit this", "write a commit message", "what should this commit say", "fix my commit message", "amend the message", or asks whether a change is a `feat` or a `fix`, needs a scope, or counts as a breaking change. Analyzes `git status` and `git diff` to pick the type, scope, and description, splits unrelated changes into separate commits, and never pushes or rewrites published history without approval.
+description: Generate short Conventional Commits 1.0.0 messages automatically by reading the actual diff. Use this skill whenever the user runs or asks you to run `git commit`, stages changes, says "commit this", "write a commit message", "what should this commit say", "fix my commit message", "amend the message", or asks whether a change is a `feat` or a `fix`, needs a scope, or counts as a breaking change. Analyzes `git status` and `git diff` to pick the type, scope, and description, keeps the message to a single subject line unless the diff earns a body, splits unrelated changes into separate commits, and never pushes or rewrites published history without approval.
 ---
 
 # Git Commit Helper
@@ -18,6 +18,10 @@ procedure for applying it.
 
 [optional footer(s)]
 ```
+
+**The default output is one line.** Both optional parts stay empty unless the diff gives them
+something to say. A commit message is an index entry for a change, not a summary of it — the diff
+is already in the repository, and a reader who wants the detail reads that.
 
 This skill operates under `AGENTS.md`, which always wins on conflict. Two of its prohibitions bind
 every step below: **never `git push`, force-push, or rewrite published history** without explicit
@@ -38,14 +42,15 @@ user approval, and never bypass a hook with `--no-verify`.
    different about the software now.
 5. **Imperative mood, lowercase start, no trailing period.** `add`, not `added` or `adds`. The
    description completes the sentence "this commit will …".
-6. **Keep the subject line under ~72 characters.** If it will not fit, the detail belongs in the
-   body, or the commit is doing too much.
+6. **Aim for a 50-character subject line; 72 is the hard ceiling.** If the description will not
+   fit, the commit is usually doing too much — split it before reaching for the body.
 7. **A breaking change is signalled explicitly or not at all.** Use `!` before the colon, a
    `BREAKING CHANGE:` footer, or both. `BREAKING CHANGE` is the one token that **must** be
    uppercase. A break may ride on any type, including `refactor` and `chore`.
-8. **Never invent a body.** Write a body only when the diff supports a *why* the subject line
-   cannot carry — the motivation, the rejected alternative, the consequence. Padding the body with
-   a restatement of the file list is noise.
+8. **A body is the exception, not the default.** Write one only when the diff raises a *why* the
+   subject cannot carry — the motivation, the alternative rejected, the consequence for callers —
+   and cap it at one paragraph of three or four lines. Never restate the file list, never narrate
+   the diff hunk by hunk, and never pad a one-line change into a paragraph to look thorough.
 9. **Match the repository's existing convention.** Read `git log` before writing. If the repo
    already uses a scope vocabulary or a type the table below omits, follow it; consistency inside
    one history beats a canonical list.
@@ -194,7 +199,11 @@ describe the break — `feat!: rewrite config loader` tells a reader nothing abo
 - **Blank line before the body**, always. A body attached directly under the subject is parsed as
   part of the description by every tool that reads this format.
 - The body explains **why**, and what a reader would otherwise have to reconstruct from the diff:
-  motivation, the approach rejected, the follow-up now required. Wrap at ~72 columns.
+  motivation, the approach rejected, the follow-up now required. Wrap at ~72 columns, and stop at
+  three or four lines. If it runs longer, the detail belongs in the note, the issue, or the pull
+  request — not in `git log`.
+- Before keeping a body, delete it and re-read the subject. If nothing important was lost, it was
+  not a body; it was padding.
 - **Blank line before the footer block.** Each footer is a token, a separator (`: ` or ` #`), and a
   value. The token uses `-` in place of spaces — `Reviewed-by`, `Co-authored-by`, `Acked-by` — which
   is exactly what lets a parser tell footers apart from a multi-paragraph body. `BREAKING CHANGE`
@@ -232,6 +241,9 @@ in this vault (see "Scopes in this vault").
 
 ## Worked Examples
 
+Most commits look like the first two. The longer forms are the minority that earned the extra
+lines.
+
 ```text
 docs: correct spelling of CHANGELOG
 ```
@@ -251,11 +263,8 @@ under Open Questions.
 ```text
 fix: prevent racing of requests
 
-Introduce a request id and a reference to latest request. Dismiss
-incoming responses other than from latest request.
-
-Remove timeouts which were used to mitigate the racing issue but are
-obsolete now.
+Dismiss responses from anything but the latest request id. The timeouts
+that previously mitigated this are now obsolete and were removed.
 
 Reviewed-by: Z
 Refs: #123
@@ -270,11 +279,12 @@ Refs: 676104e, a215868
 ## Definition of Done
 
 - [ ] The message was derived from a diff that was actually read, and describes the change's effect rather than its edits.
-- [ ] The subject line is `<type>[(scope)][!]: <description>` — colon, single space, lowercase imperative description, no trailing period, under ~72 characters.
+- [ ] The subject line is `<type>[(scope)][!]: <description>` — colon, single space, lowercase imperative description, no trailing period, around 50 characters and never over 72.
+- [ ] The message is a single line unless the diff raised a *why* the subject could not carry.
 - [ ] The type is the single best fit from the table; a diff needing two types was split into two commits.
 - [ ] The scope, if present, exists in the repo's vocabulary and adds information the description does not.
 - [ ] Every breaking change carries `!`, a `BREAKING CHANGE:` footer, or both, with an uppercase token and a stated migration path.
-- [ ] A body, if present, is separated by a blank line and explains *why*; footers are separated by a blank line and use hyphenated tokens.
+- [ ] A body, if present, is separated by a blank line, explains *why*, and runs no more than three or four lines; footers are separated by a blank line and use hyphenated tokens.
 - [ ] Issue numbers and co-authors were confirmed by the user, not inferred.
 - [ ] The diff was scanned for secrets before staging.
 - [ ] The user approved the message and the file list before `git commit` ran; no `--no-verify`, no push.
