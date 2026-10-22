@@ -82,4 +82,5 @@ Folder: `wiki/concepts/software_architecture/`
 
 Folder: `wiki/concepts/version_control/`
 
+- [[concepts/version_control/git|Git]] — hub: the four object types and the four areas, then the command surface by task — recording, inspecting, branching and merging, rebasing, undoing, remotes, tags, and large-repo tooling.
 - [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` message format, the two specified types and the conventional rest, breaking-change signalling, and the mechanical mapping onto SemVer releases.

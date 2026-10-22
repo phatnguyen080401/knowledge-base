@@ -58,6 +58,7 @@ match.
 | `indexing`            | Structures and techniques for locating records quickly: search trees, prefix trees, probabilistic filters, write-optimized stores | Abstract algorithm analysis unrelated to lookup                         |
 | `master-data`         | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies           | Descriptive metadata about datasets (`metadata`)                        |
 | `metadata`            | Data about data: catalogs, lineage, schema registries, business glossaries                        | The business data itself (`master-data`)                                |
+| `source-history`      | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
 | `transactions`        | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC    | Multi-node coordination concerns (`distributed-systems`)                |
 | `versioning`          | How artifacts are numbered, released, and depended upon: version schemes, compatibility contracts, pinning and lockfiles, deprecation windows | The design of the interface being versioned (`api-protocols`)           |
 
