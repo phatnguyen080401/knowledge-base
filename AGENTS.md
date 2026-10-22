@@ -155,7 +155,7 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
    - **Conflict:** if new information contradicts the page, do not silently overwrite. Keep the better-sourced claim in the body, **and record both positions with their sources under `## Open Questions & Disagreements`** — a conflict raised only in your chat summary is a conflict that will be forgotten. Add `needs-review` to `tags`.
 6. **Link both ways.** Add outbound wikilinks from the new or changed note, **and** add a link back from at least one related existing note so the page is reachable.
 7. **Archive the source.** Move the raw file to `raw/processed/` **only after** steps 5–6 succeed. If ingestion fails or is aborted, leave it in `raw/` so it is retried.
-8. **Update the audit trail.** Append to `wiki/log.md` and update `wiki/INDEX.md` (see §6), and append each ingested source to the note's `sources` frontmatter. Mandatory, and always last.
+8. **Update the audit trail.** Append **one** `wiki/log.md` entry for the request and update `wiki/INDEX.md` (see §6), and append each ingested source to the note's `sources` frontmatter. Mandatory, and always last.
 9. **Report.** Summarize files ingested, notes created or updated, links added, and any conflicts or open questions.
 
 ### Direct requests (no `raw/` file)
@@ -190,8 +190,8 @@ its subject matter rather than asking for an edit.
 
    When it is a judgement call, propose the page and ask before writing.
 6. **Log it.** One `Answered` entry per question (see §6), naming the pages read and what was
-   filed — including `Filed: nothing` when that was the right call. The log covers all three
-   operations, not only ingestion.
+   filed — including `Filed: nothing` when that was the right call. Do not restate the answer in
+   the log. The log covers all three operations, not only ingestion.
 
 **Never** answer a vault question purely from memory without reading the pages, and never let a
 question that produced something worth keeping leave the vault unchanged.
@@ -202,10 +202,10 @@ question that produced something worth keeping leave the vault unchanged.
 
 ### `wiki/log.md`
 
-Append-only, newest entry first, immediately under the `# Activity Log` heading. One line per logical action:
+Append-only, newest entry first, immediately under the `# Activity Log` heading. **One entry per request**, on one line:
 
 ```markdown
-- **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/<folder>/note_name]]` — <what changed and why>. Source: `raw/processed/<file>`.
+- **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/<folder>/note_name]]` — <the headline change and why>. Source: `raw/processed/<file>`.
 ```
 
 - **Timestamp** — full date *and* time, from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`), so the log records *when* the vault changed and entries written on the same day stay ordered. Never invent or copy a timestamp.
@@ -213,13 +213,28 @@ Append-only, newest entry first, immediately under the `# Activity Log` heading.
 - **Verb** — `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (§5), or `Audited` (§7 lint pass).
 - Omit the `Source:` clause for direct requests.
 
+#### Keep entries short
+
+An entry is a **pointer to a change, not a copy of it**. The content lives in the note, which is where it is read; restating it here doubles the writing and ages badly the moment the note is edited. One sentence, ceiling about 40 words. If an entry needs a paragraph, the detail belongs in the note.
+
+- Log **what changed, where, and why** — never *what the note now says*. A section-by-section tour of the tables, callouts, and arguments a note contains is the note, pasted twice.
+- **Fold routine companion edits in.** Updating `INDEX.md`, adding backlinks, bumping `updated`, appending `sources`, and archiving the raw file are required by §4 on every write — they are not news and never get their own entry. Mention one only when it was unusual (a new index group, links repointed vault-wide).
+- **Split only for genuinely separate actions** — two unrelated notes, or a vocabulary change alongside a note. Not for each file a single change touched.
+- Record a judgement call or deviation in **one clause**. Anything longer belongs under `## Open Questions & Disagreements` in the note, where it will actually be found.
+
+```markdown
+Good: - **2026-10-22 13:14:46** · maintain · Created `[[concepts/data_governance/data_sanity_check]]` — cheap assertions that prove data is not obviously broken, distinguished from full validation. Two open questions recorded; tagged `needs-review`.
+
+Bad:  the same entry listing every section, table, threshold, and pitfall the note contains.
+```
+
 A `query` entry names the question, the pages read, and what was filed:
 
 ```markdown
 - **YYYY-MM-DD HH:mm:ss** · query · Answered "<question>". Read: `[[concepts/<folder>/a]]`, `[[concepts/<folder>/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
 ```
 
-**The log is append-only.** Never edit, reorder, reformat, or condense a past entry; only correct a factual typo. Entries written before this format was adopted use a date-only `- **YYYY-MM-DD**:` prefix and are left exactly as they are — the mixed format is the expected state, not a defect to clean up.
+**The log is append-only.** Never edit, reorder, reformat, or condense a past entry; only correct a factual typo. Earlier entries use a date-only `- **YYYY-MM-DD**:` prefix or run far longer than the ceiling above; both are left exactly as written. The mixed format is the expected state, not a defect to clean up.
 
 ### `wiki/INDEX.md`
 
@@ -302,7 +317,7 @@ Mechanical, verifiable by inspection. Run on every write, and across all notes i
 - [ ] Every wikilink resolves to a file that exists; none are broken or unpiped.
 - [ ] New notes are reachable from at least one existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files present in `wiki/concepts/`, each with a current one-line summary.
-- [ ] `wiki/log.md` has one entry per logical action, timestamped from the real clock and carrying its `ingest`/`query`/`lint`/`maintain` operation field — including `Answered` and `Audited` actions, not only writes. No past entry was edited or reformatted.
+- [ ] `wiki/log.md` has one entry for the request — one headline line of about 40 words, no section-by-section restatement of the note, routine companion edits folded in — timestamped from the real clock and carrying its `ingest`/`query`/`lint`/`maintain` operation field. `Answered` and `Audited` actions are logged too, not only writes. No past entry was edited or reformatted.
 - [ ] Every ingested source is recorded in the note's `sources` frontmatter and is still present in `raw/processed/`.
 - [ ] Successfully ingested sources were moved to `raw/processed/`; failed ones remain in `raw/`.
 - [ ] Every `stub` tag is on a genuine placeholder; every `needs-review` tag has a matching non-empty `## Open Questions & Disagreements` section, and vice versa.
