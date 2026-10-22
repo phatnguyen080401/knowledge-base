@@ -3,7 +3,7 @@ title: Conventional Commits
 tags: [version-control, source-history, versioning, conventional-commits, git]
 sources: ["https://www.conventionalcommits.org/en/v1.0.0/"]
 created: 2026-10-21 16:14:26
-updated: 2026-10-22 10:11:51
+updated: 2026-10-22 10:43:17
 ---
 
 # Conventional Commits
@@ -146,6 +146,7 @@ The spec is written in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt) language
 ## Related Concepts
 
 - [[concepts/version_control/git|Git]] — the history this convention formats: the commit object whose message carries the type, and the `rebase -i` and squash-merge mechanics the FAQ's fix-a-wrong-type advice relies on
+- [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — where this convention stops being voluntary: a commit-message push rule rejects a non-conforming message server-side
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the release-numbering scheme this convention feeds; commit types map directly onto PATCH, MINOR, and MAJOR
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — the public API whose breakage a `BREAKING CHANGE` footer is declaring
 - [[concepts/data_architecture/data_architecture|Data Architecture]]

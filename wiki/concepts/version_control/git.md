@@ -2,7 +2,7 @@
 title: Git
 tags: [version-control, source-history, git, overview]
 created: 2026-10-22 10:11:51
-updated: 2026-10-22 10:11:51
+updated: 2026-10-22 10:43:17
 ---
 
 # Git
@@ -249,6 +249,7 @@ Use annotated tags for anything a human or a pipeline will rely on — a lightwe
 ## Related Concepts
 
 - [[concepts/version_control/conventional_commits|Conventional Commits]] — the structured message format that turns the history this note describes into something tooling can read
+- [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — the server-side enforcement Git itself has no notion of: who may force push, who may delete a tag, and what a push rule rejects before it is stored
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — what an annotated release tag usually carries, and the scheme commit types map onto
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked pipeline triggered by pushes and tags, and the state-deferral pattern that depends on branch comparison
 - [[concepts/devops/trivy|Trivy]] — the repository and filesystem scanning that a pre-commit hook or CI job runs against the tree Git is tracking

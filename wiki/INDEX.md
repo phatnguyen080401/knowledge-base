@@ -84,3 +84,9 @@ Folder: `wiki/concepts/version_control/`
 
 - [[concepts/version_control/git|Git]] — hub: the four object types and the four areas, then the command surface by task — recording, inspecting, branching and merging, rebasing, undoing, remotes, tags, and large-repo tooling.
 - [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` message format, the two specified types and the conventional rest, breaking-change signalling, and the mechanical mapping onto SemVer releases.
+
+### GitLab
+
+Folder: `wiki/concepts/version_control/gitlab/`
+
+- [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — hardening a project screen by screen: protected branches and tags, branch rules and approvals, push rules, merge-request controls, CI/CD variable and runner isolation, the scanners, and what to do when a secret leaks.
