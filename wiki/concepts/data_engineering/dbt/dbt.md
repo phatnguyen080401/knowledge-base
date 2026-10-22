@@ -2,7 +2,7 @@
 title: dbt (Data Build Tool)
 tags: [data-engineering, data-modeling, data-validation, data-lineage, dbt]
 created: 2026-09-24 10:10:13
-updated: 2026-10-22 10:53:55
+updated: 2026-10-22 13:14:46
 ---
 
 # dbt (Data Build Tool)
@@ -236,6 +236,7 @@ dbt groups adapters by who stands behind them: **dbt Labs–maintained**, **vend
 
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked deployment of dbt as a containerized job, including Slim CI through state deferral
 - [[concepts/data_governance/data_quality|Data Quality]] — dbt's test framework is the usual place warehouse-side quality rules are implemented and enforced
+- [[concepts/data_governance/sanity_check|Sanity Check]] — what dbt's generic tests and source freshness actually are at the pipeline boundary, and how to set their thresholds
 - [[concepts/data_governance/metadata_management|Metadata Management]] — the `manifest.json` and `catalog.json` artifacts feed catalogs and lineage tooling with technical metadata
 - [[concepts/data_governance/data_governance|Data Governance]] — contracts, model groups, and exposures turn governance policy into build-time enforcement
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — conformed dimensions and golden records are typically materialized as dbt marts
