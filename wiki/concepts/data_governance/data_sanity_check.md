@@ -1,13 +1,13 @@
 ---
-title: Sanity Check
-tags: [data-governance, data-quality, data-validation, needs-review]
+title: Data Sanity Check
+tags: [data-governance, data-quality, data-validation, sanity-check]
 created: 2026-10-22 13:14:46
-updated: 2026-10-22 13:28:23
+updated: 2026-10-22 13:43:11
 ---
 
-# Sanity Check
+# Data Sanity Check
 
-A sanity check is a small, cheap, broad assertion run at a pipeline boundary to confirm that a dataset is *plausible* before anyone spends effort on it — the row count is in the right order of magnitude, the key is unique, the latest partition exists, the totals reconcile. It is the coarse first filter of [[concepts/data_governance/data_quality|Data Quality]]: it does not prove the data is correct, it proves the data is not obviously broken.
+A data sanity check is a small, cheap, broad assertion run at a pipeline boundary to confirm that a dataset is *plausible* before anyone spends effort on it — the row count is in the right order of magnitude, the key is unique, the latest partition exists, the totals reconcile. It is the coarse first filter of [[concepts/data_governance/data_quality|Data Quality]]: it does not prove the data is correct, it proves the data is not obviously broken.
 
 ## Why It Matters
 
@@ -274,7 +274,7 @@ Detection is worthless without a defined response, and the response has to be de
 ## Open Questions & Disagreements
 
 - **Should a failed sanity check block the pipeline or only alert?** One position holds that publishing known-bad data is strictly worse than publishing nothing, so the check is a circuit breaker that halts the run. The other holds that stale-but-complete data serves consumers better than an empty or missing table, so the check should alert and let the previous version stand. Both are defensible and the answer depends on the consumer's tolerance for staleness versus incorrectness; this note does not pick a winner, and the choice should be recorded per dataset rather than set globally.
-- **The boundary between "sanity check", "smoke test", and "data test" is not standardized.** The usage described here — cheap, aggregate, boundary-placed — is the common one in data engineering, but no authoritative source fixes the terms, and in software testing "sanity test" carries a different meaning (a narrow re-check after a change). Unverified: this note is written from general practice rather than a cited specification, hence the `needs-review` tag.
+- **The boundary between "sanity check", "smoke test", and "data test" is not standardized.** The usage described here — cheap, aggregate, boundary-placed — is the common one in data engineering, but no authoritative source fixes the terms, and in software testing "sanity test" carries a different meaning (a narrow re-check after a change). Unverified: this note is written from general practice rather than a cited specification, and is flagged here rather than presented as settled.
 
 ## Related Concepts
 

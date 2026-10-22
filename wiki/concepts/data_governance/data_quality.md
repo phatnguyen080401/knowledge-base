@@ -2,7 +2,7 @@
 title: Data Quality
 tags: [data-governance, data-quality, data-validation]
 created: 2026-09-22 00:00:00
-updated: 2026-10-22 13:14:46
+updated: 2026-10-22 13:43:11
 ---
 # Data Quality
 
@@ -141,7 +141,7 @@ Several tools can help automate and streamline the data quality lifecycle. Here 
 
 ## Related Concepts
 
-- [[concepts/data_governance/sanity_check|Sanity Check]] — the cheap, aggregate first filter that implements the *monitor* stage at pipeline boundaries, as opposed to full row-level validation
+- [[concepts/data_governance/data_sanity_check|Data Sanity Check]] — the cheap, aggregate first filter that implements the *monitor* stage at pipeline boundaries, as opposed to full row-level validation
 - [[concepts/data_governance/data_governance|Data Governance]] — the parent operating model; the *govern* stage of the lifecycle above is where quality hands off to it
 - [[concepts/data_governance/data_stewardship|Data Stewardship]] — who is accountable for a quality defect once a check has surfaced it
 - [[concepts/data_governance/metadata_management|Metadata Management]] — where quality rules, thresholds, and the lineage that scopes a defect's blast radius are documented

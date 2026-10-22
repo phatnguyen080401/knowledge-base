@@ -47,11 +47,11 @@ Folder: `wiki/concepts/data_governance/`
 
 - [[concepts/data_governance/data_governance|Data Governance]] — hub: the operating model for data — principles, roles, frameworks, and the pillars it coordinates.
 - [[concepts/data_governance/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
+- [[concepts/data_governance/data_sanity_check|Data Sanity Check]] — the cheap, aggregate boundary check: the six-part anatomy and where expectations come from, the cost ladder, the standard assertions by dimension, a worked orders-pipeline suite with a step-by-step join-fan-out incident, threshold tuning, and failure response.
 - [[concepts/data_governance/data_security|Data Security]] — classification, access control models, encryption and key management, the de-identification techniques, and the pipeline-specific leaks.
 - [[concepts/data_governance/data_stewardship|Data Stewardship]] — who is accountable: steward vs. owner vs. custodian, operating models, workflows, and metrics.
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — golden records, entity resolution and survivorship, the four implementation styles, and hierarchy management.
 - [[concepts/data_governance/metadata_management|Metadata Management]] — the four metadata types, glossary vs. dictionary vs. catalog, lineage capture methods, and active vs. passive metadata.
-- [[concepts/data_governance/sanity_check|Sanity Check]] — the cheap, aggregate boundary check: the six-part anatomy and where expectations come from, the cost ladder, the standard assertions by dimension, a worked orders-pipeline suite with a step-by-step join-fan-out incident, threshold tuning, and failure response.
 
 ## Data Structures
 
