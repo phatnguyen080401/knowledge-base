@@ -2,7 +2,7 @@
 title: Data Architecture
 tags: [data-architecture, data-modeling, architecture-patterns, overview]
 created: 2026-09-22 09:11:46
-updated: 2026-10-21 14:23:04
+updated: 2026-10-22 10:53:55
 ---
 
 # Data Architecture
@@ -62,7 +62,7 @@ Independent of pattern, transformation is almost always staged — raw → clean
 The ingestion cadence is an architectural decision because it propagates everywhere downstream.
 
 - **Batch** is simpler, cheaper, easier to test and backfill, and correct for the vast majority of analytics. It remains the right default.
-- **Streaming** is justified by genuine latency requirements — fraud detection, operational dashboards, real-time personalization — not by the desire for data to be "fresh".
+- **Streaming** is justified by genuine latency requirements — fraud detection, operational dashboards, real-time personalization — not by the desire for data to be "fresh". Its usual substrate is a replayable log such as [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]], processed by an engine such as [[concepts/data_engineering/spark/apache_spark|Apache Spark]].
 - **Lambda architecture** runs batch and streaming paths in parallel and reconciles them, paying for two implementations of the same logic.
 - **Kappa architecture** treats everything as a stream and reprocesses history through the same path, avoiding the duplication at the cost of a harder replay story.
 
@@ -120,3 +120,5 @@ Once the architecture spans more than one node or region, physics imposes limits
 - [[concepts/data_architecture/semantic_layer|Semantic Layer]] — the governed translation tier between the physical models and their consumers
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — resolves the entity identities that conformed dimensions in the serving layer depend on
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — the common implementation of the transformation layer and its staging/intermediate/marts layering
+- [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the durable log that makes the ingestion layer replayable, and the precondition for a kappa architecture
+- [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — the compute tier when transformation exceeds what warehouse SQL can express, and the engine that makes the lake half of a lakehouse usable

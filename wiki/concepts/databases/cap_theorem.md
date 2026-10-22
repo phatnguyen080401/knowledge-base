@@ -2,7 +2,7 @@
 title: CAP Theorem
 tags: [databases, distributed-systems, consistency-models, fault-tolerance, replication]
 created: 2026-09-24 10:57:07
-updated: 2026-10-21 14:23:04
+updated: 2026-10-22 10:53:55
 ---
 
 # CAP Theorem
@@ -108,7 +108,7 @@ Choosing availability therefore means adopting the mindset described by [[concep
 - **CockroachDB and YugabyteDB** take the same position with hybrid logical clocks instead of atomic ones: Raft consensus per range, so a minority partition stalls rather than diverges.
 - **Cassandra and DynamoDB** descend from the Dynamo paper and default to availability, exposing `R`/`W` tuning and offering lightweight transactions (Paxos) as an opt-in escape hatch for the few operations that need linearizability. Their write path is a [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]].
 - **etcd, ZooKeeper, and Consul** are unambiguously CP — they exist to hold the cluster's truth, so returning stale data would defeat their purpose. Every Kubernetes control plane inherits this.
-- **Kafka** is CP for a partition's leader election via the in-sync replica set; `acks=all` with `min.insync.replicas` makes the trade-off explicit, and setting `acks=1` quietly moves it toward AP.
+- **[[concepts/data_engineering/kafka/apache_kafka|Kafka]]** is CP for a partition's leader election via the in-sync replica set; `acks=all` with `min.insync.replicas` makes the trade-off explicit, and setting `acks=1` quietly moves it toward AP.
 
 The pattern across all of them: **the guarantee is a per-operation configuration**, and the vendor's category is just its default.
 
@@ -129,6 +129,7 @@ The pattern across all of them: **the guarantee is a per-operation configuration
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — where the CP/AP decision is made, usually once and close to irreversibly
 - [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — the storage engine underneath the Dynamo-lineage AP stores
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — event-driven integration inherits the same eventual-consistency costs at the system boundary
+- [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — a worked example of the trade-off as a per-write setting: replication factor, `acks`, and `min.insync.replicas`
 - [[concepts/data_governance/data_quality|Data Quality]] — stale or divergent replicas surface downstream as consistency and timeliness failures
 
 ## References

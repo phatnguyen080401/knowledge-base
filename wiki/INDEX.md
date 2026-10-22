@@ -29,6 +29,18 @@ Folder: `wiki/concepts/data_engineering/dbt/`
 - [[concepts/data_engineering/dbt/dbt_databricks_adapter|dbt-databricks Adapter]] — `profiles.yml` parameters, PAT and OAuth M2M/U2M flows, multiple compute targets, common connection failures.
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked template: Dockerfile, Workload Identity, both workflows, state deferral, scheduling.
 
+### Apache Kafka
+
+Folder: `wiki/concepts/data_engineering/kafka/`
+
+- [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — tool overview: the partitioned commit log — records, offsets, ISR and `acks`, consumer groups and rebalancing, delivery semantics, compaction, and what Kafka is not.
+
+### Apache Spark
+
+Folder: `wiki/concepts/data_engineering/spark/`
+
+- [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — tool overview: driver/executor architecture, lazy DAG and the shuffle as cost model, Catalyst and AQE, partitions and skew, memory and caching, Structured Streaming, and when not to use it.
+
 ## Data Governance
 
 Folder: `wiki/concepts/data_governance/`

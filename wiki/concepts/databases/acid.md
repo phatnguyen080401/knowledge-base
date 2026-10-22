@@ -2,7 +2,7 @@
 title: ACID (Atomicity, Consistency, Isolation, Durability)
 tags: [databases, transactions, concurrency-control, consistency-models]
 created: 2026-09-24 10:57:07
-updated: 2026-10-21 14:23:04
+updated: 2026-10-22 10:53:55
 ---
 
 # ACID (Atomicity, Consistency, Isolation, Durability)
@@ -151,7 +151,7 @@ ACID is a **single-node** achievement. The moment a transaction spans machines, 
 
 ## ACID in Data Platforms
 
-Analytical systems spent years without transactions: a failed Spark job left a half-written directory, and readers saw whatever files happened to exist. Table formats fixed this by putting a transaction log over object storage.
+Analytical systems spent years without transactions: a failed [[concepts/data_engineering/spark/apache_spark|Apache Spark]] job left a half-written directory, and readers saw whatever files happened to exist. Table formats fixed this by putting a transaction log over object storage.
 
 - **Delta Lake, Apache Iceberg, and Apache Hudi** each maintain a metadata log or manifest listing exactly which data files constitute the current table. A write stages new files, then atomically swaps a single pointer. Readers resolve the pointer once and see a consistent snapshot — **atomicity and snapshot isolation without locking anything**.
 - Because old snapshots remain until expiry, the same mechanism gives **time travel** and cheap rollback, which is the analytics equivalent of an undo log.
