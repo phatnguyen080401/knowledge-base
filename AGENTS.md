@@ -8,6 +8,20 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 
 **Skills:** detailed procedures live in `.skill/`. They are not auto-loaded — you must read them yourself. See §8 for the routing table.
 
+### Quick path — what to read before you act
+
+| Task                                   | Read, in order                                                                                                    |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Create, expand, or ingest a note       | `wiki/INDEX.md` → search `wiki/concepts/` (§4.4) → [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) + its `taxonomy.md` → [`obsidian-markdown`](.skill/obsidian-markdown/SKILL.md) for body syntax |
+| Answer a question                      | `wiki/INDEX.md` first, then the shortlisted pages (§5)                                                            |
+| Retag, tag audit, or lint pass         | §9 → `tag-taxonomy` SKILL + `references/taxonomy.md` + `references/audit.md`                                     |
+| Commit                                 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md)                                                          |
+
+**One clock reading per request.** Read the system clock once at write time and reuse that value
+for every `created`/`updated` you set and for the `wiki/log.md` timestamp. The entry then matches
+the notes it describes. Bash: `date +"%Y-%m-%d %H:%M:%S"`; PowerShell:
+`Get-Date -Format "yyyy-MM-dd HH:mm:ss"`. Never invent or copy a timestamp.
+
 ---
 
 ## 1. Mandatory Rules
@@ -46,31 +60,40 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 ├── raw/                       # Intake queue: unprocessed notes, clippings, transcripts
 │   └── processed/             # Archive of successfully ingested source files
 └── wiki/                      # The compiled knowledge base
-    ├── INDEX.md               # Master index of every wiki page, grouped by topic
+    ├── INDEX.md               # Master index of every wiki page, grouped by folder
     ├── log.md                 # Reverse-chronological activity log
     ├── concepts/              # Atomic notes — one file per concept, filed by domain
+    │   ├── ai_engineering/
     │   ├── data_architecture/
     │   ├── data_engineering/
-    │   │   └── dbt/
+    │   │   ├── dbt/
+    │   │   ├── kafka/
+    │   │   └── spark/
     │   ├── data_governance/
     │   ├── data_structures/
     │   ├── databases/
     │   ├── devops/
-    │   └── software_architecture/
+    │   ├── software_architecture/
+    │   └── version_control/
+    │       └── gitlab/
     └── assets/                # Images, PDFs, and other binaries linked from notes
 ```
 
+This tree is a snapshot. The authoritative list of domain folders is the `domain` table in
+[`.skill/tag-taxonomy/references/taxonomy.md`](.skill/tag-taxonomy/references/taxonomy.md), which
+maps every domain tag to its folder.
+
 **Filing a note into a folder**
 
-Every note lives in the folder named after its `domain` tag (`.skill/tag-taxonomy/`), in
-`snake_case` — `databases` → `concepts/databases/`, `software-architecture` →
-`concepts/software_architecture/`. The folder and the tag must always agree; if you change one,
-change the other in the same action. A note never sits loose at the root of `concepts/`.
+Every note lives in the folder of its `domain` tag — `databases` → `concepts/databases/`,
+`software-architecture` → `concepts/software_architecture/`. The folder and the tag must always
+agree. Changing a note's domain tag means moving the file, which is a rename (§7). A note never sits
+loose at the root of `concepts/`.
 
-Subfolders are permitted one level deeper and only to cluster a **tech family** that has three or
-more notes — `concepts/data_engineering/dbt/` holds the dbt notes. Create one only when the third
-note arrives; two notes stay flat in the domain folder. A new *domain* folder requires a new
-`domain` tag, which needs user approval (§1, Prohibited).
+A **tech subfolder** one level deeper clusters a product family that has its own namesake hub note,
+for example `data_engineering/dbt/` with `dbt.md`. Every note inside carries that product's `tech` tag.
+Never nest deeper than one level. A new *domain* folder requires a new `domain` tag, which needs
+user approval (§1, Prohibited).
 
 **Naming conventions**
 
@@ -91,7 +114,7 @@ Every file in `wiki/concepts/` follows this shape:
 ```markdown
 ---
 title: Data Quality
-tags: [data-governance]
+tags: [data-governance, data-quality, data-validation]
 sources: [raw/processed/dama_dmbok_ch11.md, "https://example.org/article"]
 created: 2026-09-22 09:11:46
 updated: 2026-09-23 10:25:15
@@ -122,11 +145,12 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
 **Frontmatter rules**
 
 - `title` — string; must match the note's H1 heading.
-- `tags` — YAML inline list, lowercase `kebab-case`. Every note carries at least 1 topical tags. Add `stub` while the note is a placeholder and **remove it** once the note is substantive.
+- `tags` — chosen with the [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) skill. At minimum: one `domain` tag (which must match the folder), 1–3 `topic` tags, and for a substantive note at least one `concept` or `tech` tag. At most 10 tags in facet order. Add `stub` while the note is a placeholder and **remove it** once the note is substantive.
+- **List form.** `tags` and `sources` are always inline YAML lists on one line (`tags: [a, b]`), never block lists with `- item` lines. This overrides the generic frontmatter examples in the `obsidian-markdown` skill.
 - `sources` — optional YAML inline list. Every `raw/processed/<file>` path and external URL that contributed a fact to this page. **Append on every ingest; never remove an entry** — this is the provenance trail that makes §1.9 auditable after the fact. Quote bare URLs. A note with no `sources` rests on well-established general knowledge or direct user input.
 - `created` — `YYYY-MM-DD HH:mm:ss`. Set once, never changed.
 - `updated` — `YYYY-MM-DD HH:mm:ss`. Set on every content change.
-- Timestamps must come from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`). Never invent or copy a timestamp.
+- Timestamps must come from the real system clock: bash `date +"%Y-%m-%d %H:%M:%S"`, PowerShell `Get-Date -Format "yyyy-MM-dd HH:mm:ss"`. Never invent or copy a timestamp.
 
 **Body rules**
 
@@ -136,7 +160,7 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
 - Link the first meaningful mention of another concept; do not re-link the same concept in every paragraph.
 - Include `## Open Questions & Disagreements` whenever sources conflict, a claim is unverified, or you had to extrapolate. Name both positions and their sources; never silently pick a winner. Tag the note `needs-review` while the section is non-empty, and delete the section once everything in it is resolved.
 - End with a `## Related Concepts` section that explains *why* each link matters, not just a bare list.
-- Cite non-obvious external sources inline (`[Title](url)`) or in a `## Sources` section.
+- Cite non-obvious external sources inline (`[Title](url)`) or in a final `## References` section, placed after `## Related Concepts`.
 
 ---
 
@@ -153,6 +177,7 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
    - **Create:** a new file per §3, filled in as far as the source supports.
    - **Update:** merge into the correct existing section. Rewrite sentences to integrate the new facts; do not bolt on an "Update" or "Additional Notes" section. Bump `updated`.
    - **Conflict:** if new information contradicts the page, do not silently overwrite. Keep the better-sourced claim in the body, **and record both positions with their sources under `## Open Questions & Disagreements`** — a conflict raised only in your chat summary is a conflict that will be forgotten. Add `needs-review` to `tags`.
+   - **Tag and file:** choose or re-check the tags with the `tag-taxonomy` skill on every create or update. The `domain` tag decides the folder; a note in a tech subfolder carries that product's `tech` tag.
 6. **Link both ways.** Add outbound wikilinks from the new or changed note, **and** add a link back from at least one related existing note so the page is reachable.
 7. **Archive the source.** Move the raw file to `raw/processed/` **only after** steps 5–6 succeed. If ingestion fails or is aborted, leave it in `raw/` so it is retried.
 8. **Update the audit trail.** Append **one** `wiki/log.md` entry for the request and update `wiki/INDEX.md` (see §6), and append each ingested source to the note's `sources` frontmatter. Mandatory, and always last.
@@ -208,7 +233,7 @@ Append-only, newest entry first, immediately under the `# Activity Log` heading.
 - **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/<folder>/note_name]]` — <the headline change and why>. Source: `raw/processed/<file>`.
 ```
 
-- **Timestamp** — full date *and* time, from the real system clock (`date +"%Y-%m-%d %H:%M:%S"`), so the log records *when* the vault changed and entries written on the same day stay ordered. Never invent or copy a timestamp.
+- **Timestamp** — full date *and* time, from the real system clock (the same reading used for the notes' `updated`; see the Quick path), so the log records *when* the vault changed and entries written on the same day stay ordered. Never invent or copy a timestamp.
 - **Operation** — exactly one of `ingest`, `query`, `lint`, or `maintain`, matching the workflow that produced the entry. The `·` separators make the log greppable by operation: `grep ' · lint · ' wiki/log.md`.
 - **Verb** — `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (§5), or `Audited` (§7 lint pass).
 - Omit the `Source:` clause for direct requests.
@@ -302,15 +327,16 @@ override it (see Precedence).
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Generating short Conventional Commits 1.0.0 messages from the diff: type and scope selection, breaking-change signalling, when a body is earned and how short it stays, splitting a tree, amending a message | Running or being asked to run `git commit`; staging changes; the user asks for a commit message, whether a change is a `feat` or a `fix`, or to fix or amend an existing message |
 | [`obsidian-markdown`](.skill/obsidian-markdown/SKILL.md) | Obsidian Flavored Markdown: wikilinks, embeds, callouts, frontmatter properties, comments, and block references | Writing or editing any note body; the user mentions wikilinks, callouts, embeds, or frontmatter; a link or embed is not rendering right   |
-| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The six tag facets (`domain`, `topic`, `concept`, `tech`, `type`, `lifecycle`), their controlled vocabularies, banned tags, and the tag audit workflow | **Every time you assign or change a tag**; the user says "fix my tags", "normalize tags", "tag audit", "retag", "my tags are a mess", or asks what tags to use, how notes are classified, or how to add one |
+| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The six tag facets (`domain`, `topic`, `concept`, `tech`, `type`, `lifecycle`), their controlled vocabularies, the domain → folder map, banned and retired tags, adding or retiring a tag, and the tag audit workflow (`references/audit.md`) | **Every time you create, update, move, or file a note**, or assign or change a tag; the user says "fix my tags", "normalize tags", "tag audit", "retag", "my tags are a mess", or asks what tags to use, how notes are classified, or how to add or retire one |
 
 **Adding a skill:** create `.skill/<skill-name>/SKILL.md` with `name` and `description` frontmatter, put any long reference material in `.skill/<skill-name>/references/`, and add a row to the table above. A skill that is not listed here will not be found.
 
 ### Keeping this table in sync
 
 This table is the skill registry, and it is maintained by you — there is no script (§1.1). Per §1.11, reconcile it **in the same action** that touches a skill:
-| Trigger                                           | Required table change                                                                        |
-| ------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+
+| Trigger                                           | Required table change                                                                         |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | New `.skill/<name>/SKILL.md` created              | Add a row, alphabetically by skill name                                                       |
 | A skill's `description` or scope changed          | Rewrite that row's **What it covers** and **Read it when** cells to match                     |
 | A skill folder renamed                            | Update the row's name and link; fix any other file that references the old path               |
@@ -331,6 +357,7 @@ Mechanical, verifiable by inspection. Run on every write, and across all notes i
 
 - [ ] Every touched note has all four required frontmatter fields, and `updated` reflects the real current time.
 - [ ] Every touched note has an H1 matching `title` and a `## Related Concepts` section.
+- [ ] Every touched note's tags pass the `tag-taxonomy` Definition of Done: an inline list, a valid facet set, and a folder that matches the `domain` tag (plus the product's `tech` tag inside a tech subfolder).
 - [ ] Every wikilink resolves to a file that exists; none are broken or unpiped.
 - [ ] New notes are reachable from at least one existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files present in `wiki/concepts/`, each with a current one-line summary.

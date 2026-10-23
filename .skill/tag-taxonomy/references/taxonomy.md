@@ -2,7 +2,7 @@
 
 This is the complete list of tags an agent may assign to a note in `wiki/concepts/`. A `domain`,
 `topic`, `concept`, `type`, or `lifecycle` tag that does not appear in its facet table below may not
-be used unless the user explicitly asked for it by name (see `SKILL.md`, Core Rule 9). The `tech`
+be used unless the user explicitly asked for it by name (see `SKILL.md`, Core Rule 8). The `tech`
 facet is open: its table is a seed list, not a gate.
 
 Every note carries **exactly one `domain` tag** and **one to three `topic` tags**, and every
@@ -12,7 +12,8 @@ substantive note adds at least one `concept` or `tech` tag. Tags are written in 
 tags: [<domain>, <topic…>, <concept…>, <tech…>, <type>, <lifecycle>, <user…>]
 ```
 
-A note never exceeds **10 tags in total**, counting any optional user tags.
+A note never exceeds **10 tags in total**, counting any optional user tags. The list is always
+written inline on one line, never as a block list.
 
 ---
 
@@ -21,17 +22,21 @@ A note never exceeds **10 tags in total**, counting any optional user tags.
 The field the note belongs to. These are mutually exclusive; if two feel equally right, the note
 probably covers two concepts and should be split (`AGENTS.md` §4.3).
 
-| Tag                 | Covers                                                                                                | Excludes                                                                  |
-| ------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ai-engineering`    | Building and operating applications on top of machine-learning and foundation models: prompting, retrieval, agents, evaluation, inference serving, and the ops around them | Pipelines that move and transform data (`data-engineering`); general software design (`software-architecture`) |
-| `data-architecture` | Structural design of a data platform: layering, interfaces, semantic and ontology tiers, system topology | Engine-internal behaviour (`databases`); pipeline tooling (`data-engineering`) |
-| `data-engineering`  | Building and operating pipelines and transformation tooling — ingestion, ELT, orchestration, adapters | The design of the platform those pipelines run on (`data-architecture`)   |
-| `data-governance`   | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy                          |
-| `data-structures`   | Computer-science structures and the algorithms over them, independent of any product                  | Product-specific storage behaviour (`databases`)                          |
-| `databases`         | Database and storage-engine behaviour: transactions, consistency models, replication, query execution | Vendor-neutral structure theory (`data-structures`)                       |
-| `devops`            | Building, shipping, and operating software: CI/CD pipelines, artifacts and registries, infrastructure provisioning, and supply-chain and runtime security | The design of the software being shipped (`software-architecture`); pipelines that move *data* rather than code (`data-engineering`) |
-| `software-architecture` | Design and engineering practice for software systems generally, independent of the data they carry: release and dependency management, versioning schemes, API contracts, module boundaries, deployment patterns | Structural design of a *data* platform (`data-architecture`); pipeline and transformation tooling (`data-engineering`); the tooling that actually builds, ships, and secures an artifact (`devops`) |
-| `version-control`   | Managing source history in a repository: commit conventions and messages, branching and merge strategies, tags, rebasing, history rewriting, and the review workflows built on them | The pipelines a commit triggers (`devops`); how the resulting artifact is numbered and depended upon (`software-architecture`) |
+**This table is also the authoritative list of domain folders.** A note lives in the *Folder* of its
+`domain` tag, under `wiki/concepts/`. Adding a row means creating a folder, which needs user approval
+(`AGENTS.md` §1).
+
+| Tag                     | Folder                    | Covers                                                                                                | Excludes                                                                  |
+| ----------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ai-engineering`        | `ai_engineering/`         | Building and operating applications on top of machine-learning and foundation models: prompting, retrieval, agents, evaluation, inference serving, and the ops around them | Pipelines that move and transform data (`data-engineering`); general software design (`software-architecture`) |
+| `data-architecture`     | `data_architecture/`      | Structural design of a data platform: layering, interfaces, semantic and ontology tiers, system topology | Engine-internal behaviour (`databases`); pipeline tooling (`data-engineering`) |
+| `data-engineering`      | `data_engineering/`       | Building and operating pipelines and transformation tooling — ingestion, ELT, orchestration, adapters | The design of the platform those pipelines run on (`data-architecture`)   |
+| `data-governance`       | `data_governance/`        | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy                          |
+| `data-structures`       | `data_structures/`        | Computer-science structures and the algorithms over them, independent of any product                  | Product-specific storage behaviour (`databases`)                          |
+| `databases`             | `databases/`              | Database and storage-engine behaviour: transactions, consistency models, replication, query execution | Vendor-neutral structure theory (`data-structures`)                       |
+| `devops`                | `devops/`                 | Building, shipping, and operating software: CI/CD pipelines, artifacts and registries, infrastructure provisioning, and supply-chain and runtime security | The design of the software being shipped (`software-architecture`); pipelines that move *data* rather than code (`data-engineering`) |
+| `software-architecture` | `software_architecture/`  | Design and engineering practice for software systems generally, independent of the data they carry: release and dependency management, versioning schemes, API contracts, module boundaries, deployment patterns | Structural design of a *data* platform (`data-architecture`); pipeline and transformation tooling (`data-engineering`); the tooling that actually builds, ships, and secures an artifact (`devops`) |
+| `version-control`       | `version_control/`        | Managing source history in a repository: commit conventions and messages, branching and merge strategies, tags, rebasing, history rewriting, and the review workflows built on them | The pipelines a commit triggers (`devops`); how the resulting artifact is numbered and depended upon (`software-architecture`) |
 
 ---
 
@@ -71,8 +76,9 @@ match.
 
 The mechanisms and ideas the note actually **explains**, not the ones it mentions in passing. This
 is the facet that makes the vault searchable across domains: `replication` finds the database note
-and the architecture note alike. A concept tag must be shared by at least two notes — one that fits
-a single page is that page's title, not a classification.
+and the architecture note alike. Every tag below is usable even if only one note carries it so far.
+The bar of two or more notes applies when *proposing* a new concept: an idea that fits a single page
+is that page's title, not a classification.
 
 | Tag                        | Covers                                                                                        | Excludes                                                        |
 | -------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
@@ -91,7 +97,9 @@ a single page is that page's title, not a classification.
 | `prefix-structures`        | Keys indexed by position in the string: tries, radix and PATRICIA trees, autocomplete         | Comparison-based ordered structures (`search-trees`)            |
 | `probabilistic-structures` | Structures trading exactness for space: Bloom filters, HyperLogLog, sketches                  | Exact ordered lookup structures (`search-trees`)                |
 | `query-optimization`       | Making a query do less work: planning, pruning, join strategy, clustering, materialization    | Reducing spend as a goal in itself (`cost-management`)          |
-| `replication`              | Maintaining copies of the same data across nodes: leader/follower, sync vs async, lag         | Splitting distinct data across nodes (`partitioning`)           || `retrieval-augmentation`   | Grounding a model's generation in externally retrieved knowledge: chunking, embedding and hybrid search, reranking, context assembly, agent traversal | Encoding knowledge into model weights by training or fine-tuning (`model-operations`) || `schema-evolution`         | Changing a schema without breaking readers: migrations, additive change, contract tests       | Designing the schema in the first place (`data-modeling`)       |
+| `replication`              | Maintaining copies of the same data across nodes: leader/follower, sync vs async, lag         | Splitting distinct data across nodes (`partitioning`)           |
+| `retrieval-augmentation`   | Grounding a model's generation in externally retrieved knowledge: chunking, embedding and hybrid search, reranking, context assembly, agent traversal | Encoding knowledge into model weights by training or fine-tuning (`model-operations`) |
+| `schema-evolution`         | Changing a schema without breaking readers: migrations, additive change, contract tests       | Designing the schema in the first place (`data-modeling`)       |
 | `search-trees`             | Ordered, balanced lookup structures: B-trees, B+ trees, fanout, range scans                   | Write-optimized log structures (`write-optimization`)           |
 | `stewardship-roles`        | Human accountability for data: owners, stewards, councils, decision rights, escalation        | The policies they enforce (the `data-governance` domain)        |
 | `write-optimization`       | Favouring write throughput over read simplicity: LSM trees, memtables, compaction, buffering  | Read-optimized ordered structures (`search-trees`)              |
@@ -153,7 +161,7 @@ explanations and take no type tag.
 
 Never assign these. Each is general, arbitrary, or uninformative — it would apply to nearly every
 note in the vault and so tells a reader nothing. If the user requests one, say so and propose a
-specific alternative before writing (`SKILL.md`, Core Rule 5).
+specific alternative before writing (`SKILL.md`, Core Rule 3).
 
 | Banned tag                                              | Why                                                       | Use instead                          |
 | ------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------ |
@@ -199,4 +207,5 @@ formal rules above, plus a seed-list row once a second note uses it. Every other
 candidate needs user approval, must not be covered by an existing tag or combination, must fit
 exactly one facet, and must apply to three or more notes (two for a `concept`). On approval, insert
 it into the correct table above in alphabetical order with a one-line **Covers** and **Excludes**
-definition, then log the vocabulary change in `wiki/log.md`.
+definition. This file is outside `wiki/`, so the change gets no log entry of its own. Name it in one
+clause of the wiki log entry for the note that needed it (`AGENTS.md` §1.5).
