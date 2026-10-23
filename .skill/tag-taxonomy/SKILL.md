@@ -32,8 +32,7 @@ tags: [<domain>, <topic…>, <concept…>, <tech…>, <type>, <lifecycle>, <user
 - **Ceiling:** 10 tags in total, user tags included.
 - **Format:** always an inline YAML list — `tags: [databases, transactions, acid]`. Never a block
   list (`tags:` followed by `- item` lines), never `#`, never `/` nesting, lowercase `kebab-case`
-  spelled exactly as its facet table writes it. This overrides the generic examples in the
-  `obsidian-markdown` skill.
+  spelled exactly as its facet table writes it.
 
 ### Which facet does a candidate belong to?
 

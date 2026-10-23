@@ -12,7 +12,7 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 
 | Task                                   | Read, in order                                                                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Create, expand, or ingest a note       | `wiki/INDEX.md` → search `wiki/concepts/` (§4.4) → [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) + its `taxonomy.md` → [`obsidian-markdown`](.skill/obsidian-markdown/SKILL.md) for body syntax |
+| Create, expand, or ingest a note       | `wiki/INDEX.md` → search `wiki/concepts/` (§4.4) → [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) + its `taxonomy.md`                                                                  |
 | Answer a question                      | `wiki/INDEX.md` first, then the shortlisted pages (§5)                                                            |
 | Retag, tag audit, or lint pass         | §9 → `tag-taxonomy` SKILL + `references/taxonomy.md` + `references/audit.md`                                     |
 | Commit                                 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md)                                                          |
@@ -146,7 +146,7 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
 
 - `title` — string; must match the note's H1 heading.
 - `tags` — chosen with the [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) skill. At minimum: one `domain` tag (which must match the folder), 1–3 `topic` tags, and for a substantive note at least one `concept` or `tech` tag. At most 10 tags in facet order. Add `stub` while the note is a placeholder and **remove it** once the note is substantive.
-- **List form.** `tags` and `sources` are always inline YAML lists on one line (`tags: [a, b]`), never block lists with `- item` lines. This overrides the generic frontmatter examples in the `obsidian-markdown` skill.
+- **List form.** `tags` and `sources` are always inline YAML lists on one line (`tags: [a, b]`), never block lists with `- item` lines.
 - `sources` — optional YAML inline list. Every `raw/processed/<file>` path and external URL that contributed a fact to this page. **Append on every ingest; never remove an entry** — this is the provenance trail that makes §1.9 auditable after the fact. Quote bare URLs. A note with no `sources` rests on well-established general knowledge or direct user input.
 - `created` — `YYYY-MM-DD HH:mm:ss`. Set once, never changed.
 - `updated` — `YYYY-MM-DD HH:mm:ss`. Set on every content change.
@@ -326,7 +326,6 @@ override it (see Precedence).
 | Skill                                                    | What it covers                                                                                                | Read it when                                                                                                                             |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Generating short Conventional Commits 1.0.0 messages from the diff: type and scope selection, breaking-change signalling, when a body is earned and how short it stays, splitting a tree, amending a message | Running or being asked to run `git commit`; staging changes; the user asks for a commit message, whether a change is a `feat` or a `fix`, or to fix or amend an existing message |
-| [`obsidian-markdown`](.skill/obsidian-markdown/SKILL.md) | Obsidian Flavored Markdown: wikilinks, embeds, callouts, frontmatter properties, comments, and block references | Writing or editing any note body; the user mentions wikilinks, callouts, embeds, or frontmatter; a link or embed is not rendering right   |
 | [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The six tag facets (`domain`, `topic`, `concept`, `tech`, `type`, `lifecycle`), their controlled vocabularies, the domain → folder map, banned and retired tags, adding or retiring a tag, and the tag audit workflow (`references/audit.md`) | **Every time you create, update, move, or file a note**, or assign or change a tag; the user says "fix my tags", "normalize tags", "tag audit", "retag", "my tags are a mess", or asks what tags to use, how notes are classified, or how to add or retire one |
 
 **Adding a skill:** create `.skill/<skill-name>/SKILL.md` with `name` and `description` frontmatter, put any long reference material in `.skill/<skill-name>/references/`, and add a row to the table above. A skill that is not listed here will not be found.

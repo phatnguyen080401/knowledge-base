@@ -60,7 +60,6 @@ The answer workflow is the one most systems skip. Here, answering is a *write* o
 ├── AGENTS.md                  # The constitution — rules, formats, workflows
 ├── .skill/                    # Reusable procedures the agent reads on demand
 │   ├── git-commit-helper/     #   Conventional Commits message generation
-│   ├── obsidian-markdown/     #   Wikilinks, callouts, embeds, properties
 │   └── tag-taxonomy/          #   The six tag facets and their vocabularies
 ├── raw/                       # Intake queue: drop sources here
 │   └── processed/             # Archive of what has been compiled
