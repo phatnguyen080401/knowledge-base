@@ -5,6 +5,12 @@ Every page in `wiki/concepts/`, grouped by domain. Each `##` group is one folder
 this first when answering a question — shortlist from the summaries here, then open only the pages
 you need.
 
+## AI Engineering
+
+Folder: `wiki/concepts/ai_engineering/`
+
+- [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities from grounding and tool bounds to evaluation and cost, the iteration loop, the skill set, and the boundaries against ML, data, and backend engineering.
+
 ## Data Architecture
 
 Folder: `wiki/concepts/data_architecture/`

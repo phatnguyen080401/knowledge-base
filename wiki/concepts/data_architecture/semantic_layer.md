@@ -2,7 +2,7 @@
 title: Semantic Layer
 tags: [data-architecture, data-modeling]
 created: 2026-09-29 15:39:23
-updated: 2026-10-21 14:23:04
+updated: 2026-10-23 10:53:38
 ---
 
 # Semantic Layer
@@ -40,7 +40,9 @@ Two deployment styles exist:
 | **Headless**      | Version-controlled, served over an API to any client | dbt Semantic Layer, Cube  |
 
 Headless is the direction of travel, because it is the only one that also serves notebooks and
-LLM-driven agents. In [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] the definitions live beside the models
+LLM-driven agents — routing an agent here instead of letting it author its own SQL is the
+grounding decision an [[concepts/ai_engineering/ai_engineer|AI Engineer]] makes first. In
+[[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] the definitions live beside the models
 as YAML and inherit the same tests, lineage, and CI.
 
 ## Semantic Layer vs. Ontology Layer
@@ -71,3 +73,4 @@ side-by-side.
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — a common home for headless semantic-layer definitions
 - [[concepts/data_governance/data_governance|Data Governance]] — supplies the ownership and approval process for a metric definition
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — resolves the entity identities the semantic layer aggregates over
+- [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the consumer that most needs a governed metric: an agent asked for revenue should look it up, not compute it

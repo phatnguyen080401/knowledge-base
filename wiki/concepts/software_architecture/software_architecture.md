@@ -2,7 +2,7 @@
 title: Software Architecture
 tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-21 15:02:01
+updated: 2026-10-23 10:53:38
 ---
 
 # Software Architecture
@@ -103,6 +103,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — a long-lived industry standard, and a case study in what interface decisions cost decades later
 - [[concepts/databases/cap_theorem|CAP Theorem]] — the hard limit on what a distributed architecture can promise during a network partition
 - [[concepts/data_governance/data_security|Data Security]] — the controls each architectural boundary has to enforce
+- [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role that applies this discipline to a nondeterministic component, where the usual contract and testing assumptions do not hold
 - [[concepts/devops/brainboard|Brainboard]] — a tool overview: visual cloud-infrastructure design that generates the Terraform, aimed at the diagram-versus-reality gap described above
 
 ## References

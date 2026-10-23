@@ -23,6 +23,7 @@ probably covers two concepts and should be split (`AGENTS.md` §4.3).
 
 | Tag                 | Covers                                                                                                | Excludes                                                                  |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ai-engineering`    | Building and operating applications on top of machine-learning and foundation models: prompting, retrieval, agents, evaluation, inference serving, and the ops around them | Pipelines that move and transform data (`data-engineering`); general software design (`software-architecture`) |
 | `data-architecture` | Structural design of a data platform: layering, interfaces, semantic and ontology tiers, system topology | Engine-internal behaviour (`databases`); pipeline tooling (`data-engineering`) |
 | `data-engineering`  | Building and operating pipelines and transformation tooling — ingestion, ELT, orchestration, adapters | The design of the platform those pipelines run on (`data-architecture`)   |
 | `data-governance`   | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy                          |
@@ -56,8 +57,10 @@ match.
 | `distributed-systems` | Behaviour that only arises when data spans multiple nodes: partitioning, replication, consensus, network partitions | Single-node transactional semantics (`transactions`)                    |
 | `elt`                 | Extract-load-transform practice and tooling: models, materializations, tests, scheduling, adapters | The warehouse the transforms run on (`data-warehouse`)                  |
 | `indexing`            | Structures and techniques for locating records quickly: search trees, prefix trees, probabilistic filters, write-optimized stores | Abstract algorithm analysis unrelated to lookup                         |
+| `llm-applications`    | Building products on foundation models: prompting, retrieval-augmented generation, tool use and agents, context handling, output evaluation | Training or fine-tuning the model itself (`model-operations`)           |
 | `master-data`         | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies           | Descriptive metadata about datasets (`metadata`)                        |
 | `metadata`            | Data about data: catalogs, lineage, schema registries, business glossaries                        | The business data itself (`master-data`)                                |
+| `model-operations`    | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`)    |
 | `source-history`      | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
 | `transactions`        | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC    | Multi-node coordination concerns (`distributed-systems`)                |
 | `versioning`          | How artifacts are numbered, released, and depended upon: version schemes, compatibility contracts, pinning and lockfiles, deprecation windows | The design of the interface being versioned (`api-protocols`)           |

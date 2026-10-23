@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-23 10:59:31** · maintain · Updated `[[concepts/ai_engineering/ai_engineer]]` — dropped the `ai-engineer` user tag at the user's request; the four facet tags are unchanged and still satisfy the mandatory set.
+
+- **2026-10-23 10:53:38** · maintain · Created `[[concepts/ai_engineering/ai_engineer]]` — the role that ships products on models it did not train, and the first note in a new `ai_engineering/` domain folder the user approved. Two open questions recorded; tagged `needs-review`. New `ai-engineering` domain and `llm-applications`/`model-operations` topics added to the tag taxonomy.
+
 - **2026-10-22 13:47:34** · maintain · Updated `AGENTS.md` §6 and the `tag-taxonomy` logging step — entries are now one per *request*, capped at a headline line of ~40 words, with routine companion edits folded in; added good/bad examples. Past entries left as written.
 
 - **2026-10-22 13:43:11** · maintain · Renamed `[[concepts/data_governance/sanity_check]]` → `[[concepts/data_governance/data_sanity_check]]` at the user's request. Moved the file, set `title` to `Data Sanity Check` and the H1 to match, and reworded the opening definition to lead with the full term. Repointed both inbound wikilinks — `[[concepts/data_governance/data_quality]]` and `[[concepts/data_engineering/dbt/dbt]]` — and bumped their `updated`. In `[[INDEX]]` the entry also had to **move position**: it was alphabetized as "Sanity Check" after Metadata Management, and as "Data Sanity Check" it now sorts between Data Quality and Data Security. The three log entries below still name the old path; the log is append-only, so they are left as written.
