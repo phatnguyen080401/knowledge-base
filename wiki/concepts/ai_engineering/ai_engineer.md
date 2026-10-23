@@ -1,8 +1,8 @@
 ---
 title: AI Engineer
-tags: [ai-engineering, llm-applications, model-operations, overview]
+tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview]
 created: 2026-10-23 10:53:38
-updated: 2026-10-23 10:59:31
+updated: 2026-10-23 11:16:00
 ---
 
 # AI Engineer
@@ -60,7 +60,9 @@ an AI engineer toward ML work, and a product-minded ML engineer does much of wha
 **Ground the model in the organization's data**
 
 - Build retrieval: chunking strategy, embedding choice, vector or hybrid search, reranking, and the
-  decision of what gets into the context window at all.
+  decision of what gets into the context window at all. See
+  [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]
+  for the pipeline and for the agent-driven alternative to fixed top-$k$ context.
 - Decide what the model is allowed to see. Retrieval must respect the same row- and column-level
   rules as any other access path, or it becomes a bypass around
   [[concepts/data_governance/data_security|Data Security]].
@@ -192,6 +194,7 @@ grows, and the AI engineer is usually the one left holding the end-to-end behavi
 
 ## Related Concepts
 
+- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the grounding mechanism this role spends most of its quality budget on, from flat chunk retrieval to agent-traversed compiled knowledge
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — the structural discipline the role applies; a model is one more component with a contract, a failure mode, and a cost
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — how a model-backed feature is exposed, including streaming partial output to a client
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — model calls are I/O-bound and slow, so the execution model decides how many concurrent requests a service can carry

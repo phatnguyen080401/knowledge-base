@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-23 16:29:09** · ingest · Expanded `[[concepts/ai_engineering/retrieval_augmented_generation]]` from the same source — added the index-time compilation loop, the compiled wiki layout and page schema, a worked traversal, the per-corpus error distribution, and question-type, fan-in and latency evidence. Flagged, not corrected: the user removed `needs-review` while `## Open Questions & Disagreements` is still non-empty.
+
+- **2026-10-23 11:16:00** · ingest · Created `[[concepts/ai_engineering/retrieval_augmented_generation]]` — RAG from the flat chunk-embed-top-k pipeline through retrieval-as-reasoning, compiled-wiki traversal, and the Error Book. Four open questions on single-preprint evidence; tagged `needs-review`. New `retrieval-augmentation` concept tag approved and added to the taxonomy; the user chose one combined note over a two-way split. Source: `raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf`.
+
 - **2026-10-23 10:59:31** · maintain · Updated `[[concepts/ai_engineering/ai_engineer]]` — dropped the `ai-engineer` user tag at the user's request; the four facet tags are unchanged and still satisfy the mandatory set.
 
 - **2026-10-23 10:53:38** · maintain · Created `[[concepts/ai_engineering/ai_engineer]]` — the role that ships products on models it did not train, and the first note in a new `ai_engineering/` domain folder the user approved. Two open questions recorded; tagged `needs-review`. New `ai-engineering` domain and `llm-applications`/`model-operations` topics added to the tag taxonomy.

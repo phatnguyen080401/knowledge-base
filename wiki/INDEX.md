@@ -10,6 +10,7 @@ you need.
 Folder: `wiki/concepts/ai_engineering/`
 
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities from grounding and tool bounds to evaluation and cost, the iteration loop, the skill set, and the boundaries against ML, data, and backend engineering.
+- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the chunk-embed-top-k pipeline and the three structural limits it hits on multi-hop questions, then retrieval-as-reasoning in full: the index-time compilation loop, the compiled wiki layout and page schema, the two-tool traversal interface with worked traces, the Error Book taxonomy and its per-corpus error distribution, and the benchmark, ablation, question-type, fan-in, and latency evidence.
 
 ## Data Architecture
 
