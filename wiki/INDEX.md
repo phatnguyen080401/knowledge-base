@@ -10,7 +10,9 @@ you need.
 Folder: `wiki/concepts/ai_engineering/`
 
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities from grounding and tool bounds to evaluation and cost, the iteration loop, the skill set, and the boundaries against ML, data, and backend engineering.
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the chunk-embed-top-k pipeline and the three structural limits it hits on multi-hop questions, then retrieval-as-reasoning in full: the index-time compilation loop, the compiled wiki layout and page schema, the two-tool traversal interface with worked traces, the Error Book taxonomy and its per-corpus error distribution, and the benchmark, ablation, question-type, fan-in, and latency evidence.
+- [[concepts/ai_engineering/embeddings|Embeddings]] — text-to-vector pipeline, contrastive training, similarity metrics, dense vs. sparse vs. multi-vector, bi- vs. cross-encoders, Matryoshka and quantization cost levers, model selection, migration, and failure modes.
+- [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — host/client/server architecture, tools/resources/prompts, the stateless 2026-07-28 core with MRTR and subscriptions, transports, OAuth 2.1 authorization, security threats, MCP for retrieval, and version history.
+- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the full indexing and query pipeline with chunking strategies, contextual retrieval, query transformation, context assembly, and stage-by-stage evaluation; the structural limits flat retrieval hits on multi-hop questions, then retrieval-as-reasoning in full: the index-time compilation loop, the compiled wiki layout and page schema, the two-tool traversal interface with worked traces, the Error Book taxonomy and its per-corpus error distribution, and the benchmark, ablation, question-type, fan-in, and latency evidence.
 
 ## Data Architecture
 
@@ -79,6 +81,7 @@ Folder: `wiki/concepts/databases/`
 - [[concepts/databases/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]] — session guarantees, tunable quorums, conflict resolution, and what BASE hands to the application.
 - [[concepts/databases/cap_theorem|CAP Theorem]] — what C, A, and P actually mean, why "pick two" is wrong, and the PACELC refinement.
 - [[concepts/databases/isolation_levels|Transaction Isolation Levels]] — the six anomalies with worked interleavings, the level matrix, and what each engine's level names really mean.
+- [[concepts/databases/vector_database|Vector Database]] — exact vs. approximate nearest-neighbour search, HNSW/IVF/PQ/DiskANN indexes and their tuning dials, filtering strategies, hybrid search with RRF, deletes and scaling, the product landscape, and a pgvector example.
 
 ## DevOps
 

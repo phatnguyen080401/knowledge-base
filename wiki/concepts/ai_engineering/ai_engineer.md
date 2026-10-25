@@ -2,7 +2,7 @@
 title: AI Engineer
 tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview]
 created: 2026-10-23 10:53:38
-updated: 2026-10-23 11:16:00
+updated: 2026-10-25 19:51:25
 ---
 
 # AI Engineer
@@ -59,8 +59,9 @@ an AI engineer toward ML work, and a product-minded ML engineer does much of wha
 
 **Ground the model in the organization's data**
 
-- Build retrieval: chunking strategy, embedding choice, vector or hybrid search, reranking, and the
-  decision of what gets into the context window at all. See
+- Build retrieval: chunking strategy, [[concepts/ai_engineering/embeddings|Embeddings]] choice,
+  vector or hybrid search over a [[concepts/databases/vector_database|Vector Database]], reranking,
+  and the decision of what gets into the context window at all. See
   [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]
   for the pipeline and for the agent-driven alternative to fixed top-$k$ context.
 - Decide what the model is allowed to see. Retrieval must respect the same row- and column-level
@@ -74,7 +75,9 @@ an AI engineer toward ML work, and a product-minded ML engineer does much of wha
 
 **Give the model tools and bound what they can do**
 
-- Define tool and function interfaces, their schemas, and their failure semantics.
+- Define tool and function interfaces, their schemas, and their failure semantics — increasingly as
+  servers speaking the [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]],
+  so any compliant host can use them.
 - Control the agent loop: step limits, timeouts, idempotency for anything with side effects, and a
   human approval gate for irreversible actions.
 - Assume the input is hostile. Prompt injection arriving through retrieved documents or tool output
@@ -195,6 +198,9 @@ grows, and the AI engineer is usually the one left holding the end-to-end behavi
 ## Related Concepts
 
 - [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the grounding mechanism this role spends most of its quality budget on, from flat chunk retrieval to agent-traversed compiled knowledge
+- [[concepts/ai_engineering/embeddings|Embeddings]] — the representation behind semantic search; choosing and migrating the model is a long-lived decision this role owns
+- [[concepts/databases/vector_database|Vector Database]] — the retrieval engine whose index recall and permission filtering the role must tune and secure
+- [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — the standard for wiring tools and data to a model, and the boundary where tool privileges are enforced
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — the structural discipline the role applies; a model is one more component with a contract, a failure mode, and a cost
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — how a model-backed feature is exposed, including streaming partial output to a client
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — model calls are I/O-bound and slow, so the execution model decides how many concurrent requests a service can carry

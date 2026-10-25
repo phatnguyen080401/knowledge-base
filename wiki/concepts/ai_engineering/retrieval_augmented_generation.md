@@ -1,15 +1,9 @@
 ---
 title: Retrieval-Augmented Generation (RAG)
-tags:
-  - ai-engineering
-  - llm-applications
-  - retrieval-augmentation
-  - knowledge-graph
-  - llm-wiki
-sources:
-  - raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf
+tags: [ai-engineering, llm-applications, retrieval-augmentation, knowledge-graph, llm-wiki]
+sources: [raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf, "https://www.anthropic.com/news/contextual-retrieval"]
 created: 2026-10-23 11:16:00
-updated: 2026-10-23 16:29:09
+updated: 2026-10-25 19:51:25
 ---
 
 # Retrieval-Augmented Generation (RAG)
@@ -57,18 +51,139 @@ evidence that no single passage contains.
 
 ## The Classic Pipeline
 
-The standard implementation is five stages, each a design decision rather than a default:
+The standard implementation splits into an offline **indexing** path and an online **query** path:
 
-1. **Chunk.** Split source documents into retrievable units. Chunk size trades recall against
-   precision; splitting mid-argument is the most common silent defect.
-2. **Embed and index.** Encode each chunk with an embedding model and store it in a vector index.
-   Hybrid setups keep a lexical index (BM25) alongside it, because sparse retrieval still wins on
-   rare proper nouns, codes, and identifiers that embeddings smooth away.
-3. **Retrieve.** Encode the query, take the top $k$ nearest chunks.
-4. **Rerank** (optional). Re-score the candidates with a cross-encoder that sees query and passage
+```mermaid
+flowchart LR
+    subgraph Index["Indexing — offline, per document change"]
+        D["Source documents<br/>PDF, HTML, tickets, wiki"] --> P["Parse and clean<br/>text, tables, metadata, ACLs"]
+        P --> CH["Chunk<br/>+ optional contextual prefix"]
+        CH --> EMB["Embed<br/>(embedding model)"]
+        CH --> LEXI["Lexical index<br/>(BM25)"]
+        EMB --> VDB[("Vector database<br/>vectors + payload")]
+    end
+    subgraph Query["Query — online, per request"]
+        UQ["User question"] --> QT["Query transformation<br/>rewrite, expand, decompose"]
+        QT --> QE["Embed query"]
+        QE --> ANN["ANN search<br/>+ permission filter"]
+        QT --> BM["BM25 search"]
+        ANN --> FU["Fusion (RRF)"]
+        BM --> FU
+        FU --> RR["Rerank<br/>(cross-encoder)"]
+        RR --> CA["Context assembly<br/>order, dedupe, budget"]
+        CA --> LLM["LLM generates<br/>answer + citations"]
+    end
+    VDB -.-> ANN
+    LEXI -.-> BM
+```
+
+Each stage is a design decision rather than a default:
+
+1. **Parse.** Extract clean text, tables, headings, and access-control metadata. Garbage here —
+   page headers repeated into every chunk, tables flattened into word soup — caps everything
+   downstream.
+2. **Chunk.** Split source documents into retrievable units. Chunk size trades recall against
+   precision; splitting mid-argument is the most common silent defect. Strategies are compared
+   below.
+3. **Embed and index.** Encode each chunk with an [[concepts/ai_engineering/embeddings|embedding model]]
+   and store it in a [[concepts/databases/vector_database|Vector Database]]. Hybrid setups keep a
+   lexical index (BM25) alongside it, because sparse retrieval still wins on rare proper nouns,
+   codes, and identifiers that embeddings smooth away.
+4. **Transform the query** (optional). Rewrite the raw question into something closer to what the
+   answer looks like — techniques below.
+5. **Retrieve.** Encode the query, take the top $k$ nearest chunks, apply the user's permission
+   filter inside the search, and fuse with the lexical results, typically by reciprocal rank
+   fusion.
+6. **Rerank** (optional). Re-score the candidates with a cross-encoder that sees query and passage
    together, then keep the best few. This is usually the highest-value addition to a weak pipeline.
-5. **Generate.** Assemble the surviving chunks into the prompt and call the model, ideally
-   requiring citations so the answer can be checked against what was actually retrieved.
+7. **Assemble and generate.** Order, deduplicate, and trim the surviving chunks to a token budget,
+   then call the model, ideally requiring citations so the answer can be checked against what was
+   actually retrieved.
+
+### Chunking Strategies
+
+| Strategy | How it splits | Good for | Watch for |
+| --- | --- | --- | --- |
+| Fixed-size with overlap | Every $n$ tokens, overlapping by 10–20% | A fast baseline on uniform prose | Cuts sentences, tables, and arguments in half |
+| Recursive / separator-based | Tries paragraph, then sentence, then word boundaries until under the size limit | General documents; the usual default | Still blind to meaning |
+| Structure-aware | Along headings, sections, list items, code blocks, table rows | Docs, manuals, Markdown, HTML, code | Sections vary wildly in size; very long ones still need splitting |
+| Semantic | Splits where embedding similarity between adjacent sentences drops | Long unstructured prose | Extra embedding cost at ingest; gains are inconsistent |
+| Parent–child (small-to-big) | Index small chunks for precise matching, return the larger parent section to the model | Precise retrieval with enough surrounding context | Two levels to keep in sync |
+| Sentence window | Index single sentences, expand to $\pm n$ neighbours at retrieval | Fact lookup in dense text | Window may still miss the needed context |
+| Propositional | An LLM rewrites text into atomic, self-contained statements | High-precision factual QA | Expensive; may drop nuance |
+
+Whatever the strategy, attach metadata to every chunk — source document, section path, date, and
+access-control fields — so it can be filtered, cited, and deleted when its source is.
+
+### Contextual Retrieval
+
+A chunk often loses the context that made it findable: "Revenue grew 3% over the previous quarter"
+does not say which company or which quarter. **Contextual retrieval** has an LLM write a short
+(typically 50–100 token) context situating each chunk within its whole document, and prepends it
+before both embedding and BM25 indexing. Anthropic reported, measured as top-20 retrieval failure
+rate (1 − recall@20):
+
+| Configuration | Failure rate | Reduction |
+| --- | --- | --- |
+| Standard embeddings | 5.7% | — |
+| Contextual embeddings | 3.7% | 35% |
+| Contextual embeddings + contextual BM25 | 2.9% | 49% |
+| … + reranking | 1.9% | 67% |
+
+Prompt caching makes the per-chunk generation affordable, because the full document is cached once
+and reused for each of its chunks. The same post notes the simpler alternative for small corpora:
+**below roughly 200,000 tokens (about 500 pages), put the whole knowledge base in the prompt** and
+skip retrieval entirely.
+
+### Query Transformation
+
+| Technique | What it does | When it helps |
+| --- | --- | --- |
+| Rewriting | Turns a conversational follow-up ("what about for Europe?") into a standalone query | Multi-turn chat — almost always needed |
+| Multi-query | Generates several paraphrases, retrieves for each, fuses the lists | Ambiguous or vocabulary-mismatched questions |
+| HyDE | Generates a *hypothetical answer* and embeds that instead of the question | Short questions whose answers look nothing like them |
+| Decomposition | Splits a compound question into sub-questions retrieved separately | Multi-part and comparison questions |
+| Step-back | Asks a more general question first to retrieve background principles | Questions that need conceptual context |
+| Routing | Classifies the question and sends it to the right index, tool, or a [[concepts/data_architecture/semantic_layer|Semantic Layer]] | Mixed corpora, or numeric questions that should not be retrieved at all |
+
+Every transformation adds a model call to the critical path, so add them only where evaluation shows
+they pay.
+
+### Context Assembly
+
+- **Position matters.** Models attend best to the beginning and end of a long context and worst to
+  the middle (the "lost in the middle" effect), so put the strongest evidence first or last.
+- **Deduplicate.** Overlapping chunks and near-identical documents waste budget and over-weight one
+  source.
+- **Label sources** in the prompt so the model can cite them, and instruct it to say when the
+  context does not contain the answer rather than filling the gap from its weights.
+- **Keep instructions out of retrieved text's reach.** Retrieved content goes in a clearly delimited
+  data section; it is untrusted input.
+
+### Agentic and Corrective Variants
+
+Between fixed pipelines and full retrieval-as-reasoning sits a family of control loops: **agentic
+RAG** exposes retrieval as a tool the model may call repeatedly — commonly over the
+[[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — and **corrective
+RAG** grades the retrieved documents and falls back to another source, such as web search, when they
+are judged irrelevant. Both trade latency and cost for robustness on questions a single retrieval
+round misses.
+
+### Evaluating a RAG System
+
+Measure the stages separately, because each fails differently:
+
+| Stage | Metric | Question it answers |
+| --- | --- | --- |
+| Retrieval | Recall@k | Was the needed evidence retrieved at all? |
+| Retrieval | Precision@k, MRR, nDCG | How high did it rank, and how much noise came with it? |
+| Generation | Faithfulness (groundedness) | Is every claim in the answer supported by the retrieved context? |
+| Generation | Answer relevance | Does the answer address the question asked? |
+| Context | Context precision / context recall | Is the assembled context relevant, and does it cover the reference answer? |
+| End to end | Answer correctness against a reference | Is it right? |
+
+Frameworks such as RAGAS compute the generation- and context-level metrics with an LLM judge; those
+judges need spot-checking against human labels before their numbers are trusted.
 
 > [!tip] Evaluate retrieval separately from generation
 > Recall@k over a labelled query set tells you whether the needed evidence was present at all. Run
@@ -453,6 +568,7 @@ question. Still below RAPTOR, HippoRAG 2, and LightRAG.
 
 | Reach for | When |
 | --- | --- |
+| No retrieval — the whole corpus in the prompt | The knowledge base is small (Anthropic's guidance: under ~200,000 tokens) and prompt caching is available |
 | Flat RAG with reranking | Answers live in one passage; the corpus turns over fast; the budget will not absorb a compilation pass; you need a working baseline this week |
 | Compiled, traversable knowledge | Questions require relation-following, enumeration, cross-document aggregation, or comparison; the corpus is stable enough to amortize compilation; answers must be auditable by a human |
 
@@ -510,6 +626,9 @@ source archives alongside the compiled pages — as LLM-Wiki's `sources/` tree d
 ## Related Concepts
 
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role that builds and operates this pipeline; retrieval is the grounding responsibility it leans on hardest
+- [[concepts/ai_engineering/embeddings|Embeddings]] — the representation dense retrieval runs on; its quality caps retrieval recall
+- [[concepts/databases/vector_database|Vector Database]] — the ANN index, filtering, and hybrid fusion behind the retrieve stage
+- [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — the standard way to expose retrieval to an agent as a tool, which is what makes agentic RAG portable
 - [[concepts/data_architecture/ontology_layer|Ontology Layer]] — the formal, typed vocabulary a knowledge graph encodes; the structural alternative to compiling prose into linked pages
 - [[concepts/data_architecture/semantic_layer|Semantic Layer]] — where numeric questions should be routed instead of retrieved, because a governed metric beats a passage about a metric
 - [[concepts/data_governance/data_security|Data Security]] — retrieval is an access path and inherits the same classification and permission obligations
@@ -527,3 +646,8 @@ source archives alongside the compiled pages — as LLM-Wiki's `sources/` tree d
 - Sarthi et al. (2024). *RAPTOR.* ICLR; Edge et al. (2024). *GraphRAG.* arXiv:2404.16130; Guo et al. (2025). *LightRAG.* EMNLP Findings; Gutiérrez et al. (2025). *From RAG to Memory* (HippoRAG 2). ICML — the baselines compared above.
 - Wu, Li, Ming, and Que (2026). *AuthTrace: Diagnosing Evidence Construction in Thematically Dense Single-Author Corpora.* arXiv:2605.25382 — the fan-in benchmark, by overlapping authors.
 - Karpathy (2026). *LLM Wiki.* GitHub Gist — the design pattern LLM-Wiki operationalizes, and the one this vault is built on.
+- [Anthropic (2024). *Introducing Contextual Retrieval.*](https://www.anthropic.com/news/contextual-retrieval) — the contextual-retrieval failure-rate figures and the 200k-token whole-corpus threshold.
+- Liu et al. (2024). *Lost in the Middle: How Language Models Use Long Contexts.* TACL — position effects in context assembly.
+- Gao et al. (2023). *Precise Zero-Shot Dense Retrieval without Relevance Labels* (HyDE). ACL.
+- Yan et al. (2024). *Corrective Retrieval Augmented Generation.* arXiv:2401.15884.
+- Es et al. (2024). *RAGAS: Automated Evaluation of Retrieval Augmented Generation.* EACL demos.
