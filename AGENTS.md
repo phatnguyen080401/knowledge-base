@@ -14,7 +14,8 @@ The architecture is inspired by Andrej Karpathy's `llm-wiki` concept and the "AI
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Create, expand, or ingest a note       | `wiki/INDEX.md` → search `wiki/concepts/` (§4.4) → [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) + its `taxonomy.md`                                                                  |
 | Answer a question                      | `wiki/INDEX.md` first, then the shortlisted pages (§5)                                                            |
-| Retag, tag audit, or lint pass         | §9 → `tag-taxonomy` SKILL + `references/taxonomy.md` + `references/audit.md`                                     |
+| Retag or tag audit                     | `tag-taxonomy` SKILL + `references/taxonomy.md` + `references/audit.md`                                          |
+| Lint pass or vault audit               | §9 → [`wiki-lint`](.skill/wiki-lint/SKILL.md) → `tag-taxonomy` `references/audit.md` for the tag checks           |
 | Commit                                 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md)                                                          |
 
 **One clock reading per request.** Read the system clock once at write time and reuse that value
@@ -312,7 +313,7 @@ directory listing exactly.
 
 **Delete a note:** ask the user first. Then repoint or remove all inbound links, delete the file, remove it from `INDEX.md`, and log as `Deleted` with the reason.
 
-**Lint pass:** when asked to audit the vault, run **both** checklists in §9 across all notes — structural *and* semantic — and report findings before making any fixes. Log the pass as `Audited` with a one-line count of each defect class found. A lint pass that reports only structural defects is incomplete.
+**Lint pass:** when asked to audit the vault, follow the [`wiki-lint`](.skill/wiki-lint/SKILL.md) skill and run **both** checklists in §9 across all notes — structural *and* semantic — and report findings before making any fixes. Log the pass as `Audited` with a one-line count of each defect class found. A lint pass that reports only structural defects is incomplete.
 
 ---
 
@@ -327,6 +328,7 @@ override it (see Precedence).
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Generating short Conventional Commits 1.0.0 messages from the diff: type and scope selection, breaking-change signalling, when a body is earned and how short it stays, splitting a tree, amending a message | Running or being asked to run `git commit`; staging changes; the user asks for a commit message, whether a change is a `feat` or a `fix`, or to fix or amend an existing message |
 | [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | The six tag facets (`domain`, `topic`, `concept`, `tech`, `type`, `lifecycle`), their controlled vocabularies, the domain → folder map, banned and retired tags, adding or retiring a tag, and the tag audit workflow (`references/audit.md`) | **Every time you create, update, move, or file a note**, or assign or change a tag; the user says "fix my tags", "normalize tags", "tag audit", "retag", "my tags are a mess", or asks what tags to use, how notes are classified, or how to add or retire one |
+| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | The whole-vault lint pass: collecting an inventory, running the §9 structural and semantic checks (tags via `audit.md`), the report format, applying approved fixes, logging, and re-verifying | The user says "lint the vault", "lint pass", "audit the wiki", "health check", "find broken links", "find orphans", "find duplicates", "what's stale", or asks whether the wiki is consistent |
 
 **Adding a skill:** create `.skill/<skill-name>/SKILL.md` with `name` and `description` frontmatter, put any long reference material in `.skill/<skill-name>/references/`, and add a row to the table above. A skill that is not listed here will not be found.
 
