@@ -118,7 +118,7 @@ imitate them.
 | `wiki/INDEX.md` or `wiki/log.md` alone      | `docs(index): …` / `docs(log): …`                                    |
 | Skill under `.skill/`                       | `feat(skill): …` new skill · `docs(skill): …` change · `docs(skill)!: …` retirement |
 | `AGENTS.md`                                 | `docs(agents): …`, with `!` when it reverses an existing rule        |
-| Asset under `wiki/assets/`                  | `chore(assets): …`                                                   |
+| Asset under `raw/assets/`                   | `chore(assets): …`                                                   |
 | `.gitignore`, README, CI                    | `chore: …` / `docs: …` / `ci: …`                                     |
 
 **Never split a note from its `INDEX.md` and `log.md` updates.** `AGENTS.md` §4 makes them one

@@ -63,7 +63,7 @@ Each failure is a **defect** (propose a fix) or a **flag** (report for the user 
 | Reachability | Every note has ≥1 outbound link and ≥1 inbound link from another note | Defect |
 | INDEX matches the tree | Two-way diff of index entries vs. `find` output; one `##` group per domain folder and `###` per tech subfolder, each with a correct `Folder:` line; pages alphabetized (hub first allowed); every entry has a summary; `**Stub.**` present exactly on `stub`-tagged pages | Defect |
 | Sources | Every `raw/processed/…` path in `sources` exists | Defect |
-| Intake queue | Files sitting in `raw/` outside `processed/` | Flag (pending ingest) |
+| Intake queue | Files sitting in `raw/` outside `processed/` and `assets/` | Flag (pending ingest) |
 | Lifecycle tags | `needs-review` ⇔ non-empty `## Open Questions & Disagreements`; `stub` only on placeholders | Defect, or flag if a hand edit |
 | Duplicates | Two notes whose titles, acronyms, or definition paragraphs describe the same concept | Flag (merge needs approval, §7) |
 | Skill registry | Every `.skill/*/SKILL.md` has exactly one `AGENTS.md` §8 row, every row's link exists, and no row describes old behaviour | Defect |

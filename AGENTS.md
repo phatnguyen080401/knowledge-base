@@ -59,25 +59,25 @@ the notes it describes. Bash: `date +"%Y-%m-%d %H:%M:%S"`; PowerShell:
 .
 ├── AGENTS.md                  # This file. The constitution.
 ├── raw/                       # Intake queue: unprocessed notes, clippings, transcripts
+│   ├── assets/                # Images, PDFs, and other binaries linked from notes
 │   └── processed/             # Archive of successfully ingested source files
 └── wiki/                      # The compiled knowledge base
     ├── INDEX.md               # Master index of every wiki page, grouped by folder
     ├── log.md                 # Reverse-chronological activity log
-    ├── concepts/              # Atomic notes — one file per concept, filed by domain
-    │   ├── ai_engineering/
-    │   ├── data_architecture/
-    │   ├── data_engineering/
-    │   │   ├── dbt/
-    │   │   ├── kafka/
-    │   │   └── spark/
-    │   ├── data_governance/
-    │   ├── data_structures/
-    │   ├── databases/
-    │   ├── devops/
-    │   ├── software_architecture/
-    │   └── version_control/
-    │       └── gitlab/
-    └── assets/                # Images, PDFs, and other binaries linked from notes
+    └── concepts/              # Atomic notes — one file per concept, filed by domain
+        ├── ai_engineering/
+        ├── data_architecture/
+        ├── data_engineering/
+        │   ├── dbt/
+        │   ├── kafka/
+        │   └── spark/
+        ├── data_governance/
+        ├── data_structures/
+        ├── databases/
+        ├── devops/
+        ├── software_architecture/
+        └── version_control/
+            └── gitlab/
 ```
 
 This tree is a snapshot. The authoritative list of domain folders is the `domain` table in
@@ -167,8 +167,8 @@ such as [[concepts/data_governance/data_governance|Data Governance]].
 
 ## 4. Workflow: Ingesting from `raw/`
 
-1. **Scan.** List `raw/`, excluding `raw/processed/`. If empty, report that and stop.
-2. **Read the source.** Read the file in full before deciding anything. Move binaries to `wiki/assets/` and describe what they depict.
+1. **Scan.** List `raw/`, excluding `raw/processed/` and `raw/assets/`. If empty, report that and stop.
+2. **Read the source.** Read the file in full before deciding anything. Move binaries to `raw/assets/` and describe what they depict.
 3. **Identify concepts.** One raw file may contain several concepts — split it, one concept per note. Never create a note that merely mirrors the source document's shape.
 4. **Search before writing.** Search `wiki/concepts/` by filename *and* by content (synonyms, acronyms, plurals), and check `wiki/INDEX.md`.
    - Match found → **Update**.
@@ -245,7 +245,8 @@ The log is the audit trail of **the `wiki/` folder**, not of the repository. Per
 
 | Change                                                                | Log entry? |
 | --------------------------------------------------------------------- | ---------- |
-| Any note under `wiki/concepts/`, `wiki/INDEX.md`, or `wiki/assets/`   | Yes        |
+| Any note under `wiki/concepts/`, or `wiki/INDEX.md`                   | Yes        |
+| An asset under `raw/assets/` — only as a clause of the note entry that links it | Folded in |
 | A question answered from the vault (§5), including `Filed: nothing`   | Yes        |
 | `AGENTS.md` — a rule, workflow, or routing-table change               | No         |
 | Anything under `.skill/` — a new skill, a reworded procedure, a vocabulary addition | No |
