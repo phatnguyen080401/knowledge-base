@@ -1,6 +1,6 @@
 ---
 name: wiki-lint
-description: Run a whole-vault lint pass over `wiki/` — the structural checks (frontmatter, H1, wikilinks, INDEX.md vs. the folder tree, sources, lifecycle tags, the skill registry) and the semantic checks (contradictions, stale claims, orphans and weak links, missing pages, hollow hubs, unsourced claims, next questions) from AGENTS.md §9 — then report, apply only approved fixes, log, and re-verify. Use this skill whenever the user says "lint the vault", "lint pass", "audit the wiki", "health check", "check the vault", "find broken links", "find orphans", "find duplicates", "what's stale", or asks whether the wiki is consistent. For a tags-only audit, use tag-taxonomy's references/audit.md instead; this skill calls into it for the tag checks.
+description: Run a whole-vault lint pass over `wiki/` — the structural checks (frontmatter, H1, wikilinks, INDEX.md vs. the folder tree, sources, lifecycle tags, the skill registry) and the semantic checks (contradictions, stale claims, orphans and weak links, missing pages, hollow hubs, unsourced claims, next questions) from AGENTS.md §9 — then report, apply only approved fixes, log, and re-verify. Use this skill whenever the user says "lint the vault", "lint pass", "audit the wiki", "health check", "check the vault", "find broken links", "find orphans", "find duplicates", "what's stale", or asks whether the wiki is consistent. It also owns the Obsidian syntax rules every note body must follow (`references/obsidian-syntax.md`: piped full-path wikilinks, callouts, `raw/assets/` embeds, Mermaid, math, and the banned Obsidian features), which wiki-create and wiki-ingest read when writing; read that file when the user says "check Obsidian syntax" or asks whether a note renders in Obsidian. For a tags-only audit, use tag-taxonomy's references/audit.md instead; this skill calls into it for the tag checks.
 ---
 
 # Wiki Lint
@@ -9,6 +9,9 @@ A lint pass audits every note under `wiki/concepts/` against the two checklists 
 — **structural** and **semantic** — and reports what it finds before changing anything. §9 is the
 canonical list of checks; this skill is the procedure for running them. Tag checks are delegated to
 [`tag-taxonomy/references/audit.md`](../tag-taxonomy/references/audit.md) rather than repeated here.
+The Obsidian syntax rules, which writers also follow, live in
+[obsidian-syntax.md](references/obsidian-syntax.md), with [callouts.md](references/callouts.md)
+and [embeds.md](references/embeds.md) as detail.
 
 This skill operates under `AGENTS.md`, which wins on conflict.
 
@@ -59,7 +62,8 @@ Each failure is a **defect** (propose a fix) or a **flag** (report for the user 
 | Required frontmatter | `title`, `tags`, `created`, `updated` all present; timestamps match `YYYY-MM-DD HH:mm:ss`; `tags` and `sources` are inline lists | Defect |
 | H1 and Related Concepts | First `# ` heading equals `title`; a `## Related Concepts` section exists; no skipped heading levels | Defect |
 | Tags | Run [audit.md](../tag-taxonomy/references/audit.md) steps 1–3 and merge its defects and flags into this report | Per audit.md |
-| Wikilinks resolve | Each `[[target\|text]]` target + `.md` exists under `wiki/`; every link is piped and uses the full `concepts/<folder>/…` path | Defect |
+| Wikilinks resolve | Each `[[target\|text]]` target + `.md` exists under `wiki/`, and a `#Heading` target matches a heading in that file | Defect |
+| Obsidian syntax | Run the [obsidian-syntax.md](references/obsidian-syntax.md) Checks greps (unpiped or short-path links, banned syntax, extra properties); drop hits inside code fences | Defect |
 | Reachability | Every note has ≥1 outbound link and ≥1 inbound link from another note | Defect |
 | INDEX matches the tree | Two-way diff of index entries vs. `find` output; one `##` group per domain folder and `###` per tech subfolder, each with a correct `Folder:` line; pages alphabetized (hub first allowed); every entry has a summary; `**Stub.**` present exactly on `stub`-tagged pages | Defect |
 | Sources | Every `raw/processed/…` path in `sources` exists | Defect |
@@ -104,6 +108,7 @@ Only approved fixes. Read the clock once and reuse it for every `updated` and th
 | Contradiction | Record both positions under `## Open Questions & Disagreements`, tag `needs-review` (`AGENTS.md` §3) |
 | Missing page or hollow hub | Create a `stub` or expand the page per `AGENTS.md` §3, linked both ways |
 | Broken link, orphan, index drift | Edit the link, add a backlink, rewrite the index entry |
+| Obsidian syntax defect | Rewrite it per [obsidian-syntax.md](references/obsidian-syntax.md) |
 | Skill registry drift | Edit the §8 row (no log entry; outside `wiki/`) |
 
 ## 6. Log

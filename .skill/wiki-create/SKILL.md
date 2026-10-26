@@ -65,6 +65,8 @@ single tag. The `domain` tag fixes the folder; a note in a tech subfolder carrie
 - `## Open Questions & Disagreements` if anything is unverified or extrapolated; then tag
   `needs-review`.
 - `## Related Concepts`, each link with a reason; `## References` last, if any.
+- Body syntax per [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md): piped full-path links,
+  titled callouts, `raw/assets/` embeds, nothing from its banned list.
 
 **Expand path:** merge into the right existing sections, re-check the tags against the taxonomy,
 append any new `sources`, and set `updated` to the clock reading. Never change `created`.
@@ -108,6 +110,7 @@ questions.
 
 - [ ] The vault was searched by name, acronym, and synonym before writing; no near-duplicate exists.
 - [ ] The note follows the `AGENTS.md` §3 shape, with tags from the taxonomy and a matching folder.
+- [ ] The body passes the [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md) Checks.
 - [ ] The note links out, and at least one existing note links back to it.
 - [ ] `INDEX.md` lists it in the right group with a current summary, and matches the tree.
 - [ ] `wiki/log.md` has one entry for the request, timestamped from the same clock reading.

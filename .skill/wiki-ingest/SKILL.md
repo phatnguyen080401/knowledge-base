@@ -49,6 +49,8 @@ This skill operates under `AGENTS.md`, which wins on conflict.
    - **Tag and file:** choose or re-check the tags with [`tag-taxonomy`](../tag-taxonomy/SKILL.md)
      on every create or update. The `domain` tag decides the folder; a note in a tech subfolder
      carries that product's `tech` tag.
+   - **Syntax:** write the body with [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md): piped
+     full-path links, titled callouts, embeds only from `raw/assets/`, nothing from its banned list.
 7. **Link both ways.** Add outbound wikilinks from the new or changed note, **and** add a link back
    from at least one related existing note so the page is reachable.
 8. **Archive the source.** Move the raw file to `raw/processed/` **only after** steps 6–7 succeed.
@@ -69,3 +71,4 @@ This skill operates under `AGENTS.md`, which wins on conflict.
 - [ ] Each ingested source is in its notes' `sources` and now sits in `raw/processed/`; failed ones remain in `raw/`.
 - [ ] `INDEX.md` matches the tree; `wiki/log.md` has one `ingest` entry from the same clock reading.
 - [ ] The `AGENTS.md` §9 structural checks pass on every touched note.
+- [ ] Every touched body passes the [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md) Checks.

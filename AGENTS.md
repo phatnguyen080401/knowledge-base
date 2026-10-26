@@ -129,6 +129,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 
 - H1 matching `title`, then a standalone definition paragraph. `##` sections, no skipped levels.
 - Prose and bullets only; no raw HTML; code fences only for real code, config, or queries.
+- Obsidian syntax (links, callouts, embeds, diagrams, math) follows [`obsidian-syntax.md`](.skill/wiki-lint/references/obsidian-syntax.md), including its banned list.
 - Link the first meaningful mention of another concept, not every mention.
 - `## Open Questions & Disagreements` appears whenever sources conflict, a claim is unverified, or you extrapolated. Name both positions and their sources; never silently pick a winner. The note carries `needs-review` exactly while this section is non-empty; delete the section once resolved.
 - `## Related Concepts` explains *why* each link matters. `## References`, if any, comes last.
@@ -182,7 +183,7 @@ lists its full trigger phrases.
 | [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md)   | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md`                                |
 | [`wiki-create`](.skill/wiki-create/SKILL.md)             | Creating, expanding, or stubbing a note on direct request (`/wiki-create`)                |
 | [`wiki-ingest`](.skill/wiki-ingest/SKILL.md)             | Ingesting files from `raw/` (`/wiki-ingest`)                                              |
-| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | Lint pass, vault audit, health check, broken links, orphans, duplicates (`/wiki-lint`)    |
+| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | Lint pass, vault audit, health check, broken links, orphans, duplicates (`/wiki-lint`); its `references/obsidian-syntax.md` on **every create or update of a note body** |
 | [`wiki-query`](.skill/wiki-query/SKILL.md)               | Answering a question about the wiki's subject matter (`/wiki-query`)                      |
 
 `.claude/skills` is a symlink to `.skill/`, so every skill is also a Claude Code slash command
