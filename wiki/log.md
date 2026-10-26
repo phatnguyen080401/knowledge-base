@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 17:42:52** · lint · Audited 44 notes — 1 syntax defect (bare same-note links), 1 missing Related Concepts, 1 block-list frontmatter, 4 tag gaps, 1 untagged tech, 1 hubless subfolder, 1 contradiction, 5 needs-review flags, 6 next questions. No fixes applied.
+
 - **2026-10-26 17:29:15** · query · Answered "Why can write skew happen under snapshot isolation but not under serializable?". Read: `[[concepts/databases/isolation_levels]]` (via fresh hot.md route). Filed: nothing; the page already covers it.
 
 - **2026-10-26 17:27:35** · query · Answered "Which read anomalies does snapshot isolation still allow that serializable prevents, and why?". Read: `[[concepts/databases/isolation_levels]]`, `[[concepts/databases/acid]]`. Filed: nothing yet; proposed a read-only transaction anomaly section for `isolation_levels`, awaiting approval.
