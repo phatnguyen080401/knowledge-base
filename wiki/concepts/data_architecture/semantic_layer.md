@@ -1,8 +1,8 @@
 ---
 title: Semantic Layer
-tags: [data-architecture, data-modeling]
+tags: [data-architecture, data-modeling, metric-definition]
 created: 2026-09-29 15:39:23
-updated: 2026-10-23 10:53:38
+updated: 2026-10-26 18:00:17
 ---
 
 # Semantic Layer

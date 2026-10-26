@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 18:00:17** · maintain · Updated `[[concepts/data_architecture/semantic_layer]]`, `[[concepts/data_architecture/ontology_layer]]` — lint fix 5: added the missing concept tags, `metric-definition` and `knowledge-graph`, matching the comparison note.
+
 - **2026-10-26 17:59:22** · maintain · Updated `[[concepts/data_engineering/dbt/dbt_bigquery_adapter]]`, `[[concepts/data_engineering/dbt/dbt_databricks_adapter]]` — lint fix 4: added the missing `topic` tag, `data-modeling` at the user's choice over the suggested `elt`.
 
 - **2026-10-26 17:58:20** · maintain · Updated `[[concepts/devops/brainboard]]` — lint fix 3: rewrote the block-list `tags` and `sources` as inline lists, values unchanged. `needs-review` stays off per the user's earlier hand edit.
