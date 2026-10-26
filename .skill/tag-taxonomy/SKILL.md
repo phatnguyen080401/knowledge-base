@@ -61,7 +61,7 @@ Run this on every create or update. Tag what the body explains, not what the fil
 8. **Lifecycle** — `stub` and `needs-review` per `AGENTS.md` §3.
 9. **Carry over** existing user tags. Add new ones only when the user asks for them by name.
 10. **File it.** The *Folder* column of the domain table decides the folder; a domain change is a
-    move (`AGENTS.md` §7).
+    move ([`wiki-maintain`](../wiki-maintain/SKILL.md)).
 11. **Verify** against the Definition of Done below.
 
 ### Worked examples

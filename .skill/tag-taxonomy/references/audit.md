@@ -70,7 +70,7 @@ Then wait for approval.
 
 - **Tag-only change:** rewrite the `tags` line, keeping the inline form, and set `updated` from the
   clock. Touch nothing else in the note; `wiki/INDEX.md` mirrors folders, not tags.
-- **Domain change:** a move (`AGENTS.md` §7).
+- **Domain change:** a move, via [`wiki-maintain`](../../wiki-maintain/SKILL.md).
 - **Vocabulary change:** an approved new tag or seed row goes into [taxonomy.md](taxonomy.md).
 - **Retiring a tag:** retag every affected note, then add a Retired row naming the replacement and
   the reason. That row is the only lasting record of *why*.

@@ -163,9 +163,11 @@ Formats and examples are in [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.m
 
 ## 7. Maintenance Operations
 
-- **Rename:** create the new file, move the content, update every inbound wikilink (search for the old name first), delete the old file, update `INDEX.md`, log `Renamed`.
-- **Merge duplicates:** keep the richer page, merge per §1.3, repoint inbound links, delete the loser (ask first), update `INDEX.md`, log `Merged`.
-- **Delete:** ask first. Repoint or remove inbound links, delete the file, remove it from `INDEX.md`, log `Deleted` with the reason.
+Rename, move, merge, split, and delete follow [`wiki-maintain`](.skill/wiki-maintain/SKILL.md).
+Invariants: find every inbound link before changing a path and repoint each one (notes, `INDEX.md`,
+`hot.md`; never `log.md`); a merge keeps the richer page and loses no `sources` entry; deleting a
+note, including a merged-away page, needs approval; log `Renamed`, `Merged`, `Deleted`, or
+`Created` for a split.
 
 ---
 
@@ -181,6 +183,7 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`wiki-create`](.skill/wiki-create/SKILL.md) | Creating, expanding, or stubbing a note on direct request |
 | [`wiki-ingest`](.skill/wiki-ingest/SKILL.md) | Ingesting files from `raw/`, or a web page by URL |
 | [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax; its `references/obsidian-syntax.md` on **every note body write** (§3) |
+| [`wiki-maintain`](.skill/wiki-maintain/SKILL.md) | Renaming, moving, merging, splitting, or deleting notes |
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
 
 `.claude/skills` links to `.skill/`, so each skill is also a Claude Code slash command named after
