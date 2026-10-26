@@ -57,6 +57,7 @@ user request conflicts with a rule here, say so and ask before proceeding.
 │   └── processed/         # Archive of ingested source files
 └── wiki/
     ├── INDEX.md           # Every page, grouped by folder (§6)
+    ├── hot.md             # Routes from answered questions to note sections (§5)
     ├── log.md             # Append-only activity log (§6)
     └── concepts/<domain_folder>/[<tech_subfolder>/]<note>.md
 ```
@@ -143,10 +144,12 @@ are written and linked. A direct request with no `raw/` file follows
 
 ## 5. Answering Questions
 
-Follow [`wiki-query`](.skill/wiki-query/SKILL.md). Invariants: read `wiki/INDEX.md` before any
-page; cite every claim with the page's wikilink; label anything from general knowledge as *outside
-the wiki*; file new synthesis, gaps, conflicts, and corrections back; log one `query` entry even
-when nothing was filed. Never answer a vault question from memory alone.
+Follow [`wiki-query`](.skill/wiki-query/SKILL.md). Invariants: grep `wiki/hot.md` first and, on a
+fresh route, read only the sections it names; otherwise read `wiki/INDEX.md` before any page; read
+notes over ~15 KB by section; cite every claim with the page's wikilink; label anything from
+general knowledge as *outside the wiki*; file new synthesis, gaps, conflicts, and corrections back;
+record the route in `hot.md`; log one `query` entry even when nothing was filed. Never answer a
+vault question from memory or from `hot.md` alone.
 
 ## 6. Audit Trail
 

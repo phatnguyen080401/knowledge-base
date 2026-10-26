@@ -26,8 +26,9 @@ find wiki/concepts -name '*.md' -exec head -n 8 {} +
 # Every link target, one per line: file:[[target[#Heading]  (a trailing \ is a table-cell pipe)
 grep -ro '\[\[[^]|]*' wiki/concepts --include='*.md' | sed 's/\\$//' | sort -u
 
-# Index entries
+# Index entries, and the hot.md route targets
 grep -n '^\(##\|###\|Folder:\|- \[\[\)' wiki/INDEX.md
+grep -o '\[\[[^]|]*' wiki/hot.md | sort -u
 
 # Leftover intake and the skill registry
 find raw -maxdepth 1 -type f
@@ -51,6 +52,7 @@ Each failure is a **defect** (propose a fix) or a **flag** (report for the user 
 | Obsidian syntax | Run the [obsidian-syntax.md](references/obsidian-syntax.md) Checks greps on every note; drop hits inside code fences | Defect |
 | Reachability | Every note has ≥1 outbound link and ≥1 inbound link from another note | Defect |
 | INDEX matches the tree | The diff in [`wiki-audit-trail`](../wiki-audit-trail/SKILL.md) is empty; groups, `Folder:` lines, ordering, summaries (≤ ~160 characters), and `**Stub.**` follow its INDEX spec | Defect |
+| Query routes | Every `wiki/hot.md` link resolves, heading included; at most 40 one-line entries ([`wiki-query`](../wiki-query/SKILL.md)) | Defect |
 | Sources | Every `raw/processed/…` path in `sources` exists | Defect |
 | Intake queue | Files sitting in `raw/` outside `processed/` and `assets/` | Flag (pending ingest) |
 | Duplicates | Two notes whose titles, acronyms, or definition paragraphs describe the same concept | Flag (merge needs approval) |

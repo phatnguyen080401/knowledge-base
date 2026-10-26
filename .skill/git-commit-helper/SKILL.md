@@ -114,7 +114,7 @@ Note content is the product here, so `docs` is the common type. Commits from bef
 | --- | --- |
 | New or expanded note under `wiki/concepts/` | `docs(<domain-tag>): …` — kebab-case tag, e.g. `docs(ai-engineering): add RAG note` |
 | Rename, merge, or delete of a note | `refactor(wiki): …` — structure changed, content did not |
-| `wiki/INDEX.md` or `wiki/log.md` alone | `docs(index): …` / `docs(log): …` |
+| `wiki/INDEX.md` or `wiki/log.md` alone (with `wiki/hot.md` for a query) | `docs(index): …` / `docs(log): …` |
 | Skill under `.skill/` | `feat(skill): …` new skill · `docs(skill): …` change · `docs(skill)!: …` retirement |
 | `AGENTS.md` | `docs(agents): …`, with `!` when it reverses an existing rule |
 | Asset under `raw/assets/` | `chore(assets): …` |

@@ -38,7 +38,7 @@ An entry points to a change; it never copies it. One sentence, about 40 words at
 
 - Log **what changed, where, and why**, never what the note now says.
 - **Fold routine companion edits in:** the INDEX entry, backlinks, `updated`, `sources`, archiving
-  the raw file. Mention one only when it was unusual (a new index group, links repointed
+  the raw file, the `wiki/hot.md` route. Mention one only when it was unusual (a new index group, links repointed
   vault-wide).
 - A judgement call or deviation gets **one clause**; anything longer belongs under the note's
   `## Open Questions & Disagreements`.
