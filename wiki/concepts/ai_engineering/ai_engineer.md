@@ -1,8 +1,8 @@
 ---
 title: AI Engineer
-tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview]
+tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview, needs-review]
 created: 2026-10-23 10:53:38
-updated: 2026-10-25 19:51:25
+updated: 2026-10-26 18:20:00
 ---
 
 # AI Engineer

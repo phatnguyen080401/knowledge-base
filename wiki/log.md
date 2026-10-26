@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 18:20:00** · maintain · Updated 5 notes (`[[concepts/ai_engineering/ai_engineer]]`, `[[concepts/ai_engineering/retrieval_augmented_generation]]`, `[[concepts/data_governance/data_sanity_check]]`, `[[concepts/devops/brainboard]]`, `[[concepts/version_control/gitlab/gitlab_repository_security]]`) — re-added `needs-review` to match their open questions; the user chose to keep the §3 rule.
+
 - **2026-10-26 18:11:11** · maintain · Updated `[[concepts/databases/isolation_levels]]` — lint fix 8: Oracle detects lost updates at Serializable, not Repeatable Read, and InnoDB Repeatable Read lacks first-committer-wins, matching `[[concepts/databases/acid]]`. Corrected from general knowledge.
 
 - **2026-10-26 18:00:17** · maintain · Updated `[[concepts/data_architecture/semantic_layer]]`, `[[concepts/data_architecture/ontology_layer]]` — lint fix 5: added the missing concept tags, `metric-definition` and `knowledge-graph`, matching the comparison note.

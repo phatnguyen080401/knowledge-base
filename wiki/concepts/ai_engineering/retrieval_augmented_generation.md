@@ -1,9 +1,9 @@
 ---
 title: Retrieval-Augmented Generation (RAG)
-tags: [ai-engineering, llm-applications, retrieval-augmentation, knowledge-graph, llm-wiki]
+tags: [ai-engineering, llm-applications, retrieval-augmentation, knowledge-graph, needs-review, llm-wiki]
 sources: [raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf, "https://www.anthropic.com/news/contextual-retrieval"]
 created: 2026-10-23 11:16:00
-updated: 2026-10-25 19:51:25
+updated: 2026-10-26 18:20:00
 ---
 
 # Retrieval-Augmented Generation (RAG)

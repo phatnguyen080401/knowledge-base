@@ -1,9 +1,9 @@
 ---
 title: Brainboard
-tags: [devops, deployment, ci-cd, brainboard, terraform, overview]
+tags: [devops, deployment, ci-cd, brainboard, terraform, overview, needs-review]
 sources: ["https://www.brainboard.co/", "https://docs.brainboard.co/"]
 created: 2026-10-21 15:02:01
-updated: 2026-10-26 17:58:20
+updated: 2026-10-26 18:20:00
 ---
 
 # Brainboard
