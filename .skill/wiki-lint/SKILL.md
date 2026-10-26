@@ -91,7 +91,8 @@ Only approved fixes. Read the clock once (`AGENTS.md`) and reuse it.
 | Tag change | audit.md §5 |
 | Domain change, file move, duplicate pages | [`wiki-maintain`](../wiki-maintain/SKILL.md) |
 | Contradiction | Record both positions under `## Open Questions & Disagreements`, tag `needs-review` (`AGENTS.md` §3) |
-| Missing page or hollow hub | Create a `stub` or expand the page per `AGENTS.md` §3, linked both ways |
+| Missing page | Create a `stub` per `AGENTS.md` §3, linked both ways |
+| Hollow hub, stale or unsourced claim, next question | [`wiki-resolve`](../wiki-resolve/SKILL.md) |
 | Broken link, orphan, index drift | Edit the link, add a backlink, rewrite the index entry |
 | Obsidian syntax defect | Rewrite it per obsidian-syntax.md |
 | Skill registry drift | Edit the §8 row (outside `wiki/`, so no log entry) |

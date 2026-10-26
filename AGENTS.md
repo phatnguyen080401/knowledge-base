@@ -129,7 +129,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 - Prose, bullets, and tables; no raw HTML; code fences only for real code, config, queries, or Mermaid.
 - Obsidian syntax (links, callouts, embeds, diagrams, math) follows [`obsidian-syntax.md`](.skill/wiki-lint/references/obsidian-syntax.md), including its banned list.
 - Link the first meaningful mention of another concept, not every mention.
-- `## Open Questions & Disagreements` appears whenever sources conflict, a claim is unverified, or you extrapolated. Name both positions and their sources; never silently pick a winner. The note carries `needs-review` exactly while this section is non-empty; delete the section once resolved.
+- `## Open Questions & Disagreements` appears whenever sources conflict, a claim is unverified, or you extrapolated. Name both positions and their sources; never silently pick a winner. The note carries `needs-review` exactly while this section is non-empty; delete the section once resolved (`wiki-resolve`).
 - `## Related Concepts` explains *why* each link matters. `## References`, if any, comes last.
 
 ---
@@ -185,6 +185,7 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax; its `references/obsidian-syntax.md` on **every note body write** (§3) |
 | [`wiki-maintain`](.skill/wiki-maintain/SKILL.md) | Renaming, moving, merging, splitting, or deleting notes |
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
+| [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims, expanding stubs |
 
 `.claude/skills` links to `.skill/`, so each skill is also a Claude Code slash command named after
 its folder unless its frontmatter sets `user-invocable: false`.
