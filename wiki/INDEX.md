@@ -1,18 +1,15 @@
 # Index
 
-Every page in `wiki/concepts/`, grouped by domain. Each `##` group is one folder under
-`wiki/concepts/` and each `###` subgroup is a subfolder, so the heading tells you the path. Read
-this first when answering a question — shortlist from the summaries here, then open only the pages
-you need.
+Every page in `wiki/concepts/`, one group per folder, each with a one-line summary for shortlisting.
 
 ## AI Engineering
 
 Folder: `wiki/concepts/ai_engineering/`
 
-- [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities from grounding and tool bounds to evaluation and cost, the iteration loop, the skill set, and the boundaries against ML, data, and backend engineering.
-- [[concepts/ai_engineering/embeddings|Embeddings]] — text-to-vector pipeline, contrastive training, similarity metrics, dense vs. sparse vs. multi-vector, bi- vs. cross-encoders, Matryoshka and quantization cost levers, model selection, migration, and failure modes.
-- [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — host/client/server architecture, tools/resources/prompts, the stateless 2026-07-28 core with MRTR and subscriptions, transports, OAuth 2.1 authorization, security threats, MCP for retrieval, and version history.
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the full indexing and query pipeline with chunking strategies, contextual retrieval, query transformation, context assembly, and stage-by-stage evaluation; the structural limits flat retrieval hits on multi-hop questions, then retrieval-as-reasoning in full: the index-time compilation loop, the compiled wiki layout and page schema, the two-tool traversal interface with worked traces, the Error Book taxonomy and its per-corpus error distribution, and the benchmark, ablation, question-type, fan-in, and latency evidence.
+- [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities, the iteration loop, skills, and boundaries with ML, data, and backend work.
+- [[concepts/ai_engineering/embeddings|Embeddings]] — text-to-vector pipeline, contrastive training, similarity metrics, dense vs. sparse vs. multi-vector, bi- vs. cross-encoders, Matryoshka and quantization.
+- [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — host/client/server architecture, tools/resources/prompts, the stateless 2026-07-28 core, transports, OAuth 2.1 authorization, security threats, version history.
+- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — indexing and query pipeline, chunking, contextual retrieval, evaluation; multi-hop limits of flat retrieval; retrieval-as-reasoning over a compiled wiki.
 
 ## Data Architecture
 
@@ -42,13 +39,13 @@ Folder: `wiki/concepts/data_engineering/dbt/`
 
 Folder: `wiki/concepts/data_engineering/kafka/`
 
-- [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — tool overview: the partitioned commit log — records, offsets, ISR and `acks`, consumer groups and rebalancing, delivery semantics, compaction, and what Kafka is not.
+- [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — tool overview: the partitioned commit log — offsets, ISR and `acks`, consumer groups, delivery semantics, compaction, and what Kafka is not.
 
 ### Apache Spark
 
 Folder: `wiki/concepts/data_engineering/spark/`
 
-- [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — tool overview: driver/executor architecture, lazy DAG and the shuffle as cost model, Catalyst and AQE, partitions and skew, memory and caching, Structured Streaming, and when not to use it.
+- [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — tool overview: driver/executor model, lazy DAG and shuffle cost, Catalyst and AQE, partitions and skew, caching, Structured Streaming, and when not to use it.
 
 ## Data Governance
 
@@ -56,7 +53,7 @@ Folder: `wiki/concepts/data_governance/`
 
 - [[concepts/data_governance/data_governance|Data Governance]] — hub: the operating model for data — principles, roles, frameworks, and the pillars it coordinates.
 - [[concepts/data_governance/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
-- [[concepts/data_governance/data_sanity_check|Data Sanity Check]] — the cheap, aggregate boundary check: the six-part anatomy and where expectations come from, the cost ladder, the standard assertions by dimension, a worked orders-pipeline suite with a step-by-step join-fan-out incident, threshold tuning, and failure response.
+- [[concepts/data_governance/data_sanity_check|Data Sanity Check]] — cheap aggregate boundary checks: anatomy, sources of expectations, the cost ladder, standard assertions, a worked orders-pipeline suite, failure response.
 - [[concepts/data_governance/data_security|Data Security]] — classification, access control models, encryption and key management, the de-identification techniques, and the pipeline-specific leaks.
 - [[concepts/data_governance/data_stewardship|Data Stewardship]] — who is accountable: steward vs. owner vs. custodian, operating models, workflows, and metrics.
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — golden records, entity resolution and survivorship, the four implementation styles, and hierarchy management.
@@ -81,14 +78,14 @@ Folder: `wiki/concepts/databases/`
 - [[concepts/databases/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]] — session guarantees, tunable quorums, conflict resolution, and what BASE hands to the application.
 - [[concepts/databases/cap_theorem|CAP Theorem]] — what C, A, and P actually mean, why "pick two" is wrong, and the PACELC refinement.
 - [[concepts/databases/isolation_levels|Transaction Isolation Levels]] — the six anomalies with worked interleavings, the level matrix, and what each engine's level names really mean.
-- [[concepts/databases/vector_database|Vector Database]] — exact vs. approximate nearest-neighbour search, HNSW/IVF/PQ/DiskANN indexes and their tuning dials, filtering strategies, hybrid search with RRF, deletes and scaling, the product landscape, and a pgvector example.
+- [[concepts/databases/vector_database|Vector Database]] — exact vs. approximate nearest-neighbour search, HNSW/IVF/PQ/DiskANN indexes, filtering, hybrid search with RRF, scaling, the product landscape, and pgvector.
 
 ## DevOps
 
 Folder: `wiki/concepts/devops/`
 
-- [[concepts/devops/brainboard|Brainboard]] — tool overview: visual multi-cloud design that generates Terraform/OpenTofu, with embedded CI/CD, drift detection, and policy and cost scanning. Vendor-sourced, unverified.
-- [[concepts/devops/trivy|Trivy]] — tool overview: one open-source scanner for CVEs, IaC misconfiguration, secrets and licences across images, repos, clusters and SBOMs, and where the CI gate belongs.
+- [[concepts/devops/brainboard|Brainboard]] — tool overview: visual multi-cloud design generating Terraform/OpenTofu, with CI/CD, drift detection, and policy and cost scanning. Vendor-sourced, unverified.
+- [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
 
 ## Software Architecture
 
@@ -96,7 +93,7 @@ Folder: `wiki/concepts/software_architecture/`
 
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — hub: quality attributes, architectural styles and their costs, decomposition, cross-cutting decisions, ADRs and C4.
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — REST, GraphQL, gRPC, SOAP, webhooks, SSE, WebSockets, MQTT, AMQP, and EDI, organized by interaction style.
-- [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- against CPU-bound workloads, race conditions with worked interleavings, and the synchronization primitives and deadlock conditions.
+- [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- vs. CPU-bound work, race conditions with worked interleavings, synchronization primitives, and deadlock.
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
 - [[concepts/software_architecture/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
@@ -105,11 +102,11 @@ Folder: `wiki/concepts/software_architecture/`
 
 Folder: `wiki/concepts/version_control/`
 
-- [[concepts/version_control/git|Git]] — hub: the four object types and the four areas, then the command surface by task — recording, inspecting, branching and merging, rebasing, undoing, remotes, tags, and large-repo tooling.
-- [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` message format, the two specified types and the conventional rest, breaking-change signalling, and the mechanical mapping onto SemVer releases.
+- [[concepts/version_control/git|Git]] — hub: the four object types and four areas, then commands by task — recording, inspecting, branching, merging, rebasing, undoing, remotes, tags, large repos.
+- [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` format, specified and conventional types, breaking-change signalling, and the mapping onto SemVer releases.
 
 ### GitLab
 
 Folder: `wiki/concepts/version_control/gitlab/`
 
-- [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — hardening a project screen by screen: protected branches and tags, branch rules and approvals, push rules, merge-request controls, CI/CD variable and runner isolation, the scanners, and what to do when a secret leaks.
+- [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — hardening a project: protected branches and tags, approvals, push rules, merge-request controls, CI/CD variable and runner isolation, scanners, leaked secrets.

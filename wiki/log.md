@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 17:24:37** · maintain · Updated `wiki/INDEX.md` — shortened 14 summaries to at most 160 characters and the preamble to one line, so shortlisting reads less; created `wiki/hot.md` for query routing. Part of an instruction-layer overhaul that added `wiki-maintain`, `wiki-resolve`, and URL ingest.
+
 - **2026-10-25 23:09:42** · maintain · Renamed `wiki/assets/` to `raw/assets/` at the user's request; no note linked an asset, so nothing was repointed. AGENTS.md §2, §4 and §6 and the `git-commit-helper` and `wiki-lint` skills updated to match.
 
 - **2026-10-25 19:51:25** · maintain · Created `[[concepts/ai_engineering/embeddings]]`, `[[concepts/databases/vector_database]]`, `[[concepts/ai_engineering/model_context_protocol]]` and expanded `[[concepts/ai_engineering/retrieval_augmented_generation]]` (pipeline diagram, chunking, contextual retrieval, evaluation) — user asked for detailed notes with diagrams. MCP reflects the 2026-07-28 spec; all three new notes tagged `needs-review`.
