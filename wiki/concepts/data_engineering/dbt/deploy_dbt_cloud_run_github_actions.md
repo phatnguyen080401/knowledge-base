@@ -2,7 +2,7 @@
 title: Deploy dbt and Elementary to Cloud Run with GitHub Actions
 tags: [data-engineering, deployment, ci-cd, dbt, cloud-run, github-actions, elementary, how-to]
 created: 2026-10-20 10:18:50
-updated: 2026-10-21 14:23:04
+updated: 2026-10-26 17:50:15
 ---
 # Deploy dbt and Elementary to Cloud Run with GitHub Actions
 
@@ -31,7 +31,7 @@ A reference pattern for running [[concepts/data_engineering/dbt/dbt|dbt (Data Bu
 | BigQuery datasets                           | `CRH_SOURCES`, `CRH_INTERMEDIATE`, `CRH_OUTPUTS`, `elementary`          | Dataset location must match `location` in `profiles.yml` (`asia-southeast1`) |
 | Workload Identity Federation pool + provider | Keyless GitHub → Google Cloud authentication                            | Provider's attribute condition should pin the repository and, ideally, the ref |
 | Two service accounts                        | A deployer identity for CI and a runtime identity for the job           | Keep them separate — CI must not hold BigQuery write access                |
-| Cloud Scheduler job                         | Optional periodic trigger for the Cloud Run job                         | Not present in the repository; see [[#Scheduling the Job]]                 |
+| Cloud Scheduler job                         | Optional periodic trigger for the Cloud Run job                         |                 |
 
 ### IAM
 
@@ -600,7 +600,7 @@ The scheduler's service account needs `roles/run.invoker` on the job. Deployment
 
 ## Appendix: Full Workflow Source
 
-Both files verbatim, so the template can be copied without reassembling it from the excerpts above. Substitute the `component` choice list, and supply the `vars` and `secrets` from the table in [[#GitHub repository configuration]].
+Both files verbatim, so the template can be copied without reassembling it from the excerpts above. Substitute the `component` choice list, and supply the `vars` and `secrets` from the table in [[#GitHub repository configuration]] above.
 
 ### `.github/workflows/dbt_deploy.yml`
 
