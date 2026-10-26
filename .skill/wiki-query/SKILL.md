@@ -6,8 +6,6 @@ argument-hint: "<question>"
 
 # Wiki Query
 
-**As a command:** when the user runs `/wiki-query <question>`, the question is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. If no question was given, ask for one instead of guessing.
-
 The procedure for answering a question about the wiki's subject matter. The wiki is the answer
 source, and answering is not a read-only act: per `AGENTS.md` §1.12, an answer that produced
 something worth keeping is filed back.

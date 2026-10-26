@@ -6,8 +6,6 @@ argument-hint: "[file]"
 
 # Wiki Ingest
 
-**As a command:** when the user runs `/wiki-ingest [file]`, the file is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. Ingest only that file when one is given; otherwise ingest everything in `raw/`.
-
 The procedure for compiling files in `raw/` into `wiki/concepts/`. It applies the rules of
 `AGENTS.md` §1 (rules), §3 (note format), and §6 (audit trail) as ordered steps.
 

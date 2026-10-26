@@ -5,8 +5,6 @@ description: Run a whole-vault lint pass over `wiki/` — the structural checks 
 
 # Wiki Lint
 
-**As a command:** `/wiki-lint` runs the whole-vault pass below. Read `AGENTS.md` first if it is not already in context. It reports and waits for approval before any fix.
-
 A lint pass audits every note under `wiki/concepts/` against the two checklists in `AGENTS.md` §9
 — **structural** and **semantic** — and reports what it finds before changing anything. §9 is the
 canonical list of checks; this skill is the procedure for running them. Tag checks are delegated to

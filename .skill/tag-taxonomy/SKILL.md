@@ -6,12 +6,11 @@ argument-hint: "[scope]"
 
 # Tag Taxonomy
 
-**As a command:** when the user runs `/tag-taxonomy [scope]`, the scope is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. Run the tag audit in [audit.md](references/audit.md) over that folder or note, or over the whole vault when no scope is given. When you load this skill yourself while writing a note, there is no audit to run; just tag the note.
-
 A note's tag line answers six questions in a fixed order: **what field**, **what sub-area**,
 **which mechanisms**, **which named technologies**, **what shape**, and **what state**. The approved
 vocabulary lives in [taxonomy.md](references/taxonomy.md). Read it before you assign, change, or
-audit a single tag. For a vault-wide audit, also read [audit.md](references/audit.md).
+audit a single tag. For an audit (the user runs `/tag-taxonomy [scope]` or asks for one), also
+read [audit.md](references/audit.md) and limit it to the given folder or note, if any.
 
 This skill operates under `AGENTS.md`, which wins on conflict.
 

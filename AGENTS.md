@@ -187,7 +187,7 @@ lists its full trigger phrases.
 
 `.claude/skills` is a symlink to `.skill/`, so every skill is also a Claude Code slash command
 named after its folder (`/wiki-create`). Command metadata (`argument-hint`, `user-invocable`) lives
-in the skill's frontmatter, and `$ARGUMENTS` in its body receives the command's arguments.
+in the skill's frontmatter.
 
 **Keeping the table in sync (§1.11).** A new skill gets `.skill/<name>/SKILL.md` with `name` (equal to
 its folder and command name) and `description` frontmatter, long material in `references/`, and a

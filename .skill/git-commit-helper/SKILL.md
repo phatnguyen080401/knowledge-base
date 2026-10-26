@@ -5,8 +5,6 @@ description: Generate short Conventional Commits 1.0.0 messages automatically by
 
 # Git Commit Helper
 
-**As a command:** `/git-commit-helper` commits the current changes using the procedure below. Read `AGENTS.md` first if it is not already in context.
-
 Turn a working tree into one or more **Conventional Commits 1.0.0** messages, derived from the
 diff rather than from what the user said they were doing. You already know the specification; this
 skill is the procedure and this vault's conventions. When a format rule is genuinely ambiguous, the

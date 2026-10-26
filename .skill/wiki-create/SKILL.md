@@ -6,8 +6,6 @@ argument-hint: "<topic>"
 
 # Wiki Create
 
-**As a command:** when the user runs `/wiki-create <topic>`, the topic is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. If no topic was given, ask for one instead of guessing.
-
 The procedure for the **direct-request** path of `AGENTS.md` §4: the user names a concept and there
 is no `raw/` file behind it. It strings together the rules of §3 (note format), §4 (search and
 write), and §6 (audit trail) as ordered steps; it adds no rules of its own.
