@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 17:58:20** · maintain · Updated `[[concepts/devops/brainboard]]` — lint fix 3: rewrote the block-list `tags` and `sources` as inline lists, values unchanged. `needs-review` stays off per the user's earlier hand edit.
+
 - **2026-10-26 17:56:03** · maintain · Updated `[[concepts/data_governance/data_governance]]` — lint fix 2: added the missing `## Related Concepts`, linking Data Sanity Check, dbt, and Semantic Layer rather than repeating the pillar links.
 
 - **2026-10-26 17:56:03** · maintain · Updated `[[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions]]` — lint fix 1: dropped the Cloud Scheduler table note and its bare `[[#Scheduling the Job]]` link. The bare `[[#GitHub repository configuration]]` link stays, at the user's choice.
