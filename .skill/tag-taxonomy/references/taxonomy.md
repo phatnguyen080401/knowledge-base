@@ -43,6 +43,7 @@ creating a folder, which needs user approval.
 | `metadata` | Data about data: catalogs, lineage, schema registries, business glossaries | The business data itself (`master-data`) |
 | `model-operations` | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`) |
 | `source-history` | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
+| `supply-chain-security` | Trusting what goes into a build and who can change it: vulnerability, secret, misconfiguration, and licence scanning; SBOMs; signing; branch and pipeline protection | Protecting the business data a system holds (`data-security`) |
 | `transactions` | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC | Multi-node coordination concerns (`distributed-systems`) |
 | `versioning` | How artifacts are numbered, released, and depended upon: version schemes, compatibility contracts, pinning and lockfiles, deprecation windows | The design of the interface being versioned (`api-protocols`) |
 
