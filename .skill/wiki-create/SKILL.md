@@ -1,6 +1,6 @@
 ---
 name: wiki-create
-description: Create, expand, or stub a concept note in `wiki/concepts/` on a direct request with no `raw/` file. Use when the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", or "stub out X". For files in `raw/`, use wiki-ingest.
+description: Create, expand, or stub a concept note in `wiki/concepts/` on a direct request with no source file or URL. Use when the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", or "stub out X". For files in `raw/` or a URL to ingest, use wiki-ingest.
 argument-hint: "<topic>"
 ---
 

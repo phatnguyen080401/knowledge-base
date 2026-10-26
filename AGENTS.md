@@ -139,8 +139,8 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 Follow [`wiki-ingest`](.skill/wiki-ingest/SKILL.md). Invariants: read each source in full; search the
 vault by name and content before writing, and ask when overlap is ambiguous; merge, don't
 duplicate; record conflicts in the note; archive a source to `raw/processed/` only after its notes
-are written and linked. A direct request with no `raw/` file follows
-[`wiki-create`](.skill/wiki-create/SKILL.md).
+are written and linked. A URL is clipped into `raw/` first. A direct request with no file or URL
+follows [`wiki-create`](.skill/wiki-create/SKILL.md).
 
 ## 5. Answering Questions
 
@@ -179,7 +179,7 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) | **Every create, update, move, or filing of a note**; choosing tags; tag audits (`references/audit.md`) |
 | [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md) | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md` |
 | [`wiki-create`](.skill/wiki-create/SKILL.md) | Creating, expanding, or stubbing a note on direct request |
-| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md) | Ingesting files from `raw/` |
+| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md) | Ingesting files from `raw/`, or a web page by URL |
 | [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax; its `references/obsidian-syntax.md` on **every note body write** (§3) |
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
 
