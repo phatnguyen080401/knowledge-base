@@ -2,7 +2,7 @@
 title: Data Governance
 tags: [data-governance, data-quality, data-security, stewardship-roles, overview]
 created: 2026-09-22 08:59:02
-updated: 2026-10-21 14:23:04
+updated: 2026-10-26 17:56:03
 ---
 
 # Data Governance
@@ -91,3 +91,9 @@ Data governance is built on several key pillars, each representing a critical ar
 - **[[concepts/data_governance/data_stewardship|Data Stewardship]]:** This refers to the people-centric aspect of governance. Data Stewards are individuals assigned formal responsibility for managing specific data assets on behalf of the organization, ensuring quality and adherence to policies.
 
 - **[[concepts/data_architecture/data_architecture|Data Architecture]]:** This pillar defines the blueprint for managing data assets. It includes the models, policies, rules, and standards that govern which data is collected, and how it is stored, arranged, integrated, and put to use in data systems and in organizations.
+
+## Related Concepts
+
+- [[concepts/data_governance/data_sanity_check|Data Sanity Check]] — the cheapest automated control a governance programme can mandate at every pipeline boundary
+- [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — where governance policy becomes code: tests, contracts, ownership metadata, and lineage in the transformation layer
+- [[concepts/data_architecture/semantic_layer|Semantic Layer]] — enforces governed metric definitions and access rules at the point of consumption

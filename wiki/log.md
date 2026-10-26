@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 17:56:03** · maintain · Updated `[[concepts/data_governance/data_governance]]` — lint fix 2: added the missing `## Related Concepts`, linking Data Sanity Check, dbt, and Semantic Layer rather than repeating the pillar links.
+
 - **2026-10-26 17:56:03** · maintain · Updated `[[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions]]` — lint fix 1: dropped the Cloud Scheduler table note and its bare `[[#Scheduling the Job]]` link. The bare `[[#GitHub repository configuration]]` link stays, at the user's choice.
 
 - **2026-10-26 17:42:52** · lint · Audited 44 notes — 1 syntax defect (bare same-note links), 1 missing Related Concepts, 1 block-list frontmatter, 4 tag gaps, 1 untagged tech, 1 hubless subfolder, 1 contradiction, 5 needs-review flags, 6 next questions. No fixes applied.
