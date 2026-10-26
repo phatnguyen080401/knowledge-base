@@ -2,14 +2,11 @@
 
 **The canonical, non-negotiable constitution for every AI agent in this repository.** It defines
 the vault's rules, structure, and note format. There are no scripts or plugins: you are the runtime,
-and the procedures live as markdown skills under `.skill/` (§8). The architecture follows Andrej
-Karpathy's [`llm-wiki`](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) and the
-"AI Second Brain" pattern.
+and the procedures live as markdown skills under `.skill/` (§8).
 
-**Precedence:** `AGENTS.md` > any other instruction file in this repo (`GEMINI.md`,
-`.github/copilot-instructions.md`, etc.) > agent defaults. Other instruction files may only point
-here. Skills elaborate on this file and never override it. If a user request conflicts with a rule
-here, say so and ask before proceeding.
+**Precedence:** `AGENTS.md` > any other instruction file in this repo > agent defaults. Other
+instruction files may only point here. Skills elaborate on this file and never override it. If a
+user request conflicts with a rule here, say so and ask before proceeding.
 
 **Read the skill before you act.** Skills are not auto-loaded. Find the task in §8 and read that
 `SKILL.md` (and the references it names) first.
@@ -28,7 +25,7 @@ here, say so and ask before proceeding.
 2. **Agent-driven.** The file system is the only state. Read the vault to learn its state; write to the vault to change it.
 3. **Compile, don't retrieve.** Merge new information into the existing page. Never append a redundant section, create a near-duplicate page, or paste raw source text verbatim.
 4. **Atomic, complete transactions.** A task is finished only when the note, its wikilinks, `wiki/INDEX.md`, and `wiki/log.md` are all consistent.
-5. **Every write under `wiki/` is audited, and only those.** Any create, update, rename, or delete under `wiki/` produces one `wiki/log.md` entry and a correct `wiki/INDEX.md`. Changes outside `wiki/` (`AGENTS.md`, `.skill/`, plumbing) get no entry of their own; when one accompanies a wiki change, name it in one clause of that entry.
+5. **Every write under `wiki/` is audited, and only those.** Any create, update, rename, or delete under `wiki/` produces one `wiki/log.md` entry and a correct `wiki/INDEX.md`; a `query` or `lint` pass gets an entry even when nothing changed. Changes outside `wiki/` (`AGENTS.md`, `.skill/`, plumbing) get no entry of their own; when one accompanies a wiki change, name it in one clause of that entry.
 6. **Required frontmatter.** Every file under `wiki/concepts/` has `title`, `tags`, `created`, and `updated` (§3).
 7. **Connect with wikilinks.** Every page links to at least one related page and is reachable from at least one other page.
 8. **Single source of truth.** Exactly one page per concept. If two pages cover the same concept, merge them (§7).
@@ -53,7 +50,7 @@ here, say so and ask before proceeding.
 ```text
 .
 ├── AGENTS.md              # This file
-├── .claude/skills/        # Symlink to .skill/: every skill is a Claude Code command (§8)
+├── .claude/skills/        # Symlink to .skill/ (§8)
 ├── .skill/                # Skill procedures (§8)
 ├── raw/                   # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/            # Images, PDFs, and other binaries linked from notes
@@ -72,13 +69,13 @@ root of `concepts/`. The authoritative list of domain folders is the `domain` ta
 A **tech subfolder**, one level deep only, clusters a product family with its own namesake hub note
 (`data_engineering/dbt/` with `dbt.md`). Every note inside carries that product's `tech` tag.
 
-| Item                | Rule                                                        | Example                                                  |
-| ------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
-| Folder name         | `snake_case` of the `domain` tag                            | `databases/`, `data_engineering/dbt/`                    |
-| Concept filename    | `snake_case.md`, singular, no dates, no numbering           | `master_data_management.md`                              |
-| `title`             | Title Case, may include an acronym                          | `Master Data Management (MDM)`                           |
-| Asset filename      | `snake_case`, prefixed by the related concept               | `data_quality_dimensions.png`                            |
-| Wikilink            | Full vault-relative path, always piped                      | `[[concepts/data_governance/data_quality\|Data Quality]]` |
+| Item | Rule | Example |
+| --- | --- | --- |
+| Folder name | `snake_case` of the `domain` tag | `databases/`, `data_engineering/dbt/` |
+| Concept filename | `snake_case.md`, singular, no dates, no numbering | `master_data_management.md` |
+| `title` | Title Case, may include an acronym | `Master Data Management (MDM)` |
+| Asset filename | `snake_case`, prefixed by the related concept | `data_quality_dimensions.png` |
+| Wikilink | Full vault-relative path, always piped | `[[concepts/data_governance/data_quality\|Data Quality]]` |
 
 ---
 
@@ -128,7 +125,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 **Body**
 
 - H1 matching `title`, then a standalone definition paragraph. `##` sections, no skipped levels.
-- Prose and bullets only; no raw HTML; code fences only for real code, config, or queries.
+- Prose, bullets, and tables; no raw HTML; code fences only for real code, config, queries, or Mermaid.
 - Obsidian syntax (links, callouts, embeds, diagrams, math) follows [`obsidian-syntax.md`](.skill/wiki-lint/references/obsidian-syntax.md), including its banned list.
 - Link the first meaningful mention of another concept, not every mention.
 - `## Open Questions & Disagreements` appears whenever sources conflict, a claim is unverified, or you extrapolated. Name both positions and their sources; never silently pick a winner. The note carries `needs-review` exactly while this section is non-empty; delete the section once resolved.
@@ -159,43 +156,39 @@ Formats and examples are in [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.m
   `ingest`, `query`, `lint`, or `maintain`. It is a pointer to the change, not a copy of the note.
   Past entries are never edited or reformatted, whatever their format.
 - **`wiki/INDEX.md`:** lists exactly the files in `wiki/concepts/`, grouped to mirror the folder
-  tree, each with a one-line summary (plus `**Stub.**` for stubs). Verify it against the directory
-  listing after every write.
+  tree, each with a one-line summary (plus `**Stub.**` for stubs).
 
 ## 7. Maintenance Operations
 
 - **Rename:** create the new file, move the content, update every inbound wikilink (search for the old name first), delete the old file, update `INDEX.md`, log `Renamed`.
 - **Merge duplicates:** keep the richer page, merge per §1.3, repoint inbound links, delete the loser (ask first), update `INDEX.md`, log `Merged`.
 - **Delete:** ask first. Repoint or remove inbound links, delete the file, remove it from `INDEX.md`, log `Deleted` with the reason.
-- **Lint pass:** follow [`wiki-lint`](.skill/wiki-lint/SKILL.md). Run the structural *and* semantic checks (§9), report before fixing, log `Audited`.
 
 ---
 
 ## 8. Skill Routing
 
-When a trigger applies, read the `SKILL.md` before acting. Each skill's `description` frontmatter
-lists its full trigger phrases.
+Each skill's `description` frontmatter lists its full trigger phrases.
 
-| Skill                                                    | Read it when                                                                              |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Committing, staging, or writing, fixing, or amending a commit message                     |
-| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | **Every create, update, move, or filing of a note**; choosing tags; tag audits (`references/audit.md`) |
-| [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md)   | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md`                                |
-| [`wiki-create`](.skill/wiki-create/SKILL.md)             | Creating, expanding, or stubbing a note on direct request (`/wiki-create`)                |
-| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md)             | Ingesting files from `raw/` (`/wiki-ingest`)                                              |
-| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | Lint pass, vault audit, health check, broken links, orphans, duplicates (`/wiki-lint`); its `references/obsidian-syntax.md` on **every create or update of a note body** |
-| [`wiki-query`](.skill/wiki-query/SKILL.md)               | Answering a question about the wiki's subject matter (`/wiki-query`)                      |
+| Skill | Read it when |
+| --- | --- |
+| [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Committing, staging, or writing, fixing, or amending a commit message |
+| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) | **Every create, update, move, or filing of a note**; choosing tags; tag audits (`references/audit.md`) |
+| [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md) | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md` |
+| [`wiki-create`](.skill/wiki-create/SKILL.md) | Creating, expanding, or stubbing a note on direct request |
+| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md) | Ingesting files from `raw/` |
+| [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax; its `references/obsidian-syntax.md` on **every note body write** (§3) |
+| [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
 
-`.claude/skills` is a symlink to `.skill/`, so every skill is also a Claude Code slash command
-named after its folder (`/wiki-create`). Command metadata (`argument-hint`, `user-invocable`) lives
-in the skill's frontmatter.
+`.claude/skills` links to `.skill/`, so each skill is also a Claude Code slash command named after
+its folder unless its frontmatter sets `user-invocable: false`.
 
-**Keeping the table in sync (§1.11).** A new skill gets `.skill/<name>/SKILL.md` with `name` (equal to
-its folder and command name) and `description` frontmatter, long material in `references/`, and a
-row here, alphabetical by name. Derive each row from the skill's `description`, never from memory, in one line. A renamed skill
-updates its row and every file referencing the old path. A retired skill loses its row; ask before
-deleting its folder. Before reporting done, confirm every `.skill/*/SKILL.md` has exactly one row
-and every row's link exists.
+**Keeping the table in sync (§1.11).** A skill is `.skill/<name>/SKILL.md` with `name` (equal to its
+folder) and a `description` of trigger phrases (no unquoted `: `), long material in `references/`,
+and one row here, alphabetical, derived from its description. A rename updates its row and every
+file citing the old path; a retirement drops the row, and the folder is deleted only on approval.
+Before reporting done, confirm every `.skill/*/SKILL.md` has exactly one row and every row's link
+exists.
 
 ---
 
@@ -207,10 +200,10 @@ and every row's link exists.
 - [ ] Tags pass the `tag-taxonomy` Definition of Done, and the folder matches the `domain` tag.
 - [ ] Every wikilink is piped and resolves; new notes are reachable from an existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files in `wiki/concepts/`, with current summaries.
-- [ ] `wiki/log.md` has exactly one short entry for the request (none if nothing under `wiki/` changed, except a `query`); no past entry was edited.
+- [ ] `wiki/log.md` has exactly one short entry for the request (none if nothing under `wiki/` changed, except a `query` or `lint` pass); no past entry was edited.
 - [ ] Ingested sources are in `sources` and in `raw/processed/`; failed ones remain in `raw/`.
 - [ ] `stub` and `needs-review` tags match the note's actual state.
-- [ ] No duplicate concept pages; every touched skill has a current §8 row.
+- [ ] No duplicate concept pages.
 
 **Semantic checks.** Required in a lint pass and applied to touched pages on every write; report
 as findings with a proposed fix, never silently correct: contradictions, stale claims, orphans and
