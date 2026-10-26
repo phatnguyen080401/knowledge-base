@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-26 17:29:15** · query · Answered "Why can write skew happen under snapshot isolation but not under serializable?". Read: `[[concepts/databases/isolation_levels]]` (via fresh hot.md route). Filed: nothing; the page already covers it.
+
+- **2026-10-26 17:27:35** · query · Answered "Which read anomalies does snapshot isolation still allow that serializable prevents, and why?". Read: `[[concepts/databases/isolation_levels]]`, `[[concepts/databases/acid]]`. Filed: nothing yet; proposed a read-only transaction anomaly section for `isolation_levels`, awaiting approval.
+
 - **2026-10-26 17:24:37** · maintain · Updated `wiki/INDEX.md` — shortened 14 summaries to at most 160 characters and the preamble to one line, so shortlisting reads less; created `wiki/hot.md` for query routing. Part of an instruction-layer overhaul that added `wiki-maintain`, `wiki-resolve`, and URL ingest.
 
 - **2026-10-25 23:09:42** · maintain · Renamed `wiki/assets/` to `raw/assets/` at the user's request; no note linked an asset, so nothing was repointed. AGENTS.md §2, §4 and §6 and the `git-commit-helper` and `wiki-lint` skills updated to match.
