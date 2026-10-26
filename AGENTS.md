@@ -50,7 +50,7 @@ user request conflicts with a rule here, say so and ask before proceeding.
 ```text
 .
 ├── AGENTS.md              # This file
-├── .claude/skills/        # Symlink to .skill/ (§8)
+├── .claude/skills/        # Local, git-ignored symlink to .skill/ (§8)
 ├── .skill/                # Skill procedures (§8)
 ├── raw/                   # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/            # Images, PDFs, and other binaries linked from notes
@@ -188,7 +188,8 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims, expanding stubs |
 
 `.claude/skills` links to `.skill/`, so each skill is also a Claude Code slash command named after
-its folder unless its frontmatter sets `user-invocable: false`.
+its folder unless its frontmatter sets `user-invocable: false`. The link is git-ignored; each clone
+creates it once (README "Setup").
 
 **Keeping the table in sync (§1.11).** A skill is `.skill/<name>/SKILL.md` with `name` (equal to its
 folder) and a `description` of trigger phrases (no unquoted `: `), long material in `references/`,

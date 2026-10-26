@@ -60,7 +60,7 @@ The answer workflow is the one most systems skip. Here, answering is a *write* o
 ```text
 .
 ├── AGENTS.md          # The constitution: rules, structure, note format, skill routing
-├── .claude/skills/    # Symlink to .skill/, so each skill is a Claude Code /command
+├── .claude/skills/    # Local symlink to .skill/ (git-ignored; see Setup)
 ├── .skill/            # The procedures, one folder per skill
 ├── raw/               # Intake queue: drop sources here
 │   ├── assets/        # Images and PDFs embedded in notes
@@ -98,6 +98,23 @@ The folder rules and the note format are defined once, in [`AGENTS.md`](AGENTS.m
 ---
 
 ## Using it
+
+### Setup
+
+`.claude/` is git-ignored, so after cloning, link the skills into it to get them as Claude Code slash commands (`/wiki-create`, `/wiki-query`, …). Run from the repository root:
+
+```bash
+# macOS / Linux / WSL
+mkdir -p .claude && ln -s ../.skill .claude/skills
+```
+
+```powershell
+# Windows PowerShell (needs Developer Mode or an elevated shell)
+New-Item -ItemType Directory -Force .claude | Out-Null
+New-Item -ItemType SymbolicLink -Path .claude\skills -Target ..\.skill
+```
+
+Other agents need no setup; they read `AGENTS.md` directly.
 
 **As a reader.** Open [`wiki/INDEX.md`](wiki/INDEX.md) and start from a summary that interests you. The vault is an [Obsidian](https://obsidian.md) vault — open the repository folder directly for graph view and working wikilinks — but every file is plain markdown and reads fine on GitHub or in any editor.
 

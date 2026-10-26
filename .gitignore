@@ -13,3 +13,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+
+### Claude Code ###
+# per-user; recreate the skills symlink per README "Setup"
+.claude/
