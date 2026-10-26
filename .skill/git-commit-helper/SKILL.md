@@ -1,17 +1,15 @@
 ---
 name: git-commit-helper
-description: Generate short Conventional Commits 1.0.0 messages automatically by reading the actual diff. Use this skill whenever the user runs or asks you to run `git commit`, stages changes, says "commit this", "write a commit message", "what should this commit say", "fix my commit message", "amend the message", or asks whether a change is a `feat` or a `fix`, needs a scope, or counts as a breaking change. Analyzes `git status` and `git diff` to pick the type, scope, and description, keeps the message to a single subject line unless the diff earns a body, splits unrelated changes into separate commits, and never pushes or rewrites published history without approval.
+description: Write a Conventional Commits message from the actual diff, then commit. Use whenever the user runs or asks you to run `git commit`, stages changes, says "commit this", "write a commit message", "what should this commit say", "fix my commit message", or "amend the message", or asks whether a change is a `feat` or a `fix`, needs a scope, or is a breaking change.
 ---
 
 # Git Commit Helper
 
 Turn a working tree into one or more **Conventional Commits 1.0.0** messages, derived from the
-diff rather than from what the user said they were doing. You already know the specification; this
-skill is the procedure and this vault's conventions. When a format rule is genuinely ambiguous, the
-compiled spec is [[concepts/version_control/conventional_commits|Conventional Commits]].
-
-This skill operates under `AGENTS.md`, which wins on conflict: **never `git push`, force-push, or
-rewrite published history** without explicit approval, and never bypass a hook with `--no-verify`.
+diff rather than from what the user said they were doing. You already know the specification;
+when a format rule is genuinely ambiguous, the compiled spec is
+[[concepts/version_control/conventional_commits|Conventional Commits]]. Never bypass a hook with
+`--no-verify`.
 
 ## Rules
 
@@ -60,7 +58,7 @@ Read independent files in parallel. For a large diff, read file by file rather t
 stat.
 
 **3. Classify and group.** Write the one sentence that describes each logical change's effect. One
-sentence → one commit; several → a split (below). Then pick type, scope, and description.
+sentence → one commit; several → a split. Then pick type, scope, and description.
 
 **4. Confirm or proceed.**
 
@@ -68,6 +66,8 @@ sentence → one commit; several → a split (below). Then pick type, scope, and
   then commit in the same turn. The request was the approval.
 - A split, an uncertain classification, a found secret, or the user asked only for a *message* →
   propose and wait.
+- Amending or rewording an existing commit → read
+  [fixing-a-message.md](references/fixing-a-message.md) first.
 
 **5. Stage, commit, verify — one command.** Stage explicit paths (never `git add -A` blind); use
 `git add -p` only when one file holds two unrelated changes. Pipe the message so bodies and
@@ -89,9 +89,9 @@ telling the user what landed and what remains uncommitted. **Do not push.**
 
 ## Choosing the Type
 
-`feat` new capability (MINOR) · `fix` corrects shipped behaviour (PATCH) · `docs` · `refactor` · `perf`
-· `test` · `build` (build system, dependency pins) · `ci` · `style` (formatting only) · `chore`
-(residue) · `revert` (`Refs:` footer with the SHAs). Any becomes MAJOR with `!` or `BREAKING CHANGE:`.
+Types: `feat` (MINOR), `fix` (PATCH), `docs`, `refactor`, `perf`, `test`, `build`, `ci`, `style`,
+`chore`, `revert` (with a `Refs:` footer naming the SHAs). Any becomes MAJOR with `!` or
+`BREAKING CHANGE:`.
 
 Tie-breakers — these are where mistakes happen:
 
@@ -107,50 +107,24 @@ change spans several areas, or when it would only repeat a word in the descripti
 
 ## This Vault's Conventions
 
-Note content is the product here, so `docs` is the common type. These conventions supersede the
-older history: commits before the skill existed used `feat:` and `feat(wiki):` for notes — don't
-imitate them.
+Note content is the product here, so `docs` is the common type. Commits from before this skill used
+`feat:` and `feat(wiki):` for notes — don't imitate them.
 
-| Change                                      | Message shape                                                        |
-| ------------------------------------------- | -------------------------------------------------------------------- |
+| Change | Message shape |
+| --- | --- |
 | New or expanded note under `wiki/concepts/` | `docs(<domain-tag>): …` — kebab-case tag, e.g. `docs(ai-engineering): add RAG note` |
-| Rename, merge, or delete of a note          | `refactor(wiki): …` — structure changed, content did not             |
-| `wiki/INDEX.md` or `wiki/log.md` alone      | `docs(index): …` / `docs(log): …`                                    |
-| Skill under `.skill/`                       | `feat(skill): …` new skill · `docs(skill): …` change · `docs(skill)!: …` retirement |
-| `AGENTS.md`                                 | `docs(agents): …`, with `!` when it reverses an existing rule        |
-| Asset under `raw/assets/`                   | `chore(assets): …`                                                   |
-| `.gitignore`, README, CI                    | `chore: …` / `docs: …` / `ci: …`                                     |
+| Rename, merge, or delete of a note | `refactor(wiki): …` — structure changed, content did not |
+| `wiki/INDEX.md` or `wiki/log.md` alone | `docs(index): …` / `docs(log): …` |
+| Skill under `.skill/` | `feat(skill): …` new skill · `docs(skill): …` change · `docs(skill)!: …` retirement |
+| `AGENTS.md` | `docs(agents): …`, with `!` when it reverses an existing rule |
+| Asset under `raw/assets/` | `chore(assets): …` |
+| `.gitignore`, README, CI | `chore: …` / `docs: …` / `ci: …` |
 
 **Never split a note from its `INDEX.md` and `log.md` updates.** `AGENTS.md` §1.4 makes them one
 transaction, so they belong in the note's commit. Notes in different domains are separate commits
 unless one request produced them together.
 
-## Fixing a Message
-
-- **Most recent commit, not pushed** — `git commit --amend -F -` with the corrected message.
-- **Older commit, not pushed** — confirm first (it rewrites local history). Interactive rebase is
-  unavailable here, so reword non-interactively:
-
-  ```sh
-  GIT_SEQUENCE_EDITOR="sed -i '1s/^pick/edit/'" git rebase -i <sha>~1
-  git commit --amend -F - <<'EOF'
-  <corrected message>
-  EOF
-  GIT_EDITOR=: git rebase --continue
-  ```
-
-- **Already pushed** — stop and ask. A non-conforming commit in published history is harmless;
-  rewriting it is prohibited without approval.
-
-## Examples
-
-```text
-docs(data-governance): add data sanity check note
-```
-
-```text
-docs(skill)!: retire obsidian-markdown skill
-```
+## Example
 
 ```text
 fix: prevent racing of requests
@@ -163,9 +137,6 @@ Refs: #123
 
 ## Done When
 
-- [ ] The message came from a diff that was read in full, untracked files included.
-- [ ] Subject is `<type>[(scope)][!]: <description>`, imperative, ≤72 characters, no period.
-- [ ] One line, unless a body explains a *why* in at most four lines.
-- [ ] One type per commit; unrelated changes were split; a note shipped with its `INDEX.md`/`log.md`.
-- [ ] Breaks are signalled; references and co-authors were supplied, not inferred.
+- [ ] The message came from the diff read in full, untracked files included; the subject is `<type>[(scope)][!]: <description>`, imperative, ≤72 characters, no period, with a body only for a *why*.
+- [ ] One type per commit; unrelated changes were split; a note shipped with its `INDEX.md`/`log.md`; breaks are signalled; references and co-authors were supplied, not inferred.
 - [ ] No secrets staged, no `--no-verify`, no push.
