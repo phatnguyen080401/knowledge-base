@@ -59,6 +59,8 @@ the notes it describes. Bash: `date +"%Y-%m-%d %H:%M:%S"`; PowerShell:
 ```text
 .
 ├── AGENTS.md                  # This file. The constitution.
+├── .claude/skills/wiki/       # Claude Code `/wiki` slash-command router (§8)
+├── .skill/                    # Skill procedures (§8)
 ├── raw/                       # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/                # Images, PDFs, and other binaries linked from notes
 │   └── processed/             # Archive of successfully ingested source files
@@ -334,6 +336,8 @@ override it (see Precedence).
 | [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | The whole-vault lint pass: collecting an inventory, running the §9 structural and semantic checks (tags via `audit.md`), the report format, applying approved fixes, logging, and re-verifying | The user says "lint the vault", "lint pass", "audit the wiki", "health check", "find broken links", "find orphans", "find duplicates", "what's stale", or asks whether the wiki is consistent |
 
 **Adding a skill:** create `.skill/<skill-name>/SKILL.md` with `name` and `description` frontmatter, put any long reference material in `.skill/<skill-name>/references/`, and add a row to the table above. A skill that is not listed here will not be found.
+
+**Slash commands (Claude Code):** `/wiki <subcommand> [args]`, defined in `.claude/skills/wiki/SKILL.md`, is a thin router: `lint`, `create`, `tags`, and `commit` open the skills above, and `ingest` and `ask` open §4 and §5. It holds no procedure of its own. To make a new skill invocable, add a row to its routing table as well as this one.
 
 ### Keeping this table in sync
 
