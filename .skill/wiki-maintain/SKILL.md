@@ -29,7 +29,7 @@ change meaning.
 - **Rename or move.** `git mv` the file to its new path (`AGENTS.md` §2 naming). If the title
   changes, update `title`, the H1, and the definition sentence. A domain change retags with
   [`tag-taxonomy`](../tag-taxonomy/SKILL.md), whose domain table gives the folder; a new tech
-  subfolder needs the product's `tech` tag on every note and a namesake hub note.
+  subfolder needs the product's `tech` tag on every note.
 - **Merge.** Keep the richer page and integrate the other per `AGENTS.md` §1.3, with no appended
   section. Union both `sources` lists and both Open Questions sections, re-check the tags, then
   delete the merged-away file once approved.

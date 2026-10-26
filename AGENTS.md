@@ -67,8 +67,8 @@ Folder and tag always agree; changing the domain tag is a rename (§7). Nothing 
 root of `concepts/`. The authoritative list of domain folders is the `domain` table in
 [`.skill/tag-taxonomy/references/taxonomy.md`](.skill/tag-taxonomy/references/taxonomy.md).
 
-A **tech subfolder**, one level deep only, clusters a product family with its own namesake hub note
-(`data_engineering/dbt/` with `dbt.md`). Every note inside carries that product's `tech` tag.
+A **tech subfolder**, one level deep only, clusters a product family (`data_engineering/dbt/`). A
+namesake hub note (`dbt.md`) is optional. Every note inside carries that product's `tech` tag.
 
 | Item | Rule | Example |
 | --- | --- | --- |
