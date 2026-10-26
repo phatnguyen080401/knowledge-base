@@ -74,6 +74,7 @@ namesake hub note (`dbt.md`) is optional. Every note inside carries that product
 | --- | --- | --- |
 | Folder name | `snake_case` of the `domain` tag | `databases/`, `data_engineering/dbt/` |
 | Concept filename | `snake_case.md`, singular, no dates, no numbering | `master_data_management.md` |
+| Ingested filename | A note created from a `raw/` source (file or clipped URL) takes the source's filename in `snake_case`, extension dropped; further concepts split from the same source, and notes it only updates, keep concept names | `raw/dama_dmbok_ch11.md` → `dama_dmbok_ch11.md` |
 | `title` | Title Case, may include an acronym | `Master Data Management (MDM)` |
 | Asset filename | `snake_case`, prefixed by the related concept | `data_quality_dimensions.png` |
 | Wikilink | Full vault-relative path, always piped | `[[concepts/data_governance/data_quality\|Data Quality]]` |

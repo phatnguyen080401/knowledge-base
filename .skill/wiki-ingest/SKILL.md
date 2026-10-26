@@ -29,7 +29,8 @@ Compiles files in `raw/` into `wiki/concepts/`, as ordered steps under `AGENTS.m
    | Ambiguous or partially overlapping | Ask the user; never create a near-duplicate |
 
 6. **Write.**
-   - **Create:** a new file in the `AGENTS.md` §3 shape, filled in as far as the source supports.
+   - **Create:** a new file in the `AGENTS.md` §3 shape, filled in as far as the source supports,
+     named after the source per the `AGENTS.md` §2 table.
    - **Update:** merge into the correct existing section, rewriting sentences to integrate the new
      facts; no "Update" or "Additional Notes" section. Bump `updated`.
    - **Conflict:** never silently overwrite. Keep the better-sourced claim in the body **and**
