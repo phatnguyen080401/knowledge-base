@@ -1,6 +1,6 @@
 ---
 name: wiki-create
-description: Create a new concept note in `wiki/concepts/`, or expand the existing one, on a direct request with no `raw/` file — search the vault first, pick tags and folder with tag-taxonomy, write the AGENTS.md §3 note shape, link both ways, update INDEX.md, log one entry, and verify. Use this skill whenever the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", "stub out X", or runs `/wiki create`. For files waiting in `raw/`, follow AGENTS.md §4 ingestion instead.
+description: Create a new concept note in `wiki/concepts/`, or expand the existing one, on a direct request with no `raw/` file — search the vault first, pick tags and folder with tag-taxonomy, write the AGENTS.md §3 note shape, link both ways, update INDEX.md, log one entry, and verify. Use this skill whenever the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", "stub out X", or runs `/wiki create`. For files waiting in `raw/`, use wiki-ingest instead.
 ---
 
 # Wiki Create
@@ -82,7 +82,7 @@ append any new `sources`, and set `updated` to the clock reading. Never change `
    summary; append `**Stub.**` for a `stub` page. A new tech subfolder gets its own `###` group
    with a `Folder:` line.
 2. `wiki/log.md`: one entry under `# Activity Log`, about 40 words, folding in the backlinks and
-   index edit (`AGENTS.md` §6).
+   index edit ([`wiki-audit-trail`](../wiki-audit-trail/SKILL.md)).
 
 ```markdown
 - **YYYY-MM-DD HH:mm:ss** · maintain · Created `[[concepts/<folder>/note_name]]` — <what it covers and why>.

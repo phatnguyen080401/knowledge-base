@@ -20,8 +20,8 @@ and `AGENTS.md` wins on any conflict.
 | ------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `lint`              | `.skill/wiki-lint/SKILL.md`                                          | Whole-vault lint pass; reports and waits for approval before any fix   |
 | `create <topic>`    | `.skill/wiki-create/SKILL.md`                                        | Creates a note on `<topic>`, or expands the existing one               |
-| `ingest [file]`     | `AGENTS.md` §4                                                       | Ingests everything in `raw/`, or only `[file]` when given              |
-| `ask <question>`    | `AGENTS.md` §5                                                       | Answers from the vault with citations, files the answer back, logs it  |
+| `ingest [file]`     | `.skill/wiki-ingest/SKILL.md`                                        | Ingests everything in `raw/`, or only `[file]` when given              |
+| `ask <question>`    | `.skill/wiki-query/SKILL.md`                                         | Answers from the vault with citations, files the answer back, logs it  |
 | `tags [scope]`      | `.skill/tag-taxonomy/SKILL.md` + `references/audit.md`               | Tag audit across the vault, or only `[scope]` (a folder or note)       |
 | `commit`            | `.skill/git-commit-helper/SKILL.md`                                  | Commits the current changes with a Conventional Commits message        |
 

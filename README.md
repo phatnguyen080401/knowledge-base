@@ -57,10 +57,15 @@ The answer workflow is the one most systems skip. Here, answering is a *write* o
 
 ```text
 .
-├── AGENTS.md                  # The constitution — rules, formats, workflows
+├── AGENTS.md                  # The constitution — rules, structure, note format, skill routing
 ├── .skill/                    # Reusable procedures the agent reads on demand
 │   ├── git-commit-helper/     #   Conventional Commits message generation
-│   └── tag-taxonomy/          #   The six tag facets and their vocabularies
+│   ├── tag-taxonomy/          #   The six tag facets and their vocabularies
+│   ├── wiki-audit-trail/      #   log.md and INDEX.md formats
+│   ├── wiki-create/           #   Create or expand a note on direct request
+│   ├── wiki-ingest/           #   Compile files from raw/ into notes
+│   ├── wiki-lint/             #   Whole-vault structural and semantic audit
+│   └── wiki-query/            #   Answer from the vault, file insights back
 ├── raw/                       # Intake queue: drop sources here
 │   └── processed/             # Archive of what has been compiled
 └── wiki/
@@ -147,7 +152,7 @@ Two files make the vault's history inspectable.
 
 **To ask a question.** Ask it. The agent reads the index, cites the pages it used, tells you explicitly when the vault does not cover something, and files any new synthesis back.
 
-**To keep it healthy.** Ask for a lint pass. The agent runs both checklists in `AGENTS.md` §9 — structural (missing frontmatter, broken links, orphans, index drift) and semantic (contradictions, stale claims, hollow hubs, unsourced figures) — and reports findings before touching anything.
+**To keep it healthy.** Ask for a lint pass. The agent follows the `wiki-lint` skill and runs both checklists in `AGENTS.md` §9 — structural (missing frontmatter, broken links, orphans, index drift) and semantic (contradictions, stale claims, hollow hubs, unsourced figures) — and reports findings before touching anything.
 
 Any agent that reads `AGENTS.md` can operate the vault. It is written for GitHub Copilot, Claude, Gemini, and anything else that honours an instructions file.
 

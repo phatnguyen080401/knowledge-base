@@ -23,7 +23,7 @@ This skill operates under `AGENTS.md`, which wins on conflict.
 4. **Respect hand edits.** If the log or git history shows the user deliberately left something in
    a non-conforming state, flag it in one line and leave it.
 5. **Never touch history.** Old `wiki/log.md` entries with date-only prefixes or long bodies are
-   the expected state, not defects (`AGENTS.md` §6).
+   the expected state, not defects ([`wiki-audit-trail`](../wiki-audit-trail/SKILL.md)).
 
 ## 1. Collect
 
@@ -101,14 +101,14 @@ Only approved fixes. Read the clock once and reuse it for every `updated` and th
 | Tag change | `audit.md` §5 |
 | Domain change or file move | Rename, `AGENTS.md` §7 |
 | Duplicate pages | Merge, `AGENTS.md` §7 (ask before deleting the loser) |
-| Contradiction | Record both positions under `## Open Questions & Disagreements`, tag `needs-review` (`AGENTS.md` §4.5) |
+| Contradiction | Record both positions under `## Open Questions & Disagreements`, tag `needs-review` (`AGENTS.md` §3) |
 | Missing page or hollow hub | Create a `stub` or expand the page per `AGENTS.md` §3, linked both ways |
 | Broken link, orphan, index drift | Edit the link, add a backlink, rewrite the index entry |
 | Skill registry drift | Edit the §8 row (no log entry; outside `wiki/`) |
 
 ## 6. Log
 
-One `wiki/log.md` entry for the whole pass, kept to a headline line of about 40 words (`AGENTS.md` §6):
+One `wiki/log.md` entry for the whole pass, kept to a headline line of about 40 words ([`wiki-audit-trail`](../wiki-audit-trail/SKILL.md)):
 
 ```markdown
 - **YYYY-MM-DD HH:mm:ss** · lint · Audited 44 notes — 3 broken links, 1 orphan, 2 index mismatches, 1 contradiction, 4 next questions. No fixes applied.

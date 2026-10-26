@@ -70,7 +70,7 @@ Then wait for approval.
 ## 6. Log
 
 Write one `wiki/log.md` entry for the whole audit, not one per note, kept to a headline line
-(`AGENTS.md` §6):
+([`wiki-audit-trail`](../../wiki-audit-trail/SKILL.md)):
 
 ```markdown
 - **YYYY-MM-DD HH:mm:ss** · maintain · Updated 14 notes — retagged to the six-facet vocabulary; 2 block lists inlined, `sanity-check` dropped. Taxonomy gained the `streaming` topic.

@@ -121,7 +121,7 @@ imitate them.
 | Asset under `raw/assets/`                   | `chore(assets): …`                                                   |
 | `.gitignore`, README, CI                    | `chore: …` / `docs: …` / `ci: …`                                     |
 
-**Never split a note from its `INDEX.md` and `log.md` updates.** `AGENTS.md` §4 makes them one
+**Never split a note from its `INDEX.md` and `log.md` updates.** `AGENTS.md` §1.4 makes them one
 transaction, so they belong in the note's commit. Notes in different domains are separate commits
 unless one request produced them together.
 

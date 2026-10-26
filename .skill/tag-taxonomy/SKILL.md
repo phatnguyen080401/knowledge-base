@@ -55,7 +55,7 @@ filename suggests.
    look at how sibling notes are tagged. Match their choices unless this note genuinely differs.
    This is the cheapest way to stay consistent.
 3. **Domain** — the single field. Use the *Excludes* column to break ties. If it still splits two
-   ways, the note covers two concepts and should be split (`AGENTS.md` §4.3).
+   ways, the note covers two concepts and should be split (`AGENTS.md` §3, one concept per note).
 4. **Topic** — the most specific approved topic that fits. Add a second or third only while each
    narrows the note further. If nothing fits, propose a new tag (below); never leave the note
    topicless or force a poor match.

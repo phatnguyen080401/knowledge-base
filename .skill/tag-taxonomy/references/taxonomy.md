@@ -20,7 +20,7 @@ written inline on one line, never as a block list.
 ## Facet: `domain` — exactly one per note
 
 The field the note belongs to. These are mutually exclusive; if two feel equally right, the note
-probably covers two concepts and should be split (`AGENTS.md` §4.3).
+probably covers two concepts and should be split (`AGENTS.md` §3, one concept per note).
 
 **This table is also the authoritative list of domain folders.** A note lives in the *Folder* of its
 `domain` tag, under `wiki/concepts/`. Adding a row means creating a folder, which needs user approval
