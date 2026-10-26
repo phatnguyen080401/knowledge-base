@@ -1,9 +1,9 @@
 ---
 title: Retrieval-Augmented Generation (RAG)
-tags: [ai-engineering, llm-applications, retrieval-augmentation, knowledge-graph, needs-review, llm-wiki]
+tags: [ai-engineering, llm-applications, retrieval-augmentation, knowledge-graph, llm-wiki]
 sources: [raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf, "https://www.anthropic.com/news/contextual-retrieval"]
 created: 2026-10-23 11:16:00
-updated: 2026-10-26 18:20:00
+updated: 2026-10-26 23:09:00
 ---
 
 # Retrieval-Augmented Generation (RAG)
@@ -564,6 +564,33 @@ question. Still below RAPTOR, HippoRAG 2, and LightRAG.
 > memory generates far more before committing. Supplying direct evidence makes generation short and
 > confident. Retrieval latency is not a tax paid on top of generation — it partly replaces it.
 
+### Limits of the Evidence
+
+Every result above comes from one source, and these caveats bound how far it carries.
+
+- **A single preprint reporting on its own system.** Every number is self-reported by Ming et al.
+  (arXiv:2605.25480v2) with no independent replication, and the comparison is explicitly end-to-end
+  rather than component-matched — LLM-Wiki is granted a larger query-time tool-call budget than the
+  baselines. The *direction* of the result is consistent across four benchmarks and survives an
+  answer-model swap to GPT-4o, which is the stronger signal; the specific margins are unreplicated.
+- **Dataset-provided context, not open-domain retrieval.** The corpus is the union of the evaluated
+  questions' own gold paragraphs — a few thousand passages, every one of them relevant to some
+  question in the set. This is the setting most favourable to compilation, because there is nothing
+  to compile that is not worth compiling. It establishes nothing about behaviour against a noisy
+  web-scale corpus, which is the setting most production systems face.
+- **Compilation cost is acknowledged but not quantified.** The paper states that building the wiki
+  costs more than chunk-and-embed and argues the cost amortizes over later queries, but gives no
+  break-even query volume, so "amortizes" is an assertion rather than a planning input.
+- **Scale is untested.** The largest evaluated wiki is 5,825 pages. The authors expect directory
+  indices to become unwieldy and page selection to degrade at tens of thousands, and name
+  hierarchical indexing, sharding, and stale-fact handling as unsolved future work.
+- **The AuthTrace judging is partly automated.** Scores come from GPT-4o-mini against a 0–3 rubric.
+  A 240-sample blind human audit by three annotators found 89.6% agreement (Cohen's
+  $\kappa = 0.79$, "substantial" by the Landis–Koch bands) and preserved the per-column method
+  ranking, but human scores ran 1.6–2.2 points lower throughout, so the automatic judge is
+  measurably permissive. Agreement also decays with difficulty — 91.2% on single-document questions
+  down to 87.9% on high-fan-in ones — which is exactly where the headline claim lives.
+
 ## Choosing Between Them
 
 | Reach for | When |
@@ -593,35 +620,6 @@ source archives alongside the compiled pages — as LLM-Wiki's `sources/` tree d
 - **Forgetting retrieved text is untrusted input.** A retrieved document can carry prompt
   injection. The control is privilege restriction at the tool boundary, not an instruction in the
   system prompt.
-
-## Open Questions & Disagreements
-
-- **The evidence is a single preprint reporting on its own system.** Every number above is
-  self-reported by Ming et al. (arXiv:2605.25480v2) with no independent replication, and the
-  comparison is explicitly end-to-end rather than component-matched — LLM-Wiki is granted a larger
-  query-time tool-call budget than the baselines. The *direction* of the result is consistent
-  across four benchmarks and survives an answer-model swap to GPT-4o, which is the stronger signal;
-  treat the specific margins as unverified.
-- **Every benchmark uses dataset-provided context, not open-domain retrieval.** The corpus is the
-  union of the evaluated questions' own gold paragraphs — a few thousand passages, every one of
-  them relevant to some question in the set. This is the setting most favourable to compilation,
-  because there is nothing to compile that is not worth compiling. Nothing here establishes how the
-  approach behaves against a noisy web-scale corpus, which is the setting most production systems
-  actually face.
-- **Compilation cost is acknowledged but not quantified.** The paper states that building the wiki
-  is more expensive than chunk-and-embed and argues the cost amortizes over later queries, but
-  gives no figure for the break-even query volume. Without it, "amortizes" is an assertion, not a
-  planning input.
-- **Scalability is an open limitation, by the authors' own account.** The largest evaluated wiki is
-  5,825 pages. At tens of thousands, directory indices become unwieldy and page selection is
-  expected to degrade; hierarchical indexing, sharding, and stale-fact handling are named as
-  unsolved future work.
-- **The AuthTrace judging is partly automated.** Scores come from GPT-4o-mini against a 0–3 rubric.
-  A 240-sample blind human audit by three annotators found 89.6% agreement (Cohen's
-  $\kappa = 0.79$, "substantial" by the Landis–Koch bands) and preserved the per-column method
-  ranking, but human scores ran 1.6–2.2 points lower throughout, so the automatic judge is
-  measurably permissive. Agreement also decays with difficulty — 91.2% on single-document
-  questions down to 87.9% on high-fan-in ones — which is exactly where the headline claim lives.
 
 ## Related Concepts
 

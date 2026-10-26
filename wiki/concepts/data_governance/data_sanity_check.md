@@ -1,8 +1,8 @@
 ---
 title: Data Sanity Check
-tags: [data-governance, data-quality, data-validation, needs-review, sanity-check]
+tags: [data-governance, data-quality, data-validation, sanity-check]
 created: 2026-10-22 13:14:46
-updated: 2026-10-26 18:20:00
+updated: 2026-10-26 21:57:35
 ---
 
 # Data Sanity Check
@@ -32,6 +32,8 @@ Both are [[concepts/data_governance/data_quality|data quality]] checks and the v
 | Failure means | Something is structurally wrong — stop            | Some records are wrong — triage        |
 
 The practical rule: a sanity check should almost never fire, and when it does, the pipeline is broken. A validation suite is *expected* to surface defects and feeds the measure-and-remediate loop instead of halting it.
+
+No standard fixes the data-engineering usage. In software testing the ISTQB glossary treats *sanity test* as a synonym of *smoke test* — a suite covering a system's main functionality "before planned testing begins" — so the narrower sense some teams use, a quick re-check after a change, is local convention. Transformation frameworks commonly call every such assertion a *data test*: a query that returns failing rows. This note reserves *sanity check* for the cheap, aggregate, boundary-placed subset.
 
 ## How a Check Works
 
@@ -92,7 +94,7 @@ That one table does triple duty: it is the baseline source for stateful checks, 
 | 4 | Full-table aggregate | Scans the table |
 | 5 | Row-level comparison against another table | Scans both |
 
-A volume check written as a full-table `COUNT(*)` on a large fact table is rung 4 doing rung 1's job. See [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]] for what that costs per run, multiplied by every run forever.
+A volume check written as a full-table `COUNT(*)` on a large fact table is rung 4 doing rung 1's job, and on a consumption-priced warehouse that scan is paid on every run, forever.
 
 ### Running the check against the right snapshot
 
@@ -235,7 +237,7 @@ Sanity checks belong at boundaries — every point where data changes hands or c
 4. **After deployment.** A post-release check on the first production run, confirming that a change which passed in CI against a sample also holds against full volume.
 5. **Continuously, as monitoring.** The same assertions run on a schedule against live tables, catching decay — a feed that stops, a source that starts emitting nulls — between pipeline runs.
 
-In a transformation framework that runs tests as part of the build — [[concepts/data_engineering/dbt/dbt|dbt]] being one common example — the first three collapse into a single mechanism: the assertions are declared beside the model they guard, and the build fails if any of them does.
+In a transformation framework that runs tests as part of the build, the first three collapse into a single mechanism: the assertions are declared beside the model they guard, and the build fails if any of them does.
 
 ## Setting Thresholds
 
@@ -254,7 +256,7 @@ A sanity check is only as good as its threshold, and thresholds are where these 
 
 Detection is worthless without a defined response, and the response has to be decided *before* the alert, not during it.
 
-- **Block or warn** must be set per check, as a deliberate statement of what is unacceptable to publish. See the open question below.
+- **Block or warn** is set per check, as a deliberate statement of what is unacceptable to publish. Blocking at the publish gate leaves the previous good version serving, so "halt on bad data" and "keep stale data" are the same outcome rather than rival policies. A blocking check stops every downstream step; a warning check, or one whose measurement falls between the warn and error thresholds, only reports and lets the run continue.
 - **Quarantine rather than discard.** Route failing data to a holding area so it can be inspected and replayed; a check that drops rows to make itself pass has become the defect.
 - **Make the run idempotent.** Re-running after a fix must produce the same result as a clean first run, or every incident leaves duplicates behind.
 - **Route to a named owner.** An alert into a shared channel has no owner; [[concepts/data_governance/data_stewardship|stewardship]] is what turns a failed check into a resolved one.
@@ -264,22 +266,19 @@ Detection is worthless without a defined response, and the response has to be de
 
 - **Checking the pipeline instead of the data.** "The job succeeded" is not a sanity check. Exit code zero and an empty table coexist comfortably.
 - **Testing only in CI against a sample.** Volume-dependent failures — skew, memory, duplicate keys that only appear at scale — are invisible against a dev slice.
-- **Full-scan checks on large tables.** On a consumption-priced warehouse, a per-run full scan to count rows can cost more than the transformation; prefer table metadata, partition-scoped counts, or approximate aggregates. See [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]].
+- **Full-scan checks on large tables.** On a consumption-priced warehouse, a per-run full scan to count rows can cost more than the transformation; prefer table metadata, partition-scoped counts, or approximate aggregates.
 - **No check on the grain.** Uniqueness of the declared key is the single highest-value assertion in most pipelines and the one most often omitted, because the grain was never written down.
 - **Checks that were never updated.** A rule asserting a column's enum values, written before upstream added a category, fails on correct data — and teaches the team to override failures.
 - **Never testing the test.** A check nobody has watched fail is a check nobody has verified. Corrupt the data deliberately in a dev environment and confirm the run actually aborts and the alert actually reaches a named human; silently broken checks are indistinguishable from passing ones.
 - **Letting the baseline absorb the defect.** A stateful check whose history includes failed runs drifts toward the bad value, so a degradation that persists for a week becomes the new normal and the check goes quiet exactly when it matters.
 - **Treating the sanity suite as the quality programme.** Passing every boundary check says nothing about whether the numbers are right, only that they are not obviously wrong.
 
-## Open Questions & Disagreements
-
-- **Should a failed sanity check block the pipeline or only alert?** One position holds that publishing known-bad data is strictly worse than publishing nothing, so the check is a circuit breaker that halts the run. The other holds that stale-but-complete data serves consumers better than an empty or missing table, so the check should alert and let the previous version stand. Both are defensible and the answer depends on the consumer's tolerance for staleness versus incorrectness; this note does not pick a winner, and the choice should be recorded per dataset rather than set globally.
-- **The boundary between "sanity check", "smoke test", and "data test" is not standardized.** The usage described here — cheap, aggregate, boundary-placed — is the common one in data engineering, but no authoritative source fixes the terms, and in software testing "sanity test" carries a different meaning (a narrow re-check after a change). Unverified: this note is written from general practice rather than a cited specification, and is flagged here rather than presented as settled.
-
 ## Related Concepts
 
 - [[concepts/data_governance/data_quality|Data Quality]] — the parent discipline; every check here maps to one of its six dimensions, and the lifecycle's *monitor* stage is where these checks live
-- [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — one common implementation, where declaring the assertions beside the model makes the gate and the transformation the same artifact
 - [[concepts/data_governance/data_stewardship|Data Stewardship]] — names the owner an alert routes to, without which a failed check is only a log line
 - [[concepts/data_governance/metadata_management|Metadata Management]] — check definitions, thresholds, and outcomes are themselves metadata, and lineage is what scopes the blast radius when one fails
-- [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]] — checks that run on every pipeline run are a recurring scan cost, and the thing that makes metadata-based counts worth the effort
+
+## References
+
+- [ISTQB Glossary: Smoke test](https://istqb-glossary.page/smoke-test/) — defines *sanity test* as a synonym of *smoke test*, the basis for the terminology note under Sanity Check vs. Full Validation

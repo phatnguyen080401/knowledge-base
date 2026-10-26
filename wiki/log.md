@@ -1,5 +1,29 @@
 # Activity Log
 
+- **2026-10-26 23:14:38** · maintain · Updated `[[concepts/databases/vector_database]]` — removed `needs-review` after the user deleted its open questions by hand, leaving the section empty.
+
+- **2026-10-26 23:09:00** · maintain · Renamed `[[concepts/ai_engineering/retrieval_augmented_generation]]` to `[[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki]]`, after its source PDF, under the new `AGENTS.md` §2 rule that ingested notes take their source's filename. Repointed 10 links in 5 files.
+
+- **2026-10-26 23:04:12** · maintain · Updated `[[concepts/ai_engineering/retrieval_augmented_generation]]` — moved the five open questions, all caveats about the single source paper, into a new `Limits of the Evidence` subsection beside the results. `needs-review` removed. Source: `raw/processed/retrieval_as_reasoning_self-evolving_agent-native_retrieval_via_llm-wiki.pdf`.
+
+- **2026-10-26 23:01:24** · maintain · Updated `[[concepts/ai_engineering/model_context_protocol]]` — verified the version history and annotation hints against the changelogs and schema, replaced the broken SDK example with SDK-neutral prose, genericized the adoption list, and dropped the open questions at the user's request. `needs-review` removed. Source: `https://modelcontextprotocol.io/specification/2025-11-25/changelog`.
+
+- **2026-10-26 21:57:35** · maintain · Updated `[[concepts/data_governance/data_sanity_check]]` — added a `## References` section citing the ISTQB smoke-test glossary entry, at the user's request.
+
+- **2026-10-26 21:57:02** · maintain · Updated `[[concepts/data_governance/data_sanity_check]]` — dropped the dbt and Dagster URLs from `sources` at the user's request, a deliberate exception to the never-remove rule, since the note no longer cites tool behaviour.
+
+- **2026-10-26 21:55:53** · maintain · Updated `[[concepts/ai_engineering/embeddings]]` — resolved both open questions: input limits, dimensions, and Matryoshka figures now cite named models; MTEB's training-data leakage is sourced to its maintainers' zero-shot rebuild. `needs-review` removed. Source: `https://arxiv.org/abs/2502.13595`.
+
+- **2026-10-26 21:55:45** · maintain · Updated `[[concepts/data_governance/data_sanity_check]]` — made the note tool-neutral at the user's request: removed the dbt, Dagster, and BigQuery specifics and links, keeping the general block-vs-warn semantics.
+
+- **2026-10-26 21:52:59** · maintain · Updated `[[concepts/data_governance/data_sanity_check]]` — resolved both open questions: block-vs-warn is per-check severity at the publish gate, and ISTQB treats sanity test as a smoke-test synonym, correcting the note. `needs-review` removed. Source: `https://docs.getdbt.com/reference/commands/build`.
+
+- **2026-10-26 21:46:05** · maintain · Updated `[[concepts/ai_engineering/ai_engineer]]` — resolved both open questions: parameter-efficient fine-tuning is placed in the role, full fine-tuning stays ML work; the title question was dropped at the user's request. `needs-review` removed. Source: `https://github.com/chiphuyen/aie-book`.
+
+- **2026-10-26 21:39:51** · maintain · Updated `[[concepts/devops/brainboard]]`, `[[concepts/version_control/gitlab/gitlab_repository_security]]` — removed `needs-review` after the user deleted the remaining open questions by hand, leaving both sections empty.
+
+- **2026-10-26 21:30:48** · maintain · Updated `[[concepts/devops/brainboard]]`, `[[concepts/version_control/gitlab/gitlab_repository_security]]` — removed three open questions the user ruled out of scope (Brainboard pricing, GitLab tier naming, signed commits vs. automation). `needs-review` stays for the remaining items.
+
 - **2026-10-26 18:29:25** · maintain · Updated `[[concepts/devops/trivy]]`, `[[concepts/version_control/gitlab/gitlab_repository_security]]` — replaced the borrowed `data-security` topic with the new `supply-chain-security`, whose row was added to the tag taxonomy.
 
 - **2026-10-26 18:20:00** · maintain · Updated 5 notes (`[[concepts/ai_engineering/ai_engineer]]`, `[[concepts/ai_engineering/retrieval_augmented_generation]]`, `[[concepts/data_governance/data_sanity_check]]`, `[[concepts/devops/brainboard]]`, `[[concepts/version_control/gitlab/gitlab_repository_security]]`) — re-added `needs-review` to match their open questions; the user chose to keep the §3 rule.

@@ -1,8 +1,9 @@
 ---
 title: AI Engineer
-tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview, needs-review]
+tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview]
+sources: ["https://github.com/chiphuyen/aie-book", "https://www.latent.space/p/ai-engineer", "https://developers.openai.com/api/docs/guides/model-optimization"]
 created: 2026-10-23 10:53:38
-updated: 2026-10-26 18:20:00
+updated: 2026-10-26 23:09:00
 ---
 
 # AI Engineer
@@ -35,14 +36,16 @@ because a capable general model is not a capable product, and closing that gap i
 
 | | AI engineer | ML engineer / data scientist |
 | --- | --- | --- |
-| Relationship to the model | Consumes a pre-trained model | Trains, fine-tunes, or selects an architecture |
+| Relationship to the model | Consumes a pre-trained model | Trains, fully fine-tunes, or selects an architecture |
 | Primary artifact | A running product feature | A model, a dataset, or an analysis |
 | Core skill | Software engineering + applied evaluation | Statistics, modelling, experimentation |
 | Main unit of iteration | Prompt, context, and tool design | Features, labels, hyperparameters |
 | Chief risk managed | Wrong-but-plausible output reaching a user | Model underperforms its metric |
 
-The boundary is real but porous: fine-tuning, embedding-model selection, and reranker training pull
-an AI engineer toward ML work, and a product-minded ML engineer does much of what is listed below.
+The boundary is real but porous. Parameter-efficient fine-tuning belongs to the role, as a late
+lever tried after prompting and retrieval have been measured; full fine-tuning and training custom
+models stay ML work. Embedding-model selection and reranker training pull an AI engineer further
+toward ML, and a product-minded ML engineer does much of what is listed below.
 
 ## Core Responsibilities
 
@@ -62,7 +65,7 @@ an AI engineer toward ML work, and a product-minded ML engineer does much of wha
 - Build retrieval: chunking strategy, [[concepts/ai_engineering/embeddings|Embeddings]] choice,
   vector or hybrid search over a [[concepts/databases/vector_database|Vector Database]], reranking,
   and the decision of what gets into the context window at all. See
-  [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]
+  [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]]
   for the pipeline and for the agent-driven alternative to fixed top-$k$ context.
 - Decide what the model is allowed to see. Retrieval must respect the same row- and column-level
   rules as any other access path, or it becomes a bypass around
@@ -153,7 +156,7 @@ measurement and statistics-of-sampling than to optimization theory.
 
 | Role | Owns | Hands off to the AI engineer |
 | --- | --- | --- |
-| ML engineer | Training, fine-tuning, and serving custom models | A model endpoint and its characteristics |
+| ML engineer | Training, full fine-tuning, and serving custom models | A model endpoint and its characteristics |
 | Data scientist | Analysis, experiment design, offline metrics | Evaluation methodology and statistical rigour |
 | Data engineer | The pipelines that land and transform source data | Clean, fresh, permissioned data to retrieve over |
 | Software / backend engineer | The application the AI feature lives inside | The surrounding service, auth, and delivery path |
@@ -182,22 +185,9 @@ grows, and the AI engineer is usually the one left holding the end-to-end behavi
   best debugging tool available and a serious privacy liability; retention and redaction are design
   decisions.
 
-## Open Questions & Disagreements
-
-- **The title is not standardized.** In some organizations "AI engineer" means exactly the
-  model-consuming application role described here; in others it is a relabelled ML engineer who
-  trains models, or a backend engineer who happens to call an API. This note documents the first
-  sense, which is the dominant industry usage as of 2026, but it rests on general practice rather
-  than any cited standard — expect individual job descriptions to disagree.
-- **Where fine-tuning belongs is contested.** One position holds that fine-tuning is ML work handed
-  off to a specialist; the other, that parameter-efficient fine-tuning is now routine enough to be
-  ordinary AI-engineering practice alongside prompting and retrieval. The split appears to track
-  team size and tooling maturity rather than any principle, and this note deliberately does not
-  pick a winner.
-
 ## Related Concepts
 
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the grounding mechanism this role spends most of its quality budget on, from flat chunk retrieval to agent-traversed compiled knowledge
+- [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the grounding mechanism this role spends most of its quality budget on, from flat chunk retrieval to agent-traversed compiled knowledge
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the representation behind semantic search; choosing and migrating the model is a long-lived decision this role owns
 - [[concepts/databases/vector_database|Vector Database]] — the retrieval engine whose index recall and permission filtering the role must tune and secure
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — the standard for wiring tools and data to a model, and the boundary where tool privileges are enforced

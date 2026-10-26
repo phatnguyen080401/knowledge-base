@@ -1,8 +1,8 @@
 ---
 title: Vector Database
-tags: [databases, indexing, retrieval-augmentation, partitioning, query-optimization, pgvector, needs-review]
+tags: [databases, indexing, retrieval-augmentation, partitioning, query-optimization, pgvector]
 created: 2026-10-25 19:51:25
-updated: 2026-10-25 19:51:25
+updated: 2026-10-26 23:14:38
 ---
 
 # Vector Database
@@ -11,7 +11,7 @@ A vector database stores high-dimensional vectors — almost always
 [[concepts/ai_engineering/embeddings|Embeddings]] — alongside their source metadata, and answers
 **nearest-neighbour queries**: "give me the $k$ stored vectors closest to this one". It is the
 retrieval engine behind semantic search and the dense half of
-[[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]].
+[[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]].
 What distinguishes it from an ordinary database is not storage but the index: a structure for
 **approximate** nearest-neighbour (ANN) search that trades a small, tunable loss of accuracy for
 orders-of-magnitude less work per query.
@@ -290,21 +290,10 @@ versions mitigate with iterative index scans.
 - **Treating the vector database as the retrieval system.** It answers "nearest vectors"; chunking,
   hybrid fusion, reranking, and evaluation still decide answer quality.
 
-## Open Questions & Disagreements
-
-- **Product capabilities move faster than this note.** The landscape table, pgvector's operator set,
-  and its iterative-scan behaviour reflect general knowledge as of 2026 rather than a cited source,
-  and vendor feature sets change between releases. Verify against current documentation before
-  choosing an engine.
-- **"Do you need a dedicated vector database at all?" is unsettled.** One camp argues vectors are
-  just another index type that every general-purpose database will absorb; the other that
-  billion-scale filtered ANN search needs a purpose-built engine. The split appears to track scale
-  and filter selectivity; no benchmark settles it in general.
-
 ## Related Concepts
 
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the vectors this database stores; their model, dimension, and metric dictate the index configuration
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the main consumer; index recall bounds RAG recall
+- [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the main consumer; index recall bounds RAG recall
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — a common way to expose a vector search to agents as a tool
 - [[concepts/data_structures/b_tree|B-Tree]] — the one-dimensional ordered index that does *not* generalise to similarity search, and why ANN structures exist
 - [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — the segment-and-compaction pattern many vector engines use to handle inserts and deletes

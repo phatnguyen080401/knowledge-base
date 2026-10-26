@@ -1,8 +1,9 @@
 ---
 title: Embeddings
-tags: [ai-engineering, llm-applications, retrieval-augmentation, needs-review]
+tags: [ai-engineering, llm-applications, retrieval-augmentation]
+sources: ["https://developers.openai.com/api/docs/guides/embeddings", "https://huggingface.co/Qwen/Qwen3-Embedding-8B", "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", "https://arxiv.org/abs/2502.13595"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-25 19:51:25
+updated: 2026-10-26 23:09:00
 ---
 
 # Embeddings
@@ -12,7 +13,7 @@ content — a sentence, a passage, an image, a product, a user — such that **i
 meaning land close together in the vector space**. Embeddings turn "is this about the same thing?"
 into a geometry question that a computer can answer with arithmetic. They are the representation
 that dense retrieval in
-[[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]
+[[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]]
 rests on, and the payload a [[concepts/databases/vector_database|Vector Database]] stores and
 searches.
 
@@ -46,7 +47,8 @@ flowchart LR
 ```
 
 1. **Tokenize.** The text is split into sub-word tokens. Every embedding model has a maximum input
-   length (commonly 512 tokens for older encoders, 8k or more for newer ones); anything beyond it is
+   length (256 word pieces for `all-MiniLM-L6-v2`, 8,192 tokens for OpenAI's `text-embedding-3`
+   models, 32k for `Qwen3-Embedding-8B`); anything beyond it is
    **silently truncated**, which is one reason chunk size and embedding model must be chosen
    together.
 2. **Encode.** A transformer produces one contextual vector per token — the vector for "bank"
@@ -142,12 +144,16 @@ hundred candidates, cross-encoder to rerank the top few dozen**.
 
 Vector size is a direct cost lever, and three techniques shrink it:
 
-- **Fewer dimensions.** Typical models output 384 to 4,096 dimensions. More dimensions can hold more
-  distinctions, but quality gains flatten well before the largest sizes.
+- **Fewer dimensions.** Typical models output 384 (`all-MiniLM-L6-v2`) to 4,096
+  (`Qwen3-Embedding-8B`) dimensions; OpenAI's `text-embedding-3-small` and `-large` output 1,536 and
+  3,072. More dimensions can hold more distinctions, but quality gains flatten well before the
+  largest sizes.
 - **Matryoshka representation learning (MRL).** Some models are trained so the *first* $k$
-  dimensions are themselves a usable embedding. A 3,072-dimension vector can be truncated to 256 and
-  re-normalized with a modest quality loss — useful for a cheap first-pass search followed by
-  full-length rescoring.
+  dimensions are themselves a usable embedding. OpenAI reports that `text-embedding-3-large`
+  shortened from 3,072 to 256 dimensions still outperforms the full 1,536-dimension
+  `text-embedding-ada-002`, and `Qwen3-Embedding-8B` accepts any output size from 32 to 4,096. A
+  manually truncated vector must be re-normalized; truncation is useful for a cheap first-pass
+  search followed by full-length rescoring.
 - **Quantization.** Store each dimension in fewer bits: `float16` halves memory almost for free,
   `int8` quarters it, and **binary** (one bit per dimension, compared with Hamming distance) cuts it
   by 32× at a real quality cost that rescoring the top candidates with full-precision vectors largely
@@ -171,7 +177,9 @@ These figures are raw vector payload only; the index structure adds its own over
 3. **Check the input limit against the chunk size.** A 2,000-token chunk fed to a 512-token model
    embeds only its opening quarter.
 4. **Use public leaderboards to shortlist, not to decide.** The MTEB benchmark compares models across
-   many tasks, but public benchmarks leak into training data and rarely look like your corpus.
+   many tasks, but its own maintainers rebuilt the English suite as zero-shot because common
+   fine-tuning sets such as MS MARCO had leaked into it, and models trained on them scored lower once
+   those were removed. A leaderboard also rarely looks like your corpus.
 5. **Decide on your own labelled set.** A few hundred real queries with known relevant passages,
    scored by recall@k, settles more than any leaderboard.
 6. **Weigh hosting.** An API model adds per-token cost, network latency, and data egress; a
@@ -187,7 +195,7 @@ These figures are raw vector payload only; the index structure adds its own over
 - **Embed exactly what you search.** The text that was embedded and the text shown to the model
   should be the same chunk; enriching a chunk with its document title or a short generated context
   before embedding is a cheap, well-evidenced gain (see the contextual retrieval results in
-  [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]).
+  [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]]).
 - **Batch and cache.** Embedding is embarrassingly parallel at ingest, and identical texts produce
   identical vectors for a fixed model, so hash-keyed caching avoids paying twice.
 - **Treat vectors as sensitive data.** Research on embedding inversion shows that text can be
@@ -209,20 +217,9 @@ These figures are raw vector payload only; the index structure adds its own over
 - **Domain shift.** A general model has never seen your internal jargon or product names and places
   them by surface form alone.
 
-## Open Questions & Disagreements
-
-- **Dimension and storage figures are illustrative, not current vendor specifications.** Model
-  input limits, output sizes, and the set of models supporting Matryoshka truncation change with
-  every release; the ranges above reflect general practice as of 2026 rather than a cited source.
-  Check the specific model's documentation before sizing infrastructure.
-- **How much to trust MTEB is disputed.** One position treats it as the standard comparison; the
-  other notes that leaderboard rank correlates weakly with in-domain retrieval quality once models
-  have trained on overlapping data. This note sides with evaluating on your own set but does not
-  settle the question.
-
 ## Related Concepts
 
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — the pipeline embeddings feed; retrieval recall is bounded by embedding quality
+- [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the pipeline embeddings feed; retrieval recall is bounded by embedding quality
 - [[concepts/databases/vector_database|Vector Database]] — where embeddings are stored, indexed for approximate nearest-neighbour search, filtered, and fused with lexical results
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role that selects, evaluates, and migrates embedding models
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — how a semantic-search capability built on embeddings is commonly exposed to an agent as a tool

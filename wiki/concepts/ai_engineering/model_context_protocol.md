@@ -1,9 +1,9 @@
 ---
 title: Model Context Protocol (MCP)
-tags: [ai-engineering, llm-applications, api-protocols, access-control, model-context-protocol, needs-review]
-sources: ["https://modelcontextprotocol.io/specification/2026-07-28", "https://modelcontextprotocol.io/specification/2026-07-28/changelog", "https://modelcontextprotocol.io/specification/2026-07-28/basic", "https://modelcontextprotocol.io/specification/2026-07-28/server/tools", "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization", "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"]
+tags: [ai-engineering, llm-applications, api-protocols, access-control, model-context-protocol]
+sources: ["https://modelcontextprotocol.io/specification/2026-07-28", "https://modelcontextprotocol.io/specification/2026-07-28/changelog", "https://modelcontextprotocol.io/specification/2026-07-28/basic", "https://modelcontextprotocol.io/specification/2026-07-28/server/tools", "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization", "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation", "https://modelcontextprotocol.io/specification/2024-11-05", "https://modelcontextprotocol.io/specification/2025-03-26/changelog", "https://modelcontextprotocol.io/specification/2025-06-18/changelog", "https://modelcontextprotocol.io/specification/2025-11-25/changelog", "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/2026-07-28/schema.ts"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-25 19:51:25
+updated: 2026-10-26 23:09:00
 ---
 
 # Model Context Protocol (MCP)
@@ -28,7 +28,7 @@ specification revision.
 - **It is the de facto industry standard.** Introduced by Anthropic in November 2024, it was
   donated in December 2025 to the Agentic AI Foundation, a directed fund under the Linux Foundation
   co-founded with Block and OpenAI. Anthropic reported more than 10,000 active public servers at
-  that point, and adoption by ChatGPT, Cursor, Gemini, Microsoft Copilot, and Visual Studio Code.
+  that point, and adoption across the major AI assistants and developer tools.
 - **It moves the security boundary.** A server's tools are arbitrary code execution, and its outputs
   flow straight into a model's context. Every MCP connection is both a capability grant and a
   prompt-injection channel, and has to be designed as one.
@@ -342,7 +342,7 @@ the host that brokers it.
 
 ## MCP and Retrieval
 
-MCP is a natural transport for [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]]:
+MCP is a natural transport for [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]]:
 
 - **Retrieval as a tool.** A `search` tool fronting a [[concepts/databases/vector_database|Vector Database]]
   (with [[concepts/ai_engineering/embeddings|Embeddings]] computed server-side) lets the model decide
@@ -368,27 +368,11 @@ function-calling format, and many MCP servers are thin wrappers over an existing
 
 ## Building a Server
 
-A minimal server in the official Python SDK's high-level API — decorators derive the JSON Schema
-from type hints and the description from the docstring:
-
-```python
-from mcp.server.fastmcp import FastMCP
-
-mcp = FastMCP("docs-search")
-
-@mcp.tool()
-def search_docs(query: str, top_k: int = 5) -> list[dict]:
-    """Semantic search over the product documentation. Returns the top_k chunks with source URIs."""
-    return vector_store.search(query, k=top_k)
-
-@mcp.resource("docs://{doc_id}")
-def get_doc(doc_id: str) -> str:
-    """Full text of one documentation page."""
-    return doc_store.read(doc_id)
-
-if __name__ == "__main__":
-    mcp.run()  # stdio by default
-```
+A server declares a name and registers each capability with a handler. A tool takes a name, a
+description written for the model, and a JSON Schema for its arguments — most SDKs derive the
+schema from the handler's type signature and the description from its documentation. A resource
+takes a URI template such as `docs://{doc_id}`. The server then listens on stdio by default, or
+on Streamable HTTP for remote use.
 
 Design guidance that holds regardless of SDK:
 
@@ -425,27 +409,11 @@ Design guidance that holds regardless of SDK:
 - **Copying pre-2026 tutorials.** Many still show the `initialize` handshake, session IDs, HTTP+SSE,
   or sampling — accurate for their time, deprecated or removed now.
 
-## Open Questions & Disagreements
-
-- **The specification is moving fast.** This note was compiled from the 2026-07-28 revision in
-  October 2026. The revision before it was eight months earlier, and the next one may change the
-  details again; check the latest revision before implementing.
-- **The earlier rows of the version history are from general knowledge, not re-read sources.** The
-  2026-07-28 row and its deprecations come from the official changelog; the 2024–2025 rows were not
-  re-verified against each revision's changelog.
-- **The annotation hint names are not restated in the 2026-07-28 tools page.** The read-only,
-  destructive, idempotent, and open-world hints come from earlier revisions; whether the current
-  schema keeps them unchanged was not confirmed here.
-- **The Python example's API may lag the stateless revision.** It shows the high-level SDK interface
-  as commonly documented; SDK releases supporting 2026-07-28 may have changed names or defaults.
-- **Adoption figures are self-reported.** The "more than 10,000 active public servers" figure comes
-  from Anthropic's own donation announcement and has no independent count behind it.
-
 ## Related Concepts
 
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — MCP is a JSON-RPC request/response protocol with server-sent-event streaming, and sits in that family
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role responsible for giving models tools and bounding what those tools can do; MCP is now the default mechanism
-- [[concepts/ai_engineering/retrieval_augmented_generation|Retrieval-Augmented Generation (RAG)]] — retrieval exposed as an MCP tool becomes agent-driven rather than fixed top-$k$
+- [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — retrieval exposed as an MCP tool becomes agent-driven rather than fixed top-$k$
 - [[concepts/databases/vector_database|Vector Database]] — the most common backend behind a semantic-search MCP server
 - [[concepts/ai_engineering/embeddings|Embeddings]] — computed server-side so the host never needs to know which embedding model a search uses
 - [[concepts/data_governance/data_security|Data Security]] — least privilege, audience-bound tokens, and permission enforcement at the source are the controls MCP authorization implements

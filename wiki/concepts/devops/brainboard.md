@@ -1,9 +1,9 @@
 ---
 title: Brainboard
-tags: [devops, deployment, ci-cd, brainboard, terraform, overview, needs-review]
+tags: [devops, deployment, ci-cd, brainboard, terraform, overview]
 sources: ["https://www.brainboard.co/", "https://docs.brainboard.co/"]
 created: 2026-10-21 15:02:01
-updated: 2026-10-26 18:20:00
+updated: 2026-10-26 21:39:51
 ---
 
 # Brainboard
@@ -57,12 +57,6 @@ The vendor's stated use cases, which are the clearest statement of who it is aim
 Judgement, not vendor claim: Brainboard is an **internal developer platform for infrastructure**, not a drawing tool and not a Terraform replacement. It is worth evaluating when the bottleneck is *access to infrastructure expertise* — many teams needing cloud resources, few people able to write and review Terraform, and a standards problem that review alone has failed to fix. It is not the answer when a small, Terraform-fluent team already has modules, a pipeline, and policy checks working, because the platform's value is mostly in the glue those teams have already built.
 
 The decisive evaluation questions are portability questions: the generated code goes to your Git repository, so what happens to the designs, templates, and pipelines if you stop paying — and does hand-edited HCL survive a round trip back into the canvas?
-
-## Open Questions & Disagreements
-
-- **Round-tripping.** The documentation describes generating code from the design and importing infrastructure into a design, but not what happens to Terraform that was hand-edited outside the platform. Whether the canvas is the only safe place to edit is unverified, and it determines how reversible adoption is.
-- **Pricing and tiering.** A free tier is advertised; the actual limits and paid tiers were not read and are deliberately not recorded here.
-- **Unverified capability claims.** Everything in the tables above is the vendor's description. Nothing here has been tested, and no independent review was consulted.
 
 ## Related Concepts
 

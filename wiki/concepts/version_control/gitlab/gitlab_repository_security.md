@@ -1,9 +1,9 @@
 ---
 title: GitLab Repository Security
-tags: [version-control, source-history, supply-chain-security, access-control, ci-cd, gitlab, how-to, needs-review]
+tags: [version-control, source-history, supply-chain-security, access-control, ci-cd, gitlab, how-to]
 sources: ["https://best.openssf.org/SCM-BestPractices/gitlab/", "https://docs.gitlab.com/user/project/repository/branches/protected/", "https://docs.gitlab.com/user/project/repository/push_rules/"]
 created: 2026-10-22 10:43:17
-updated: 2026-10-26 18:29:25
+updated: 2026-10-26 21:39:51
 ---
 
 # GitLab Repository Security
@@ -141,12 +141,6 @@ Prevention fails eventually, and the response order is not the intuitive one.
 - **Approvals that survive new commits.** Without *require new approvals when commits are added*, approval attaches to a branch, not to a diff.
 - **Skipped pipelines counted as successful.** A `rules:` change that skips the pipeline then satisfies the "pipelines must succeed" check.
 - **Settings that live only in the UI.** Protection configured per project drifts across dozens of projects; group-level settings, compliance frameworks, and security policies applied centrally are what make a rule hold at scale.
-
-## Open Questions & Disagreements
-
-- **Tier availability is version-dependent and not recorded here.** Push rules, Code Owners, protected environments, audit events, security policies, and secret push protection are paid-tier features, but which feature sits in which tier has moved between GitLab releases, and some scanners that began as Ultimate-only were later made broadly available. The claims above say "paid tiers" rather than naming Premium or Ultimate for this reason. Verify against the current GitLab documentation for the version actually deployed before planning around any single feature.
-- **Self-managed vs. GitLab.com.** Several controls (instance-wide default branch protection, audit event retention, runner isolation) behave differently on a self-managed instance than on GitLab.com. The source material for this note did not distinguish the two.
-- **Signed-commit enforcement vs. automation.** Requiring signed commits blocks bots and web-IDE edits that do not sign. Whether to carve out an exception, or to give the automation its own signing key, is unresolved and depends on how much of the history is machine-authored.
 
 ## Related Concepts
 
