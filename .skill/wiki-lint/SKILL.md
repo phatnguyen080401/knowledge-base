@@ -10,8 +10,7 @@ A lint pass audits every note under `wiki/concepts/` against the two checklists 
 canonical list of checks; this skill is the procedure for running them. Tag checks are delegated to
 [`tag-taxonomy/references/audit.md`](../tag-taxonomy/references/audit.md) rather than repeated here.
 The Obsidian syntax rules, which writers also follow, live in
-[obsidian-syntax.md](references/obsidian-syntax.md), with [callouts.md](references/callouts.md)
-and [embeds.md](references/embeds.md) as detail.
+[obsidian-syntax.md](references/obsidian-syntax.md).
 
 This skill operates under `AGENTS.md`, which wins on conflict.
 
