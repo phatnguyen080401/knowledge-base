@@ -2,7 +2,7 @@
 title: dbt (Data Build Tool)
 tags: [data-engineering, data-modeling, data-validation, data-lineage, dbt]
 created: 2026-09-24 10:10:13
-updated: 2026-10-22 13:43:11
+updated: 2026-10-26 23:17:48
 ---
 
 # dbt (Data Build Tool)
@@ -243,6 +243,7 @@ dbt groups adapters by who stands behind them: **dbt Labs–maintained**, **vend
 - [[concepts/data_governance/data_stewardship|Data Stewardship]] — model ownership through groups and YAML owners gives stewards a concrete place to act
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — the engine to reach for when a transformation cannot be expressed as warehouse SQL; `dbt-spark` and `dbt-databricks` run dbt models on it
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — sits upstream in the Extract & Load row above; dbt starts only once Kafka Connect or an equivalent has landed the data
+- [[concepts/data_engineering/workflow_orchestration|Workflow Orchestration]] — the scheduler a platform needs around dbt, since dbt sequences only its own models
 
 ## References
 

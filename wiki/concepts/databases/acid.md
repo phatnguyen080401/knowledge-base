@@ -2,7 +2,7 @@
 title: ACID (Atomicity, Consistency, Isolation, Durability)
 tags: [databases, transactions, concurrency-control, consistency-models]
 created: 2026-09-24 10:57:07
-updated: 2026-10-22 10:53:55
+updated: 2026-10-26 23:17:48
 ---
 
 # ACID (Atomicity, Consistency, Isolation, Durability)
@@ -173,10 +173,12 @@ This matters directly for pipelines: it is why a [[concepts/data_engineering/dbt
 
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — the parent discipline; how much of ACID to keep is one of its defining structural trade-offs
 - [[concepts/databases/isolation_levels|Transaction Isolation Levels]] — the I expanded: which anomalies each level actually permits
+- [[concepts/databases/multiversion_concurrency_control|Multiversion Concurrency Control (MVCC)]] — the versioning mechanism behind non-blocking reads
 - [[concepts/databases/cap_theorem|CAP Theorem]] — why ACID does not survive unchanged once data is distributed across nodes
 - [[concepts/databases/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]] — the deliberate alternative when availability outranks strict correctness
 - [[concepts/data_structures/b_plus_tree|B+ Tree]] — the in-place storage structure whose torn-page risk shapes how the WAL is written
 - [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — the append-only alternative, whose WAL exists only to replay the memtable
+- [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]] — the log behind atomicity and durability, and the basis of crash recovery
 - [[concepts/data_governance/data_quality|Data Quality]] — transactions enforce integrity at write time; quality rules audit it afterwards
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — depends on atomic table swaps so that rebuilt models are never observed half-written
 

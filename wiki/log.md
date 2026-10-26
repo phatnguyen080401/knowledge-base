@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-26 23:21:14** · maintain · Renamed `[[concepts/software_architecture/oauth]]` to `[[concepts/identity_and_access/oauth]]` — filed under the new `identity-and-access` domain the user approved for access-control notes, added to the taxonomy domain table. Repointed 1 link.
+
+- **2026-10-26 23:17:48** · maintain · Created six stubs: `[[concepts/software_architecture/idempotency]]`, `[[concepts/databases/distributed_consensus]]`, `[[concepts/data_engineering/workflow_orchestration]]`, `[[concepts/software_architecture/oauth]]`, `[[concepts/databases/write_ahead_log]]`, `[[concepts/databases/multiversion_concurrency_control]]` — placeholders for concepts the vault mentioned without a page; orchestration scoped to data workflows per the user.
+
 - **2026-10-26 23:14:38** · maintain · Updated `[[concepts/databases/vector_database]]` — removed `needs-review` after the user deleted its open questions by hand, leaving the section empty.
 
 - **2026-10-26 23:09:00** · maintain · Renamed `[[concepts/ai_engineering/retrieval_augmented_generation]]` to `[[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki]]`, after its source PDF, under the new `AGENTS.md` §2 rule that ingested notes take their source's filename. Repointed 10 links in 5 files.

@@ -25,6 +25,7 @@ Folder: `wiki/concepts/data_architecture/`
 Folder: `wiki/concepts/data_engineering/`
 
 - [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]] — per-job cost attribution from `INFORMATION_SCHEMA`, plus the controls those measurements justify.
+- [[concepts/data_engineering/workflow_orchestration|Workflow Orchestration]] — scheduling, sequencing, retrying, and backfilling pipeline tasks as a cross-system DAG; Airflow, Dagster. **Stub.**
 
 ### dbt (Data Build Tool)
 
@@ -77,8 +78,11 @@ Folder: `wiki/concepts/databases/`
 - [[concepts/databases/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — the four guarantees, the mechanism behind each, and where they break down once distributed.
 - [[concepts/databases/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]] — session guarantees, tunable quorums, conflict resolution, and what BASE hands to the application.
 - [[concepts/databases/cap_theorem|CAP Theorem]] — what C, A, and P actually mean, why "pick two" is wrong, and the PACELC refinement.
+- [[concepts/databases/distributed_consensus|Distributed Consensus]] — nodes agreeing on one value or log despite failures; Paxos, Raft, majority quorums, leader election. **Stub.**
 - [[concepts/databases/isolation_levels|Transaction Isolation Levels]] — the six anomalies with worked interleavings, the level matrix, and what each engine's level names really mean.
+- [[concepts/databases/multiversion_concurrency_control|Multiversion Concurrency Control (MVCC)]] — row versions and snapshots so readers and writers never block each other. **Stub.**
 - [[concepts/databases/vector_database|Vector Database]] — exact vs. approximate nearest-neighbour search, HNSW/IVF/PQ/DiskANN indexes, filtering, hybrid search with RRF, scaling, the product landscape, and pgvector.
+- [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]] — log-before-write for crash recovery, atomicity, durability, and log-shipping replication. **Stub.**
 
 ## DevOps
 
@@ -86,6 +90,12 @@ Folder: `wiki/concepts/devops/`
 
 - [[concepts/devops/brainboard|Brainboard]] — tool overview: visual multi-cloud design generating Terraform/OpenTofu, with CI/CD, drift detection, and policy and cost scanning. Vendor-sourced, unverified.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
+
+## Identity and Access
+
+Folder: `wiki/concepts/identity_and_access/`
+
+- [[concepts/identity_and_access/oauth|OAuth (Open Authorization)]] — delegated authorization with scoped access tokens; OAuth 2.0, OpenID Connect. **Stub.**
 
 ## Software Architecture
 
@@ -96,6 +106,7 @@ Folder: `wiki/concepts/software_architecture/`
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- vs. CPU-bound work, race conditions with worked interleavings, synchronization primitives, and deadlock.
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
 - [[concepts/software_architecture/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
+- [[concepts/software_architecture/idempotency|Idempotency]] — operations safe to repeat: retries, idempotency keys, at-least-once delivery. **Stub.**
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
 
 ## Version Control

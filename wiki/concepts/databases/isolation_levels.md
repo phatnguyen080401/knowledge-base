@@ -2,7 +2,7 @@
 title: Transaction Isolation Levels
 tags: [databases, transactions, concurrency-control]
 created: 2026-09-24 10:57:07
-updated: 2026-10-26 18:11:11
+updated: 2026-10-26 23:17:48
 ---
 
 # Transaction Isolation Levels
@@ -233,6 +233,7 @@ Write skew is harder: only options 3 and 5 address it, because the row you write
 ## Related Concepts
 
 - [[concepts/databases/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — the parent guarantee; isolation levels are the dial on its I, and the concurrency-control mechanisms behind them are described there
+- [[concepts/databases/multiversion_concurrency_control|Multiversion Concurrency Control (MVCC)]] — the snapshot mechanism most engines use to implement read committed and snapshot isolation
 - [[concepts/databases/cap_theorem|CAP Theorem]] — the distributed analogue of the same correctness-versus-performance trade-off, where linearizability replaces serializability
 - [[concepts/databases/base_consistency|BASE (Basically Available, Soft State, Eventual Consistency)]] — what happens when the trade is pushed all the way toward availability and isolation is abandoned entirely
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — the level a workload runs at is a design decision, not an operational detail

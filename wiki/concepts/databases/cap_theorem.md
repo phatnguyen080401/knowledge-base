@@ -2,7 +2,7 @@
 title: CAP Theorem
 tags: [databases, distributed-systems, consistency-models, fault-tolerance, replication]
 created: 2026-09-24 10:57:07
-updated: 2026-10-22 10:53:55
+updated: 2026-10-26 23:17:48
 ---
 
 # CAP Theorem
@@ -131,6 +131,7 @@ The pattern across all of them: **the guarantee is a per-operation configuration
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — event-driven integration inherits the same eventual-consistency costs at the system boundary
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — a worked example of the trade-off as a per-write setting: replication factor, `acks`, and `min.insync.replicas`
 - [[concepts/data_governance/data_quality|Data Quality]] — stale or divergent replicas surface downstream as consistency and timeliness failures
+- [[concepts/databases/distributed_consensus|Distributed Consensus]] — the mechanism a CP system uses to keep replicas agreeing, and the reason it stalls without a majority
 
 ## References
 

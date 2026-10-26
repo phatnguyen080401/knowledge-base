@@ -2,7 +2,7 @@
 title: API and Integration Protocols
 tags: [software-architecture, api-protocols, overview]
 created: 2026-09-23 11:54:32
-updated: 2026-10-21 14:23:04
+updated: 2026-10-26 23:21:14
 ---
 
 # API and Integration Protocols
@@ -175,3 +175,5 @@ Capital markets have their own equivalent: the [[concepts/software_architecture/
 - [[concepts/data_governance/metadata_management|Metadata Management]] — API and event schemas are governed metadata that belong in the catalog
 - [[concepts/data_governance/master_data_management|Master Data Management (MDM)]] — cross-system integration is where identifier mismatches surface and golden records are reconciled
 - [[concepts/data_governance/data_governance|Data Governance]] — sets the policy for who may expose or consume which data over which interface
+- [[concepts/software_architecture/idempotency|Idempotency]] — the property that decides which calls, deliveries, and webhook retries are safe to repeat
+- [[concepts/identity_and_access/oauth|OAuth (Open Authorization)]] — the delegated-authorization standard securing most HTTP APIs
