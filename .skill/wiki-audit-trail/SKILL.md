@@ -1,72 +1,50 @@
 ---
 name: wiki-audit-trail
-description: The formats for `wiki/log.md` and `wiki/INDEX.md` — the one-line log entry (timestamp, operation, verb, target, why, source), what does and does not get logged, keeping entries short, the `query` entry, append-only history, and the INDEX grouping, ordering, summaries, and `**Stub.**` marker. Read it before writing any `wiki/log.md` entry or editing `wiki/INDEX.md`, which means on every create, update, rename, merge, delete, ingest, answered question, or lint pass.
+description: Exact formats for `wiki/log.md` entries and `wiki/INDEX.md`. Read before writing any log entry or editing INDEX.md, i.e. on every wiki create, update, rename, merge, delete, ingest, answered query, or lint pass.
 user-invocable: false
 ---
 
 # Wiki Audit Trail
 
-The format spec for the two audit files. `AGENTS.md` §6 holds the invariants; this skill holds the
-exact shapes and examples.
-
-This skill operates under `AGENTS.md`, which wins on conflict.
+Formats for the two audit files; the invariants are `AGENTS.md` §1.5 and §6.
 
 ## `wiki/log.md`
 
-Append-only, newest entry first, immediately under the `# Activity Log` heading. **One entry per
-request**, on one line:
+Newest entry first, immediately under the `# Activity Log` heading, one line per request:
 
 ```markdown
 - **YYYY-MM-DD HH:mm:ss** · <operation> · <Verb> `[[concepts/<folder>/note_name]]` — <the headline change and why>. Source: `raw/processed/<file>`.
 ```
 
-- **Timestamp:** full date *and* time from the request's single clock reading, so entries written
-  on the same day stay ordered. Never invent or copy a timestamp.
-- **Operation:** exactly one of `ingest`, `query`, `lint`, or `maintain`, matching the workflow
-  that produced the entry. The `·` separators make the log greppable: `grep ' · lint · ' wiki/log.md`.
+- **Timestamp:** date *and* time from the request's clock reading, so same-day entries stay ordered.
+- **Operation:** exactly one of `ingest`, `query`, `lint`, or `maintain`, matching the workflow. The
+  `·` separators keep the log greppable: `grep ' · lint · ' wiki/log.md`.
 - **Verb:** `Created`, `Updated`, `Expanded`, `Merged`, `Renamed`, `Deleted`, `Answered` (query),
   or `Audited` (lint pass).
 - Omit the `Source:` clause for direct requests.
 
-### What gets logged
+**Writing it: never read the whole log.** Read only its first 3 lines (Read with `limit: 3`, or
+`head -n 3 wiki/log.md`), then insert the entry plus one blank line directly under
+`# Activity Log`. To look something up in the log, grep it. `git diff -U0 wiki/log.md` must show
+only added lines.
 
-The log is the audit trail of **the `wiki/` folder**, not of the repository. Write an entry when,
-and only when, a request changed something under `wiki/`. The sole exception is the `query` entry,
-which records a question answered *from* the wiki even when nothing was filed.
-
-| Change                                                                              | Log entry? |
-| ----------------------------------------------------------------------------------- | ---------- |
-| Any note under `wiki/concepts/`, or `wiki/INDEX.md`                                 | Yes        |
-| An asset under `raw/assets/`, only as a clause of the note entry that links it      | Folded in  |
-| A question answered from the vault, including `Filed: nothing`                      | Yes        |
-| `AGENTS.md`: a rule, workflow, or routing-table change                              | No         |
-| Anything under `.skill/`: a new skill, a reworded procedure, a vocabulary addition  | No         |
-| Repository plumbing: `.gitignore`, `README.md`, CI config, tooling                  | No         |
-
-A change outside `wiki/` that lands *alongside* a wiki change is not a separate entry: fold it into
-the one entry as a trailing clause, and only when it explains the wiki change. A request that
-touched nothing under `wiki/` leaves the log untouched; git history is the record for those files.
+**What gets an entry:** every change under `wiki/` (an asset under `raw/assets/` is a clause of the
+entry for the note that embeds it), plus every `query` and every `lint` pass, even when nothing
+changed. Nothing else (`AGENTS.md` §1.5).
 
 ### Keep entries short
 
-An entry is a **pointer to a change, not a copy of it**. The content lives in the note; restating
-it here doubles the writing and ages badly the moment the note is edited. One sentence, ceiling
-about 40 words.
+An entry points to a change; it never copies it. One sentence, about 40 words at most.
 
-- Log **what changed, where, and why**, never *what the note now says*. A section-by-section tour
-  of the note is the note, pasted twice.
-- **Fold routine companion edits in.** Updating `INDEX.md`, adding backlinks, bumping `updated`,
-  appending `sources`, and archiving the raw file happen on every write. They never get their own
-  entry. Mention one only when it was unusual (a new index group, links repointed vault-wide).
-- **Split only for genuinely separate actions**, such as two unrelated notes changed in one
-  request. Not for each file a single change touched, and never for a file outside `wiki/`.
-- Record a judgement call or deviation in **one clause**. Anything longer belongs under
-  `## Open Questions & Disagreements` in the note.
+- Log **what changed, where, and why**, never what the note now says.
+- **Fold routine companion edits in:** the INDEX entry, backlinks, `updated`, `sources`, archiving
+  the raw file. Mention one only when it was unusual (a new index group, links repointed
+  vault-wide).
+- A judgement call or deviation gets **one clause**; anything longer belongs under the note's
+  `## Open Questions & Disagreements`.
 
 ```markdown
-Good: - **2026-10-22 13:14:46** · maintain · Created `[[concepts/data_governance/data_sanity_check]]` — cheap assertions that prove data is not obviously broken, distinguished from full validation. Two open questions recorded; tagged `needs-review`.
-
-Bad:  the same entry listing every section, table, threshold, and pitfall the note contains.
+- **2026-10-22 13:14:46** · maintain · Created `[[concepts/data_governance/data_sanity_check]]` — cheap assertions that prove data is not obviously broken, distinguished from full validation. Two open questions recorded; tagged `needs-review`.
 ```
 
 A `query` entry names the question, the pages read, and what was filed:
@@ -75,27 +53,23 @@ A `query` entry names the question, the pages read, and what was filed:
 - **YYYY-MM-DD HH:mm:ss** · query · Answered "<question>". Read: `[[concepts/<folder>/a]]`, `[[concepts/<folder>/b]]`. Filed: <new page / section / stub / open question / nothing, and why>.
 ```
 
-### History is append-only
+A lint pass writes `lint · Audited N notes — <one count per defect class>`; applying the approved
+fixes afterwards is its own request with its own `maintain · Updated` entry.
 
-Never edit, reorder, reformat, or condense a past entry; only correct a factual typo. Earlier
-entries use a date-only `- **YYYY-MM-DD**:` prefix, run far longer than the ceiling above, or log
-`AGENTS.md` and `.skill/` changes from before the `wiki/`-only rule. All are left exactly as
-written. The mixed format is the expected state, not a defect to clean up.
+Older entries use a date-only `- **YYYY-MM-DD**:` prefix, run long, or log `AGENTS.md` and
+`.skill/` changes. That is the expected state; never touch them (`AGENTS.md` §6).
 
 ## `wiki/INDEX.md`
 
-The complete list of every page in `wiki/concepts/`, no more and no less. **The index mirrors the
-folder tree:** one `##` group per domain folder and one `###` subgroup per tech subfolder, each
-carrying a `Folder:` line with its path. Groups are ordered as the folders sort; pages are
-alphabetized within each group and use piped wikilinks. A hub page may be listed first in its
-group.
+Exactly the pages in `wiki/concepts/`, mirroring the folder tree: one `##` group per domain folder
+and one `###` subgroup per tech subfolder, each with a `Folder:` line. Groups sort as the folders
+do; pages are alphabetized within a group (a hub may come first) and use piped wikilinks.
 
-**Every entry carries a one-line summary** after an em dash, written so an agent can shortlist from
-the index alone without opening files. Append `**Stub.**` to the summary of any page tagged `stub`.
+**Every entry has a one-line summary** after an em dash, so an agent can shortlist from the index
+alone: at most ~160 characters, naming the sub-topics rather than restating the content, and
+keeping acronyms and product names. Append `**Stub.**` for a page tagged `stub`.
 
 ```markdown
-# Index
-
 ## Data Governance
 
 Folder: `wiki/concepts/data_governance/`
@@ -103,8 +77,9 @@ Folder: `wiki/concepts/data_governance/`
 - [[concepts/data_governance/data_quality|Data Quality]] — the six dimensions and their checks, where defects originate, and the measure-remediate lifecycle.
 ```
 
-Rewrite a page's summary whenever its scope changes, and drop `**Stub.**` when the `stub` tag goes.
-After every write, verify the index matches the recursive directory listing exactly:
+To edit one entry without reading the whole index, `grep -n '^##' wiki/INDEX.md` and Read only
+that group's lines. Rewrite a summary when the page's scope changes; drop `**Stub.**` when the
+`stub` tag goes. After every write the index must match the tree (empty output):
 
 ```bash
 diff <(find wiki/concepts -name '*.md' | sed 's|^wiki/||; s|\.md$||' | sort) \
