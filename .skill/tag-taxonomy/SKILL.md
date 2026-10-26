@@ -1,9 +1,12 @@
 ---
 name: tag-taxonomy
 description: Tag every wiki note across six facets — `domain` (the field, which also fixes the note's folder), `topic` (the sub-area), `concept` (the mechanisms it explains), `tech` (the named products and standards it covers), `type` (overview, comparison, how-to), and `lifecycle` (stub, needs-review) — using the controlled vocabulary in references/taxonomy.md. Use this skill whenever you create, update, move, or file a note and must choose its tags or its folder, and when the user says "fix my tags", "normalize tags", "clean up tags", "tag audit", "retag", "what tags should I use", "tag taxonomy", "my tags are a mess", asks how notes are classified by domain or technology, or wants to add or retire a tag. Always read the taxonomy file before assigning a single tag; read references/audit.md for a vault-wide audit.
+argument-hint: "[scope]"
 ---
 
 # Tag Taxonomy
+
+**As a command:** when the user runs `/tag-taxonomy [scope]`, the scope is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. Run the tag audit in [audit.md](references/audit.md) over that folder or note, or over the whole vault when no scope is given. When you load this skill yourself while writing a note, there is no audit to run; just tag the note.
 
 A note's tag line answers six questions in a fixed order: **what field**, **what sub-area**,
 **which mechanisms**, **which named technologies**, **what shape**, and **what state**. The approved

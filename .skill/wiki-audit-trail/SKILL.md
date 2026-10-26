@@ -1,6 +1,7 @@
 ---
 name: wiki-audit-trail
 description: The formats for `wiki/log.md` and `wiki/INDEX.md` — the one-line log entry (timestamp, operation, verb, target, why, source), what does and does not get logged, keeping entries short, the `query` entry, append-only history, and the INDEX grouping, ordering, summaries, and `**Stub.**` marker. Read it before writing any `wiki/log.md` entry or editing `wiki/INDEX.md`, which means on every create, update, rename, merge, delete, ingest, answered question, or lint pass.
+user-invocable: false
 ---
 
 # Wiki Audit Trail

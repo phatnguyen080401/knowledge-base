@@ -1,9 +1,12 @@
 ---
 name: wiki-create
-description: Create a new concept note in `wiki/concepts/`, or expand the existing one, on a direct request with no `raw/` file — search the vault first, pick tags and folder with tag-taxonomy, write the AGENTS.md §3 note shape, link both ways, update INDEX.md, log one entry, and verify. Use this skill whenever the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", "stub out X", or runs `/wiki create`. For files waiting in `raw/`, use wiki-ingest instead.
+description: Create a new concept note in `wiki/concepts/`, or expand the existing one, on a direct request with no `raw/` file — search the vault first, pick tags and folder with tag-taxonomy, write the AGENTS.md §3 note shape, link both ways, update INDEX.md, log one entry, and verify. Use this skill whenever the user says "create a note on X", "new page for X", "add a note about X", "write up X", "expand the note on X", "stub out X", or runs `/wiki-create`. For files waiting in `raw/`, use wiki-ingest instead.
+argument-hint: "<topic>"
 ---
 
 # Wiki Create
+
+**As a command:** when the user runs `/wiki-create <topic>`, the topic is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. If no topic was given, ask for one instead of guessing.
 
 The procedure for the **direct-request** path of `AGENTS.md` §4: the user names a concept and there
 is no `raw/` file behind it. It strings together the rules of §3 (note format), §4 (search and

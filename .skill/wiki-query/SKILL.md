@@ -1,9 +1,12 @@
 ---
 name: wiki-query
-description: Answer a question from the vault — read INDEX.md first, read the shortlisted pages in full, answer with a piped-wikilink citation for every claim, label anything outside the wiki, then file new synthesis, stubs, conflicts, or corrections back into the vault and log one `query` entry. Use this skill whenever the user asks a question about the wiki's subject matter (rather than asking for an edit), asks "what does the vault say about X", "compare X and Y", or runs `/wiki ask`.
+description: Answer a question from the vault — read INDEX.md first, read the shortlisted pages in full, answer with a piped-wikilink citation for every claim, label anything outside the wiki, then file new synthesis, stubs, conflicts, or corrections back into the vault and log one `query` entry. Use this skill whenever the user asks a question about the wiki's subject matter (rather than asking for an edit), asks "what does the vault say about X", "compare X and Y", or runs `/wiki-query`.
+argument-hint: "<question>"
 ---
 
 # Wiki Query
+
+**As a command:** when the user runs `/wiki-query <question>`, the question is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. If no question was given, ask for one instead of guessing.
 
 The procedure for answering a question about the wiki's subject matter. The wiki is the answer
 source, and answering is not a read-only act: per `AGENTS.md` §1.12, an answer that produced

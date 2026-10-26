@@ -1,9 +1,12 @@
 ---
 name: wiki-ingest
-description: Ingest source files from `raw/` into the wiki — scan the intake queue, read each source in full, split it into concepts, search the vault before writing, create or merge notes (recording conflicts), tag and file them, link both ways, archive the source to `raw/processed/`, then update INDEX.md, the log, and `sources`. Use this skill whenever the user says "ingest", "process raw/", "compile my notes", "import this file", drops a file into `raw/`, or runs `/wiki ingest`. For a direct request with no `raw/` file, use wiki-create instead.
+description: Ingest source files from `raw/` into the wiki — scan the intake queue, read each source in full, split it into concepts, search the vault before writing, create or merge notes (recording conflicts), tag and file them, link both ways, archive the source to `raw/processed/`, then update INDEX.md, the log, and `sources`. Use this skill whenever the user says "ingest", "process raw/", "compile my notes", "import this file", drops a file into `raw/`, or runs `/wiki-ingest`. For a direct request with no `raw/` file, use wiki-create instead.
+argument-hint: "[file]"
 ---
 
 # Wiki Ingest
+
+**As a command:** when the user runs `/wiki-ingest [file]`, the file is `$ARGUMENTS`. Read `AGENTS.md` first if it is not already in context. Ingest only that file when one is given; otherwise ingest everything in `raw/`.
 
 The procedure for compiling files in `raw/` into `wiki/concepts/`. It applies the rules of
 `AGENTS.md` §1 (rules), §3 (note format), and §6 (audit trail) as ordered steps.

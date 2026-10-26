@@ -58,6 +58,7 @@ The answer workflow is the one most systems skip. Here, answering is a *write* o
 ```text
 .
 ├── AGENTS.md                  # The constitution — rules, structure, note format, skill routing
+├── .claude/skills/            # Symlink to .skill/: each skill is a Claude Code /command
 ├── .skill/                    # Reusable procedures the agent reads on demand
 │   ├── git-commit-helper/     #   Conventional Commits message generation
 │   ├── tag-taxonomy/          #   The six tag facets and their vocabularies

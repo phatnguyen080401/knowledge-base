@@ -53,7 +53,7 @@ here, say so and ask before proceeding.
 ```text
 .
 ├── AGENTS.md              # This file
-├── .claude/skills/wiki/   # Claude Code `/wiki` slash-command router (§8)
+├── .claude/skills/        # Symlink to .skill/: every skill is a Claude Code command (§8)
 ├── .skill/                # Skill procedures (§8)
 ├── raw/                   # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/            # Images, PDFs, and other binaries linked from notes
@@ -180,17 +180,18 @@ lists its full trigger phrases.
 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Committing, staging, or writing, fixing, or amending a commit message                     |
 | [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md)           | **Every create, update, move, or filing of a note**; choosing tags; tag audits (`references/audit.md`) |
 | [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md)   | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md`                                |
-| [`wiki-create`](.skill/wiki-create/SKILL.md)             | Creating, expanding, or stubbing a note on direct request (`/wiki create`)                |
-| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md)             | Ingesting files from `raw/` (`/wiki ingest`)                                              |
-| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | Lint pass, vault audit, health check, broken links, orphans, duplicates (`/wiki lint`)    |
-| [`wiki-query`](.skill/wiki-query/SKILL.md)               | Answering a question about the wiki's subject matter (`/wiki ask`)                        |
+| [`wiki-create`](.skill/wiki-create/SKILL.md)             | Creating, expanding, or stubbing a note on direct request (`/wiki-create`)                |
+| [`wiki-ingest`](.skill/wiki-ingest/SKILL.md)             | Ingesting files from `raw/` (`/wiki-ingest`)                                              |
+| [`wiki-lint`](.skill/wiki-lint/SKILL.md)                 | Lint pass, vault audit, health check, broken links, orphans, duplicates (`/wiki-lint`)    |
+| [`wiki-query`](.skill/wiki-query/SKILL.md)               | Answering a question about the wiki's subject matter (`/wiki-query`)                      |
 
-`/wiki <subcommand>` in `.claude/skills/wiki/SKILL.md` is a thin router to these skills; a new
-invocable skill needs a row there too.
+`.claude/skills` is a symlink to `.skill/`, so every skill is also a Claude Code slash command
+named after its folder (`/wiki-create`). Command metadata (`argument-hint`, `user-invocable`) lives
+in the skill's frontmatter, and `$ARGUMENTS` in its body receives the command's arguments.
 
-**Keeping the table in sync (§1.11).** A new skill gets `.skill/<name>/SKILL.md` with `name` and
-`description` frontmatter (long material in `references/`) and a row here, alphabetical by name.
-Derive each row from the skill's `description`, never from memory, in one line. A renamed skill
+**Keeping the table in sync (§1.11).** A new skill gets `.skill/<name>/SKILL.md` with `name` (equal to
+its folder and command name) and `description` frontmatter, long material in `references/`, and a
+row here, alphabetical by name. Derive each row from the skill's `description`, never from memory, in one line. A renamed skill
 updates its row and every file referencing the old path. A retired skill loses its row; ask before
 deleting its folder. Before reporting done, confirm every `.skill/*/SKILL.md` has exactly one row
 and every row's link exists.
