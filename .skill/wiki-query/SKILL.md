@@ -58,8 +58,8 @@ sections.
 - **<question gist>** → [[concepts/<folder>/<note>#<Heading>|<Note> › <Heading>]], … — <gist of the answer, ≤25 words>. · YYYY-MM-DD HH:mm:ss
 ```
 
-- One line per entry, newest first, directly under the purpose line; no blank lines between
-  entries. Insert like a log entry: read only the first 5 lines, then edit.
+- One line per entry, newest first, after the purpose line and one blank line; no blank lines
+  between entries. Insert like a log entry: read only the first 5 lines, then edit.
 - Cite the sections that carried the answer; a whole note only when no heading fits. The timestamp
   is the request's clock reading.
 - Refreshing an entry deletes the old line (find it with `grep -n`) and inserts the new one at the
