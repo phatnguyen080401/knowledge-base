@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-26 18:11:11** · maintain · Updated `[[concepts/databases/isolation_levels]]` — lint fix 8: Oracle detects lost updates at Serializable, not Repeatable Read, and InnoDB Repeatable Read lacks first-committer-wins, matching `[[concepts/databases/acid]]`. Corrected from general knowledge.
+
 - **2026-10-26 18:00:17** · maintain · Updated `[[concepts/data_architecture/semantic_layer]]`, `[[concepts/data_architecture/ontology_layer]]` — lint fix 5: added the missing concept tags, `metric-definition` and `knowledge-graph`, matching the comparison note.
 
 - **2026-10-26 17:59:22** · maintain · Updated `[[concepts/data_engineering/dbt/dbt_bigquery_adapter]]`, `[[concepts/data_engineering/dbt/dbt_databricks_adapter]]` — lint fix 4: added the missing `topic` tag, `data-modeling` at the user's choice over the suggested `elt`.

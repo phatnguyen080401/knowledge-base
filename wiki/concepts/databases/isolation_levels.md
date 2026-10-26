@@ -2,7 +2,7 @@
 title: Transaction Isolation Levels
 tags: [databases, transactions, concurrency-control]
 created: 2026-09-24 10:57:07
-updated: 2026-10-21 14:47:07
+updated: 2026-10-26 18:11:11
 ---
 
 # Transaction Isolation Levels
@@ -185,7 +185,7 @@ The practical conclusion: **read your engine's documentation, not the standard.*
 | Engine | Default | `REPEATABLE READ` is really | `SERIALIZABLE` is really | Notes |
 | --- | --- | --- | --- | --- |
 | **PostgreSQL** | Read Committed | Snapshot isolation | True serializability via SSI | `READ UNCOMMITTED` is silently upgraded to Read Committed; serialization failures (`40001`) must be retried |
-| **MySQL / InnoDB** | Repeatable Read | Snapshot isolation + **gap locks**, which block most phantoms | 2PL — every plain `SELECT` becomes a locking read | Gap locking is a frequent and surprising source of deadlocks |
+| **MySQL / InnoDB** | Repeatable Read | Snapshot reads + **gap locks**, which block most phantoms — but no first-committer-wins, so lost updates still occur | 2PL — every plain `SELECT` becomes a locking read | Gap locking is a frequent and surprising source of deadlocks |
 | **Oracle** | Read Committed | Not supported — the syntax raises an error | **Snapshot isolation**, so write skew is still possible | Statement-level read consistency from undo segments |
 | **SQL Server** | Read Committed (lock-based) | 2PL with shared locks held to commit | 2PL with range locks | Enabling `READ_COMMITTED_SNAPSHOT` switches the default to MVCC; `SNAPSHOT` is a separate, explicit level |
 | **CockroachDB / Spanner** | Serializable | — | True serializability | Strict by default; the application retries on conflict |
@@ -205,7 +205,7 @@ Most applications do not need full serializability — they need this one class 
    ```
    If zero rows are affected, someone else won — re-read and retry. This is what every ORM's `@Version` annotation does, and it works across request boundaries where a transaction cannot be held open.
 3. **Explicit pessimistic locking.** `SELECT ... FOR UPDATE` takes a write lock at read time, serializing the read-modify-write cycle for those rows. Correct and simple; the cost is contention and deadlock risk if transactions lock rows in differing orders.
-4. **Rely on automatic detection.** PostgreSQL and Oracle detect lost updates at Repeatable Read and abort the loser. Free, but only if you are at that level *and* you retry.
+4. **Rely on automatic detection.** PostgreSQL at Repeatable Read and Oracle at Serializable detect lost updates and abort the loser; MySQL InnoDB does not. Free, but only if you are at that level *and* you retry.
 5. **Raise the level to Serializable.** Correct for every anomaly, not just this one — at the cost of more aborts and a mandatory retry loop.
 
 Write skew is harder: only options 3 and 5 address it, because the row you write is not the row you read. Materializing the conflict — locking a parent row representing the invariant, for example — is the standard workaround when raising the level is not an option.
