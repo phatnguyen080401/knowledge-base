@@ -3,7 +3,7 @@ title: Trivy
 tags: [devops, supply-chain-security, ci-cd, trivy, overview]
 sources: ["https://trivy.dev/", "https://trivy.dev/docs/latest/guide/"]
 created: 2026-10-21 15:07:21
-updated: 2026-10-26 18:29:25
+updated: 2026-10-29 18:29:30
 ---
 
 # Trivy
@@ -83,6 +83,7 @@ Aqua's earlier standalone IaC scanner, tfsec, has been folded into Trivy's misco
 - [[concepts/devops/brainboard|Brainboard]] — the design-time counterpart: the same IaC checks applied while the infrastructure is being drawn rather than after it is committed
 - [[concepts/data_governance/data_security|Data Security]] — what the leaked credential a secret scan catches actually exposes, and the controls behind it
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — why "upgrade to the fixed version" is rarely free, and how the version range determines whether it is
+- [[concepts/devops/renovate_docs|Renovate]] — the remediation half: opens the upgrade PRs for the vulnerable dependencies a scan reports
 
 ## References
 

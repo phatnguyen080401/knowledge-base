@@ -2,7 +2,7 @@
 title: Semantic Versioning (SemVer)
 tags: [software-architecture, versioning, compatibility-contracts]
 created: 2026-10-20 14:50:33
-updated: 2026-10-21 14:23:04
+updated: 2026-10-29 18:29:30
 ---
 
 # Semantic Versioning (SemVer)
@@ -97,6 +97,7 @@ SemVer is not an application-code concern alone — most of the data stack depen
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — the public API whose compatibility a version number describes, and where breaking changes become visible to consumers
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — pins packages and adapters by version range and ships breaking model changes as explicit versions
 - [[concepts/data_governance/metadata_management|Metadata Management]] — schema and contract registries are where published versions are catalogued and breaking changes detected
+- [[concepts/devops/renovate_docs|Renovate]] — automates version bumps, and uses the major/minor/patch split to decide which updates are safe to automerge
 
 ## References
 

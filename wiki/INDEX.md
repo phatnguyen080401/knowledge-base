@@ -89,6 +89,7 @@ Folder: `wiki/concepts/databases/`
 Folder: `wiki/concepts/devops/`
 
 - [[concepts/devops/brainboard|Brainboard]] — tool overview: visual multi-cloud design generating Terraform/OpenTofu, with CI/CD, drift detection, and policy and cost scanning. Vendor-sourced, unverified.
+- [[concepts/devops/renovate_docs|Renovate]] — tool overview: automated dependency-update PRs — platform/manager/datasource/versioning modules, onboarding, presets, grouping, schedules, automerge, Dependency Dashboard, vs. Dependabot.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
 
 ## Identity and Access
