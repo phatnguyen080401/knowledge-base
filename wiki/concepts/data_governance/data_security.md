@@ -2,7 +2,7 @@
 title: Data Security
 tags: [data-governance, data-security, access-control]
 created: 2026-09-22 09:11:46
-updated: 2026-10-21 15:10:31
+updated: 2026-10-29 14:09:46
 ---
 
 # Data Security
@@ -116,4 +116,5 @@ Access logging answers "who read what, when" and is the only way to detect misus
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — every interface is an access point requiring authentication, encryption, and rate limiting
 - [[concepts/data_architecture/semantic_layer|Semantic Layer]] — a central place to enforce row- and column-level rules rather than duplicating them per consumer
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked least-privilege split between deployer and runtime identities
+- [[concepts/identity_and_access/authorization|Authorization]] — the general access-control models and enforcement architecture these data-specific mechanisms specialise
 - [[concepts/devops/trivy|Trivy]] — the scanner that catches the committed credential, the vulnerable dependency, and the public-by-default bucket before they reach an environment

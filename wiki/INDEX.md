@@ -95,7 +95,12 @@ Folder: `wiki/concepts/devops/`
 
 Folder: `wiki/concepts/identity_and_access/`
 
-- [[concepts/identity_and_access/oauth|OAuth (Open Authorization)]] — delegated authorization with scoped access tokens; OAuth 2.0, OpenID Connect. **Stub.**
+- [[concepts/identity_and_access/authentication|Authentication]] — AuthN vs. AuthZ, factors and MFA, NIST 800-63B-4 assurance levels and password rules, passkeys and phishing resistance, sessions, workload auth, attacks.
+- [[concepts/identity_and_access/authorization|Authorization]] — PEP/PDP architecture, ACL vs. RBAC vs. ABAC vs. ReBAC, least privilege, OWASP A01 broken-access-control failures, delegated scopes.
+- [[concepts/identity_and_access/json_web_token|JSON Web Token (JWT)]] — structure and registered claims, JWS vs. JWE algorithms, JWKS, the RFC 8725 validation checklist, algorithm attacks, revocation.
+- [[concepts/identity_and_access/oauth|OAuth (Open Authorization)]] — roles, grant types, authorization code with PKCE, bearer vs. sender-constrained tokens, RFC 9700 baseline, OAuth 2.1, extension RFCs.
+- [[concepts/identity_and_access/openid_connect|OpenID Connect (OIDC)]] — identity layer on OAuth 2.0: ID token claims and validation, flows, discovery, ID vs. access token, workload OIDC tokens.
+- [[concepts/identity_and_access/single_sign_on|Single Sign-On (SSO)]] — IdP and SP roles, SAML 2.0 vs. OIDC, SP- vs. IdP-initiated flows, SAML validation, SCIM provisioning, logout.
 
 ## Software Architecture
 

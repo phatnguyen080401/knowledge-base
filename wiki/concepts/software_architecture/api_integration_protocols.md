@@ -2,7 +2,7 @@
 title: API and Integration Protocols
 tags: [software-architecture, api-protocols, overview]
 created: 2026-09-23 11:54:32
-updated: 2026-10-26 23:21:14
+updated: 2026-10-29 14:09:46
 ---
 
 # API and Integration Protocols
@@ -177,3 +177,4 @@ Capital markets have their own equivalent: the [[concepts/software_architecture/
 - [[concepts/data_governance/data_governance|Data Governance]] — sets the policy for who may expose or consume which data over which interface
 - [[concepts/software_architecture/idempotency|Idempotency]] — the property that decides which calls, deliveries, and webhook retries are safe to repeat
 - [[concepts/identity_and_access/oauth|OAuth (Open Authorization)]] — the delegated-authorization standard securing most HTTP APIs
+- [[concepts/identity_and_access/openid_connect|OpenID Connect (OIDC)]] — the identity layer on OAuth 2.0 behind the OIDC half of "OAuth 2.0 / OIDC"

@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-29 14:09:46** · maintain · Expanded `[[concepts/identity_and_access/authentication]]`, `[[concepts/identity_and_access/authorization]]`, `[[concepts/identity_and_access/oauth]]` from stubs and created `[[concepts/identity_and_access/openid_connect]]`, `[[concepts/identity_and_access/json_web_token]]`, `[[concepts/identity_and_access/single_sign_on]]` at the user's request. Source: `https://www.rfc-editor.org/rfc/rfc9700.html`.
+
+- **2026-10-29 13:31:59** · maintain · Created stubs `[[concepts/identity_and_access/authentication]]` and `[[concepts/identity_and_access/authorization]]` — AuthN/AuthZ placeholders for the identity domain; added the user-approved `access-management` topic to the taxonomy and applied it to `[[concepts/identity_and_access/oauth]]`.
+
 - **2026-10-26 23:21:14** · maintain · Renamed `[[concepts/software_architecture/oauth]]` to `[[concepts/identity_and_access/oauth]]` — filed under the new `identity-and-access` domain the user approved for access-control notes, added to the taxonomy domain table. Repointed 1 link.
 
 - **2026-10-26 23:17:48** · maintain · Created six stubs: `[[concepts/software_architecture/idempotency]]`, `[[concepts/databases/distributed_consensus]]`, `[[concepts/data_engineering/workflow_orchestration]]`, `[[concepts/software_architecture/oauth]]`, `[[concepts/databases/write_ahead_log]]`, `[[concepts/databases/multiversion_concurrency_control]]` — placeholders for concepts the vault mentioned without a page; orchestration scoped to data workflows per the user.

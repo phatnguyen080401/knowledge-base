@@ -2,7 +2,7 @@
 title: Deploy dbt and Elementary to Cloud Run with GitHub Actions
 tags: [data-engineering, deployment, ci-cd, dbt, cloud-run, github-actions, elementary, how-to]
 created: 2026-10-20 10:18:50
-updated: 2026-10-26 17:50:15
+updated: 2026-10-29 14:09:46
 ---
 # Deploy dbt and Elementary to Cloud Run with GitHub Actions
 
@@ -852,6 +852,7 @@ jobs:
 - [[concepts/data_governance/data_quality|Data Quality]] — what dbt tests and Elementary's collected results actually measure
 - [[concepts/data_governance/metadata_management|Metadata Management]] — `manifest.json`, `persist_docs`, and run artifacts as the project's metadata surface
 - [[concepts/data_governance/data_security|Data Security]] — the least-privilege split between the deployer and runtime service accounts
+- [[concepts/identity_and_access/openid_connect|OpenID Connect (OIDC)]] — the workload tokens GitHub Actions mints for Workload Identity Federation
 
 ## References
 

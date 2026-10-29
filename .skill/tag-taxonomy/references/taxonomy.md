@@ -27,6 +27,7 @@ creating a folder, which needs user approval.
 
 | Tag | Covers | Excludes |
 | --- | --- | --- |
+| `access-management` | Proving identity and granting permissions: authentication factors, authorization models, sessions and tokens, federation, single sign-on | Protecting the data itself (`data-security`); build and pipeline protection (`supply-chain-security`) |
 | `api-protocols` | Interface and messaging styles for system-to-system exchange: REST, gRPC, SOAP, webhooks, queues | Internal representation of the data being exchanged (`data-modeling`) |
 | `architecture-patterns` | Recurring structural shapes of a system: layering, module boundaries, coupling, deployment topology | The named technology realizing the pattern (a `tech` tag) |
 | `concurrency` | Executing work simultaneously inside one system: threads, processes, event loops, synchronization primitives, races, and runtime constraints on parallelism | Coordination across nodes (`distributed-systems`); database transaction semantics (`transactions`) |
@@ -89,6 +90,9 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 | `fix-protocol` | The FIX financial messaging standard |
 | `git` | The Git version-control system: commits, branches, tags, trailers, rebase |
 | `github-actions` | GitHub Actions workflows, runners, and secrets |
+| `jwt` | JSON Web Tokens: JWS/JWE structure, claims, validation, algorithm attacks |
+| `oauth` | The OAuth 2.0 and 2.1 authorization frameworks: grants, tokens, scopes, PKCE |
+| `openid-connect` | OpenID Connect: ID tokens, discovery, UserInfo, federation on OAuth 2.0 |
 | `python` | The Python language and CPython runtime: stdlib modules, interpreter behaviour |
 
 ## Facet: `type` — zero or one per note
