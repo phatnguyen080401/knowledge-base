@@ -38,7 +38,7 @@ flowchart LR
     B -->|"answer + file the insight"| C
 ```
 
-**[`AGENTS.md`](AGENTS.md) and the skills in [`.skill/`](.skill/) are the entire runtime.** There is no code in this repository — no scripts, no CI, no indexer. The agent reads `AGENTS.md`, opens the skill for the task at hand, and the file system is the only state. To change how the vault behaves, you edit a rule, not a program. In Claude Code every skill is also a slash command (`/wiki-create`, `/wiki-query`, …).
+**[`AGENTS.md`](AGENTS.md) and the skills in [`.skill/`](.skill/) are the entire runtime.** There is no code in this repository apart from the one-time setup script in [`script/`](script/) — no CI, no indexer. The agent reads `AGENTS.md`, opens the skill for the task at hand, and the file system is the only state. To change how the vault behaves, you edit a rule, not a program. In Claude Code every skill is also a slash command (`/wiki-create`, `/wiki-query`, …).
 
 ### Workflows
 
@@ -101,20 +101,16 @@ The folder rules and the note format are defined once, in [`AGENTS.md`](AGENTS.m
 
 ### Setup
 
-`.claude/` is git-ignored, so after cloning, link the skills into it to get them as Claude Code slash commands (`/wiki-create`, `/wiki-query`, …). Run from the repository root:
+Claude Code, Gemini CLI, and GitHub Copilot each look for skills in their own folder: `.claude/skills/`, `.gemini/skills/`, and `.copilot/skills/`. These folders are per-user and git-ignored, so after cloning, run the setup script with the agent you use to link `.skill/` there and get the skills as slash commands (`/wiki-create`, `/wiki-query`, …). Pass `CLAUDE`, `GEMINI`, or `COPILOT`; run it again for each extra agent.
 
 ```bash
 # macOS / Linux / WSL
-mkdir -p .claude && ln -s ../.skill .claude/skills
+./script/setup.sh CLAUDE
 ```
 
-```powershell
-# Windows PowerShell (needs Developer Mode or an elevated shell)
-New-Item -ItemType Directory -Force .claude | Out-Null
-New-Item -ItemType SymbolicLink -Path .claude\skills -Target ..\.skill
-```
+The script only creates the link. It skips an agent that is already linked and never overwrites an existing `skills` folder.
 
-Other agents need no setup; they read `AGENTS.md` directly.
+Every agent also reads `AGENTS.md` directly, so the links are a convenience, not a requirement.
 
 **As a reader.** Open [`wiki/INDEX.md`](wiki/INDEX.md) and start from a summary that interests you. The vault is an [Obsidian](https://obsidian.md) vault — open the repository folder directly for graph view and working wikilinks — but every file is plain markdown and reads fine on GitHub or in any editor.
 

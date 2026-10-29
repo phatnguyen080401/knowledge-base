@@ -1,8 +1,8 @@
 # Knowledge Base Agent Instructions
 
 **The canonical, non-negotiable constitution for every AI agent in this repository.** It defines
-the vault's rules, structure, and note format. There are no scripts or plugins: you are the runtime,
-and the procedures live as markdown skills under `.skill/` (§8).
+the vault's rules, structure, and note format. Apart from `script/setup.sh` there are no scripts or
+plugins: you are the runtime, and the procedures live as markdown skills under `.skill/` (§8).
 
 **Precedence:** `AGENTS.md` > any other instruction file in this repo > agent defaults. Other
 instruction files may only point here. Skills elaborate on this file and never override it. If a
@@ -21,7 +21,7 @@ user request conflicts with a rule here, say so and ask before proceeding.
 
 **These rules are absolute.**
 
-1. **Markdown native.** Every operation is a read or write of a markdown file. Never introduce build scripts, databases, or plugin dependencies.
+1. **Markdown native.** Every operation is a read or write of a markdown file. Never introduce build scripts, databases, or plugin dependencies; the one exception is `script/setup.sh`, which only links `.skill/` for an agent (§8).
 2. **Agent-driven.** The file system is the only state. Read the vault to learn its state; write to the vault to change it.
 3. **Compile, don't retrieve.** Merge new information into the existing page. Never append a redundant section, create a near-duplicate page, or paste raw source text verbatim.
 4. **Atomic, complete transactions.** A task is finished only when the note, its wikilinks, `wiki/INDEX.md`, and `wiki/log.md` are all consistent.
@@ -50,7 +50,8 @@ user request conflicts with a rule here, say so and ask before proceeding.
 ```text
 .
 ├── AGENTS.md              # This file
-├── .claude/skills/        # Local, git-ignored symlink to .skill/ (§8)
+├── script/                # setup.sh: links .skill/ into one agent's skills folder (§8)
+├── .<agent>/skills/       # Local, git-ignored symlink to .skill/ (.claude, .gemini, .copilot)
 ├── .skill/                # Skill procedures (§8)
 ├── raw/                   # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/            # Images, PDFs, and other binaries linked from notes
@@ -188,9 +189,9 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
 | [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims, expanding stubs |
 
-`.claude/skills` links to `.skill/`, so each skill is also a Claude Code slash command named after
-its folder unless its frontmatter sets `user-invocable: false`. The link is git-ignored; each clone
-creates it once (README "Setup").
+`.<agent>/skills` (`.claude`, `.gemini`, `.copilot`) links to `.skill/`, so each skill is also a
+slash command named after its folder unless its frontmatter sets `user-invocable: false`. The links
+are git-ignored; each clone creates one per agent with `script/setup.sh` (README "Setup").
 
 **Keeping the table in sync (§1.11).** A skill is `.skill/<name>/SKILL.md` with `name` (equal to its
 folder) and a `description` of trigger phrases (no unquoted `: `), long material in `references/`,
