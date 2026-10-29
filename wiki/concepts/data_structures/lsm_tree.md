@@ -2,7 +2,7 @@
 title: Log-Structured Merge-Tree (LSM Tree)
 tags: [data-structures, indexing, write-optimization]
 created: 2026-09-23 13:30:09
-updated: 2026-10-21 14:23:04
+updated: 2026-10-29 18:38:49
 ---
 
 # Log-Structured Merge-Tree (LSM Tree)
@@ -93,6 +93,7 @@ Every LSM discussion reduces to balancing these, and you can only ever pick two 
 
 ## Related Concepts
 
+- [[concepts/databases/real_time_analytics_database|Real-Time Analytics Database]] — ClickHouse's MergeTree applies the same append-then-merge idea to columnar analytical storage
 - [[concepts/data_structures/b_plus_tree|B+ Tree]] — the read-optimized alternative this structure is always contrasted with
 - [[concepts/data_structures/bloom_filter|Bloom Filter]] — the component that keeps LSM read amplification survivable
 - [[concepts/data_structures/data_structures_algorithms|Data Structures and Algorithms]] — the read/write/space trade-off this structure is an extreme point of

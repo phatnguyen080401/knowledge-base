@@ -81,6 +81,7 @@ Folder: `wiki/concepts/databases/`
 - [[concepts/databases/distributed_consensus|Distributed Consensus]] — nodes agreeing on one value or log despite failures; Paxos, Raft, majority quorums, leader election. **Stub.**
 - [[concepts/databases/isolation_levels|Transaction Isolation Levels]] — the six anomalies with worked interleavings, the level matrix, and what each engine's level names really mean.
 - [[concepts/databases/multiversion_concurrency_control|Multiversion Concurrency Control (MVCC)]] — row versions and snapshots so readers and writers never block each other. **Stub.**
+- [[concepts/databases/real_time_analytics_database|Real-Time Analytics Database]] — the five requirements, vs. OLTP/warehouse/stream processing, columnar and LSM-style ingestion, skipping indexes, pre-aggregation; ClickHouse, Druid, Pinot.
 - [[concepts/databases/vector_database|Vector Database]] — exact vs. approximate nearest-neighbour search, HNSW/IVF/PQ/DiskANN indexes, filtering, hybrid search with RRF, scaling, the product landscape, and pgvector.
 - [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]] — log-before-write for crash recovery, atomicity, durability, and log-shipping replication. **Stub.**
 

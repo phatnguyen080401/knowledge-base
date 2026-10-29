@@ -2,7 +2,7 @@
 title: Data Architecture
 tags: [data-architecture, data-modeling, architecture-patterns, overview]
 created: 2026-09-22 09:11:46
-updated: 2026-10-22 10:53:55
+updated: 2026-10-29 18:38:49
 ---
 
 # Data Architecture
@@ -122,3 +122,4 @@ Once the architecture spans more than one node or region, physics imposes limits
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — the common implementation of the transformation layer and its staging/intermediate/marts layering
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the durable log that makes the ingestion layer replayable, and the precondition for a kappa architecture
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — the compute tier when transformation exceeds what warehouse SQL can express, and the engine that makes the lake half of a lakehouse usable
+- [[concepts/databases/real_time_analytics_database|Real-Time Analytics Database]] — the serving-layer store for user-facing analytics that a warehouse is too slow and a stream processor too forgetful to serve
