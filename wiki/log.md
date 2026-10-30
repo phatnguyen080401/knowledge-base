@@ -1,5 +1,11 @@
 # Activity Log
 
+- **2026-10-30 23:11:13** · maintain · Renamed `[[concepts/devops/kubernetes/kubernetes_security]]` to `[[concepts/devops/kubernetes/security/kubernetes_security]]`, the hub of a new nested `security/` subfolder, and Created `[[concepts/devops/kubernetes/security/hidden_static_pods]]` split out of it at the user's request; repointed 8 links. AGENTS.md §2 now allows nested subfolders.
+
+- **2026-10-30 21:58:54** · maintain · Created `[[concepts/devops/kubernetes/kubernetes_security]]` split out of `[[concepts/devops/kubernetes/static_pod_vs_normal_pod]]` at the user's request, as the home for future attack techniques, with an attack-surface map; repointed 1 link and linked it from the hub and Kubelet TLS Bootstrapping.
+
+- **2026-10-30 12:51:48** · maintain · Created `[[concepts/devops/kubernetes/static_pod_vs_normal_pod]]`, `[[concepts/devops/kubernetes/pod_sandbox]]`, `[[concepts/devops/kubernetes/kubelet_tls_bootstrapping]]`, and `[[concepts/devops/kubernetes/veth_pair]]` from the user's notes; linked from the hub and Kubernetes Components. etcd's Raft use was already covered.
+
 - **2026-10-30 12:38:50** · maintain · Created `[[concepts/devops/kubernetes/kubernetes_components]]` — a component-by-component deep dive from the user's outline, with ten diagrams; linked from the Kubernetes hub; added the `kubernetes` tech seed row now that two notes use it.
 
 - **2026-10-30 12:31:16** · maintain · Created `[[concepts/devops/kubernetes/kubernetes]]` as the hub of a new `devops/kubernetes/` tech subfolder for upcoming Kubernetes topics, with six diagrams; backlinked from Prometheus, Trivy, and Observers.

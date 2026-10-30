@@ -2,7 +2,7 @@
 title: Kubernetes
 tags: [devops, deployment, fault-tolerance, kubernetes, overview]
 created: 2026-10-30 12:31:16
-updated: 2026-10-30 12:38:50
+updated: 2026-10-30 23:11:13
 ---
 
 # Kubernetes
@@ -233,6 +233,8 @@ With `maxUnavailable: 0`, capacity never drops below three ready pods. Each old 
 - **Admission control.** Validating and mutating webhooks, or policy engines such as OPA Gatekeeper and Kyverno, can reject non-compliant manifests at the API server.
 - **Supply chain.** Scan images and manifests before deploy, and scan running clusters (`trivy k8s`). Pin images by digest, and run containers as non-root with read-only root filesystems.
 
+The cluster's attack surfaces, and specific attack techniques with how to detect and prevent each, are in [[concepts/devops/kubernetes/security/kubernetes_security|Kubernetes Security]].
+
 ## Extending Kubernetes
 
 - **CustomResourceDefinitions (CRDs)** add new object kinds to the API, such as `KafkaTopic`, `FlinkDeployment`, or `ServiceMonitor`.
@@ -294,6 +296,11 @@ The following is judgement, not documentation. Kubernetes trades operational com
 ## Related Concepts
 
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — the deep dive: API server pipeline, etcd quorums, scheduler plugins, controllers, kubelet, runtimes, kube-proxy, and failure modes
+- [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]] — file-defined pods that run without the API server, and the mirror pods that make them visible
+- [[concepts/devops/kubernetes/security/kubernetes_security|Kubernetes Security]] — attack surfaces and attack techniques, starting with hidden static pods
+- [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — the shared namespaces that make a pod's containers one unit with one IP
+- [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]] — how nodes join the cluster and get their client and serving certificates
+- [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — how each pod is wired into its node's network, and the packet paths within and between nodes
 - [[concepts/devops/observers|Observers]] — logs, metrics, and traces for the workloads Kubernetes runs; most of that tooling deploys onto the cluster itself
 - [[concepts/devops/metrics/prometheus|Prometheus]] — the de facto Kubernetes monitoring system, discovering pods through the Kubernetes API
 - [[concepts/devops/trivy|Trivy]] — scans images, manifests, Helm charts, and live clusters for vulnerabilities and misconfiguration

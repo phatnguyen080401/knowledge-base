@@ -2,7 +2,7 @@
 title: Kubernetes Components
 tags: [devops, deployment, fault-tolerance, kubernetes, etcd]
 created: 2026-10-30 12:38:50
-updated: 2026-10-30 12:38:50
+updated: 2026-10-30 12:51:48
 ---
 
 # Kubernetes Components
@@ -229,7 +229,7 @@ Provider code used to be compiled into Kubernetes itself. Since v1.31 all in-tre
 
 The kubelet is the node agent and the component that actually makes pods run. It is a host service rather than a pod, because it has to be running before any pod can start.
 
-- **Registers and heartbeats.** It creates the Node object with the node's capacity (CPU, memory, maximum pods), renews a `Lease` in the `kube-node-lease` namespace every 10 seconds, and reports node conditions (`Ready`, `MemoryPressure`, `DiskPressure`, `PIDPressure`) when they change.
+- **Registers and heartbeats.** It authenticates as `system:node:<node-name>` with a client certificate obtained through [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]], creates the Node object with the node's capacity (CPU, memory, maximum pods), renews a `Lease` in the `kube-node-lease` namespace every 10 seconds, and reports node conditions (`Ready`, `MemoryPressure`, `DiskPressure`, `PIDPressure`) when they change.
 - **Runs pods.** It watches the pods bound to its node, plus static pods from its local manifest directory, and a sync loop drives each pod towards its spec through the container runtime.
 - **Checks health.** It runs startup, liveness, and readiness probes, and restarts failed containers according to `restartPolicy` with exponential backoff (`CrashLoopBackOff`, capped at five minutes between attempts).
 - **Delivers volumes and configuration.** It mounts volumes and writes ConfigMaps, Secrets, and ServiceAccount tokens into the pod's filesystem.
@@ -253,7 +253,7 @@ flowchart TD
 
 `ContainerCreating` in `kubectl get pods` means the pod is somewhere between the volume and container steps; the Events at the bottom of `kubectl describe pod` say which. An init container with `restartPolicy: Always` is a *native sidecar*: it starts in init order but keeps running alongside the app containers.
 
-Static pods are the kubelet's second source of work. It reads manifests from its local directory, runs them with no API server involved, and creates a read-only *mirror pod* in the API so they stay visible.
+Static pods are the kubelet's second source of work. It reads manifests from its local directory, runs them with no API server involved, and creates a read-only *mirror pod* in the API so they stay visible. How they differ from API-managed pods, and how they can be hidden from the API, is in [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]].
 
 > [!tip] Containers outlive their kubelet
 > If the kubelet crashes or loses the API server, the containers keep running, because the container runtime owns the processes. What stops is supervision: no restarts, no probes, no status updates. This is why control-plane outages and kubelet upgrades do not take workloads down.
@@ -275,7 +275,7 @@ flowchart LR
 - **containerd** (a CNCF project, also what Docker Engine uses internally) and **CRI-O** (built only for Kubernetes) are the two common high-level runtimes.
 - The **low-level runtime** creates the Linux namespaces and cgroups. A container is an isolated process, not a virtual machine.
 - **RuntimeClass** selects an alternative handler, such as gVisor or Kata Containers, to isolate untrusted workloads more strongly.
-- Every pod starts with a tiny **pause container** that holds the pod's network and IPC namespaces. The app containers join them, which is why containers in one pod share one IP and can reach each other on `localhost`.
+- Every pod starts with a tiny **pause container** that anchors the pod's shared network, IPC, and UTS namespaces. The app containers join them, which is why containers in one pod share one IP and can reach each other on `localhost`. See [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]].
 
 > [!note] Docker is no longer a Kubernetes runtime
 > Kubernetes talked to Docker Engine through a built-in adapter, dockershim, which was removed in v1.24. Docker Engine now works only through the external `cri-dockerd` adapter. Images built with Docker are standard OCI images and run unchanged on containerd or CRI-O.
@@ -390,7 +390,7 @@ Kubernetes defines the network as three rules and leaves the implementation to t
 2. Every pod can reach every other pod, on any node, without NAT.
 3. Agents on a node, such as the kubelet, can reach every pod on that node.
 
-Plugins meet these rules in different ways: *overlays* encapsulate pod traffic between nodes (VXLAN or Geneve, as in Flannel), *routed* networks advertise pod ranges with BGP (as in Calico), *cloud-native* plugins give pods real VPC addresses (AWS VPC CNI, GKE VPC-native clusters), and *eBPF* data planes such as Cilium program the kernel directly.
+Plugins meet these rules in different ways: *overlays* encapsulate pod traffic between nodes (VXLAN or Geneve, as in Flannel), *routed* networks advertise pod ranges with BGP (as in Calico), *cloud-native* plugins give pods real VPC addresses (AWS VPC CNI, GKE VPC-native clusters), and *eBPF* data planes such as Cilium program the kernel directly. Most of them connect each pod to its node with a [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]].
 
 A Service is the cooperation of several components:
 
@@ -561,6 +561,10 @@ flowchart TB
 ## Related Concepts
 
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — the hub: what each object is for, probes, rollouts, autoscaling, and security; this note explains the machinery underneath
+- [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]] — the kubelet's file-based pods, the mirror pods that make them visible, and how they can be hidden
+- [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — what RunPodSandbox actually builds: the shared namespaces and the pause container
+- [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]] — how a kubelet gets the node identity the API server's Node authorizer relies on
+- [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — the per-pod interface pair that the CNI plugin uses to wire pods into the node's network
 - [[concepts/databases/distributed_consensus|Distributed Consensus]] — Raft and quorums, which decide when etcd, and so the whole control plane, can accept writes
 - [[concepts/databases/multiversion_concurrency_control|Multiversion Concurrency Control (MVCC)]] — the revision model behind etcd, `resourceVersion`, and watch-from-revision
 - [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]] — why etcd's write latency is bounded by disk fsync

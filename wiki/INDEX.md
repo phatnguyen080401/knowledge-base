@@ -115,7 +115,18 @@ Folder: `wiki/concepts/devops/`
 Folder: `wiki/concepts/devops/kubernetes/`
 
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — hub: control plane and nodes, reconciliation, workload/network/storage objects, scheduling and QoS, probes, pod termination, rollouts, autoscaling, RBAC, CRDs and operators.
+- [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]] — joining nodes with bootstrap tokens and CSRs, discovery and CA pinning, rotation, kubelet client vs. serving certificates, securing port 10250.
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — API server pipeline, etcd quorum, scheduler plugins, controllers, kubelet, CRI/CNI/CSI, kube-proxy, add-ons, HA, failure modes, debugging.
+- [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — shared network/IPC/UTS namespaces, the pause container, sandbox lifecycle and SandboxChanged, inspecting with crictl.
+- [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]] — kubelet file source vs. API, mirror pods, editing the control plane, vs. DaemonSets; hidden static pods summarized, detailed in their own note.
+- [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — how CNI plugins wire pods with veth pairs, bridge vs. routed vs. eBPF, same- and cross-node packet paths, MTU, tracing a pod's interface.
+
+#### Security
+
+Folder: `wiki/concepts/devops/kubernetes/security/`
+
+- [[concepts/devops/kubernetes/security/kubernetes_security|Kubernetes Security]] — hub: attack-surface map (API server, etcd, kubelet API, bootstrap tokens, static pod directory) and a table of attack-technique notes.
+- [[concepts/devops/kubernetes/security/hidden_static_pods|Hidden Static Pods]] — persistence via a static pod in a non-existent namespace: why only static pods, the attack flow, node-vs-API detection, mitigation.
 
 ### Logging
 
