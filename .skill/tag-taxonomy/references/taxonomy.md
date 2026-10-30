@@ -102,6 +102,7 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 | `openid-connect` | OpenID Connect: ID tokens, discovery, UserInfo, federation on OAuth 2.0 |
 | `python` | The Python language and CPython runtime: stdlib modules, interpreter behaviour |
 | `spark` | Apache Spark: execution model, Spark SQL, Structured Streaming |
+| `terraform` | HashiCorp Terraform and HCL: providers, modules, state, plan/apply |
 
 ## Facet: `type` — zero or one per note
 

@@ -110,6 +110,12 @@ Folder: `wiki/concepts/devops/`
 - [[concepts/devops/renovate_docs|Renovate]] — tool overview: automated dependency-update PRs — platform/manager/datasource/versioning modules, onboarding, presets, grouping, schedules, automerge, Dependency Dashboard, vs. Dependabot.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
 
+### Infrastructure as Code
+
+Folder: `wiki/concepts/devops/infrastructure_as_code/`
+
+- [[concepts/devops/infrastructure_as_code/terraform|Terraform]] — HCL infrastructure as code: providers, resources, modules, remote locked state, plan/apply, drift, CI/CD pattern, BSL licence and the OpenTofu fork.
+
 ### Kubernetes
 
 Folder: `wiki/concepts/devops/kubernetes/`

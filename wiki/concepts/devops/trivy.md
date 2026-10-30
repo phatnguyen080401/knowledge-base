@@ -3,7 +3,7 @@ title: Trivy
 tags: [devops, supply-chain-security, ci-cd, trivy, overview]
 sources: ["https://trivy.dev/", "https://trivy.dev/docs/latest/guide/"]
 created: 2026-10-21 15:07:21
-updated: 2026-10-30 12:31:16
+updated: 2026-10-30 23:18:13
 ---
 
 # Trivy
@@ -81,6 +81,7 @@ Aqua's earlier standalone IaC scanner, tfsec, has been folded into Trivy's misco
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — security posture as a structural property, and fitness functions as the general form of a CI gate like this one
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a concrete pipeline with exactly the image-build step a Trivy gate belongs in
 - [[concepts/devops/brainboard|Brainboard]] — the design-time counterpart: the same IaC checks applied while the infrastructure is being drawn rather than after it is committed
+- [[concepts/devops/infrastructure_as_code/terraform|Terraform]] — the IaC whose misconfigurations `trivy config` catches, gated in the pull-request plan before `apply`
 - [[concepts/data_governance/data_security|Data Security]] — what the leaked credential a secret scan catches actually exposes, and the controls behind it
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — why "upgrade to the fixed version" is rarely free, and how the version range determines whether it is
 - [[concepts/devops/renovate_docs|Renovate]] — the remediation half: opens the upgrade PRs for the vulnerable dependencies a scan reports

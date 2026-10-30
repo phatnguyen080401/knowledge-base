@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-30 23:18:13** · maintain · Renamed `[[concepts/devops/terraform]]` to `[[concepts/devops/infrastructure_as_code/terraform]]`, the first note of a new `infrastructure_as_code/` sub-area subfolder at the user's request; repointed 2 links and added an INDEX group.
+
+- **2026-10-30 23:16:23** · maintain · Created `[[concepts/devops/terraform]]` — infrastructure-as-code tool note (HCL, state, plan/apply, CI/CD pattern, OpenTofu fork) from general knowledge; backlinked from Brainboard and Trivy, and added a `terraform` seed row to taxonomy.md.
+
 - **2026-10-30 23:11:13** · maintain · Renamed `[[concepts/devops/kubernetes/kubernetes_security]]` to `[[concepts/devops/kubernetes/security/kubernetes_security]]`, the hub of a new nested `security/` subfolder, and Created `[[concepts/devops/kubernetes/security/hidden_static_pods]]` split out of it at the user's request; repointed 8 links. AGENTS.md §2 now allows nested subfolders.
 
 - **2026-10-30 21:58:54** · maintain · Created `[[concepts/devops/kubernetes/kubernetes_security]]` split out of `[[concepts/devops/kubernetes/static_pod_vs_normal_pod]]` at the user's request, as the home for future attack techniques, with an attack-surface map; repointed 1 link and linked it from the hub and Kubelet TLS Bootstrapping.

@@ -3,7 +3,7 @@ title: Brainboard
 tags: [devops, deployment, ci-cd, brainboard, terraform, overview]
 sources: ["https://www.brainboard.co/", "https://docs.brainboard.co/"]
 created: 2026-10-21 15:02:01
-updated: 2026-10-26 21:39:51
+updated: 2026-10-30 23:18:13
 ---
 
 # Brainboard
@@ -61,6 +61,7 @@ The decisive evaluation questions are portability questions: the generated code 
 ## Related Concepts
 
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — the discipline whose documentation problem this tool attacks: diagrams that are not the architecture, and decisions that only the running system records
+- [[concepts/devops/infrastructure_as_code/terraform|Terraform]] — the execution layer Brainboard generates and orchestrates: providers, state, and the plan/apply workflow underneath the canvas
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — the hand-built alternative: the same CI/CD, Git, and cloud-deployment concerns assembled from primitives
 - [[concepts/data_governance/data_security|Data Security]] — the access-control and secret-handling posture any platform holding cloud credentials and Terraform state has to satisfy
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — how the reusable modules such a catalogue is built on get versioned and depended upon
