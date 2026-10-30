@@ -92,8 +92,27 @@ Folder: `wiki/concepts/databases/`
 Folder: `wiki/concepts/devops/`
 
 - [[concepts/devops/brainboard|Brainboard]] — tool overview: visual multi-cloud design generating Terraform/OpenTofu, with CI/CD, drift detection, and policy and cost scanning. Vendor-sourced, unverified.
+- [[concepts/devops/observers|Observers]] — hub: logs, metrics, and traces, how to correlate them, golden signals and RED/USE, and the open-source stack per signal.
 - [[concepts/devops/renovate_docs|Renovate]] — tool overview: automated dependency-update PRs — platform/manager/datasource/versioning modules, onboarding, presets, grouping, schedules, automerge, Dependency Dashboard, vs. Dependabot.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
+
+### Logging
+
+Folder: `wiki/concepts/devops/logging/`
+
+- [[concepts/devops/logging/elasticsearch|Elasticsearch]] — tool overview: Lucene-based log store in the Elastic Stack (ELK) — shards, data streams, ILM, ECS, mapping explosion, cost vs. Loki, OpenSearch fork.
+
+### Metrics
+
+Folder: `wiki/concepts/devops/metrics/`
+
+- [[concepts/devops/metrics/prometheus|Prometheus]] — tool overview: pull-based metrics and TSDB — metric types, label cardinality, service discovery, exporters, Alertmanager, HA and long-term storage.
+
+### Tracing
+
+Folder: `wiki/concepts/devops/tracing/`
+
+- [[concepts/devops/tracing/jaeger|Jaeger]] — tool overview: distributed tracing — spans, context propagation, collector/storage/UI, sampling strategies, OpenTelemetry, vs. Tempo and Zipkin.
 
 ## Identity and Access
 

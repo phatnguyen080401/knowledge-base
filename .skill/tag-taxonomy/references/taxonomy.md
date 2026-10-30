@@ -44,6 +44,7 @@ creating a folder, which needs user approval.
 | `master-data` | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies | Descriptive metadata about datasets (`metadata`) |
 | `metadata` | Data about data: catalogs, lineage, schema registries, business glossaries | The business data itself (`master-data`) |
 | `model-operations` | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`) |
+| `observers` | Watching running software to explain its behaviour: logs, metrics, traces, their correlation, dashboards, and alerting | Monitoring a model's quality and drift (`model-operations`); build-time scanning (`supply-chain-security`) |
 | `source-history` | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
 | `supply-chain-security` | Trusting what goes into a build and who can change it: vulnerability, secret, misconfiguration, and licence scanning; SBOMs; signing; branch and pipeline protection | Protecting the business data a system holds (`data-security`) |
 | `transactions` | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC | Multi-node coordination concerns (`distributed-systems`) |

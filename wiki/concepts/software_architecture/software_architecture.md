@@ -2,7 +2,7 @@
 title: Software Architecture
 tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-23 10:53:38
+updated: 2026-10-30 11:09:32
 ---
 
 # Software Architecture
@@ -77,7 +77,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - **Failure handling.** Timeouts, retries with jitter, circuit breakers, and idempotency keys belong to the architecture; added per-call after the fact, they never cover the whole surface.
 - **Security posture.** Authentication, authorization, and encryption at each boundary, designed in rather than bolted on. See [[concepts/data_governance/data_security|Data Security]].
 - **Deployment and release.** How a change reaches production — immutable artifacts, environment promotion, rollback by redeploying an older tag — is architectural; [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] is one worked example of that pattern.
-- **Observability.** Correlation IDs, structured logs, and traces must cross component boundaries, or debugging stops at the first hop.
+- **Observability.** Correlation IDs, structured logs, and traces must cross component boundaries, or debugging stops at the first hop. [[concepts/devops/observers|Observers]] covers the tooling for each signal.
 
 ## Documenting Decisions
 
@@ -105,6 +105,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - [[concepts/data_governance/data_security|Data Security]] — the controls each architectural boundary has to enforce
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role that applies this discipline to a nondeterministic component, where the usual contract and testing assumptions do not hold
 - [[concepts/devops/brainboard|Brainboard]] — a tool overview: visual cloud-infrastructure design that generates the Terraform, aimed at the diagram-versus-reality gap described above
+- [[concepts/devops/observers|Observers]] — the logging, metrics, and tracing tools that make the observability attribute measurable in production
 
 ## References
 

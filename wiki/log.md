@@ -1,5 +1,11 @@
 # Activity Log
 
+- **2026-10-30 11:17:54** · maintain · Renamed `[[concepts/devops/monitoring/prometheus]]` to `[[concepts/devops/metrics/prometheus]]`, naming the subfolder after its signal to match the hub; 5 links repointed.
+
+- **2026-10-30 11:13:58** · maintain · Renamed devops tool subfolders by job: `[[concepts/devops/logging/elasticsearch]]`, `[[concepts/devops/monitoring/prometheus]]`, `[[concepts/devops/tracing/jaeger]]`, to hold future related tools; 19 links repointed; AGENTS.md §2 amended to allow sub-area subfolders.
+
+- **2026-10-30 11:09:32** · maintain · Created `[[concepts/devops/observers]]` hub plus `[[concepts/devops/elasticsearch/elasticsearch]]`, `[[concepts/devops/prometheus/prometheus]]`, `[[concepts/devops/jaeger/jaeger]]` in new tech subfolders, covering logging, metrics, and tracing; new `observers` topic tag added to taxonomy.md with user approval.
+
 - **2026-10-30 10:57:29** · maintain · Created `[[concepts/ai_engineering/chain_of_thought]]` split out of `[[concepts/ai_engineering/prompt_engineering]]` at the user's request, deepened with CoT variants, self-consistency and latent-reasoning formulas, reasoning models, and faithfulness research. No links repointed.
 
 - **2026-10-29 18:52:09** · maintain · Created `[[concepts/ai_engineering/prompt_engineering]]` — zero-, one-, few-shot, and chain-of-thought prompting from the original papers; added the user-approved `in-context-learning` concept tag, also applied to `[[concepts/ai_engineering/ai_engineer]]`.
