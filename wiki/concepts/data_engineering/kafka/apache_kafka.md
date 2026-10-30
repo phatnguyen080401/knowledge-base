@@ -2,7 +2,7 @@
 title: Apache Kafka
 tags: [data-engineering, distributed-systems, kafka, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-22 11:10:02
+updated: 2026-10-30 11:25:32
 ---
 
 # Apache Kafka
@@ -116,3 +116,4 @@ Schema Registry, and the stricter forms of its compatibility checking, are what 
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — situates the log alongside the other messaging styles, including AMQP brokers that solve the opposite problem
 - [[concepts/data_governance/metadata_management|Metadata Management]] — schema registries are the enforcement point for streaming contracts and the source of streaming lineage
 - [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — Kafka Streams keeps its local state in RocksDB, so stateful stream processing inherits the LSM performance profile
+- [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — what consumers built on Kafka must do once they remember anything: partitioned state, changelogs, consistent snapshots, and sink idempotency

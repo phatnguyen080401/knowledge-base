@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-30 11:36:38** · maintain · Updated `[[concepts/data_engineering/stateful_vs_stateless_stream_processing]]` — added 17 Mermaid diagrams visualizing operator kinds, state placement, shuffles, joins, hot keys, rescaling, windows, watermarks, recovery, two-phase commit, upgrades, and the worked example.
+
+- **2026-10-30 11:25:32** · maintain · Created `[[concepts/data_engineering/stateful_vs_stateless_stream_processing]]` — in-depth comparison of stateless and stateful stream operators across state storage, partitioning, time, fault tolerance, and upgrades; `kafka` and `spark` tech tags got seed rows.
+
 - **2026-10-30 11:17:54** · maintain · Renamed `[[concepts/devops/monitoring/prometheus]]` to `[[concepts/devops/metrics/prometheus]]`, naming the subfolder after its signal to match the hub; 5 links repointed.
 
 - **2026-10-30 11:13:58** · maintain · Renamed devops tool subfolders by job: `[[concepts/devops/logging/elasticsearch]]`, `[[concepts/devops/monitoring/prometheus]]`, `[[concepts/devops/tracing/jaeger]]`, to hold future related tools; 19 links repointed; AGENTS.md §2 amended to allow sub-area subfolders.

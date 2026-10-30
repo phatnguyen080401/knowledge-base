@@ -3,7 +3,7 @@ title: Real-Time Analytics Database
 tags: [databases, indexing, query-optimization, write-optimization, partitioning, clickhouse, druid, pinot, needs-review]
 sources: ["https://clickhouse.com/docs/academic_overview", "https://druid.apache.org/docs/latest/design/", "https://druid.apache.org/docs/latest/design/architecture/", "https://docs.pinot.apache.org/basics/architecture"]
 created: 2026-10-29 18:38:49
-updated: 2026-10-29 18:38:49
+updated: 2026-10-30 11:25:32
 ---
 
 # Real-Time Analytics Database
@@ -154,6 +154,7 @@ Origins are general knowledge; the other rows come from each project's documenta
 - [[concepts/data_structures/lsm_tree|Log-Structured Merge-Tree (LSM Tree)]] — the write-optimised design that immutable parts and background merges borrow
 - [[concepts/data_structures/bloom_filter|Bloom Filter]] — one of ClickHouse's data-skipping index types
 - [[concepts/databases/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — the guarantees these engines relax in exchange for ingest and scan speed
+- [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — why bounded-window stream state differs from full-history query-time aggregation, and when to push state into this database instead
 
 ## References
 

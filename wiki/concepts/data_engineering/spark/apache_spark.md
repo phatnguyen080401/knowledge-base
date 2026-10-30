@@ -2,7 +2,7 @@
 title: Apache Spark
 tags: [data-engineering, distributed-systems, spark, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-22 11:10:02
+updated: 2026-10-30 11:25:32
 ---
 
 # Apache Spark
@@ -105,3 +105,4 @@ Scala and Java run natively on the JVM. **PySpark** drives the same engine from 
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — where the lake-versus-warehouse and batch-versus-streaming choices that lead to Spark are made
 - [[concepts/databases/acid|ACID (Atomicity, Consistency, Isolation, Durability)]] — a failed Spark write leaves partial files unless an open table format puts a transaction log over object storage
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — Spark is data parallelism across processes and machines; the same distinctions govern what a single executor can overlap
+- [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — the general model behind Structured Streaming's state stores and watermarks, compared with Flink and Kafka Streams

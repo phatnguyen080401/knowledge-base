@@ -27,6 +27,7 @@ Folder: `wiki/concepts/data_architecture/`
 Folder: `wiki/concepts/data_engineering/`
 
 - [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]] — per-job cost attribution from `INFORMATION_SCHEMA`, plus the controls those measurements justify.
+- [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — comparison: operator kinds, hidden state, keyed/broadcast state, backends, co-partitioning, rescaling, watermarks, checkpoints, exactly-once; Flink, Kafka Streams, Spark.
 - [[concepts/data_engineering/workflow_orchestration|Workflow Orchestration]] — scheduling, sequencing, retrying, and backfilling pipeline tasks as a cross-system DAG; Airflow, Dagster. **Stub.**
 
 ### dbt (Data Build Tool)
