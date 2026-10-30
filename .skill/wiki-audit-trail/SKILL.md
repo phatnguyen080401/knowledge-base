@@ -62,7 +62,8 @@ Older entries use a date-only `- **YYYY-MM-DD**:` prefix, run long, or log `AGEN
 ## `wiki/INDEX.md`
 
 Exactly the pages in `wiki/concepts/`, mirroring the folder tree: one `##` group per domain folder
-and one `###` subgroup per subfolder, each with a `Folder:` line. Groups sort as the folders
+and a subgroup per subfolder, one heading level deeper per folder level (`###`, `####`, …), each
+with a `Folder:` line. Groups sort as the folders
 do; pages are alphabetized within a group (a hub may come first) and use piped wikilinks.
 
 **Every entry has a one-line summary** after an em dash, so an agent can shortlist from the index

@@ -60,7 +60,7 @@ user request conflicts with a rule here, say so and ask before proceeding.
     ├── INDEX.md           # Every page, grouped by folder (§6)
     ├── hot.md             # Routes from answered questions to note sections (§5)
     ├── log.md             # Append-only activity log (§6)
-    └── concepts/<domain_folder>/[<subfolder>/]<note>.md
+    └── concepts/<domain_folder>/[<subfolder>/…]<note>.md
 ```
 
 **Filing.** Every note lives in the folder of its `domain` tag (`databases` → `concepts/databases/`).
@@ -68,10 +68,11 @@ Folder and tag always agree; changing the domain tag is a rename (§7). Nothing 
 root of `concepts/`. The authoritative list of domain folders is the `domain` table in
 [`.skill/tag-taxonomy/references/taxonomy.md`](.skill/tag-taxonomy/references/taxonomy.md).
 
-A **subfolder**, one level deep only, is either a *tech subfolder* clustering one product family
-(`data_engineering/dbt/`; every note inside carries that product's `tech` tag; a namesake hub note
-`dbt.md` is optional) or a *sub-area subfolder* grouping several products by job
-(`devops/logging/`), named `snake_case` for that job.
+**Subfolders** nest to any depth, as long as each narrows its parent's topic and holds a group of
+related notes. Each is either a *tech subfolder* clustering one product family
+(`data_engineering/dbt/`; every note beneath it carries that product's `tech` tag; a namesake hub
+note `dbt.md` is optional) or a *sub-area subfolder* grouping notes by job or sub-topic
+(`devops/logging/`, `devops/kubernetes/security/`), named `snake_case` for that job.
 
 | Item | Rule | Example |
 | --- | --- | --- |

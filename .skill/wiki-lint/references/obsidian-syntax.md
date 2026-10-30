@@ -14,7 +14,7 @@ Every link to a note uses the full vault-relative path from `concepts/` and is a
 [[concepts/data_governance/data_quality#^six-dimensions|the six dimensions]]    Block
 ```
 
-- **Path form.** `concepts/<folder>/[<subfolder>/]<file>` with no `.md`. Never the shortest
+- **Path form.** `concepts/<folder>/[<subfolder>/…]<file>` with no `.md`. Never the shortest
   form (`[[data_quality]]`), never a `wiki/` prefix, never `[text](note.md)`. The vault root is the
   repository root, and Obsidian resolves `concepts/…` by unique path suffix.
 - **Tables.** Inside a table cell, escape the pipe: `[[concepts/x/y\|Text]]`.
