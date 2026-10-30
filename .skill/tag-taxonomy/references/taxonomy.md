@@ -97,6 +97,7 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 | `github-actions` | GitHub Actions workflows, runners, and secrets |
 | `jwt` | JSON Web Tokens: JWS/JWE structure, claims, validation, algorithm attacks |
 | `kafka` | Apache Kafka: topics, partitions, consumer groups, transactions, Kafka Streams |
+| `kubernetes` | Kubernetes: control plane and node components, workload objects, scheduling, networking, storage |
 | `oauth` | The OAuth 2.0 and 2.1 authorization frameworks: grants, tokens, scopes, PKCE |
 | `openid-connect` | OpenID Connect: ID tokens, discovery, UserInfo, federation on OAuth 2.0 |
 | `python` | The Python language and CPython runtime: stdlib modules, interpreter behaviour |

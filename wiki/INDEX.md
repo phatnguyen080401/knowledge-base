@@ -110,6 +110,13 @@ Folder: `wiki/concepts/devops/`
 - [[concepts/devops/renovate_docs|Renovate]] — tool overview: automated dependency-update PRs — platform/manager/datasource/versioning modules, onboarding, presets, grouping, schedules, automerge, Dependency Dashboard, vs. Dependabot.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
 
+### Kubernetes
+
+Folder: `wiki/concepts/devops/kubernetes/`
+
+- [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — hub: control plane and nodes, reconciliation, workload/network/storage objects, scheduling and QoS, probes, pod termination, rollouts, autoscaling, RBAC, CRDs and operators.
+- [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — API server pipeline, etcd quorum, scheduler plugins, controllers, kubelet, CRI/CNI/CSI, kube-proxy, add-ons, HA, failure modes, debugging.
+
 ### Logging
 
 Folder: `wiki/concepts/devops/logging/`

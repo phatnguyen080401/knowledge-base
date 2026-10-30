@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-30 12:38:50** · maintain · Created `[[concepts/devops/kubernetes/kubernetes_components]]` — a component-by-component deep dive from the user's outline, with ten diagrams; linked from the Kubernetes hub; added the `kubernetes` tech seed row now that two notes use it.
+
+- **2026-10-30 12:31:16** · maintain · Created `[[concepts/devops/kubernetes/kubernetes]]` as the hub of a new `devops/kubernetes/` tech subfolder for upcoming Kubernetes topics, with six diagrams; backlinked from Prometheus, Trivy, and Observers.
+
 - **2026-10-30 12:19:54** · maintain · Created `[[concepts/ai_engineering/agi/artificial_general_intelligence]]` and `[[concepts/ai_engineering/alignment/ai_alignment]]` in new sub-area subfolders, linked from the superintelligence hub; user-approved `scaling-laws` and `specification-gaming` concept tags added.
 
 - **2026-10-30 12:06:03** · maintain · Created `[[concepts/ai_engineering/digital_superintelligence]]` — overview of superintelligence: capability ladder, forms, takeoff, alignment and control problems, responses, and debates; user-approved `ai-safety` topic tag added to taxonomy.md.

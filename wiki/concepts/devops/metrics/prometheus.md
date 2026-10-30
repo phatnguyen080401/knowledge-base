@@ -2,7 +2,7 @@
 title: Prometheus
 tags: [devops, observers, prometheus, alertmanager, overview]
 created: 2026-10-30 11:09:32
-updated: 2026-10-30 11:13:58
+updated: 2026-10-30 12:31:16
 ---
 
 # Prometheus
@@ -72,6 +72,7 @@ The following is judgement, not documentation. Prometheus is the cheapest way to
 - [[concepts/devops/tracing/jaeger|Jaeger]] — the trace a metric exemplar points to when you need to know *which* request was slow
 - [[concepts/devops/logging/elasticsearch|Elasticsearch]] — the high-detail log store for questions a bounded-label metric cannot answer
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — quality attributes stated as measurable scenarios ("p99 under 200 ms"), which are exactly what PromQL alerts encode
+- [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — the platform Prometheus most often monitors: pod discovery, the Prometheus Operator, and HPA scaling on its metrics
 
 ## References
 

@@ -2,7 +2,7 @@
 title: Observers
 tags: [devops, observers, overview]
 created: 2026-10-30 11:09:32
-updated: 2026-10-30 11:17:54
+updated: 2026-10-30 12:31:16
 ---
 
 # Observers
@@ -64,6 +64,7 @@ These three tools are not the only open-source option for each signal. A common 
 - [[concepts/devops/tracing/jaeger|Jaeger]] — the tracing backend: spans, sampling, and following a request across services
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — why correlation IDs and traces must cross component boundaries by design, not be added afterwards
 - [[concepts/devops/trivy|Trivy]] — the other half of running software safely: build-time scanning, where observers handle runtime behaviour
+- [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — the runtime most observed services run on, and where the logging, metrics, and tracing stacks are usually deployed
 
 ## References
 
