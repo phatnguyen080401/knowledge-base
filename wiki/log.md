@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-30 12:19:54** · maintain · Created `[[concepts/ai_engineering/agi/artificial_general_intelligence]]` and `[[concepts/ai_engineering/alignment/ai_alignment]]` in new sub-area subfolders, linked from the superintelligence hub; user-approved `scaling-laws` and `specification-gaming` concept tags added.
+
+- **2026-10-30 12:06:03** · maintain · Created `[[concepts/ai_engineering/digital_superintelligence]]` — overview of superintelligence: capability ladder, forms, takeoff, alignment and control problems, responses, and debates; user-approved `ai-safety` topic tag added to taxonomy.md.
+
 - **2026-10-30 11:36:38** · maintain · Updated `[[concepts/data_engineering/stateful_vs_stateless_stream_processing]]` — added 17 Mermaid diagrams visualizing operator kinds, state placement, shuffles, joins, hot keys, rescaling, windows, watermarks, recovery, two-phase commit, upgrades, and the worked example.
 
 - **2026-10-30 11:25:32** · maintain · Created `[[concepts/data_engineering/stateful_vs_stateless_stream_processing]]` — in-depth comparison of stateless and stateful stream operators across state storage, partitioning, time, fault tolerance, and upgrades; `kafka` and `spark` tech tags got seed rows.

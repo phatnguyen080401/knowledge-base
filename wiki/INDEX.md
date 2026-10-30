@@ -8,10 +8,23 @@ Folder: `wiki/concepts/ai_engineering/`
 
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities, the iteration loop, skills, and boundaries with ML, data, and backend work.
 - [[concepts/ai_engineering/chain_of_thought|Chain-of-Thought (CoT) Prompting]] — reasoning as a latent variable, few-/zero-shot CoT, Auto-CoT, self-consistency voting, least-to-most, tree of thoughts, PAL, reasoning models, faithfulness.
+- [[concepts/ai_engineering/digital_superintelligence|Digital Superintelligence]] — hub: AGI vs. ASI, speed/collective/quality forms, paths, takeoff, orthogonality and instrumental convergence, alignment research, lab frameworks, key debates.
 - [[concepts/ai_engineering/embeddings|Embeddings]] — text-to-vector pipeline, contrastive training, similarity metrics, dense vs. sparse vs. multi-vector, bi- vs. cross-encoders, Matryoshka and quantization.
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — host/client/server architecture, tools/resources/prompts, the stateless 2026-07-28 core, transports, OAuth 2.1 authorization, security threats, version history.
 - [[concepts/ai_engineering/prompt_engineering|Prompt Engineering]] — prompt anatomy, zero- vs. one- vs. few-shot, what demonstrations teach, a chain-of-thought summary, and the limits of prompting.
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — indexing and query pipeline, chunking, contextual retrieval, evaluation; multi-hop limits of flat retrieval; retrieval-as-reasoning over a compiled wiki.
+
+### AGI
+
+Folder: `wiki/concepts/ai_engineering/agi/`
+
+- [[concepts/ai_engineering/agi/artificial_general_intelligence|Artificial General Intelligence (AGI)]] — history, competing definitions, DeepMind's Levels of AGI, tests and benchmarks (ARC-AGI, task horizons), scaling laws and test-time compute, open gaps.
+
+### Alignment
+
+Folder: `wiki/concepts/ai_engineering/alignment/`
+
+- [[concepts/ai_engineering/alignment/ai_alignment|AI Alignment]] — outer vs. inner alignment, failure modes (specification gaming, sycophancy, deceptive alignment), RLHF/RLAIF/DPO math, scalable oversight, interpretability, AI control.
 
 ## Data Architecture
 

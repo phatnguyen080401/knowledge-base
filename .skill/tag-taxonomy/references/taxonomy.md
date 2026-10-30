@@ -28,6 +28,7 @@ creating a folder, which needs user approval.
 | Tag | Covers | Excludes |
 | --- | --- | --- |
 | `access-management` | Proving identity and granting permissions: authentication factors, authorization models, sessions and tokens, federation, single sign-on | Protecting the data itself (`data-security`); build and pipeline protection (`supply-chain-security`) |
+| `ai-safety` | Capability levels beyond today's systems (AGI, superintelligence) and keeping them beneficial: alignment, control, dangerous-capability evaluations, AI risk and governance | Building products on models (`llm-applications`); serving and monitoring models in production (`model-operations`) |
 | `api-protocols` | Interface and messaging styles for system-to-system exchange: REST, gRPC, SOAP, webhooks, queues | Internal representation of the data being exchanged (`data-modeling`) |
 | `architecture-patterns` | Recurring structural shapes of a system: layering, module boundaries, coupling, deployment topology | The named technology realizing the pattern (a `tech` tag) |
 | `concurrency` | Executing work simultaneously inside one system: threads, processes, event loops, synchronization primitives, races, and runtime constraints on parallelism | Coordination across nodes (`distributed-systems`); database transaction semantics (`transactions`) |
@@ -74,8 +75,10 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `query-optimization` | Making a query do less work: planning, pruning, join strategy, clustering, materialization | Reducing spend as a goal in itself (`cost-management`) |
 | `replication` | Maintaining copies of the same data across nodes: leader/follower, sync vs async, lag | Splitting distinct data across nodes (`partitioning`) |
 | `retrieval-augmentation` | Grounding a model's generation in externally retrieved knowledge: chunking, embedding and hybrid search, reranking, context assembly, agent traversal | Encoding knowledge into model weights by training or fine-tuning (`model-operations`) |
+| `scaling-laws` | How model capability changes with compute, data, and parameters: power-law fits, compute-optimal training, test-time compute, the scaling hypothesis | Serving cost and latency (`model-operations`) |
 | `schema-evolution` | Changing a schema without breaking readers: migrations, additive change, contract tests | Designing the schema in the first place (`data-modeling`) |
 | `search-trees` | Ordered, balanced lookup structures: B-trees, B+ trees, fanout, range scans | Write-optimized log structures (`write-optimization`) |
+| `specification-gaming` | An optimizer satisfying the literal objective instead of the intent: reward hacking, Goodhart effects, gamed tests and metrics | Pursuing a wrong goal learned in training despite a correct objective (goal misgeneralization, part of `ai-safety`) |
 | `stewardship-roles` | Human accountability for data: owners, stewards, councils, decision rights, escalation | The policies they enforce (the `data-governance` domain) |
 | `write-optimization` | Favouring write throughput over read simplicity: LSM trees, memtables, compaction, buffering | Read-optimized ordered structures (`search-trees`) |
 
