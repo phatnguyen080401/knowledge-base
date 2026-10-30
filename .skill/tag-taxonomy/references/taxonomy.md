@@ -64,6 +64,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `data-validation` | Checking data against expectations: profiling, rules, assertions, tests, anomaly detection | Who is accountable for acting on a failure (`stewardship-roles`) |
 | `entity-resolution` | Deciding that two records describe the same real-world thing: matching, merging, survivorship | Storing the resulting golden record |
 | `fault-tolerance` | Surviving node, network, or process failure: failover, retries, quorums, degraded modes | Routine performance tuning |
+| `in-context-learning` | Steering a model at inference time through instructions and demonstrations in the prompt, with no weight updates: zero-, one-, and few-shot prompting, chain-of-thought, self-consistency | Grounding in retrieved knowledge (`retrieval-augmentation`); training or fine-tuning (`model-operations`) |
 | `knowledge-graph` | Representing meaning as typed entities and relationships: ontologies, triples, inference | Tabular and dimensional models (`data-modeling`) |
 | `metric-definition` | Declaring a business measure once and reusing it: metric specs, dimensions, governed KPIs | The physical aggregate table behind it |
 | `partitioning` | Splitting data across nodes, files, or ranges: sharding, partition keys, pruning, skew | Copying the same data to several nodes (`replication`) |

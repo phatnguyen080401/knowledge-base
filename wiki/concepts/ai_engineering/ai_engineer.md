@@ -1,9 +1,9 @@
 ---
 title: AI Engineer
-tags: [ai-engineering, llm-applications, model-operations, retrieval-augmentation, overview]
+tags: [ai-engineering, llm-applications, model-operations, in-context-learning, retrieval-augmentation, overview]
 sources: ["https://github.com/chiphuyen/aie-book", "https://www.latent.space/p/ai-engineer", "https://developers.openai.com/api/docs/guides/model-optimization"]
 created: 2026-10-23 10:53:38
-updated: 2026-10-26 23:09:00
+updated: 2026-10-29 18:52:09
 ---
 
 # AI Engineer
@@ -188,6 +188,7 @@ grows, and the AI engineer is usually the one left holding the end-to-end behavi
 ## Related Concepts
 
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the grounding mechanism this role spends most of its quality budget on, from flat chunk retrieval to agent-traversed compiled knowledge
+- [[concepts/ai_engineering/prompt_engineering|Prompt Engineering]] — zero-, one-, and few-shot prompting and chain-of-thought: the cheapest lever, with the lowest ceiling
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the representation behind semantic search; choosing and migrating the model is a long-lived decision this role owns
 - [[concepts/databases/vector_database|Vector Database]] — the retrieval engine whose index recall and permission filtering the role must tune and secure
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — the standard for wiring tools and data to a model, and the boundary where tool privileges are enforced

@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-30 10:57:29** · maintain · Created `[[concepts/ai_engineering/chain_of_thought]]` split out of `[[concepts/ai_engineering/prompt_engineering]]` at the user's request, deepened with CoT variants, self-consistency and latent-reasoning formulas, reasoning models, and faithfulness research. No links repointed.
+
+- **2026-10-29 18:52:09** · maintain · Created `[[concepts/ai_engineering/prompt_engineering]]` — zero-, one-, few-shot, and chain-of-thought prompting from the original papers; added the user-approved `in-context-learning` concept tag, also applied to `[[concepts/ai_engineering/ai_engineer]]`.
+
 - **2026-10-29 18:38:49** · maintain · Created `[[concepts/databases/real_time_analytics_database]]` — compiled from the user's draft and enriched from ClickHouse, Druid, and Pinot documentation. Tagged `needs-review`: the ~100 ms latency bar conflicts with Druid's stated range.
 
 - **2026-10-29 18:29:30** · ingest · Created `[[concepts/devops/renovate_docs]]` — tool overview of the Renovate dependency-update bot, clipped from its docs home and six key-concept pages; Dependabot comparison flagged as vendor-sourced. Source: `raw/processed/renovate_docs.md`.
