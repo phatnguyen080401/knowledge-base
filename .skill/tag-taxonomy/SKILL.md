@@ -48,7 +48,7 @@ Ask in this order and stop at the first yes:
 Run this on every create or update. Tag what the body explains, not what the filename suggests.
 
 1. **Read** [taxonomy.md](references/taxonomy.md).
-2. **Read the neighbours.** Grep `^tags:` across the target folder (and any tech subfolder) and
+2. **Read the neighbours.** Grep `^tags:` across the target folder (and any subfolder) and
    match the siblings' choices unless this note genuinely differs.
 3. **Domain** — the single field; the *Excludes* column breaks ties. If it still splits two ways,
    the note covers two concepts and should be split.

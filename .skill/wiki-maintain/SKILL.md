@@ -12,7 +12,7 @@ change meaning.
 ## 1. Prepare
 
 1. Read the clock once (`AGENTS.md`) and reuse it.
-2. **Ask first** for a delete, the deletion step of a merge, a new domain or tech subfolder, or any
+2. **Ask first** for a delete, the deletion step of a merge, a new domain or subfolder, or any
    change that touches more than ~10 notes (`AGENTS.md` §1, Prohibited).
 3. **Find every inbound link** to each note you will move, merge, split, or delete (the bracket
    also catches `#Heading` anchors and table-escaped `\|` pipes):
