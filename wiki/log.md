@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 19:55:26** · maintain · Created `[[concepts/version_control/git_command_cheat_sheet]]`, split out of `[[concepts/version_control/git]]` at the user's request (all command blocks and tables moved, prose kept), and added the user's file-permission commands; 0 links repointed.
+
 - **2026-10-31 19:25:37** · maintain · Created `[[concepts/devops/docker/docker_image_digest_pinning]]` from the user's draft (items 1 and 2, reading "digest-binned" as digest-pinned) and `[[concepts/linux/static_vs_dynamic_linking]]` with `ldd` and Python, from general knowledge; linked from the Docker and Kubernetes notes.
 
 - **2026-10-31 13:18:48** · maintain · Created `[[concepts/devops/kubernetes/graceful_shutdown]]` from the user's timeline diagram, saved as `raw/assets/graceful_shutdown_timeline.png`, plus general knowledge; linked from the Kubernetes and Docker Container Techniques notes.

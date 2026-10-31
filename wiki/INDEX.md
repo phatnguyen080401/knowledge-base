@@ -247,7 +247,8 @@ Folder: `wiki/concepts/software_architecture/`
 
 Folder: `wiki/concepts/version_control/`
 
-- [[concepts/version_control/git|Git]] — hub: the four object types and four areas, then commands by task — recording, inspecting, branching, merging, rebasing, undoing, remotes, tags, large repos.
+- [[concepts/version_control/git|Git]] — hub: the four object types and four areas, and how recording, merging, rebasing, undoing, remotes, and tags behave and why; commands are in the cheat sheet.
+- [[concepts/version_control/git_command_cheat_sheet|Git Command Cheat Sheet]] — commands by task: setup, recording, file permissions (`ls-files --stage`, `update-index --chmod`), history and plumbing, branching, rebasing, undoing, stash, remotes, tags, large repos.
 - [[concepts/version_control/conventional_commits|Conventional Commits]] — the `<type>[scope]: <description>` format, specified and conventional types, breaking-change signalling, and the mapping onto SemVer releases.
 
 ### GitLab

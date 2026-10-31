@@ -2,12 +2,12 @@
 title: Git
 tags: [version-control, source-history, git, overview]
 created: 2026-10-22 10:11:51
-updated: 2026-10-22 10:43:17
+updated: 2026-10-31 19:55:26
 ---
 
 # Git
 
-Git is a distributed version-control system that records a project's history as a directed acyclic graph of immutable, content-addressed snapshots. Every clone holds the complete history and can commit, branch, and merge without a server, which is what separates Git from the centralized systems it displaced. This note is the hub for the version-control domain: it covers the object model first and the command surface second, because almost every confusing Git command becomes obvious once you know which of the four areas it moves data between. Message conventions layered on top live in [[concepts/version_control/conventional_commits|Conventional Commits]].
+Git is a distributed version-control system that records a project's history as a directed acyclic graph of immutable, content-addressed snapshots. Every clone holds the complete history and can commit, branch, and merge without a server, which is what separates Git from the centralized systems it displaced. This note is the hub for the version-control domain: it covers the object model and explains how the main commands behave, because almost every confusing Git command becomes obvious once you know which of the four areas it moves data between. The commands themselves, grouped by task, are collected in [[concepts/version_control/git_command_cheat_sheet|Git Command Cheat Sheet]]. Message conventions layered on top live in [[concepts/version_control/conventional_commits|Conventional Commits]].
 
 ## Why the Model Comes First
 
@@ -29,6 +29,8 @@ Git stores four kinds of object, each keyed by the hash of its own contents (his
 | **commit** | One root tree, zero or more parents, author and committer with timestamps, and the message | Snapshot + metadata |
 | **tag**    | A named pointer to another object, with its own message and optional signature | Annotated label     |
 
+A tree entry's mode is the only file metadata Git keeps: whether the file is executable (`100755`) or not (`100644`), plus special modes for symbolic links and submodules. Owners, groups, and the other permission bits are not recorded.
+
 A commit therefore points at a *complete snapshot of the whole tree*, not at a diff. Diffs are computed on demand by comparing two trees — which is why `git log -p` is slower than `git log`, and why storing the same unchanged file across a thousand commits costs one blob, since identical content hashes to the same object.
 
 **References** are the mutable layer on top. A branch, a remote-tracking branch (`origin/main`), and a lightweight tag are all just files under `.git/refs/` containing a commit hash. `HEAD` is a pointer to the branch you are currently on — or, in **detached HEAD** state, directly to a commit, which is why commits made there belong to no branch and become unreachable once you switch away.
@@ -40,7 +42,7 @@ tree ──┘                                      ▲
                                              HEAD
 ```
 
-**Porcelain vs. plumbing.** The commands below are *porcelain* — the human-facing layer. Underneath sits *plumbing*: `git hash-object`, `git cat-file -p <hash>`, `git ls-tree`, `git rev-parse`. You rarely need plumbing, but `git cat-file -p HEAD` printing a commit's raw tree, parent, and author lines is the fastest way to convince yourself the model above is literally what is on disk.
+**Porcelain vs. plumbing.** Everyday commands are *porcelain* — the human-facing layer. Underneath sits *plumbing*: `git hash-object`, `git cat-file -p <hash>`, `git ls-tree`, `git rev-parse`. You rarely need plumbing, but `git cat-file -p HEAD` printing a commit's raw tree, parent, and author lines is the fastest way to convince yourself the model above is literally what is on disk.
 
 ## The Four Areas
 
@@ -57,73 +59,21 @@ The index is the part other version-control systems do not have, and the part pe
 
 ## Setup
 
-```bash
-git config --global user.name  "Ada Lovelace"      # identity recorded in every commit
-git config --global user.email "ada@example.com"
-git config --global init.defaultBranch main        # new repos start on main, not master
-git config --global pull.rebase true               # see "Working with Remotes"
-git config --list --show-origin                    # which file set which value
-
-git init                    # create a repository in the current directory
-git clone <url> [<dir>]     # copy an existing one, including all history
-```
-
 Configuration resolves system → global (`~/.gitconfig`) → repository (`.git/config`) → command line, each overriding the last. A per-repository `user.email` is the usual fix for committing to work and personal repositories from one machine.
 
 ## Recording Changes
 
-```bash
-git status                   # what is modified, staged, and untracked
-git status -sb               # the same, two lines shorter
-
-git add <path>               # stage a file or directory
-git add -p                   # stage selected hunks interactively
-git add -A                   # stage everything, including deletions
-
-git diff                     # working tree vs. index  — what is NOT staged
-git diff --staged            # index vs. HEAD          — what IS staged
-git diff HEAD                # working tree vs. HEAD   — everything uncommitted
-
-git commit -m "<message>"    # commit the index
-git commit -am "<message>"   # stage tracked modifications and commit (skips untracked files)
-
-git rm <path>                # delete and stage the deletion
-git rm --cached <path>       # stop tracking but keep the file on disk
-git mv <old> <new>           # rename; Git detects renames by content anyway
-```
-
-The two `git diff` forms are worth internalizing: a bare `git diff` showing nothing while `git status` shows staged changes is not a bug, it is the index doing its job.
+The two `git diff` forms are worth internalizing: `git diff` compares the working tree with the index, and `git diff --staged` compares the index with `HEAD`. A bare `git diff` showing nothing while `git status` shows staged changes is not a bug, it is the index doing its job.
 
 **`.gitignore`** excludes untracked files by glob, with per-directory files and a global one via `core.excludesFile`. It has no effect on a file already tracked — that requires `git rm --cached` first. Commit message conventions are a topic of their own: see [[concepts/version_control/conventional_commits|Conventional Commits]].
 
 ## Inspecting History
 
-```bash
-git log --oneline --graph --decorate --all   # the one log invocation worth aliasing
-git log -p <path>                            # patches touching a path
-git log -S "<string>"                        # commits that added or removed a string ("pickaxe")
-git log --since="2 weeks ago" --author=ada
-git show <commit>                            # one commit's metadata and diff
-git blame <file>                             # last commit to touch each line
-git shortlog -sn                             # commit counts per author
-git bisect start / bad / good                # binary search for the commit that broke something
-```
-
-`git log -S` and `git bisect` are the two that repay learning out of proportion to their difficulty. Bisect in particular turns "when did this break?" from archaeology into $\log_2 n$ builds, and `git bisect run <script>` automates even that.
+Of the history commands, `git log -S` (the "pickaxe", which finds commits that added or removed a string) and `git bisect` (a binary search for the commit that broke something) repay learning out of proportion to their difficulty. Bisect in particular turns "when did this break?" from archaeology into $\log_2 n$ builds, and `git bisect run <script>` automates even that.
 
 **`git reflog`** is the separate, local-only record of everywhere `HEAD` has pointed, including positions abandoned by `reset`, `rebase`, and branch deletion. It is the reason almost nothing committed is ever truly lost — see Undoing Things. Entries expire eventually (90 days by default, 30 for unreachable ones), so it is a safety net, not an archive.
 
 ## Branching and Merging
-
-```bash
-git branch                       # list local branches
-git switch <branch>              # move HEAD to an existing branch
-git switch -c <branch>           # create and move to a new one
-git branch -d <branch>           # delete a merged branch (-D to force)
-git merge <branch>               # merge into the current branch
-git merge --no-ff <branch>       # force a merge commit even when fast-forward is possible
-git merge --abort                # back out of a conflicted merge
-```
 
 `git switch` and `git restore` were added in Git 2.23 to split `git checkout`, which had accumulated two unrelated jobs — moving `HEAD` and overwriting files. `git checkout` still works and is what older documentation shows; the newer pair is clearer and much harder to use destructively by accident.
 
@@ -138,15 +88,6 @@ The merge-versus-rebase argument is really an argument about whether history sho
 
 ## Rebasing and Rewriting History
 
-```bash
-git rebase <base>               # replay the current branch's commits on top of <base>
-git rebase -i <base>            # interactively reorder, squash, edit, or drop them
-git rebase --continue|--abort   # after resolving a conflict, or to give up
-git commit --amend              # replace the most recent commit
-git cherry-pick <commit>        # replay one commit onto the current branch
-git revert <commit>             # a NEW commit that undoes an old one
-```
-
 Rebase does not move commits. It **creates new ones** with the same changes, new parents, new timestamps, and therefore new hashes, then moves the branch pointer to the end of the new chain. The originals linger, unreferenced, until garbage collection.
 
 That mechanic produces the one rule worth stating absolutely:
@@ -160,48 +101,17 @@ Interactive rebase is the main tool for tidying a branch before review: `squash`
 
 ## Undoing Things
 
-The single most common Git question is "how do I undo this", and it has at least six answers depending on *what* and *how far along*.
-
-| Goal                                              | Command                                   | Touches                        |
-| ------------------------------------------------- | ----------------------------------------- | ------------------------------ |
-| Discard edits to a file                           | `git restore <path>`                      | Working tree                   |
-| Unstage a file, keep the edits                    | `git restore --staged <path>`             | Index                          |
-| Fix the last commit's message or contents         | `git commit --amend`                      | Last commit (new hash)         |
-| Undo the last commit, keep changes staged         | `git reset --soft HEAD~1`                 | HEAD                           |
-| Undo the last commit, keep changes unstaged       | `git reset HEAD~1` (`--mixed`, default)   | HEAD + index                   |
-| Undo the last commit and destroy the changes      | `git reset --hard HEAD~1`                 | HEAD + index + working tree    |
-| Undo a commit that is already pushed              | `git revert <commit>`                     | Adds a new commit              |
-| Delete untracked files                            | `git clean -fd` (`-n` to preview first)   | Working tree                   |
-| Recover from a bad reset or rebase                | `git reflog` then `git reset --hard <ref>` | HEAD + index + working tree   |
+The single most common Git question is "how do I undo this", and it has at least six answers depending on *what* and *how far along*. The cheat sheet tabulates them by goal; the distinctions that matter are below.
 
 The three `reset` modes are one command with a single parameter — how far down the stack to go — and that is the clearest way to remember them: `--soft` moves `HEAD` only, `--mixed` also resets the index, `--hard` also overwrites the working tree.
 
-`--hard` and `git clean` are the only entries in the table that can destroy work irrecoverably, because uncommitted changes exist in no object. Anything that was ever committed is still reachable through `git reflog` until it expires.
+`git reset --hard` and `git clean` are the only undo commands that can destroy work irrecoverably, because uncommitted changes exist in no object. Anything that was ever committed is still reachable through `git reflog` until it expires.
 
-**Stashing** parks uncommitted work without committing it:
-
-```bash
-git stash push -m "<label>"   # shelve working tree and index changes
-git stash push -u             # include untracked files
-git stash list
-git stash pop                 # reapply the most recent and drop it
-git stash apply stash@{2}     # reapply a specific one, keeping it in the list
-```
+**Stashing** (`git stash push`, then `git stash pop` or `git stash apply`) parks uncommitted work without committing it.
 
 A stash is implemented as a commit on a hidden ref, which is why a dropped stash can sometimes be recovered — but a stash is a worse branch, not a better one. Anything you want to keep for more than an afternoon should be a commit on a throwaway branch.
 
 ## Working with Remotes
-
-```bash
-git remote -v                       # configured remotes
-git remote add <name> <url>
-git fetch <remote> [--prune]        # download objects, update origin/*, touch nothing local
-git pull                            # fetch + integrate into the current branch
-git pull --rebase                   # fetch + rebase instead of merge
-git push <remote> <branch>
-git push -u origin <branch>         # push and set the upstream tracking branch
-git push --force-with-lease         # overwrite a remote branch, but only if it is where you last saw it
-```
 
 **`fetch` is always safe; `pull` is not.** `fetch` only adds objects and moves remote-tracking refs, so nothing local can break. `pull` runs `fetch` and then merges or rebases, which can conflict or rewrite. Fetching first and looking at `git log HEAD..origin/main` before integrating is a cheap habit.
 
@@ -211,28 +121,11 @@ A **remote-tracking branch** (`origin/main`) is the local cache of where that br
 
 ## Tags and Releases
 
-```bash
-git tag                             # list
-git tag -a v1.4.0 -m "Release 1.4.0"  # annotated: its own object, author, date, message
-git tag v1.4.0                      # lightweight: just a ref, no metadata
-git tag -s v1.4.0 -m "..."          # annotated and GPG-signed
-git push origin v1.4.0              # tags are NOT pushed by default
-git push --follow-tags              # push commits plus the annotated tags reachable from them
-git describe --tags                 # human-readable name for the current commit: v1.4.0-12-gabc1234
-```
-
 Use annotated tags for anything a human or a pipeline will rely on — a lightweight tag carries no record of who created it or when. Tags are the natural trigger for a release pipeline and the natural place for a [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] number, which is what links Git's history to the artifact numbering downstream consumers depend on.
 
 ## Working with Large or Long-Lived Repositories
 
-| Need                                                 | Command                                            |
-| ---------------------------------------------------- | -------------------------------------------------- |
-| Several branches checked out at once, no re-cloning  | `git worktree add ../feature-x feature-x`           |
-| Clone without full history                           | `git clone --depth 1 <url>`                         |
-| Clone without file contents until needed             | `git clone --filter=blob:none <url>` (partial clone)|
-| Check out part of a large tree                       | `git sparse-checkout set <dir>...`                  |
-| Keep a big repository fast                           | `git maintenance start`, `git gc`                   |
-| Embed another repository at a pinned commit          | `git submodule add <url> <path>`                    |
+Large repositories have their own tools: worktrees, shallow and partial clones, sparse checkout, background maintenance, and submodules.
 
 `git worktree` is the underused one: it gives a second working directory sharing the same object database, which beats stashing when you need to look at another branch for five minutes. Submodules, by contrast, are correct but awkward enough that most teams reach for a package manager instead.
 
@@ -248,6 +141,7 @@ Use annotated tags for anything a human or a pipeline will rely on — a lightwe
 
 ## Related Concepts
 
+- [[concepts/version_control/git_command_cheat_sheet|Git Command Cheat Sheet]] — every command this note explains, grouped by task, plus file-permission commands such as `git update-index --chmod`
 - [[concepts/version_control/conventional_commits|Conventional Commits]] — the structured message format that turns the history this note describes into something tooling can read
 - [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — the server-side enforcement Git itself has no notion of: who may force push, who may delete a tag, and what a push rule rejects before it is stored
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — what an annotated release tag usually carries, and the scheme commit types map onto
