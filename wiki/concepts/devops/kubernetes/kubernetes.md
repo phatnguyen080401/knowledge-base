@@ -2,7 +2,7 @@
 title: Kubernetes
 tags: [devops, deployment, fault-tolerance, kubernetes, overview]
 created: 2026-10-30 12:31:16
-updated: 2026-10-30 23:11:13
+updated: 2026-10-31 13:18:48
 ---
 
 # Kubernetes
@@ -188,7 +188,7 @@ sequenceDiagram
     KL->>APP: SIGKILL if still running
 ```
 
-Because endpoint removal propagates asynchronously, traffic can still arrive *after* SIGTERM. A common pattern is a short `preStop` sleep, so the pod keeps serving until routers have stopped sending to it. The app should then finish in-flight work well inside the grace period. The full procedure for draining long-lived and streaming workloads deserves its own note in this folder.
+Because endpoint removal propagates asynchronously, traffic can still arrive *after* SIGTERM. A common pattern is a short `preStop` sleep, so the pod keeps serving until routers have stopped sending to it. The app should then finish in-flight work well inside the grace period. The full procedure, including draining long-lived and streaming workloads, is in [[concepts/devops/kubernetes/graceful_shutdown|Graceful Shutdown for Streaming Pods]].
 
 ### Rolling updates and disruption
 
@@ -298,6 +298,7 @@ The following is judgement, not documentation. Kubernetes trades operational com
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — the deep dive: API server pipeline, etcd quorums, scheduler plugins, controllers, kubelet, runtimes, kube-proxy, and failure modes
 - [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]] — file-defined pods that run without the API server, and the mirror pods that make them visible
 - [[concepts/devops/kubernetes/security/kubernetes_security|Kubernetes Security]] — attack surfaces and attack techniques, starting with hidden static pods
+- [[concepts/devops/kubernetes/graceful_shutdown|Graceful Shutdown for Streaming Pods]] — the phased shutdown timeline, sizing the grace period, and draining WebSocket, SSE, gRPC, and Kafka consumer workloads
 - [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — the shared namespaces that make a pod's containers one unit with one IP
 - [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]] — how nodes join the cluster and get their client and serving certificates
 - [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — how each pod is wired into its node's network, and the packet paths within and between nodes

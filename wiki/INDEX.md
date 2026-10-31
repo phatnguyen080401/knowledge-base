@@ -175,6 +175,7 @@ Folder: `wiki/concepts/devops/infrastructure_as_code/`
 Folder: `wiki/concepts/devops/kubernetes/`
 
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — hub: control plane and nodes, reconciliation, workload/network/storage objects, scheduling and QoS, probes, pod termination, rollouts, autoscaling, RBAC, CRDs and operators.
+- [[concepts/devops/kubernetes/graceful_shutdown|Graceful Shutdown for Streaming Pods]] — the five-phase SIGTERM timeline within ~80% of the grace period, readiness vs. preStop, draining gRPC/WebSocket/SSE streams, Kafka consumers, reconnect storms.
 - [[concepts/devops/kubernetes/kubelet_tls_bootstrapping|Kubelet TLS Bootstrapping]] — joining nodes with bootstrap tokens and CSRs, discovery and CA pinning, rotation, kubelet client vs. serving certificates, securing port 10250.
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — API server pipeline, etcd quorum, scheduler plugins, controllers, kubelet, CRI/CNI/CSI, kube-proxy, add-ons, HA, failure modes, debugging.
 - [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — shared network/IPC/UTS namespaces, the pause container, sandbox lifecycle and SandboxChanged, inspecting with crictl.

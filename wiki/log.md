@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 13:18:48** · maintain · Created `[[concepts/devops/kubernetes/graceful_shutdown]]` from the user's timeline diagram, saved as `raw/assets/graceful_shutdown_timeline.png`, plus general knowledge; linked from the Kubernetes and Docker Container Techniques notes.
+
 - **2026-10-31 13:14:03** · maintain · Expanded `[[concepts/software_architecture/api_integration_protocols]]` with short polling, long polling, a general RPC section with JSON-RPC, and deeper SSE, WebSockets, and gRPC coverage, with Mermaid diagrams and a real-time comparison, from general knowledge.
 
 - **2026-10-31 12:34:01** · maintain · Created `[[concepts/data_engineering/databricks/auto_loader]]` from the user's draft, checked against six Databricks docs pages (incremental listing now deprecated); needs-review on listing-cost scaling; linked from the Databricks and Exactly-Once notes.

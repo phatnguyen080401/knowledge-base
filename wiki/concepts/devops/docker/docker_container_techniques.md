@@ -2,7 +2,7 @@
 title: Docker Container Techniques
 tags: [devops, deployment, docker]
 created: 2026-10-31 11:47:01
-updated: 2026-10-31 12:12:46
+updated: 2026-10-31 13:18:48
 ---
 
 # Docker Container Techniques
@@ -151,7 +151,7 @@ An exit code of 137 on a container you stopped normally is a sign that the appli
 ### Equivalents elsewhere
 
 - **Docker Compose:** `docker compose stop` and `docker compose kill` behave the same way, and a service's `stop_grace_period` sets its timeout.
-- **Kubernetes:** deleting a pod follows the same SIGTERM, grace period, SIGKILL sequence, with a 30-second default (`terminationGracePeriodSeconds`). The [[concepts/devops/kubernetes/kubernetes|Kubernetes]] note covers graceful pod shutdown.
+- **Kubernetes:** deleting a pod follows the same SIGTERM, grace period, SIGKILL sequence, with a 30-second default (`terminationGracePeriodSeconds`). The [[concepts/devops/kubernetes/kubernetes|Kubernetes]] note covers pod termination, and [[concepts/devops/kubernetes/graceful_shutdown|Graceful Shutdown for Streaming Pods]] covers the full drain procedure.
 
 ## `docker pause` vs. `docker stop`
 
