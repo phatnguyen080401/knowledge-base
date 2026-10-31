@@ -2,7 +2,7 @@
 title: Pod Sandbox (Pause Container)
 tags: [devops, deployment, kubernetes, containerd]
 created: 2026-10-30 12:51:48
-updated: 2026-10-30 23:11:13
+updated: 2026-10-31 12:02:49
 ---
 
 # Pod Sandbox (Pause Container)
@@ -114,6 +114,8 @@ nsenter --net=/var/run/netns/cni-<id> ip addr   # run a command inside a pod's n
 
 ## Related Concepts
 
+- [[concepts/linux/linux_namespaces|Linux Namespaces]] — every namespace type the sandbox shares or keeps separate, how each one isolates, and the tools to inspect them
+- [[concepts/linux/mount_propagation|Mount Propagation]] — how each container's private mount namespace is kept apart from the host's, and the `mountPropagation` field that relaxes it
 - [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — the virtual cable that connects the sandbox's network namespace to the node
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — the kubelet, the CRI, and the container runtime stack beneath the sandbox
 - [[concepts/devops/kubernetes/static_pod_vs_normal_pod|Static Pod vs. Normal Pod]] — static pods get sandboxes too, which is how node-side inventories reveal pods the API cannot see

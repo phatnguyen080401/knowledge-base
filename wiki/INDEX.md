@@ -213,6 +213,9 @@ Folder: `wiki/concepts/identity_and_access/`
 
 Folder: `wiki/concepts/linux/`
 
+- [[concepts/linux/linux_namespaces|Linux Namespaces]] — the eight namespace types with charts; `/proc/<pid>/ns` and lifetimes; clone, unshare, setns; PID 1 duties, UID mapping; how Docker and Kubernetes combine them.
+- [[concepts/linux/mount_propagation|Mount Propagation]] — shared, private, slave, and unbindable mounts; peer groups; `findmnt` and `mountinfo`; systemd and `unshare` defaults; Docker bind propagation and Kubernetes `mountPropagation`.
+- [[concepts/linux/network_namespace|Network Namespace]] — what the network stack isolates; topology and packet-path charts; lifecycle; `ip netns`; veth, macvlan, ipvlan; a NAT lab; Docker modes, pods, debugging, pitfalls.
 - [[concepts/linux/systemd_targets|Systemd Targets]] — SysVinit runlevels and their target mapping; key, rescue/emergency, and building-block targets; the boot chain; unit anatomy and `WantedBy`; `systemctl` set-default, isolate, and inspection; custom targets.
 
 ## Software Architecture

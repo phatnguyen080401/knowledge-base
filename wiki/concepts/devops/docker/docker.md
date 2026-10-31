@@ -2,7 +2,7 @@
 title: Docker
 tags: [devops, deployment, docker]
 created: 2026-10-31 11:36:50
-updated: 2026-10-31 11:51:50
+updated: 2026-10-31 12:02:49
 ---
 
 # Docker
@@ -38,7 +38,7 @@ Docker is a platform for packaging an application with everything it needs to ru
 | Size | Megabytes to a few hundred megabytes | Gigabytes |
 | Security boundary | Weaker; a kernel exploit can reach the host | Stronger |
 
-A container is an ordinary process that the kernel isolates. **Namespaces** give it its own view of process IDs, network interfaces, mounts, and hostname. **cgroups** cap its CPU and memory. A union filesystem (usually `overlay2`) stacks the image layers under a writable layer. On macOS and Windows, Docker Desktop runs these Linux containers inside a small Linux VM.
+A container is an ordinary process that the kernel isolates. **[[concepts/linux/linux_namespaces|Namespaces]]** give it its own view of process IDs, network interfaces, mounts, and hostname. **cgroups** cap its CPU and memory. A union filesystem (usually `overlay2`) stacks the image layers under a writable layer. On macOS and Windows, Docker Desktop runs these Linux containers inside a small Linux VM.
 
 ## Architecture
 
@@ -191,7 +191,7 @@ This builds one image for both Intel and ARM machines, such as Apple Silicon lap
 | **Bind mount** | `-v "$PWD":/app` | Live-editing source code in development; ties the container to a host path |
 | **tmpfs** | `--tmpfs /tmp` | Scratch data kept in memory and never written to disk |
 
-Anything written to the container's own writable layer disappears when the container is removed. State that must persist belongs in a volume.
+Anything written to the container's own writable layer disappears when the container is removed. State that must persist belongs in a volume. Whether mounts made later on the host appear inside a bind mount, or the reverse, is controlled by its [[concepts/linux/mount_propagation|Mount Propagation]] option (`rprivate` by default, or `rslave` or `rshared`).
 
 ## Networking
 
@@ -267,6 +267,7 @@ Docker Desktop is free for personal use, education, non-commercial open source, 
 - [[concepts/devops/docker/docker_container_techniques|Docker Container Techniques]] — how `docker run` decomposes, interactive TTYs, attach vs. exec, stop vs. kill and why PID 1 can ignore SIGTERM, pause vs. stop, signalling, and exporting filesystems
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — the orchestrator that schedules and runs Docker-built images across a cluster
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — containerd, the CRI, and why Kubernetes dropped Docker Engine as a runtime but still runs its images
+- [[concepts/linux/mount_propagation|Mount Propagation]] — whether mounts flow between the host and a container's bind mounts, and the `rslave`/`rshared` options
 - [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — the virtual cable that connects each container on a bridge network to the host
 - [[concepts/devops/trivy|Trivy]] — scans images for vulnerabilities and Dockerfiles for misconfigurations
 - [[concepts/devops/renovate_docs|Renovate]] — automates updates of pinned base-image tags and digests in Dockerfiles

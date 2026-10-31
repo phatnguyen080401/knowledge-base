@@ -2,7 +2,7 @@
 title: Virtual Ethernet (veth) Pair
 tags: [devops, deployment, kubernetes, cni]
 created: 2026-10-30 12:51:48
-updated: 2026-10-30 12:51:48
+updated: 2026-10-31 12:02:49
 ---
 
 # Virtual Ethernet (veth) Pair
@@ -128,6 +128,7 @@ Pods with `hostNetwork: true` have no veth pair. They share the node's network n
 
 ## Related Concepts
 
+- [[concepts/linux/network_namespace|Network Namespace]] — the isolated network stack each end of the pair lives in: what it contains, its lifecycle, `ip netns`, and NAT to the outside world
 - [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — owns the network namespace at the pod end of the pair
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — the networking model, CNI plugins, kube-proxy, and Services that sit on top of this wiring
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — the hub: Services, NetworkPolicy, and the objects whose traffic crosses these interfaces

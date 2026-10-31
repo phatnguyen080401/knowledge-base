@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-31 12:02:49** · maintain · Created `[[concepts/linux/linux_namespaces]]` and `[[concepts/linux/network_namespace]]` from general knowledge, with Mermaid charts; linked from the Docker, veth Pair, Pod Sandbox, and Mount Propagation notes.
+
+- **2026-10-31 12:00:44** · maintain · Created `[[concepts/linux/mount_propagation]]` from general knowledge; linked from the Docker and Pod Sandbox notes.
+
 - **2026-10-31 11:56:00** · maintain · Created `[[concepts/linux/systemd_targets]]` from the user's draft, enriched from general knowledge, in a new `linux/` folder as the user requested; added the `linux` domain to taxonomy.md; linked from the Docker techniques and Kubernetes Components notes.
 
 - **2026-10-31 11:51:50** · maintain · Merged `[[concepts/devops/docker/docker_stop_vs_docker_kill]]` into `[[concepts/devops/docker/docker_container_techniques]]` as a Stopping vs. Killing section, as the user requested; deleted the merged-away note with approval; 6 links repointed.
