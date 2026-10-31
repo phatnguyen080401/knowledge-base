@@ -232,7 +232,7 @@ Folder: `wiki/concepts/linux/`
 Folder: `wiki/concepts/software_architecture/`
 
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — hub: quality attributes, architectural styles and their costs, decomposition, cross-cutting decisions, ADRs and C4.
-- [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — REST, GraphQL, gRPC, SOAP, webhooks, SSE, WebSockets, MQTT, AMQP, and EDI, organized by interaction style.
+- [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — REST, GraphQL, RPC and gRPC, SOAP, short and long polling, SSE, WebSockets, webhooks, MQTT, AMQP, and EDI, organized by interaction style, with sequence diagrams and a real-time comparison.
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- vs. CPU-bound work, race conditions with worked interleavings, synchronization primitives, and deadlock.
 - [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — the three delivery guarantees, why exactly-once delivery is impossible (acknowledgement problem, Two Generals, FLP), and the techniques and boundaries of effectively-once processing.
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
