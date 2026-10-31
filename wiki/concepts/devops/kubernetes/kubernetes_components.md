@@ -2,7 +2,7 @@
 title: Kubernetes Components
 tags: [devops, deployment, fault-tolerance, kubernetes, etcd]
 created: 2026-10-30 12:38:50
-updated: 2026-10-31 11:40:03
+updated: 2026-10-31 11:56:00
 ---
 
 # Kubernetes Components
@@ -78,7 +78,7 @@ Every arrow into the API server is a client connection. No component calls anoth
 | **kube-scheduler** | Control plane | Static pod | 10259 | Several, one active through leader election |
 | **kube-controller-manager** | Control plane | Static pod | 10257 | Several, one active through leader election |
 | **cloud-controller-manager** | Control plane | Deployment, or provider-managed | 10258 | Several, one active through leader election |
-| **kubelet** | Node | A systemd service on the host, not a pod | 10250 | One per node |
+| **kubelet** | Node | A [[concepts/linux/systemd_targets\|systemd service]] on the host, not a pod | 10250 | One per node |
 | **kube-proxy** | Node | DaemonSet | 10256 (health) | One per node |
 | **Container runtime** | Node | A systemd service on the host | Unix socket | One per node |
 

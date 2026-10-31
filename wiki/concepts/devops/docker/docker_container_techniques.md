@@ -2,7 +2,7 @@
 title: Docker Container Techniques
 tags: [devops, deployment, docker]
 created: 2026-10-31 11:47:01
-updated: 2026-10-31 11:51:50
+updated: 2026-10-31 11:56:00
 ---
 
 # Docker Container Techniques
@@ -40,7 +40,7 @@ Running `docker create` and then `docker start -a` by hand reproduces `docker ru
 | Component | Runs as | Talks to the next hop over |
 | --- | --- | --- |
 | `docker` CLI | A foreground process in your terminal session | HTTP REST API on a Unix socket (`/var/run/docker.sock`) |
-| `dockerd` | A systemd service (daemon) | gRPC API on a Unix socket |
+| `dockerd` | A [[concepts/linux/systemd_targets\|systemd service]] (daemon) | gRPC API on a Unix socket |
 | `containerd` | A systemd service (daemon) | Starts one shim per container |
 | `containerd-shim-runc-v2` | A background process, one per container | FIFOs or a Unix socket to the container's stdio |
 | Container processes | Children of the shim, inside their own mount, PID, and network namespaces | — |

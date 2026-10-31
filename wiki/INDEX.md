@@ -209,6 +209,12 @@ Folder: `wiki/concepts/identity_and_access/`
 - [[concepts/identity_and_access/openid_connect|OpenID Connect (OIDC)]] — identity layer on OAuth 2.0: ID token claims and validation, flows, discovery, ID vs. access token, workload OIDC tokens.
 - [[concepts/identity_and_access/single_sign_on|Single Sign-On (SSO)]] — IdP and SP roles, SAML 2.0 vs. OIDC, SP- vs. IdP-initiated flows, SAML validation, SCIM provisioning, logout.
 
+## Linux
+
+Folder: `wiki/concepts/linux/`
+
+- [[concepts/linux/systemd_targets|Systemd Targets]] — SysVinit runlevels and their target mapping; key, rescue/emergency, and building-block targets; the boot chain; unit anatomy and `WantedBy`; `systemctl` set-default, isolate, and inspection; custom targets.
+
 ## Software Architecture
 
 Folder: `wiki/concepts/software_architecture/`

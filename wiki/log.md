@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 11:56:00** · maintain · Created `[[concepts/linux/systemd_targets]]` from the user's draft, enriched from general knowledge, in a new `linux/` folder as the user requested; added the `linux` domain to taxonomy.md; linked from the Docker techniques and Kubernetes Components notes.
+
 - **2026-10-31 11:51:50** · maintain · Merged `[[concepts/devops/docker/docker_stop_vs_docker_kill]]` into `[[concepts/devops/docker/docker_container_techniques]]` as a Stopping vs. Killing section, as the user requested; deleted the merged-away note with approval; 6 links repointed.
 
 - **2026-10-31 11:47:01** · maintain · Created `[[concepts/devops/docker/docker_container_techniques]]` from the user's draft and two iximiuz Labs diagrams saved to `raw/assets/`; corrected the draft's nginx signals (SIGHUP reloads, SIGUSR1 reopens logs); linked from both Docker notes.
