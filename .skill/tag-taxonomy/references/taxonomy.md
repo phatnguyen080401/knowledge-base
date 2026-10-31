@@ -93,6 +93,7 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 | `databricks` | Databricks lakehouse, Unity Catalog, Delta tables |
 | `dbt` | dbt Core and dbt Cloud: models, tests, macros, adapters |
 | `fix-protocol` | The FIX financial messaging standard |
+| `flink` | Apache Flink: DataStream and Table/SQL APIs, state backends, checkpoints and savepoints |
 | `git` | The Git version-control system: commits, branches, tags, trailers, rebase |
 | `github-actions` | GitHub Actions workflows, runners, and secrets |
 | `jwt` | JSON Web Tokens: JWS/JWE structure, claims, validation, algorithm attacks |

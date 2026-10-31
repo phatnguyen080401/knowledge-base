@@ -2,7 +2,7 @@
 title: Apache Kafka
 tags: [data-engineering, distributed-systems, kafka, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-30 11:25:32
+updated: 2026-10-31 10:36:57
 ---
 
 # Apache Kafka
@@ -15,7 +15,7 @@ Kafka is a distributed, partitioned, replicated **commit log** that systems writ
 - **The log is replayable.** A consumer is a cursor over retained data, not a recipient of a delivered message. Reprocessing a year of events through fixed logic means resetting an offset, not asking upstream systems to resend.
 - **It absorbs mismatched speeds.** A burst that would overwhelm a downstream database becomes disk on the brokers; the consumer falls behind and catches up instead of failing.
 - **Durability and ordering are configurable, not assumed.** Replication factor, `acks`, and `min.insync.replicas` make the durability/latency trade-off an explicit setting — which is why Kafka is a worked example in the [[concepts/databases/cap_theorem|CAP Theorem]] note.
-- **It is the substrate for stream processing.** [[concepts/data_engineering/spark/apache_spark|Apache Spark]], Flink, and Kafka Streams all assume a replayable, partitioned source; checkpoint-and-replay recovery is only possible because the log keeps the data.
+- **It is the substrate for stream processing.** [[concepts/data_engineering/spark/apache_spark|Apache Spark]], [[concepts/data_engineering/flink/apache_flink|Apache Flink]], and Kafka Streams all assume a replayable, partitioned source; checkpoint-and-replay recovery is only possible because the log keeps the data.
 
 ## The Data Model
 

@@ -2,7 +2,7 @@
 title: Stateful vs. Stateless Stream Processing
 tags: [data-engineering, distributed-systems, fault-tolerance, partitioning, kafka, spark, flink, comparison]
 created: 2026-10-30 11:25:32
-updated: 2026-10-30 11:36:38
+updated: 2026-10-31 10:36:57
 ---
 
 # Stateful vs. Stateless Stream Processing
@@ -382,7 +382,7 @@ State and offset were saved at different moments, so the replay is counted on to
 
 How the reference engines achieve consistency:
 
-- **Flink: asynchronous barrier snapshots.** The coordinator injects *checkpoint barriers* into the sources. Barriers flow with the data. When an operator has received the barrier on all inputs, it snapshots its state and forwards the barrier. The completed checkpoint is a consistent cut of every operator's state and every source's offset, based on the Chandy–Lamport distributed-snapshot algorithm. *Unaligned* checkpoints let barriers overtake buffered data under backpressure, at the cost of storing in-flight records too. *Savepoints* are user-triggered, portable snapshots used for upgrades and rescaling.
+- **Flink: asynchronous barrier snapshots.** The coordinator injects *checkpoint barriers* into the sources. Barriers flow with the data. When an operator has received the barrier on all inputs, it snapshots its state and forwards the barrier. The completed checkpoint is a consistent cut of every operator's state and every source's offset, based on the [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy–Lamport distributed-snapshot algorithm]]. *Unaligned* checkpoints let barriers overtake buffered data under backpressure, at the cost of storing in-flight records too. *Savepoints* are user-triggered, portable snapshots used for upgrades and rescaling.
 - **Kafka Streams: changelogs and transactions.** State updates, output records, and input offset commits are written to Kafka in a single transaction when `processing.guarantee=exactly_once_v2`. On recovery, the store is rebuilt from its changelog up to the last committed transaction.
 - **Spark: per-micro-batch commits.** Each micro-batch records its planned offsets in a write-ahead log in the checkpoint directory. When the batch completes, it writes a new state-store version and a commit marker. Recovery reruns the last uncommitted batch from the recorded offsets against the previous state version. This is the same log-before-apply idea as a database [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]].
 
@@ -599,6 +599,8 @@ alerts = (
 
 ## Related Concepts
 
+- [[concepts/data_engineering/flink/apache_flink|Apache Flink]] — the reference stateful engine in this note: architecture, APIs, state backends, and when to choose it
+- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — the barrier-snapshot mechanism summarized under Fault Tolerance, in full: alignment, unaligned checkpoints, recovery, savepoints
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the replayable, partitioned log that makes stateful recovery possible, and where Kafka Streams keeps its changelogs and transactions
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — Structured Streaming's micro-batch model, watermarks, and checkpoint-based recovery
 - [[concepts/software_architecture/idempotency|Idempotency]] — what turns engine-internal exactly-once into end-to-end correctness, and why stateless jobs can be correct without snapshots

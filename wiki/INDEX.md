@@ -52,6 +52,13 @@ Folder: `wiki/concepts/data_engineering/dbt/`
 - [[concepts/data_engineering/dbt/dbt_databricks_adapter|dbt-databricks Adapter]] — `profiles.yml` parameters, PAT and OAuth M2M/U2M flows, multiple compute targets, common connection failures.
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked template: Dockerfile, Workload Identity, both workflows, state deferral, scheduling.
 
+### Apache Flink
+
+Folder: `wiki/concepts/data_engineering/flink/`
+
+- [[concepts/data_engineering/flink/apache_flink|Apache Flink]] — tool overview: JobManager/TaskManager and slots, chaining, DataStream/Table/SQL APIs, state backends, event time and watermarks, backpressure, when to choose it.
+- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — consistent cuts with markers; Flink's barrier snapshots (ABS), alignment, async and unaligned checkpoints, recovery, checkpoints vs. savepoints.
+
 ### Apache Kafka
 
 Folder: `wiki/concepts/data_engineering/kafka/`

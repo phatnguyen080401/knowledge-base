@@ -2,7 +2,7 @@
 title: Apache Spark
 tags: [data-engineering, distributed-systems, spark, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-30 11:25:32
+updated: 2026-10-31 10:36:57
 ---
 
 # Apache Spark
@@ -73,7 +73,7 @@ Executor memory is split between **execution** (shuffle, sort, join buffers) and
 
 ## Structured Streaming
 
-Structured Streaming expresses a stream as an unbounded table: the same DataFrame operations, executed repeatedly over new data. By default it runs as **micro-batches**, giving latencies in the hundreds of milliseconds to seconds rather than the per-event latency of a true streaming engine like Flink.
+Structured Streaming expresses a stream as an unbounded table: the same DataFrame operations, executed repeatedly over new data. By default it runs as **micro-batches**, giving latencies in the hundreds of milliseconds to seconds rather than the per-event latency of a true streaming engine like [[concepts/data_engineering/flink/apache_flink|Apache Flink]].
 
 - **Event time and watermarks.** Aggregation uses the event's own timestamp, and a watermark declares how late data may arrive before its window is finalized and its state dropped. Set it too tight and you lose records; too loose and state grows without bound.
 - **Checkpointing.** Offsets and state go to a checkpoint directory; on restart, Spark resumes from it. This is why it pairs naturally with Kafka — recovery means replaying from a stored offset.
