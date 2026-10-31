@@ -1,5 +1,11 @@
 # Activity Log
 
+- **2026-10-31 12:34:01** · maintain · Created `[[concepts/data_engineering/databricks/auto_loader]]` from the user's draft, checked against six Databricks docs pages (incremental listing now deprecated); needs-review on listing-cost scaling; linked from the Databricks and Exactly-Once notes.
+
+- **2026-10-31 12:30:00** · maintain · Created `[[concepts/data_engineering/databricks/delta_merge_performance]]` from two Databricks blog posts and three docs pages, with Mermaid flow and benchmark charts; flagged needs-review for an unclear speedup baseline; linked from the Databricks and dbt-databricks Adapter notes.
+
+- **2026-10-31 12:27:52** · maintain · Created `[[concepts/data_engineering/databricks/databricks]]` from general knowledge in a new `databricks/` tech subfolder, as the user requested; linked from the Apache Spark, dbt-databricks Adapter, and Data Architecture notes.
+
 - **2026-10-31 12:12:46** · maintain · Created `[[concepts/linux/standard_streams]]` from the user's draft plus general knowledge, correcting stdout buffering (line-buffered only on a terminal); linked from the Docker techniques and MCP notes.
 
 - **2026-10-31 12:02:49** · maintain · Created `[[concepts/linux/linux_namespaces]]` and `[[concepts/linux/network_namespace]]` from general knowledge, with Mermaid charts; linked from the Docker, veth Pair, Pod Sandbox, and Mount Propagation notes.

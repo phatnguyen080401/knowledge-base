@@ -73,6 +73,14 @@ Folder: `wiki/concepts/data_engineering/`
 - [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — comparison: operator kinds, hidden state, keyed/broadcast state, backends, co-partitioning, rescaling, watermarks, checkpoints, exactly-once; Flink, Kafka Streams, Spark.
 - [[concepts/data_engineering/workflow_orchestration|Workflow Orchestration]] — scheduling, sequencing, retrying, and backfilling pipeline tasks as a cross-system DAG; Airflow, Dagster. **Stub.**
 
+### Databricks
+
+Folder: `wiki/concepts/data_engineering/databricks/`
+
+- [[concepts/data_engineering/databricks/auto_loader|Auto Loader]] — the `cloudFiles` source: directory listing vs. classic notifications vs. file events, RocksDB checkpoint, schema inference and evolution modes, key options, production practice.
+- [[concepts/data_engineering/databricks/databricks|Databricks]] — tool overview: control and compute planes, compute types and Photon, Delta Lake, Unity Catalog, medallion layers, Auto Loader and Lakeflow, ML, Asset Bundles, pitfalls.
+- [[concepts/data_engineering/databricks/delta_merge_performance|Delta MERGE Performance (Low-Shuffle MERGE and Photon)]] — classic vs. Low-Shuffle MERGE execution, layout preservation, Photon, reported speedups, deletion vectors and predictive I/O, tuning.
+
 ### dbt (Data Build Tool)
 
 Folder: `wiki/concepts/data_engineering/dbt/`

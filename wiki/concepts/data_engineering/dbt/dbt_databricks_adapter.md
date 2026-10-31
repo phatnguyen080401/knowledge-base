@@ -2,12 +2,12 @@
 title: dbt-databricks Adapter
 tags: [data-engineering, data-modeling, dbt, databricks]
 created: 2026-09-24 10:19:20
-updated: 2026-10-26 17:59:22
+updated: 2026-10-31 12:30:00
 ---
 
 # dbt-databricks Adapter
 
-`dbt-databricks` is the adapter that connects [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] to the Databricks Lakehouse Platform. It is maintained by Databricks, builds on the generic `dbt-spark` adapter, and adds Databricks-specific capability: Unity Catalog three-level namespacing, Delta Lake as the default file format, SQL warehouse connectivity through the `databricks-sql-connector`, and Databricks-native authentication including OAuth.
+`dbt-databricks` is the adapter that connects [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] to the [[concepts/data_engineering/databricks/databricks|Databricks]] Lakehouse Platform. It is maintained by Databricks, builds on the generic `dbt-spark` adapter, and adds Databricks-specific capability: Unity Catalog three-level namespacing, Delta Lake as the default file format, SQL warehouse connectivity through the `databricks-sql-connector`, and Databricks-native authentication including OAuth.
 
 ## Why a Dedicated Adapter
 
@@ -178,7 +178,7 @@ Because it needs an interactive browser, U2M cannot be used in CI or a scheduler
 Beyond connection setup, the adapter exposes platform features in `config()`:
 
 - `file_format` — `delta` by default; `parquet`, `hudi`, and others are available on the Hive metastore.
-- `incremental_strategy` — `merge` (default on Delta), `append`, `insert_overwrite`, `replace_where`, and `microbatch`.
+- `incremental_strategy` — `merge` (default on Delta), `append`, `insert_overwrite`, `replace_where`, and `microbatch`. The `merge` strategy compiles to `MERGE INTO`, whose performance is covered in [[concepts/data_engineering/databricks/delta_merge_performance|Delta MERGE Performance (Low-Shuffle MERGE and Photon)]].
 - `partition_by`, `clustered_by` / `buckets`, and `liquid_clustering` for physical layout.
 - `location_root` for external tables, `tblproperties` for Delta table properties, and `databricks_tags` for governance tagging.
 - Python models, which run on compute rather than a SQL warehouse; `submission_method` selects an all-purpose cluster, a job cluster, serverless, or a workflow job.
@@ -195,6 +195,7 @@ Beyond connection setup, the adapter exposes platform features in `config()`:
 ## Related Concepts
 
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — the framework this adapter plugs into; all model, test, and materialization behaviour comes from there
+- [[concepts/data_engineering/databricks/databricks|Databricks]] — the platform on the other end: SQL warehouses and clusters, Unity Catalog, and Delta tables
 
 ## References
 
