@@ -229,6 +229,7 @@ Folder: `wiki/concepts/linux/`
 - [[concepts/linux/standard_streams|Standard Streams (stdin, stdout, stderr)]] — file descriptors 0, 1, 2; buffering on a terminal vs. a pipe; shell redirection and `2>&1` order; why stderr is separate; buffering pitfalls; logging in containers.
 - [[concepts/linux/static_vs_dynamic_linking|Static vs. Dynamic Linking]] — comparison: build and load flow, loader search order, glibc vs. musl, `ldd` and `readelf`, Python's interpreter, extension modules, and wheel-vendored libraries.
 - [[concepts/linux/systemd_targets|Systemd Targets]] — SysVinit runlevels and their target mapping; key, rescue/emergency, and building-block targets; the boot chain; unit anatomy and `WantedBy`; `systemctl` set-default, isolate, and inspection; custom targets.
+- [[concepts/linux/upgrade_python_on_ubuntu|Upgrade or Downgrade Python on Ubuntu]] — how-to: deadsnakes PPA, install, optional update-alternatives default with its risks, repairing apt_pkg and pip, removing a version safely.
 
 ## Software Architecture
 

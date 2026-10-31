@@ -2,7 +2,7 @@
 title: Static vs. Dynamic Linking
 tags: [linux, deployment, glibc, musl, python, comparison]
 created: 2026-10-31 19:25:37
-updated: 2026-10-31 19:25:37
+updated: 2026-10-31 20:02:17
 ---
 
 # Static vs. Dynamic Linking
@@ -216,6 +216,7 @@ Binary wheels from PyPI built to the `manylinux` standard *vendor* their non-sta
 - [[concepts/devops/docker/docker_image_digest_pinning|Docker Image Digest Pinning]] — pinning the base images whose C library and shared objects a dynamic binary depends on
 - [[concepts/devops/trivy|Trivy]] — finds vulnerable shared libraries through the package database, and why statically bundled copies are harder to see
 - [[concepts/linux/linux_namespaces|Linux Namespaces]] — a container's mount namespace is why it sees its image's `/lib`, not the host's, when the loader searches for libraries
+- [[concepts/linux/upgrade_python_on_ubuntu|Upgrade or Downgrade Python on Ubuntu]] — a practical consequence of version-specific extension modules: `apt_pkg` breaks when `python3` is repointed to another version
 - [[concepts/linux/standard_streams|Standard Streams (stdin, stdout, stderr)]] — `ldd` and loader errors are written to these streams; "cannot open shared object file" arrives on stderr
 
 ## References

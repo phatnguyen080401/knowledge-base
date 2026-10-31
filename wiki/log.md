@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 20:02:17** · maintain · Created `[[concepts/linux/upgrade_python_on_ubuntu]]` from the user's draft plus general knowledge, adding the system-python risk of update-alternatives, the version-specific apt_pkg cause, and distutils removal in 3.12; linked from Static vs. Dynamic Linking.
+
 - **2026-10-31 19:55:26** · maintain · Created `[[concepts/version_control/git_command_cheat_sheet]]`, split out of `[[concepts/version_control/git]]` at the user's request (all command blocks and tables moved, prose kept), and added the user's file-permission commands; 0 links repointed.
 
 - **2026-10-31 19:25:37** · maintain · Created `[[concepts/devops/docker/docker_image_digest_pinning]]` from the user's draft (items 1 and 2, reading "digest-binned" as digest-pinned) and `[[concepts/linux/static_vs_dynamic_linking]]` with `ldd` and Python, from general knowledge; linked from the Docker and Kubernetes notes.
