@@ -2,7 +2,7 @@
 title: Terraform
 tags: [devops, deployment, ci-cd, terraform]
 created: 2026-10-30 23:16:23
-updated: 2026-10-30 23:16:23
+updated: 2026-10-31 10:30:24
 ---
 
 # Terraform
@@ -67,7 +67,7 @@ Terraform builds a dependency graph from the references between resources, so a 
 
 State is what lets a declarative tool know that `google_storage_bucket.raw` in the code *is* bucket `acme-raw-prod` in the cloud. Without it, Terraform could not tell an update from a create, or know what to delete when a block is removed.
 
-- **Remote and locked.** A team keeps state in a remote backend that locks it during an operation, so two applies cannot interleave and corrupt it.
+- **Remote and locked.** A team keeps state in a remote backend that locks it during an operation, so two applies cannot interleave and corrupt it; on AWS that is the [[concepts/devops/infrastructure_as_code/terraform_s3_backend|S3 backend]], locked with DynamoDB or an S3 lock file.
 - **Sensitive.** State holds resource attributes in plain text, including generated passwords and keys, so the backend needs the access control and encryption described in [[concepts/data_governance/data_security|Data Security]].
 - **Split by blast radius.** One state per environment and per component (network, data platform, applications) keeps plans fast and limits what a single bad apply can touch.
 - **Refactored with blocks, not by hand.** `moved` blocks record renames of resource addresses, `import` blocks adopt existing infrastructure into state, and `removed` blocks stop managing an object without destroying it; each is reviewed in a plan like any other change.
@@ -101,6 +101,7 @@ Terraform was released in 2014 under the open-source MPL 2.0 licence. In August 
 
 - [[concepts/devops/brainboard|Brainboard]] — a visual design layer that generates and runs Terraform, aimed at teams short of people who can write and review HCL
 - [[concepts/devops/trivy|Trivy]] — scans Terraform for misconfigurations such as public buckets before `apply`, the policy gate in the pipeline above
+- [[concepts/devops/infrastructure_as_code/terraform_s3_backend|Terraform S3 Backend and DynamoDB State Locking]] — the standard AWS backend in detail: lock table or lock file, force-unlock, bootstrapping, and bucket hardening
 - [[concepts/devops/kubernetes/kubernetes|Kubernetes]] — commonly provisioned with Terraform (the cluster) and also managed through its provider (the objects inside it)
 - [[concepts/data_governance/data_security|Data Security]] — the controls that state files, which hold secrets in plain text, and pipeline cloud credentials require
 - [[concepts/version_control/gitlab/gitlab_repository_security|GitLab Repository Security]] — Code Owners and protected branches that keep infrastructure changes reviewed

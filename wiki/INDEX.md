@@ -115,6 +115,7 @@ Folder: `wiki/concepts/devops/`
 Folder: `wiki/concepts/devops/infrastructure_as_code/`
 
 - [[concepts/devops/infrastructure_as_code/terraform|Terraform]] — HCL infrastructure as code: providers, resources, modules, remote locked state, plan/apply, drift, CI/CD pattern, BSL licence and the OpenTofu fork.
+- [[concepts/devops/infrastructure_as_code/terraform_s3_backend|Terraform S3 Backend and DynamoDB State Locking]] — S3 state storage, why unlocked runs lose updates and orphan resources, DynamoDB LockID conditional-write locking vs. S3-native use_lockfile (1.10+), force-unlock, partial config, bootstrapping, bucket hardening.
 
 ### Kubernetes
 

@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-31 10:35:36** · maintain · Expanded `[[concepts/devops/infrastructure_as_code/terraform_s3_backend]]` — added why production needs a state lock: how concurrent runs arise, the lost-update timeline, orphaned and duplicate resources, and recovery.
+
+- **2026-10-31 10:30:24** · maintain · Created `[[concepts/devops/infrastructure_as_code/terraform_s3_backend]]` — S3 state backend with DynamoDB locking and its S3-native lock-file successor, from general knowledge; linked from the Terraform note's State section.
+
 - **2026-10-30 23:18:13** · maintain · Renamed `[[concepts/devops/terraform]]` to `[[concepts/devops/infrastructure_as_code/terraform]]`, the first note of a new `infrastructure_as_code/` sub-area subfolder at the user's request; repointed 2 links and added an INDEX group.
 
 - **2026-10-30 23:16:23** · maintain · Created `[[concepts/devops/terraform]]` — infrastructure-as-code tool note (HCL, state, plan/apply, CI/CD pattern, OpenTofu fork) from general knowledge; backlinked from Brainboard and Trivy, and added a `terraform` seed row to taxonomy.md.
