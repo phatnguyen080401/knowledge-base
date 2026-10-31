@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 12:12:46** · maintain · Created `[[concepts/linux/standard_streams]]` from the user's draft plus general knowledge, correcting stdout buffering (line-buffered only on a terminal); linked from the Docker techniques and MCP notes.
+
 - **2026-10-31 12:02:49** · maintain · Created `[[concepts/linux/linux_namespaces]]` and `[[concepts/linux/network_namespace]]` from general knowledge, with Mermaid charts; linked from the Docker, veth Pair, Pod Sandbox, and Mount Propagation notes.
 
 - **2026-10-31 12:00:44** · maintain · Created `[[concepts/linux/mount_propagation]]` from general knowledge; linked from the Docker and Pod Sandbox notes.

@@ -3,7 +3,7 @@ title: Model Context Protocol (MCP)
 tags: [ai-engineering, llm-applications, api-protocols, access-control, model-context-protocol]
 sources: ["https://modelcontextprotocol.io/specification/2026-07-28", "https://modelcontextprotocol.io/specification/2026-07-28/changelog", "https://modelcontextprotocol.io/specification/2026-07-28/basic", "https://modelcontextprotocol.io/specification/2026-07-28/server/tools", "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization", "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation", "https://modelcontextprotocol.io/specification/2024-11-05", "https://modelcontextprotocol.io/specification/2025-03-26/changelog", "https://modelcontextprotocol.io/specification/2025-06-18/changelog", "https://modelcontextprotocol.io/specification/2025-11-25/changelog", "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/2026-07-28/schema.ts"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-26 23:09:00
+updated: 2026-10-31 12:12:46
 ---
 
 # Model Context Protocol (MCP)
@@ -189,7 +189,7 @@ not found is now `-32602`; clients should still accept the older `-32002`.
 
 | Transport | How | Use for | Auth |
 | --- | --- | --- | --- |
-| **stdio** | The host launches the server as a subprocess; newline-delimited JSON-RPC on stdin and stdout; logs go to stderr | Local tools — file system, git, a local database | Credentials from the environment, **not** the OAuth flow |
+| **stdio** | The host launches the server as a subprocess; newline-delimited JSON-RPC on [[concepts/linux/standard_streams\|stdin and stdout]]; logs go to stderr | Local tools — file system, git, a local database | Credentials from the environment, **not** the OAuth flow |
 | **Streamable HTTP** | One HTTP endpoint; each request is a POST whose response is either a single JSON body or a server-sent-events stream | Remote and shared servers | OAuth 2.1, below |
 | HTTP + SSE | The original two-endpoint design | Nothing new — deprecated since 2025-03-26 | — |
 

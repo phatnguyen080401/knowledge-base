@@ -2,7 +2,7 @@
 title: Docker Container Techniques
 tags: [devops, deployment, docker]
 created: 2026-10-31 11:47:01
-updated: 2026-10-31 11:56:00
+updated: 2026-10-31 12:12:46
 ---
 
 # Docker Container Techniques
@@ -68,7 +68,7 @@ An interactive program such as a shell or the Python REPL needs a real terminal:
 | `-it` | A full interactive session | `docker run -it python:3`, `docker exec -it web sh` |
 
 - **"The input device is not a TTY".** `-t` requires the CLI's own stdin to be a terminal. In CI jobs, cron, or when piping input, drop `-t` and keep only `-i`.
-- **One output stream.** A TTY has a single output, so with `-t` stdout and stderr arrive merged, and lines end in `\r\n`. Do not use `-t` when a script needs to separate or parse the streams.
+- **One output stream.** A TTY has a single output, so with `-t` the separate [[concepts/linux/standard_streams|stdout and stderr]] streams arrive merged, and lines end in `\r\n`. Do not use `-t` when a script needs to separate or parse the streams.
 - **Detaching.** In a `-it` session, Ctrl-P then Ctrl-Q detaches the CLI and leaves the container running. Typing `exit` instead ends the shell, which is the container's main process, and stops the container.
 
 ## `docker attach` vs. `docker exec`
