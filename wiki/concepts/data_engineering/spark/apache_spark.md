@@ -2,7 +2,7 @@
 title: Apache Spark
 tags: [data-engineering, distributed-systems, spark, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-31 10:36:57
+updated: 2026-10-31 11:34:33
 ---
 
 # Apache Spark
@@ -100,6 +100,7 @@ Scala and Java run natively on the JVM. **PySpark** drives the same engine from 
 
 ## Related Concepts
 
+- [[concepts/cloud_computing/aws/glue/aws_glue|AWS Glue]] — AWS's serverless way to run Spark ETL jobs, with job bookmarks for incremental runs
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the usual streaming source, whose replayable offsets are what make Spark's checkpoint-and-restart recovery correct
 - [[concepts/data_engineering/dbt/dbt|dbt (Data Build Tool)]] — the alternative for warehouse-SQL transformation; `dbt-spark` and [[concepts/data_engineering/dbt/dbt_databricks_adapter|dbt-databricks]] run dbt models on Spark itself
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — where the lake-versus-warehouse and batch-versus-streaming choices that lead to Spark are made

@@ -30,6 +30,32 @@ Folder: `wiki/concepts/ai_engineering/alignment/`
 
 - [[concepts/ai_engineering/alignment/ai_alignment|AI Alignment]] — outer vs. inner alignment, failure modes (specification gaming, sycophancy, deceptive alignment), RLHF/RLAIF/DPO math, scalable oversight, interpretability, AI control.
 
+## Cloud Computing
+
+Folder: `wiki/concepts/cloud_computing/`
+
+### AWS
+
+Folder: `wiki/concepts/cloud_computing/aws/`
+
+#### EC2
+
+Folder: `wiki/concepts/cloud_computing/aws/ec2/`
+
+- [[concepts/cloud_computing/aws/ec2/amazon_ec2|Amazon EC2 (Elastic Compute Cloud)]] — virtual servers; EC2 Instance vs. Compute Savings Plans and what each covers. **Stub.**
+
+#### Glue
+
+Folder: `wiki/concepts/cloud_computing/aws/glue/`
+
+- [[concepts/cloud_computing/aws/glue/aws_glue|AWS Glue]] — serverless Spark ETL and Data Catalog; job bookmarks for incremental runs. **Stub.**
+
+#### RDS
+
+Folder: `wiki/concepts/cloud_computing/aws/rds/`
+
+- [[concepts/cloud_computing/aws/rds/amazon_rds|Amazon RDS (Relational Database Service)]] — managed relational databases; the 7-day stop limit and automatic restart. **Stub.**
+
 ## Data Architecture
 
 Folder: `wiki/concepts/data_architecture/`

@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-31 11:34:33** · maintain · Renamed `[[concepts/cloud_computing/aws/amazon_ec2]]`, `[[concepts/cloud_computing/aws/amazon_rds]]`, and `[[concepts/cloud_computing/aws/aws_glue]]` into per-service `ec2/`, `rds/`, and `glue/` subfolders, as the user requested; 8 links repointed.
+
+- **2026-10-31 11:27:30** · maintain · Created stubs `[[concepts/cloud_computing/aws/amazon_rds]]`, `[[concepts/cloud_computing/aws/amazon_ec2]]`, and `[[concepts/cloud_computing/aws/aws_glue]]` from the user's draft in a new `cloud_computing/aws/` folder, as the user requested; added the `cloud-computing` domain and an `aws` seed row to taxonomy.md.
+
 - **2026-10-31 11:24:11** · maintain · Updated `[[concepts/data_engineering/flink/asynchronous_barrier_snapshotting]]` — removed the arXiv URL from `sources` at the user's request, an approved exception to the append-only rule, since the archived PDF is the same paper.
 
 - **2026-10-31 11:20:46** · maintain · Updated `[[concepts/data_engineering/flink/asynchronous_barrier_snapshotting]]` — fact-checked Origin against the paper (all claims confirmed; added its evaluation) and archived the PDF; retitled `[[concepts/data_engineering/flink/chandy_lamport_algorithm]]` to Chandy-Lamport Algorithm. Source: `raw/processed/lightweight_asynchronous_snapshots_for_distributed_dataflows.pdf`.

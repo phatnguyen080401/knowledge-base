@@ -2,7 +2,7 @@
 title: Terraform S3 Backend and DynamoDB State Locking
 tags: [devops, deployment, concurrency-control, terraform, s3, dynamodb]
 created: 2026-10-31 10:30:24
-updated: 2026-10-31 10:35:36
+updated: 2026-10-31 11:34:33
 ---
 
 # Terraform S3 Backend and DynamoDB State Locking
@@ -46,7 +46,7 @@ The core failure is a **lost update**. Here two runs start from state serial 7:
 
 Both applies report success. The state now holds the security group but not the database. Several problems follow from that:
 
-- **Orphaned resources.** The RDS instance still runs and costs money, but Terraform no longer knows it exists. It will never be updated, tagged, or destroyed by the code, and nobody notices until a cost or security review finds it.
+- **Orphaned resources.** The [[concepts/cloud_computing/aws/rds/amazon_rds|RDS]] instance still runs and costs money, but Terraform no longer knows it exists. It will never be updated, tagged, or destroyed by the code, and nobody notices until a cost or security review finds it.
 - **Duplicates or failed applies.** The next run sees the database in the code and not in state, so it tries to create it again. A fixed name fails with "already exists" and blocks every later deploy. A generated name produces a second, silent copy.
 - **Interleaved changes to the same resource.** If both runs touch one resource, such as a security group's rules or an autoscaling group's size, the API calls interleave. The real infrastructure ends up in a state that neither plan showed and nobody reviewed.
 - **Destroy racing apply.** A `destroy` or a replacement in one run can delete what the other run is configuring, leaving half-built infrastructure in production.

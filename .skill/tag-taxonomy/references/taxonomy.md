@@ -13,6 +13,7 @@ creating a folder, which needs user approval.
 | Tag | Folder | Covers | Excludes |
 | --- | --- | --- | --- |
 | `ai-engineering` | `ai_engineering/` | Building and operating applications on top of machine-learning and foundation models: prompting, retrieval, agents, evaluation, inference serving, and the ops around them | Pipelines that move and transform data (`data-engineering`); general software design (`software-architecture`) |
+| `cloud-computing` | `cloud_computing/` | Public-cloud platforms and their managed services: compute, database, storage, and analytics offerings, with their pricing models and operating limits | Provider-agnostic provisioning and delivery tooling (`devops`); pipeline design independent of the service that runs it (`data-engineering`); engine-internal database behaviour (`databases`) |
 | `data-architecture` | `data_architecture/` | Structural design of a data platform: layering, interfaces, semantic and ontology tiers, system topology | Engine-internal behaviour (`databases`); pipeline tooling (`data-engineering`) |
 | `data-engineering` | `data_engineering/` | Building and operating pipelines and transformation tooling — ingestion, ELT, orchestration, adapters | The design of the platform those pipelines run on (`data-architecture`) |
 | `data-governance` | `data_governance/` | Policy, accountability, and control over data as an organizational asset — quality, stewardship, master data, metadata, security | The technical mechanisms that implement a policy |
@@ -88,6 +89,7 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 
 | Tag | Covers |
 | --- | --- |
+| `aws` | Amazon Web Services: its managed services, Regions, pricing models, and service limits |
 | `bigquery` | Google BigQuery: its SQL dialect, slots, storage, and pricing |
 | `cloud-run` | Google Cloud Run services and jobs |
 | `databricks` | Databricks lakehouse, Unity Catalog, Delta tables |
