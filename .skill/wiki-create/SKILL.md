@@ -29,8 +29,13 @@ Read it once (`AGENTS.md`) and reuse it for every timestamp and the log entry.
 | A page covers the concept | **Expand** it (step 4) |
 | No page covers it | **Create** (step 4) |
 | Partial or ambiguous overlap, or unclear scope | Stop and ask the user which page, or whether to split |
+| The covering page is **ingested** | **Create** a note on the narrower concept that links to it; ask if that would duplicate it |
 
 A request covering several concepts becomes several notes, or one note plus stubs.
+
+**Ingested notes are read-only here.** A note whose `sources` lists a `raw/processed/` file belongs
+to [`wiki-ingest`](../wiki-ingest/SKILL.md): this skill never expands it, adds links to it, or bumps
+its `updated`, unless the user names that note in the request. Linking *to* it is fine.
 
 ## 3. Tags and Folder
 
@@ -50,8 +55,8 @@ append any new `sources`, and set `updated`; never change `created`.
 ## 5. Link Both Ways
 
 - Outbound: links per `AGENTS.md` §3; every target exists.
-- Inbound: add a link back from at least one related existing note, under its `## Related Concepts`
-  or at a natural mention, and bump that note's `updated`.
+- Inbound: add a link back from at least one related existing, non-ingested note, under its
+  `## Related Concepts` or at a natural mention, and bump that note's `updated`.
 - Ask before stubbing a related concept the user did not request; otherwise leave it unlinked.
 
 ## 6. Index and Log
@@ -71,3 +76,4 @@ Every step above is complete and `AGENTS.md` §9 passes on every touched note, p
 
 - [ ] The vault was searched by name, acronym, and synonym before writing; no near-duplicate exists.
 - [ ] The body passes the obsidian-syntax.md Checks.
+- [ ] No ingested note was modified, unless the user named it.
