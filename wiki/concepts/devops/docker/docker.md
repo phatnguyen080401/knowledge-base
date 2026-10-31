@@ -2,7 +2,7 @@
 title: Docker
 tags: [devops, deployment, docker]
 created: 2026-10-31 11:36:50
-updated: 2026-10-31 12:02:49
+updated: 2026-10-31 19:25:37
 ---
 
 # Docker
@@ -248,8 +248,8 @@ The `api` service reaches the database at the hostname `db`, the service name, a
 ## Security and Image Hygiene
 
 - **Run as a non-root user.** Add a `USER` instruction. Root inside a container is root on the host if the container escapes.
-- **Keep images small.** Use `-slim` or distroless bases and multi-stage builds. Fewer packages mean fewer vulnerabilities and faster pulls. Alpine is smaller still, but its musl C library breaks some prebuilt binaries and Python wheels.
-- **Pin what you deploy.** Use a specific tag, or a digest for full reproducibility, never `latest`. [[concepts/devops/renovate_docs|Renovate]] can keep pinned base images up to date.
+- **Keep images small.** Use `-slim` or distroless bases and multi-stage builds. Fewer packages mean fewer vulnerabilities and faster pulls. Alpine is smaller still, but its musl C library breaks some prebuilt binaries and Python wheels, as explained in [[concepts/linux/static_vs_dynamic_linking|Static vs. Dynamic Linking]].
+- **Pin what you deploy.** Use a specific tag, or a digest for full reproducibility, never `latest`; see [[concepts/devops/docker/docker_image_digest_pinning|Docker Image Digest Pinning]]. [[concepts/devops/renovate_docs|Renovate]] can keep pinned base images up to date.
 - **Never bake secrets into an image.** Every layer is readable by anyone who can pull the image, even if a later layer deletes the file. Pass build-time secrets with `RUN --mount=type=secret`, and runtime secrets through the environment or the platform's secret store.
 - **Scan images and Dockerfiles.** [[concepts/devops/trivy|Trivy]] finds vulnerable packages in images and insecure Dockerfile settings, and fits as a CI gate before the push.
 - **Treat the Docker socket as root.** Membership in the `docker` group, or mounting `/var/run/docker.sock` into a container, grants root-equivalent control of the host. Rootless mode reduces that risk.
@@ -269,6 +269,8 @@ Docker Desktop is free for personal use, education, non-commercial open source, 
 - [[concepts/devops/kubernetes/kubernetes_components|Kubernetes Components]] — containerd, the CRI, and why Kubernetes dropped Docker Engine as a runtime but still runs its images
 - [[concepts/linux/mount_propagation|Mount Propagation]] — whether mounts flow between the host and a container's bind mounts, and the `rslave`/`rshared` options
 - [[concepts/devops/kubernetes/veth_pair|Virtual Ethernet (veth) Pair]] — the virtual cable that connects each container on a bridge network to the host
+- [[concepts/devops/docker/docker_image_digest_pinning|Docker Image Digest Pinning]] — pulling by `@sha256` digest and pinning `FROM` base images for integrity, and keeping pinned images patched
+- [[concepts/linux/static_vs_dynamic_linking|Static vs. Dynamic Linking]] — why static binaries fit `scratch` images and dynamic ones need a base with the right C library and `.so` files
 - [[concepts/devops/trivy|Trivy]] — scans images for vulnerabilities and Dockerfiles for misconfigurations
 - [[concepts/devops/renovate_docs|Renovate]] — automates updates of pinned base-image tags and digests in Dockerfiles
 - [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] — a worked pipeline that builds a Docker image with Buildx and pushes it to Artifact Registry

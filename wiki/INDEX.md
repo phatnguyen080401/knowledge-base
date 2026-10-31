@@ -162,6 +162,7 @@ Folder: `wiki/concepts/devops/docker/`
 
 - [[concepts/devops/docker/docker|Docker]] — images, containers, and architecture; Dockerfile instructions and caching; common commands for images, containers, volumes, networks, cleanup, and Compose; security hygiene.
 - [[concepts/devops/docker/docker_container_techniques|Docker Container Techniques]] — how `docker run` decomposes and its process tree; `-it` and pseudo-TTYs; attach vs. exec; stop vs. kill, exit codes, and PID 1 signal handling; pause vs. stop; signalling apps; export vs. save.
+- [[concepts/devops/docker/docker_image_digest_pinning|Docker Image Digest Pinning]] — tags vs. `@sha256` digests, index vs. platform manifests, pinning `FROM` base images and Kubernetes manifests, automated digest updates, what digests do not prove.
 
 ### Infrastructure as Code
 
@@ -226,6 +227,7 @@ Folder: `wiki/concepts/linux/`
 - [[concepts/linux/mount_propagation|Mount Propagation]] — shared, private, slave, and unbindable mounts; peer groups; `findmnt` and `mountinfo`; systemd and `unshare` defaults; Docker bind propagation and Kubernetes `mountPropagation`.
 - [[concepts/linux/network_namespace|Network Namespace]] — what the network stack isolates; topology and packet-path charts; lifecycle; `ip netns`; veth, macvlan, ipvlan; a NAT lab; Docker modes, pods, debugging, pitfalls.
 - [[concepts/linux/standard_streams|Standard Streams (stdin, stdout, stderr)]] — file descriptors 0, 1, 2; buffering on a terminal vs. a pipe; shell redirection and `2>&1` order; why stderr is separate; buffering pitfalls; logging in containers.
+- [[concepts/linux/static_vs_dynamic_linking|Static vs. Dynamic Linking]] — comparison: build and load flow, loader search order, glibc vs. musl, `ldd` and `readelf`, Python's interpreter, extension modules, and wheel-vendored libraries.
 - [[concepts/linux/systemd_targets|Systemd Targets]] — SysVinit runlevels and their target mapping; key, rescue/emergency, and building-block targets; the boot chain; unit anatomy and `WantedBy`; `systemctl` set-default, isolate, and inspection; custom targets.
 
 ## Software Architecture

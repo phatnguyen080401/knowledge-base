@@ -2,7 +2,7 @@
 title: Kubernetes
 tags: [devops, deployment, fault-tolerance, kubernetes, overview]
 created: 2026-10-30 12:31:16
-updated: 2026-10-31 13:18:48
+updated: 2026-10-31 19:25:37
 ---
 
 # Kubernetes
@@ -231,7 +231,7 @@ With `maxUnavailable: 0`, capacity never drops below three ready pods. Each old 
 - **RBAC.** *Roles* and *ClusterRoles* grant verbs on resources; *RoleBindings* attach them to users, groups, or *ServiceAccounts* (the identity a pod runs as). Default to least privilege, and avoid granting `cluster-admin` to workloads.
 - **Pod Security Standards.** Three levels (`privileged`, `baseline`, `restricted`), enforced per namespace by the built-in Pod Security Admission. It replaced PodSecurityPolicy, which was removed in v1.25.
 - **Admission control.** Validating and mutating webhooks, or policy engines such as OPA Gatekeeper and Kyverno, can reject non-compliant manifests at the API server.
-- **Supply chain.** Scan images and manifests before deploy, and scan running clusters (`trivy k8s`). Pin images by digest, and run containers as non-root with read-only root filesystems.
+- **Supply chain.** Scan images and manifests before deploy, and scan running clusters (`trivy k8s`). Pin images by digest (see [[concepts/devops/docker/docker_image_digest_pinning|Docker Image Digest Pinning]]), and run containers as non-root with read-only root filesystems.
 
 The cluster's attack surfaces, and specific attack techniques with how to detect and prevent each, are in [[concepts/devops/kubernetes/security/kubernetes_security|Kubernetes Security]].
 

@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 19:25:37** · maintain · Created `[[concepts/devops/docker/docker_image_digest_pinning]]` from the user's draft (items 1 and 2, reading "digest-binned" as digest-pinned) and `[[concepts/linux/static_vs_dynamic_linking]]` with `ldd` and Python, from general knowledge; linked from the Docker and Kubernetes notes.
+
 - **2026-10-31 13:18:48** · maintain · Created `[[concepts/devops/kubernetes/graceful_shutdown]]` from the user's timeline diagram, saved as `raw/assets/graceful_shutdown_timeline.png`, plus general knowledge; linked from the Kubernetes and Docker Container Techniques notes.
 
 - **2026-10-31 13:14:03** · maintain · Expanded `[[concepts/software_architecture/api_integration_protocols]]` with short polling, long polling, a general RPC section with JSON-RPC, and deeper SSE, WebSockets, and gRPC coverage, with Mermaid diagrams and a real-time comparison, from general knowledge.
