@@ -3,7 +3,7 @@ title: Chain-of-Thought (CoT) Prompting
 tags: [ai-engineering, llm-applications, in-context-learning]
 sources: ["https://arxiv.org/abs/2201.11903", "https://arxiv.org/abs/2205.11916", "https://arxiv.org/abs/2203.11171", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices", "https://arxiv.org/abs/2205.10625", "https://arxiv.org/abs/2305.10601", "https://arxiv.org/abs/2211.10435", "https://arxiv.org/abs/2210.03493", "https://arxiv.org/abs/2305.04388", "https://arxiv.org/abs/2501.12948"]
 created: 2026-10-30 10:57:29
-updated: 2026-10-30 12:06:03
+updated: 2026-10-31 11:07:29
 ---
 
 # Chain-of-Thought (CoT) Prompting
@@ -194,6 +194,7 @@ up to 36% across 13 BIG-Bench Hard tasks with GPT-3.5 and Claude 1.0.
 - [[concepts/ai_engineering/prompt_engineering|Prompt Engineering]] — the parent practice; CoT builds on its zero- and few-shot prompting
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — owns the eval suite that decides whether CoT's extra cost buys enough accuracy
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — IRCoT and agentic retrieval interleave reasoning steps with retrieval calls
+- [[concepts/ai_engineering/agent_reasoning_patterns|Agent Reasoning Patterns (ReAct and ReWOO)]] — extend CoT with tool calls, either interleaving reasoning with actions (ReAct) or planning every call up front (ReWOO)
 - [[concepts/ai_engineering/digital_superintelligence|Digital Superintelligence]] — why CoT faithfulness matters beyond accuracy: monitoring the reasoning of increasingly capable systems
 
 ## References

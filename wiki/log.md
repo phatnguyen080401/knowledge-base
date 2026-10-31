@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-10-31 11:07:29** · maintain · Merged `[[concepts/ai_engineering/react]]` and `[[concepts/ai_engineering/rewoo]]` into `[[concepts/ai_engineering/agent_reasoning_patterns]]` with a ReAct vs. ReWOO section (approved deletion, 4 links repointed); reverted the RAG note's chunk-overlap and scoring additions into new `[[concepts/ai_engineering/chunk_overlap]]` and `[[concepts/ai_engineering/retrieval_scoring]]`; wiki-create skill now leaves ingested notes untouched.
+
+- **2026-10-31 10:49:23** · maintain · Created `[[concepts/ai_engineering/context_window]]`, `[[concepts/ai_engineering/react]]`, and `[[concepts/ai_engineering/rewoo]]`; expanded `[[concepts/ai_engineering/embeddings]]` with dimensionality and the RAG note with chunk overlap and retrieval scoring; linked from four AI-engineering notes.
+
 - **2026-10-31 10:43:45** · maintain · Created `[[concepts/software_architecture/exactly_once_delivery_and_processing]]` from the user's draft plus general knowledge; linked from the Idempotency, Kafka, stateful-streaming, and Chandy-Lamport notes.
 
 - **2026-10-31 10:36:57** · maintain · Created `[[concepts/data_engineering/flink/apache_flink]]` and `[[concepts/data_engineering/flink/chandy_lamport_algorithm]]` in a new `flink/` tech subfolder, from general knowledge; linked from the stateful-streaming, Kafka, and Spark notes, and added a `flink` seed row to taxonomy.md.

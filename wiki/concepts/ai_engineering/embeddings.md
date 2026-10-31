@@ -3,7 +3,7 @@ title: Embeddings
 tags: [ai-engineering, llm-applications, retrieval-augmentation]
 sources: ["https://developers.openai.com/api/docs/guides/embeddings", "https://huggingface.co/Qwen/Qwen3-Embedding-8B", "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", "https://arxiv.org/abs/2502.13595"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-26 23:09:00
+updated: 2026-10-31 11:07:29
 ---
 
 # Embeddings
@@ -168,6 +168,18 @@ Vector size is a direct cost lever, and three techniques shrink it:
 
 These figures are raw vector payload only; the index structure adds its own overhead on top.
 
+### What the Dimensions Mean
+
+Each dimension is one coordinate of the vector, and the model's architecture fixes how many there are. Individual dimensions are generally not interpretable features: there is no "sports" axis or "sentiment" axis to read off. Meaning lives in directions and distances across all of them together, which is why embeddings are compared only with each other, through a similarity metric.
+
+Two practical consequences follow. Query and corpus vectors must come from the same model at the same output size, because vectors from different models or sizes live in unrelated spaces. And a vector column or index is declared with a fixed dimension, so changing models or truncation length means a new index, not an update in place.
+
+### High-Dimensional Geometry
+
+- **Distance concentration.** As the number of dimensions grows, the distances from a point to its nearest and farthest neighbours in random data become nearly equal. This "curse of dimensionality" is why tree-based exact indexes stop helping at embedding sizes, and why search relies on the approximate indexes described in [[concepts/databases/vector_database|Vector Database]].
+- **Low intrinsic dimension.** Learned embeddings use far fewer effective degrees of freedom than their nominal size, since real text occupies a small, structured region of the space. That is why Matryoshka truncation and principal component analysis (PCA) can drop many dimensions with little loss, and it is related to the anisotropy listed under failure modes below.
+- **Reduction for storage vs. for viewing.** PCA fitted on the corpus can shrink stored vectors, but the same projection must then be applied to every query. t-SNE and UMAP are for plotting embeddings in two dimensions only: they distort global distances, so never search in their output.
+
 ## Choosing an Embedding Model
 
 1. **Match the task.** Retrieval, clustering, classification, and similarity are scored differently;
@@ -220,6 +232,8 @@ These figures are raw vector payload only; the index structure adds its own over
 ## Related Concepts
 
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the pipeline embeddings feed; retrieval recall is bounded by embedding quality
+- [[concepts/ai_engineering/retrieval_scoring|Retrieval Scoring and Ranking]] — how similarity scores are combined with BM25, fused, reranked, and cut into the list the model sees
+- [[concepts/ai_engineering/chunk_overlap|Chunk Overlap]] — how the text units being embedded are cut, and the extra vectors overlap costs
 - [[concepts/databases/vector_database|Vector Database]] — where embeddings are stored, indexed for approximate nearest-neighbour search, filtered, and fused with lexical results
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — the role that selects, evaluates, and migrates embedding models
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — how a semantic-search capability built on embeddings is commonly exposed to an agent as a tool

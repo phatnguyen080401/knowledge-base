@@ -3,7 +3,7 @@ title: AI Engineer
 tags: [ai-engineering, llm-applications, model-operations, in-context-learning, retrieval-augmentation, overview]
 sources: ["https://github.com/chiphuyen/aie-book", "https://www.latent.space/p/ai-engineer", "https://developers.openai.com/api/docs/guides/model-optimization"]
 created: 2026-10-23 10:53:38
-updated: 2026-10-30 12:06:03
+updated: 2026-10-31 10:49:23
 ---
 
 # AI Engineer
@@ -64,7 +64,7 @@ toward ML, and a product-minded ML engineer does much of what is listed below.
 
 - Build retrieval: chunking strategy, [[concepts/ai_engineering/embeddings|Embeddings]] choice,
   vector or hybrid search over a [[concepts/databases/vector_database|Vector Database]], reranking,
-  and the decision of what gets into the context window at all. See
+  and the decision of what gets into the [[concepts/ai_engineering/context_window|context window]] at all. See
   [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]]
   for the pipeline and for the agent-driven alternative to fixed top-$k$ context.
 - Decide what the model is allowed to see. Retrieval must respect the same row- and column-level

@@ -3,7 +3,7 @@ title: Prompt Engineering
 tags: [ai-engineering, llm-applications, in-context-learning]
 sources: ["https://arxiv.org/abs/2005.14165", "https://arxiv.org/abs/2202.12837", "https://arxiv.org/abs/2201.11903", "https://arxiv.org/abs/2205.11916", "https://arxiv.org/abs/2203.11171", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"]
 created: 2026-10-29 18:52:09
-updated: 2026-10-30 10:57:29
+updated: 2026-10-31 10:49:23
 ---
 
 # Prompt Engineering
@@ -118,7 +118,7 @@ formula, reasoning models, and the faithfulness caveat are covered in
 - **Instructions are not a security control.** Text arriving through retrieved documents or tool
   output can carry prompt injection; restrictions belong at the tool and data boundary, not in a
   system-prompt sentence.
-- **Shots cost tokens on every call.** Long few-shot prompts raise latency and cost at volume; at
+- **Shots cost tokens on every call.** Every example occupies the [[concepts/ai_engineering/context_window|Context Window]] and is billed on each request. Long few-shot prompts raise latency and cost at volume; at
   that point a smaller fine-tuned model may be the cheaper fix.
 
 ## Related Concepts
