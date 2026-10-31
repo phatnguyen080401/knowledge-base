@@ -2,7 +2,7 @@
 title: Stateful vs. Stateless Stream Processing
 tags: [data-engineering, distributed-systems, fault-tolerance, partitioning, kafka, spark, flink, comparison]
 created: 2026-10-30 11:25:32
-updated: 2026-10-31 10:36:57
+updated: 2026-10-31 10:43:45
 ---
 
 # Stateful vs. Stateless Stream Processing
@@ -404,7 +404,7 @@ The diagram shows a Flink-style checkpoint: barrier *n* flows with the data, eac
 
 ## Delivery Semantics End to End
 
-"Exactly-once" in a stateful engine means **exactly-once effect on state**: after recovery, every input record has been counted once in the state. It does *not* automatically mean every output reaches the sink exactly once. As the [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] note warns, exactness ends at the system boundary unless the sink cooperates:
+"Exactly-once" in a stateful engine means **exactly-once effect on state**, an instance of the effectively-once processing described in [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]]: after recovery, every input record has been counted once in the state. It does *not* automatically mean every output reaches the sink exactly once. As the [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] note warns, exactness ends at the system boundary unless the sink cooperates:
 
 | Sink strategy | How | Guarantee |
 | --- | --- | --- |

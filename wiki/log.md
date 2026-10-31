@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-10-31 10:43:45** · maintain · Created `[[concepts/software_architecture/exactly_once_delivery_and_processing]]` from the user's draft plus general knowledge; linked from the Idempotency, Kafka, stateful-streaming, and Chandy-Lamport notes.
+
 - **2026-10-31 10:36:57** · maintain · Created `[[concepts/data_engineering/flink/apache_flink]]` and `[[concepts/data_engineering/flink/chandy_lamport_algorithm]]` in a new `flink/` tech subfolder, from general knowledge; linked from the stateful-streaming, Kafka, and Spark notes, and added a `flink` seed row to taxonomy.md.
 
 - **2026-10-31 10:35:36** · maintain · Expanded `[[concepts/devops/infrastructure_as_code/terraform_s3_backend]]` — added why production needs a state lock: how concurrent runs arise, the lost-update timeline, orphaned and duplicate resources, and recovery.

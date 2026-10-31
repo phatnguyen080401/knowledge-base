@@ -2,7 +2,7 @@
 title: Chandy-Lamport Algorithm in Apache Flink
 tags: [data-engineering, distributed-systems, fault-tolerance, flink]
 created: 2026-10-31 10:36:57
-updated: 2026-10-31 10:36:57
+updated: 2026-10-31 10:43:45
 ---
 
 # Chandy-Lamport Algorithm in Apache Flink
@@ -132,6 +132,7 @@ cfg.setTolerableCheckpointFailureNumber(3);  // fail the job only after repeated
 - [[concepts/data_engineering/flink/apache_flink|Apache Flink]] — the engine: architecture, APIs, state backends, and where checkpointing fits operationally
 - [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — why consistent snapshots are needed at all, and how Kafka Streams and Spark achieve the same guarantee differently
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the replayable source whose offsets are the "source state" in each snapshot, and the transactional sink that commits on checkpoint completion
+- [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — the general guarantee Flink's delivery modes are an instance of, and why it holds only inside a boundary
 - [[concepts/software_architecture/idempotency|Idempotency]] — the alternative to transactional sinks for turning exactly-once state into exactly-once output
 - [[concepts/databases/write_ahead_log|Write-Ahead Log (WAL)]] — the contrasting recovery approach of logging every change, which Spark's offset log uses instead of a distributed snapshot
 - [[concepts/databases/distributed_consensus|Distributed Consensus]] — another foundational distributed-systems problem: agreeing on a value, as opposed to observing a consistent global state

@@ -2,7 +2,7 @@
 title: Idempotency
 tags: [software-architecture, api-protocols, distributed-systems, fault-tolerance, stub]
 created: 2026-10-26 23:17:48
-updated: 2026-10-26 23:17:48
+updated: 2026-10-31 10:43:45
 ---
 
 # Idempotency
@@ -15,6 +15,7 @@ data pipelines.
 
 ## Related Concepts
 
+- [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — why exactly-once delivery is impossible, and how idempotency, deduplication, and outboxes give effectively-once processing instead
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — HTTP method semantics and idempotency keys decide which calls are safe to retry
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — its idempotent producer deduplicates retried sends, and its at-least-once and exactly-once semantics push idempotency onto consumers and external sinks
 - [[concepts/data_engineering/workflow_orchestration|Workflow Orchestration]] — orchestrators retry failed tasks, so every task they run must be idempotent

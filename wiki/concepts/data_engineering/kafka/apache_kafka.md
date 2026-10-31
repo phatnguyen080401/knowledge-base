@@ -2,7 +2,7 @@
 title: Apache Kafka
 tags: [data-engineering, distributed-systems, kafka, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-31 10:36:57
+updated: 2026-10-31 10:43:45
 ---
 
 # Apache Kafka
@@ -111,6 +111,7 @@ Schema Registry, and the stricter forms of its compatibility checking, are what 
 ## Related Concepts
 
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — the most common processing engine reading from Kafka; its exactly-once story depends on Kafka offsets being replayable
+- [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — the vendor-neutral theory behind the delivery-semantics table: why exactly-once delivery is impossible and exactly-once processing is a boundary
 - [[concepts/data_architecture/data_architecture|Data Architecture]] — where the batch-versus-streaming decision that justifies Kafka gets made, and where its costs are argued
 - [[concepts/databases/cap_theorem|CAP Theorem]] — Kafka's ISR and `acks` settings are a per-write consistency/availability dial, not a fixed position
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — situates the log alongside the other messaging styles, including AMQP brokers that solve the opposite problem

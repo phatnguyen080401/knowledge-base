@@ -178,6 +178,7 @@ Folder: `wiki/concepts/software_architecture/`
 - [[concepts/software_architecture/software_architecture|Software Architecture]] — hub: quality attributes, architectural styles and their costs, decomposition, cross-cutting decisions, ADRs and C4.
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — REST, GraphQL, gRPC, SOAP, webhooks, SSE, WebSockets, MQTT, AMQP, and EDI, organized by interaction style.
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — threads vs. processes vs. the event loop, I/O- vs. CPU-bound work, race conditions with worked interleavings, synchronization primitives, and deadlock.
+- [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — the three delivery guarantees, why exactly-once delivery is impossible (acknowledgement problem, Two Generals, FLP), and the techniques and boundaries of effectively-once processing.
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — session vs. application layer, the order lifecycle, versions and encodings, and its ingestion pitfalls.
 - [[concepts/software_architecture/global_interpreter_lock|Global Interpreter Lock (GIL)]] — why CPython serializes bytecode, when the lock is released, what it costs, and the four ways around it including free-threaded builds.
 - [[concepts/software_architecture/idempotency|Idempotency]] — operations safe to repeat: retries, idempotency keys, at-least-once delivery. **Stub.**
