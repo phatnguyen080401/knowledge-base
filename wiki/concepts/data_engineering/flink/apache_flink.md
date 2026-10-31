@@ -2,7 +2,7 @@
 title: Apache Flink
 tags: [data-engineering, distributed-systems, flink, overview]
 created: 2026-10-31 10:36:57
-updated: 2026-10-31 10:36:57
+updated: 2026-10-31 11:18:27
 ---
 
 # Apache Flink
@@ -14,7 +14,7 @@ Apache Flink is an open-source, distributed engine for stateful computation over
 Most streaming problems that matter commercially are stateful: fraud counts per card, sessionization, joins between streams, deduplication, and continuously maintained aggregates. Doing these correctly needs three things together, and Flink was designed around all three from the start:
 
 - **Per-event processing** rather than micro-batches, so latency is milliseconds rather than the batch interval that bounds [[concepts/data_engineering/spark/apache_spark|Apache Spark]]'s Structured Streaming.
-- **Managed state with consistent snapshots**, so that after a crash the job resumes as if the failure had not happened. The mechanism is described in [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]].
+- **Managed state with consistent snapshots**, so that after a crash the job resumes as if the failure had not happened. The mechanism is described in [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]].
 - **Event-time semantics**, so results depend on when events happened rather than when they arrived, with watermarks to decide when a window is complete.
 
 Flink began as the Stratosphere research project in Berlin and became a top-level Apache project in 2014.
@@ -73,7 +73,7 @@ State is either **keyed** (one value per key, such as `ValueState` or `MapState`
 - **`EmbeddedRocksDBStateBackend`** keeps state in local RocksDB, an LSM-tree store, and supports state far larger than memory plus **incremental checkpoints** that upload only changed files.
 - **Disaggregated state** (ForSt, introduced in Flink 2.0) keeps state primarily in remote object storage with a local cache, aimed at very large state and fast rescaling.
 
-Every checkpoint interval, Flink takes a consistent snapshot of all operator state together with every source's read position. On failure it restores the last completed snapshot and rewinds the sources, which gives **exactly-once effect on state**. End-to-end exactly-once also needs a replayable source such as [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] and a transactional or idempotent sink. The snapshot algorithm, aligned and unaligned barriers, and the difference between checkpoints and savepoints are in [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]].
+Every checkpoint interval, Flink takes a consistent snapshot of all operator state together with every source's read position. On failure it restores the last completed snapshot and rewinds the sources, which gives **exactly-once effect on state**. End-to-end exactly-once also needs a replayable source such as [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] and a transactional or idempotent sink. The snapshot algorithm, aligned and unaligned barriers, and the difference between checkpoints and savepoints are in [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]], which adapts the [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm]].
 
 > [!warning] Give every stateful operator a stable `uid`
 > Savepoint state is mapped to operators by ID. Without an explicit `.uid("…")`, Flink generates one from the graph's shape, so a refactor that adds or reorders operators can leave state unreadable on restore.
@@ -107,7 +107,8 @@ The [[concepts/data_engineering/stateful_vs_stateless_stream_processing#Time, Wi
 
 ## Related Concepts
 
-- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — how Flink's checkpoints achieve a consistent snapshot of a running dataflow without stopping it
+- [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]] — how Flink's checkpoints achieve a consistent snapshot of a running dataflow without stopping it
+- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm]] — the 1985 distributed-snapshot algorithm that ABS adapts
 - [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — the vendor-neutral model of state, partitioning, watermarks, and delivery semantics, with Flink compared against Kafka Streams and Spark
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — Flink's most common source and sink, whose replayable offsets make checkpoint-and-rewind recovery possible
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — the micro-batch alternative and its latency floor

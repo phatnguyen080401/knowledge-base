@@ -2,7 +2,7 @@
 title: Exactly-Once Delivery and Processing
 tags: [software-architecture, distributed-systems, api-protocols, fault-tolerance]
 created: 2026-10-31 10:43:45
-updated: 2026-10-31 10:43:45
+updated: 2026-10-31 11:11:54
 ---
 
 # Exactly-Once Delivery and Processing
@@ -89,7 +89,7 @@ All of these techniques start from at-least-once delivery and remove the *effect
 | System | What its "exactly-once" covers | Covered in |
 | --- | --- | --- |
 | Apache Kafka | Idempotent producer plus transactions plus `read_committed` consumers: exactly-once from Kafka topics to Kafka topics | [[concepts/data_engineering/kafka/apache_kafka#Delivery semantics\|Apache Kafka]] |
-| Apache Flink | Checkpoints give exactly-once effect on operator *state*; output needs a transactional or idempotent sink | [[concepts/data_engineering/flink/chandy_lamport_algorithm#Delivery Modes\|Chandy-Lamport Algorithm in Apache Flink]] |
+| Apache Flink | Checkpoints give exactly-once effect on operator *state*; output needs a transactional or idempotent sink | [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting#Delivery Modes\|Asynchronous Barrier Snapshotting (ABS)]] |
 | Stream processors in general | Exactly-once state, with end-to-end exactness depending on the sink strategy | [[concepts/data_engineering/stateful_vs_stateless_stream_processing#Delivery Semantics End to End\|Stateful vs. Stateless Stream Processing]] |
 | MQTT QoS 2 | A four-step handshake between one client and one broker, so a message is delivered once on that hop | [[concepts/software_architecture/api_integration_protocols#MQTT\|API and Integration Protocols]] |
 
@@ -105,7 +105,7 @@ All of these techniques start from at-least-once delivery and remove the *effect
 
 - [[concepts/software_architecture/idempotency|Idempotency]] — the property that turns at-least-once delivery into effectively-once processing
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the best-known exactly-once implementation, and an example of a guarantee that ends at the system boundary
-- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — how consistent snapshots plus source replay give exactly-once state in a streaming engine
+- [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]] — how consistent snapshots plus source replay give exactly-once state in a streaming engine
 - [[concepts/data_engineering/stateful_vs_stateless_stream_processing|Stateful vs. Stateless Stream Processing]] — the sink strategies (transactional, idempotent, plain append) that decide end-to-end delivery semantics
 - [[concepts/databases/distributed_consensus|Distributed Consensus]] — the agreement problem FLP constrains, and the protocols that keep deduplication state and logs consistent across nodes
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — the delivery guarantees of webhooks, MQTT, and AMQP, and why their receivers must be idempotent

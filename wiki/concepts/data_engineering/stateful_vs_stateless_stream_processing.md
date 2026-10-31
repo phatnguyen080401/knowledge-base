@@ -2,7 +2,7 @@
 title: Stateful vs. Stateless Stream Processing
 tags: [data-engineering, distributed-systems, fault-tolerance, partitioning, kafka, spark, flink, comparison]
 created: 2026-10-30 11:25:32
-updated: 2026-10-31 10:43:45
+updated: 2026-10-31 11:18:27
 ---
 
 # Stateful vs. Stateless Stream Processing
@@ -600,7 +600,8 @@ alerts = (
 ## Related Concepts
 
 - [[concepts/data_engineering/flink/apache_flink|Apache Flink]] — the reference stateful engine in this note: architecture, APIs, state backends, and when to choose it
-- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — the barrier-snapshot mechanism summarized under Fault Tolerance, in full: alignment, unaligned checkpoints, recovery, savepoints
+- [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]] — the barrier-snapshot mechanism summarized under Fault Tolerance, in full: alignment, unaligned checkpoints, recovery, savepoints
+- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm]] — the 1985 distributed-snapshot algorithm the barrier mechanism is based on
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the replayable, partitioned log that makes stateful recovery possible, and where Kafka Streams keeps its changelogs and transactions
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — Structured Streaming's micro-batch model, watermarks, and checkpoint-based recovery
 - [[concepts/software_architecture/idempotency|Idempotency]] — what turns engine-internal exactly-once into end-to-end correctness, and why stateless jobs can be correct without snapshots

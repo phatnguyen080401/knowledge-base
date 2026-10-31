@@ -61,7 +61,8 @@ Folder: `wiki/concepts/data_engineering/dbt/`
 Folder: `wiki/concepts/data_engineering/flink/`
 
 - [[concepts/data_engineering/flink/apache_flink|Apache Flink]] — tool overview: JobManager/TaskManager and slots, chaining, DataStream/Table/SQL APIs, state backends, event time and watermarks, backpressure, when to choose it.
-- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm in Apache Flink]] — consistent cuts with markers; Flink's barrier snapshots (ABS), alignment, async and unaligned checkpoints, recovery, checkpoints vs. savepoints.
+- [[concepts/data_engineering/flink/asynchronous_barrier_snapshotting|Asynchronous Barrier Snapshotting (ABS)]] — Flink's checkpoint algorithm (Carbone et al. 2015): barriers, alignment, async and unaligned checkpoints, cycles, delivery modes, recovery, savepoints.
+- [[concepts/data_engineering/flink/chandy_lamport_algorithm|Chandy-Lamport Algorithm]] — consistent cuts with markers over FIFO channels, the original 1985 algorithm, and a summary of Flink's ABS adaptation.
 
 ### Apache Kafka
 

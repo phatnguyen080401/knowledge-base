@@ -1,5 +1,11 @@
 # Activity Log
 
+- **2026-10-31 11:24:11** · maintain · Updated `[[concepts/data_engineering/flink/asynchronous_barrier_snapshotting]]` — removed the arXiv URL from `sources` at the user's request, an approved exception to the append-only rule, since the archived PDF is the same paper.
+
+- **2026-10-31 11:20:46** · maintain · Updated `[[concepts/data_engineering/flink/asynchronous_barrier_snapshotting]]` — fact-checked Origin against the paper (all claims confirmed; added its evaluation) and archived the PDF; retitled `[[concepts/data_engineering/flink/chandy_lamport_algorithm]]` to Chandy-Lamport Algorithm. Source: `raw/processed/lightweight_asynchronous_snapshots_for_distributed_dataflows.pdf`.
+
+- **2026-10-31 11:11:54** · maintain · Created `[[concepts/data_engineering/flink/asynchronous_barrier_snapshotting]]` split out of `[[concepts/data_engineering/flink/chandy_lamport_algorithm]]` at the user's request, filed under `flink/` rather than a new cloud-computing domain; the original keeps the 1985 algorithm and a summary, and 6 links were repointed.
+
 - **2026-10-31 11:07:29** · maintain · Merged `[[concepts/ai_engineering/react]]` and `[[concepts/ai_engineering/rewoo]]` into `[[concepts/ai_engineering/agent_reasoning_patterns]]` with a ReAct vs. ReWOO section (approved deletion, 4 links repointed); reverted the RAG note's chunk-overlap and scoring additions into new `[[concepts/ai_engineering/chunk_overlap]]` and `[[concepts/ai_engineering/retrieval_scoring]]`; wiki-create skill now leaves ingested notes untouched.
 
 - **2026-10-31 10:49:23** · maintain · Created `[[concepts/ai_engineering/context_window]]`, `[[concepts/ai_engineering/react]]`, and `[[concepts/ai_engineering/rewoo]]`; expanded `[[concepts/ai_engineering/embeddings]]` with dimensionality and the RAG note with chunk overlap and retrieval scoring; linked from four AI-engineering notes.
