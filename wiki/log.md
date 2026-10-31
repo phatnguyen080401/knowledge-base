@@ -1,5 +1,15 @@
 # Activity Log
 
+- **2026-10-31 11:51:50** · maintain · Merged `[[concepts/devops/docker/docker_stop_vs_docker_kill]]` into `[[concepts/devops/docker/docker_container_techniques]]` as a Stopping vs. Killing section, as the user requested; deleted the merged-away note with approval; 6 links repointed.
+
+- **2026-10-31 11:47:01** · maintain · Created `[[concepts/devops/docker/docker_container_techniques]]` from the user's draft and two iximiuz Labs diagrams saved to `raw/assets/`; corrected the draft's nginx signals (SIGHUP reloads, SIGUSR1 reopens logs); linked from both Docker notes.
+
+- **2026-10-31 11:42:47** · maintain · Created `[[concepts/devops/docker/docker_stop_vs_docker_kill]]` from the user's draft plus general knowledge (STOPSIGNAL, exit codes, PID 1 signal handling); linked from the Docker note.
+
+- **2026-10-31 11:40:03** · maintain · Renamed `[[concepts/devops/docker]]` to `[[concepts/devops/docker/docker]]` in a new `docker/` tech subfolder, as the user requested; 4 links repointed.
+
+- **2026-10-31 11:36:50** · maintain · Created `[[concepts/devops/docker]]` — concepts, architecture, Dockerfile, a command reference, Compose, and security hygiene, from general knowledge; linked from the Kubernetes Components, Trivy, and dbt Cloud Run deploy notes.
+
 - **2026-10-31 11:34:33** · maintain · Renamed `[[concepts/cloud_computing/aws/amazon_ec2]]`, `[[concepts/cloud_computing/aws/amazon_rds]]`, and `[[concepts/cloud_computing/aws/aws_glue]]` into per-service `ec2/`, `rds/`, and `glue/` subfolders, as the user requested; 8 links repointed.
 
 - **2026-10-31 11:27:30** · maintain · Created stubs `[[concepts/cloud_computing/aws/amazon_rds]]`, `[[concepts/cloud_computing/aws/amazon_ec2]]`, and `[[concepts/cloud_computing/aws/aws_glue]]` from the user's draft in a new `cloud_computing/aws/` folder, as the user requested; added the `cloud-computing` domain and an `aws` seed row to taxonomy.md.

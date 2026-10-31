@@ -2,7 +2,7 @@
 title: Kubernetes Components
 tags: [devops, deployment, fault-tolerance, kubernetes, etcd]
 created: 2026-10-30 12:38:50
-updated: 2026-10-30 12:51:48
+updated: 2026-10-31 11:40:03
 ---
 
 # Kubernetes Components
@@ -272,7 +272,7 @@ flowchart LR
     HL -.->|"other handler chosen by RuntimeClass"| SAND["sandboxed runtimes<br/>gVisor, Kata Containers"]
 ```
 
-- **containerd** (a CNCF project, also what Docker Engine uses internally) and **CRI-O** (built only for Kubernetes) are the two common high-level runtimes.
+- **containerd** (a CNCF project, also what [[concepts/devops/docker/docker|Docker]] Engine uses internally) and **CRI-O** (built only for Kubernetes) are the two common high-level runtimes.
 - The **low-level runtime** creates the Linux namespaces and cgroups. A container is an isolated process, not a virtual machine.
 - **RuntimeClass** selects an alternative handler, such as gVisor or Kata Containers, to isolate untrusted workloads more strongly.
 - Every pod starts with a tiny **pause container** that anchors the pod's shared network, IPC, and UTS namespaces. The app containers join them, which is why containers in one pod share one IP and can reach each other on `localhost`. See [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]].

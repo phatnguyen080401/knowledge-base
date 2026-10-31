@@ -148,6 +148,13 @@ Folder: `wiki/concepts/devops/`
 - [[concepts/devops/renovate_docs|Renovate]] — tool overview: automated dependency-update PRs — platform/manager/datasource/versioning modules, onboarding, presets, grouping, schedules, automerge, Dependency Dashboard, vs. Dependabot.
 - [[concepts/devops/trivy|Trivy]] — tool overview: open-source scanner for CVEs, IaC misconfiguration, secrets, and licences across images, repos, clusters, and SBOMs; where the CI gate belongs.
 
+### Docker
+
+Folder: `wiki/concepts/devops/docker/`
+
+- [[concepts/devops/docker/docker|Docker]] — images, containers, and architecture; Dockerfile instructions and caching; common commands for images, containers, volumes, networks, cleanup, and Compose; security hygiene.
+- [[concepts/devops/docker/docker_container_techniques|Docker Container Techniques]] — how `docker run` decomposes and its process tree; `-it` and pseudo-TTYs; attach vs. exec; stop vs. kill, exit codes, and PID 1 signal handling; pause vs. stop; signalling apps; export vs. save.
+
 ### Infrastructure as Code
 
 Folder: `wiki/concepts/devops/infrastructure_as_code/`

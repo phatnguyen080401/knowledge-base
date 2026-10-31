@@ -2,7 +2,7 @@
 title: Deploy dbt and Elementary to Cloud Run with GitHub Actions
 tags: [data-engineering, deployment, ci-cd, dbt, cloud-run, github-actions, elementary, how-to]
 created: 2026-10-20 10:18:50
-updated: 2026-10-29 14:09:46
+updated: 2026-10-31 11:40:03
 ---
 # Deploy dbt and Elementary to Cloud Run with GitHub Actions
 
@@ -600,7 +600,7 @@ The scheduler's service account needs `roles/run.invoker` on the job. Deployment
 
 ## Appendix: Full Workflow Source
 
-Both files verbatim, so the template can be copied without reassembling it from the excerpts above. Substitute the `component` choice list, and supply the `vars` and `secrets` from the table in [[#GitHub repository configuration]] above.
+Both files verbatim, so the template can be copied without reassembling it from the excerpts above. Substitute the `component` choice list, and supply the `vars` and `secrets` from the table in [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions#GitHub repository configuration|GitHub repository configuration]] above.
 
 ### `.github/workflows/dbt_deploy.yml`
 
