@@ -24,25 +24,28 @@ Compiles files in `raw/` into `wiki/concepts/`, as ordered steps under `AGENTS.m
 
    | Result | Action |
    | --- | --- |
-   | A page covers the concept | **Update** |
-   | No page covers it | **Create** |
-   | Ambiguous or partially overlapping | Ask the user; never create a near-duplicate |
+   | No page covers the concept | **Create** a note |
+   | A page covers a concept the source builds on | **Link only**: the new note links to it; it may gain a link back (step 7) |
+   | A page already covers the source's own subject, or overlap is ambiguous | Ask the user; never create a near-duplicate |
 
 6. **Write.**
    - **Create:** a new file in the `AGENTS.md` §3 shape, filled in as far as the source supports,
      named after the source per the `AGENTS.md` §2 table.
-   - **Update:** merge into the correct existing section, rewriting sentences to integrate the new
-     facts; no "Update" or "Additional Notes" section. Bump `updated`.
-   - **Conflict:** never silently overwrite. Keep the better-sourced claim in the body **and**
-     record both positions with their sources under `## Open Questions & Disagreements`, then tag
-     `needs-review`. A conflict raised only in your chat summary will be forgotten.
-   - Tags and folder with [`tag-taxonomy`](../tag-taxonomy/SKILL.md) on every create or update;
-     body per [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md).
-7. **Link both ways.** Outbound links from every new or changed note, and a link back from at least
-   one related existing note to each new one.
+   - **Existing notes are read-only.** Never edit their definition, body, `tags`, or `sources`, and
+     never add the source's concepts to them, however relevant: many sources merged into one shared
+     note break it. That knowledge lives in the new notes, which link to the existing ones.
+   - **Conflict:** never silently pick a winner. Record both positions with their sources, naming
+     the existing page if it holds one, under the new note's `## Open Questions & Disagreements`,
+     then tag it `needs-review`. A conflict raised only in your chat summary will be forgotten.
+   - Tags and folder with [`tag-taxonomy`](../tag-taxonomy/SKILL.md) on every new note; body per
+     [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md).
+7. **Link both ways.** Outbound links from every new note. Each new note also gets a link back
+   from at least one related existing note: one bullet under its `## Related Concepts` saying why
+   the new note matters there (add the section if missing), and a bumped `updated`. This is the
+   only change an existing note receives.
 8. **Archive the source** to `raw/processed/` **only after** steps 6–7 succeed. If ingestion fails
    or is aborted, leave it in `raw/` so it is retried.
-9. **Audit trail, last.** Append the archived path to each touched note's `sources`, update
+9. **Audit trail, last.** Put the archived path in each new note's `sources`, update
    `wiki/INDEX.md`, and write **one** `ingest` log entry with a `Source:` clause, per
    [`wiki-audit-trail`](../wiki-audit-trail/SKILL.md).
 10. **Verify and report.** Run `AGENTS.md` §9 on every touched note (report semantic findings; don't
@@ -65,5 +68,6 @@ Compiles files in `raw/` into `wiki/concepts/`, as ordered steps under `AGENTS.m
 Every step above is complete and `AGENTS.md` §9 passes on every touched note, plus:
 
 - [ ] Every source was read in full and split one note per concept.
+- [ ] `git diff` of each existing note shows only added `## Related Concepts` bullets and `updated`.
 - [ ] Conflicts are recorded under `## Open Questions & Disagreements`, not only in chat.
 - [ ] Every touched body passes the obsidian-syntax.md Checks.

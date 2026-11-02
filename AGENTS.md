@@ -23,7 +23,7 @@ user request conflicts with a rule here, say so and ask before proceeding.
 
 1. **Markdown native.** Every operation is a read or write of a markdown file. Never introduce build scripts, databases, or plugin dependencies; the one exception is `script/setup.sh`, which only links `.skill/` for an agent (§8).
 2. **Agent-driven.** The file system is the only state. Read the vault to learn its state; write to the vault to change it.
-3. **Compile, don't retrieve.** Merge new information into the existing page. Never append a redundant section, create a near-duplicate page, or paste raw source text verbatim.
+3. **Compile, don't retrieve.** Merge new information into the existing page, except during ingestion (§4). Never append a redundant section, create a near-duplicate page, or paste raw source text verbatim.
 4. **Atomic, complete transactions.** A task is finished only when the note, its wikilinks, `wiki/INDEX.md`, and `wiki/log.md` are all consistent.
 5. **Every write under `wiki/` is audited, and only those.** Any create, update, rename, or delete under `wiki/` produces one `wiki/log.md` entry and a correct `wiki/INDEX.md`; a `query` or `lint` pass gets an entry even when nothing changed. Changes outside `wiki/` (`AGENTS.md`, `.skill/`, plumbing) get no entry of their own; when one accompanies a wiki change, name it in one clause of that entry.
 6. **Required frontmatter.** Every file under `wiki/concepts/` has `title`, `tags`, `created`, and `updated` (§3).
@@ -142,9 +142,11 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 ## 4. Ingesting from `raw/`
 
 Follow [`wiki-ingest`](.skill/wiki-ingest/SKILL.md). Invariants: read each source in full; search the
-vault by name and content before writing, and ask when overlap is ambiguous; merge, don't
-duplicate; record conflicts in the note; archive a source to `raw/processed/` only after its notes
-are written and linked. A URL is clipped into `raw/` first. A direct request with no file or URL
+vault by name and content before writing, and ask when overlap is ambiguous or the source's own
+subject already has a page; put the source's knowledge only in new notes, never a near-duplicate;
+change an existing note only by adding a `## Related Concepts` link to a new note (and its
+`updated`); record conflicts in the new note; archive a source to `raw/processed/` only after its
+notes are written and linked. A URL is clipped into `raw/` first. A direct request with no file or URL
 follows [`wiki-create`](.skill/wiki-create/SKILL.md).
 
 ## 5. Answering Questions
