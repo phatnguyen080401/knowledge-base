@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-11-02 15:16:26** · maintain · Updated `[[concepts/ai_engineering/chain_of_thought]]`, `[[concepts/ai_engineering/context_window]]`, `[[concepts/databases/vector_database]]` — reverted the NCM ingest's body, `sources`, and tag edits, keeping only their Related Concepts links, per the new read-only-on-ingest rule (wiki-ingest and AGENTS.md §1.3/§4 amended).
+
+- **2026-11-02 14:22:13** · ingest · Created `[[concepts/ai_engineering/next_concept_modeling_fast_parallel_coarse_to_fine_text_generation]]`, `[[concepts/ai_engineering/diffusion_language_model]]`, `[[concepts/ai_engineering/residual_vector_quantization]]` — NCM paper split into method, the DLM baseline it targets, and its tokenizer; eight figures to `raw/assets/`; approved tags `generative-models`, `parallel-decoding`, `vector-quantization` added to taxonomy. Source: `raw/processed/next-concept_modeling_fast_parallel_coarse-to-fine_text_generation.pdf`.
+
 - **2026-10-31 20:02:17** · maintain · Created `[[concepts/linux/upgrade_python_on_ubuntu]]` from the user's draft plus general knowledge, adding the system-python risk of update-alternatives, the version-specific apt_pkg cause, and distutils removal in 3.12; linked from Static vs. Dynamic Linking.
 
 - **2026-10-31 19:55:26** · maintain · Created `[[concepts/version_control/git_command_cheat_sheet]]`, split out of `[[concepts/version_control/git]]` at the user's request (all command blocks and tables moved, prose kept), and added the user's file-permission commands; 0 links repointed.

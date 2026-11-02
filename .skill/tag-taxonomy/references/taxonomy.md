@@ -42,6 +42,7 @@ creating a folder, which needs user approval.
 | `deployment` | Getting code and pipelines into an environment: packaging, release automation, runtime hosting, rollback | Which version number the artifact carries (`versioning`) |
 | `distributed-systems` | Behaviour that only arises when data spans multiple nodes: partitioning, replication, consensus, network partitions | Single-node transactional semantics (`transactions`) |
 | `elt` | Extract-load-transform practice and tooling: models, materializations, tests, scheduling, adapters | The warehouse the transforms run on (`data-warehouse`) |
+| `generative-models` | Architectures and training objectives of models that generate text, images, or audio: autoregressive, diffusion, flow, latent, and quantized generative models | Serving those models in production (`model-operations`); building applications on them (`llm-applications`) |
 | `indexing` | Structures and techniques for locating records quickly: search trees, prefix trees, probabilistic filters, write-optimized stores | Abstract algorithm analysis unrelated to lookup |
 | `llm-applications` | Building products on foundation models: prompting, retrieval-augmented generation, tool use and agents, context handling, output evaluation | Training or fine-tuning the model itself (`model-operations`) |
 | `master-data` | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies | Descriptive metadata about datasets (`metadata`) |
@@ -71,6 +72,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `in-context-learning` | Steering a model at inference time through instructions and demonstrations in the prompt, with no weight updates: zero-, one-, and few-shot prompting, chain-of-thought, self-consistency | Grounding in retrieved knowledge (`retrieval-augmentation`); training or fine-tuning (`model-operations`) |
 | `knowledge-graph` | Representing meaning as typed entities and relationships: ontologies, triples, inference | Tabular and dimensional models (`data-modeling`) |
 | `metric-definition` | Declaring a business measure once and reusing it: metric specs, dimensions, governed KPIs | The physical aggregate table behind it |
+| `parallel-decoding` | Generating many tokens or positions per model call: diffusion denoising, coarse-to-fine level prediction, speculative drafting | Left-to-right decoding of one token per call |
 | `partitioning` | Splitting data across nodes, files, or ranges: sharding, partition keys, pruning, skew | Copying the same data to several nodes (`replication`) |
 | `prefix-structures` | Keys indexed by position in the string: tries, radix and PATRICIA trees, autocomplete | Comparison-based ordered structures (`search-trees`) |
 | `probabilistic-structures` | Structures trading exactness for space: Bloom filters, HyperLogLog, sketches | Exact ordered lookup structures (`search-trees`) |
@@ -82,6 +84,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `search-trees` | Ordered, balanced lookup structures: B-trees, B+ trees, fanout, range scans | Write-optimized log structures (`write-optimization`) |
 | `specification-gaming` | An optimizer satisfying the literal objective instead of the intent: reward hacking, Goodhart effects, gamed tests and metrics | Pursuing a wrong goal learned in training despite a correct objective (goal misgeneralization, part of `ai-safety`) |
 | `stewardship-roles` | Human accountability for data: owners, stewards, councils, decision rights, escalation | The policies they enforce (the `data-governance` domain) |
+| `vector-quantization` | Replacing vectors with entries from a learned codebook to compress or tokenize them: VQ, VQ-VAE, residual and product quantization | Fewer bits per dimension without a codebook (scalar or binary quantization) |
 | `write-optimization` | Favouring write throughput over read simplicity: LSM trees, memtables, compaction, buffering | Read-optimized ordered structures (`search-trees`) |
 
 ## Facet: `tech` — zero to four per note, open

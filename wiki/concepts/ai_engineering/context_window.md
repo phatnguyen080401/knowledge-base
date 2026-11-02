@@ -2,7 +2,7 @@
 title: Context Window
 tags: [ai-engineering, llm-applications, model-operations, in-context-learning]
 created: 2026-10-31 10:49:23
-updated: 2026-10-31 11:07:29
+updated: 2026-11-02 15:16:26
 ---
 
 # Context Window
@@ -81,3 +81,4 @@ Agent loops such as [[concepts/ai_engineering/agent_reasoning_patterns#ReAct (Re
 - [[concepts/ai_engineering/retrieval_scoring|Retrieval Scoring and Ranking]] — decides which retrieved chunks earn a place in the window
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — every tool an MCP server exposes adds its definition to the window
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the representation that lets retrieval pick what enters the window by meaning
+- [[concepts/ai_engineering/diffusion_language_model|Diffusion Language Model (DLM)]] — a parallel generator whose full-sequence, bidirectional steps cannot directly reuse the KV cache that keeps autoregressive steps cheap

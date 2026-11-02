@@ -2,7 +2,7 @@
 title: Vector Database
 tags: [databases, indexing, retrieval-augmentation, partitioning, query-optimization, pgvector]
 created: 2026-10-25 19:51:25
-updated: 2026-10-31 11:07:29
+updated: 2026-11-02 15:16:26
 ---
 
 # Vector Database
@@ -293,6 +293,7 @@ versions mitigate with iterative index scans.
 ## Related Concepts
 
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the vectors this database stores; their model, dimension, and metric dictate the index configuration
+- [[concepts/ai_engineering/residual_vector_quantization|Residual Vector Quantization (RVQ)]] — the stacked-codebook alternative to PQ, used to tokenize signals for generative models
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the main consumer; index recall bounds RAG recall
 - [[concepts/ai_engineering/retrieval_scoring|Retrieval Scoring and Ranking]] — what happens to the scores this index returns: BM25 alongside, fusion, reranking, thresholds, and MMR
 - [[concepts/ai_engineering/model_context_protocol|Model Context Protocol (MCP)]] — a common way to expose a vector search to agents as a tool
