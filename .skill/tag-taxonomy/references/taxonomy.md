@@ -49,6 +49,7 @@ creating a folder, which needs user approval.
 | `master-data` | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies | Descriptive metadata about datasets (`metadata`) |
 | `metadata` | Data about data: catalogs, lineage, schema registries, business glossaries | The business data itself (`master-data`) |
 | `model-operations` | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`) |
+| `model-training` | Fitting a model's parameters to data: loss functions, gradient-based optimizers, learning-rate schedules, regularization, backpropagation | What the learned parameters represent (`representation-learning`); serving the trained model (`model-operations`) |
 | `observers` | Watching running software to explain its behaviour: logs, metrics, traces, their correlation, dashboards, and alerting | Monitoring a model's quality and drift (`model-operations`); build-time scanning (`supply-chain-security`) |
 | `representation-learning` | Learning dense or discrete vector representations of words, text, images, or other inputs: word vectors, sentence encoders, embedding training objectives, codebook tokenizers | Generating outputs from those representations (`generative-models`); applications that search with them (`llm-applications`) |
 | `source-history` | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
@@ -86,6 +87,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `search-trees` | Ordered, balanced lookup structures: B-trees, B+ trees, fanout, range scans | Write-optimized log structures (`write-optimization`) |
 | `specification-gaming` | An optimizer satisfying the literal objective instead of the intent: reward hacking, Goodhart effects, gamed tests and metrics | Pursuing a wrong goal learned in training despite a correct objective (goal misgeneralization, part of `ai-safety`) |
 | `stewardship-roles` | Human accountability for data: owners, stewards, councils, decision rights, escalation | The policies they enforce (the `data-governance` domain) |
+| `stochastic-optimization` | Optimizing from noisy, sampled estimates instead of exact full-data quantities: minibatch gradients, momentum, adaptive step sizes, learning-rate schedules | Exact full-data or closed-form solutions; derivative-free search such as grid or evolutionary search |
 | `vector-quantization` | Replacing vectors with entries from a learned codebook to compress or tokenize them: VQ, VQ-VAE, residual and product quantization | Fewer bits per dimension without a codebook (scalar or binary quantization) |
 | `write-optimization` | Favouring write throughput over read simplicity: LSM trees, memtables, compaction, buffering | Read-optimized ordered structures (`search-trees`) |
 

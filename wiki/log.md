@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-03 22:01:34** · maintain · Created `[[concepts/machine_learning/gradient_descent]]` from general knowledge; approved topic `model-training` and concept `stochastic-optimization` added to taxonomy.md; linked from Word2Vec.
+
 - **2026-11-03 21:51:42** · maintain · Created `[[concepts/machine_learning/word2vec]]` from general knowledge in a new `machine_learning/` domain folder; approved domain `machine-learning` and topic `representation-learning` added to taxonomy.md; linked from Embeddings.
 
 - **2026-11-02 15:16:26** · maintain · Updated `[[concepts/ai_engineering/chain_of_thought]]`, `[[concepts/ai_engineering/context_window]]`, `[[concepts/databases/vector_database]]` — reverted the NCM ingest's body, `sources`, and tag edits, keeping only their Related Concepts links, per the new read-only-on-ingest rule (wiki-ingest and AGENTS.md §1.3/§4 amended).

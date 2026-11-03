@@ -238,6 +238,7 @@ Folder: `wiki/concepts/linux/`
 
 Folder: `wiki/concepts/machine_learning/`
 
+- [[concepts/machine_learning/gradient_descent|Gradient Descent]] — update rule and step-size stability, convergence rates, batch vs. minibatch SGD, backpropagation, momentum, AdaGrad/RMSProp/Adam/AdamW, LR schedules, pitfalls.
 - [[concepts/machine_learning/word2vec|Word2Vec]] — CBOW vs. skip-gram, hierarchical softmax, negative sampling, subsampling and phrases, analogies, hyperparameters, SGNS as PMI factorization, gensim, limits, successors.
 
 ## Software Architecture
