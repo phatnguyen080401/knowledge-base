@@ -3,7 +3,7 @@ title: Embeddings
 tags: [ai-engineering, llm-applications, retrieval-augmentation]
 sources: ["https://developers.openai.com/api/docs/guides/embeddings", "https://huggingface.co/Qwen/Qwen3-Embedding-8B", "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", "https://arxiv.org/abs/2502.13595"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-31 11:07:29
+updated: 2026-11-03 21:51:42
 ---
 
 # Embeddings
@@ -231,6 +231,7 @@ Two practical consequences follow. Query and corpus vectors must come from the s
 
 ## Related Concepts
 
+- [[concepts/machine_learning/word2vec|Word2Vec]] — the 2013 static word vectors this field grew from; its negative sampling is the ancestor of contrastive embedding training
 - [[concepts/ai_engineering/retrieval_as_reasoning_self_evolving_agent_native_retrieval_via_llm_wiki|Retrieval-Augmented Generation (RAG)]] — the pipeline embeddings feed; retrieval recall is bounded by embedding quality
 - [[concepts/ai_engineering/retrieval_scoring|Retrieval Scoring and Ranking]] — how similarity scores are combined with BM25, fused, reranked, and cut into the list the model sees
 - [[concepts/ai_engineering/chunk_overlap|Chunk Overlap]] — how the text units being embedded are cut, and the extra vectors overlap costs

@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-03 21:51:42** · maintain · Created `[[concepts/machine_learning/word2vec]]` from general knowledge in a new `machine_learning/` domain folder; approved domain `machine-learning` and topic `representation-learning` added to taxonomy.md; linked from Embeddings.
+
 - **2026-11-02 15:16:26** · maintain · Updated `[[concepts/ai_engineering/chain_of_thought]]`, `[[concepts/ai_engineering/context_window]]`, `[[concepts/databases/vector_database]]` — reverted the NCM ingest's body, `sources`, and tag edits, keeping only their Related Concepts links, per the new read-only-on-ingest rule (wiki-ingest and AGENTS.md §1.3/§4 amended).
 
 - **2026-11-02 14:22:13** · ingest · Created `[[concepts/ai_engineering/next_concept_modeling_fast_parallel_coarse_to_fine_text_generation]]`, `[[concepts/ai_engineering/diffusion_language_model]]`, `[[concepts/ai_engineering/residual_vector_quantization]]` — NCM paper split into method, the DLM baseline it targets, and its tokenizer; eight figures to `raw/assets/`; approved tags `generative-models`, `parallel-decoding`, `vector-quantization` added to taxonomy. Source: `raw/processed/next-concept_modeling_fast_parallel_coarse-to-fine_text_generation.pdf`.

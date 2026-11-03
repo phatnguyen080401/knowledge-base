@@ -234,6 +234,12 @@ Folder: `wiki/concepts/linux/`
 - [[concepts/linux/systemd_targets|Systemd Targets]] — SysVinit runlevels and their target mapping; key, rescue/emergency, and building-block targets; the boot chain; unit anatomy and `WantedBy`; `systemctl` set-default, isolate, and inspection; custom targets.
 - [[concepts/linux/upgrade_python_on_ubuntu|Upgrade or Downgrade Python on Ubuntu]] — how-to: deadsnakes PPA, install, optional update-alternatives default with its risks, repairing apt_pkg and pip, removing a version safely.
 
+## Machine Learning
+
+Folder: `wiki/concepts/machine_learning/`
+
+- [[concepts/machine_learning/word2vec|Word2Vec]] — CBOW vs. skip-gram, hierarchical softmax, negative sampling, subsampling and phrases, analogies, hyperparameters, SGNS as PMI factorization, gensim, limits, successors.
+
 ## Software Architecture
 
 Folder: `wiki/concepts/software_architecture/`
