@@ -1,0 +1,13 @@
+{
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": true,
+  "userIgnoreFilters": [
+    "wiki/log.md",
+    "raw/",
+    "script/",
+    "wiki/hot.md",
+    "wiki/INDEX.md",
+    "AGENTS.md",
+    "README"
+  ]
+}
