@@ -3,8 +3,15 @@
 .DS_Store
 
 ### Obsidian ###
-# config dir
-.obsidian/
+# Obsidian workspace state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian cache
+.obsidian/cache/
+
+# Plugin runtime data (optional)
+.obsidian/plugins/*/data.json
 
 ### VisualStudioCode ###
 .vscode/*
