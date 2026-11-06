@@ -2,7 +2,7 @@
 title: Gradient Descent
 tags: [machine-learning, model-training, stochastic-optimization]
 created: 2026-11-03 22:01:34
-updated: 2026-11-03 22:01:34
+updated: 2026-11-06 15:49:01
 ---
 
 # Gradient Descent
@@ -223,13 +223,18 @@ for epoch in range(20):
 print(w)  # close to [2.0, -1.0, 0.5]
 ```
 
-Linear regression also has a closed-form answer, the normal equations. Gradient descent is still
+Linear regression also has a closed-form answer, the
+[[concepts/machine_learning/normal_equations|Normal Equations]]. Gradient descent is still
 used when the data is too large to form $X^{\top}X$, or when the same loop has to work for models
 with no closed form.
 
 ## Related Concepts
 
 - [[concepts/machine_learning/word2vec|Word2Vec]] — a classic model trained with SGD and a linearly decayed learning rate; negative sampling exists to make each gradient step cheap
+- [[concepts/machine_learning/long_short_term_memory|Long Short-Term Memory (LSTM)]] — a recurrent network whose gated cell was designed to stop gradients vanishing through time
+- [[concepts/machine_learning/least_mean_squares|Least Mean Squares (LMS) Algorithm]] — the simplest useful case: gradient descent on the least-squares cost of a linear model
+- [[concepts/machine_learning/cost_function|Cost Function]] — the quantity every gradient step is trying to reduce
+- [[concepts/machine_learning/xgboost|XGBoost]] — gradient boosting applies the same descent idea in function space, one tree per step, with a Newton-style second-order update
 - [[concepts/ai_engineering/embeddings|Embeddings]] — modern embedding models are trained by gradient descent on contrastive losses
 - [[concepts/ai_engineering/alignment/ai_alignment|AI Alignment]] — an optimizer pursues the literal objective, so the training loss must capture what is actually wanted
 

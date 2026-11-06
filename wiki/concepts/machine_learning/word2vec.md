@@ -2,7 +2,7 @@
 title: Word2Vec
 tags: [machine-learning, representation-learning, word2vec]
 created: 2026-11-03 21:51:42
-updated: 2026-11-03 22:01:34
+updated: 2026-11-06 15:42:10
 ---
 
 # Word2Vec
@@ -274,6 +274,7 @@ across a large vocabulary is a nearest-neighbour search, the job a
 
 - [[concepts/ai_engineering/embeddings|Embeddings]] — the general idea Word2Vec started; modern sentence and passage embeddings replace its static word vectors with contextual ones
 - [[concepts/machine_learning/gradient_descent|Gradient Descent]] — the SGD training loop and decaying learning rate that fit Word2Vec's vectors; negative sampling exists to make each step cheap
+- [[concepts/machine_learning/long_short_term_memory|Long Short-Term Memory (LSTM)]] — the recurrent network that commonly consumed Word2Vec vectors, and the basis of ELMo's contextual vectors that succeeded them
 - [[concepts/databases/vector_database|Vector Database]] — nearest-neighbour search over vectors, the same lookup as Word2Vec's `most_similar` at production scale
 - [[concepts/ai_engineering/retrieval_scoring|Retrieval Scoring and Ranking]] — how cosine and dot-product scores like Word2Vec's are used and combined when ranking results
 

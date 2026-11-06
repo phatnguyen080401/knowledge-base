@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-11-06 15:49:01** · maintain · Created eight `machine_learning` notes from general knowledge: supervised and unsupervised learning, cost function, least squares, LMS, normal equations, matrix derivative, beam search; approved concepts `learning-paradigms` and `linear-regression` added to taxonomy.md; linked from Gradient Descent and LSTM.
+
+- **2026-11-06 15:42:10** · maintain · Created `[[concepts/machine_learning/xgboost]]` and `[[concepts/machine_learning/long_short_term_memory]]` from general knowledge; approved concept `sequence-modeling` added to taxonomy.md; linked from Gradient Descent and Word2Vec.
+
 - **2026-11-03 22:01:34** · maintain · Created `[[concepts/machine_learning/gradient_descent]]` from general knowledge; approved topic `model-training` and concept `stochastic-optimization` added to taxonomy.md; linked from Word2Vec.
 
 - **2026-11-03 21:51:42** · maintain · Created `[[concepts/machine_learning/word2vec]]` from general knowledge in a new `machine_learning/` domain folder; approved domain `machine-learning` and topic `representation-learning` added to taxonomy.md; linked from Embeddings.
