@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-11 10:08:36** · maintain · Created `[[concepts/ai_engineering/beam_search]]` from general knowledge as a sequence-decoding strategy; approved concept `decoding-strategies` added to taxonomy.md and applied to NCM at user request; linked from Vector Database's HNSW search.
+
 - **2026-11-03 22:01:34** · maintain · Created `[[concepts/machine_learning/gradient_descent]]` from general knowledge; approved topic `model-training` and concept `stochastic-optimization` added to taxonomy.md; linked from Word2Vec.
 
 - **2026-11-03 21:51:42** · maintain · Created `[[concepts/machine_learning/word2vec]]` from general knowledge in a new `machine_learning/` domain folder; approved domain `machine-learning` and topic `representation-learning` added to taxonomy.md; linked from Embeddings.

@@ -8,6 +8,7 @@ Folder: `wiki/concepts/ai_engineering/`
 
 - [[concepts/ai_engineering/ai_engineer|AI Engineer]] — hub: the role that ships products on models it did not train — responsibilities, the iteration loop, skills, and boundaries with ML, data, and backend work.
 - [[concepts/ai_engineering/agent_reasoning_patterns|Agent Reasoning Patterns (ReAct and ReWOO)]] — how agents combine reasoning with tool calls: ReAct's interleaved loop, ReWOO's planner–workers–solver, and a ReAct vs. ReWOO comparison.
+- [[concepts/ai_engineering/beam_search|Beam Search]] — top-B decoding for autoregressive models: algorithm, length normalization, beam-width trade-offs and the beam search curse, vs. greedy, sampling, and MBR, variants.
 - [[concepts/ai_engineering/chain_of_thought|Chain-of-Thought (CoT) Prompting]] — reasoning as a latent variable, few-/zero-shot CoT, Auto-CoT, self-consistency voting, least-to-most, tree of thoughts, PAL, reasoning models, faithfulness.
 - [[concepts/ai_engineering/chunk_overlap|Chunk Overlap]] — why chunks overlap, stride and index-growth math, choosing an overlap, when to skip it, and its side effects at retrieval.
 - [[concepts/ai_engineering/context_window|Context Window]] — the token budget for input plus output, what fills it, why it is finite, effective vs. advertised length, and strategies for managing it.

@@ -2,7 +2,7 @@
 title: Vector Database
 tags: [databases, indexing, retrieval-augmentation, partitioning, query-optimization, pgvector]
 created: 2026-10-25 19:51:25
-updated: 2026-11-02 15:16:26
+updated: 2026-11-11 10:08:36
 ---
 
 # Vector Database
@@ -93,7 +93,7 @@ flowchart TB
 ```
 
 **Search** enters at the top layer, greedily walks to the neighbour closest to the query, drops a
-layer when no neighbour is closer, and repeats; at layer 0 it runs a beam search keeping the best
+layer when no neighbour is closer, and repeats; at layer 0 it runs a [[concepts/ai_engineering/beam_search|beam search]] keeping the best
 `ef` candidates. It behaves like a skip list generalised to a graph.
 
 | Parameter | Controls | Raising it |

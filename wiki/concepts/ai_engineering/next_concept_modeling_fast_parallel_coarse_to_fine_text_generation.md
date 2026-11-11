@@ -1,9 +1,9 @@
 ---
 title: Next-Concept Modeling (NCM)
-tags: [ai-engineering, generative-models, parallel-decoding, vector-quantization, scaling-laws]
+tags: [ai-engineering, generative-models, decoding-strategies, parallel-decoding, vector-quantization, scaling-laws]
 sources: [raw/processed/next-concept_modeling_fast_parallel_coarse-to-fine_text_generation.pdf, "https://arxiv.org/pdf/2610.14162"]
 created: 2026-11-02 14:22:13
-updated: 2026-11-02 14:22:13
+updated: 2026-11-11 10:08:36
 ---
 
 # Next-Concept Modeling (NCM)

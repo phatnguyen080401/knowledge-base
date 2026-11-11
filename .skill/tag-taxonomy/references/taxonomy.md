@@ -70,6 +70,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `consistency-models` | What a reader is guaranteed to see and when: strong, eventual, causal, linearizable | The mechanism copying the data (`replication`) |
 | `data-lineage` | Tracing data from source to consumer: column- and table-level provenance, impact analysis | The catalog product storing it (a `tech` tag) |
 | `data-validation` | Checking data against expectations: profiling, rules, assertions, tests, anomaly detection | Who is accountable for acting on a failure (`stewardship-roles`) |
+| `decoding-strategies` | Choosing output tokens from a model's predicted distributions at inference: greedy, beam search, temperature, top-k and top-p sampling, MBR decoding | Generating many positions per model call (`parallel-decoding`); fitting the model's parameters (`model-training`) |
 | `entity-resolution` | Deciding that two records describe the same real-world thing: matching, merging, survivorship | Storing the resulting golden record |
 | `fault-tolerance` | Surviving node, network, or process failure: failover, retries, quorums, degraded modes | Routine performance tuning |
 | `in-context-learning` | Steering a model at inference time through instructions and demonstrations in the prompt, with no weight updates: zero-, one-, and few-shot prompting, chain-of-thought, self-consistency | Grounding in retrieved knowledge (`retrieval-augmentation`); training or fine-tuning (`model-operations`) |
