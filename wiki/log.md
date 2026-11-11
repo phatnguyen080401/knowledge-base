@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-11 13:07:11** · maintain · Merged `[[concepts/ai_engineering/beam_search]]` into `[[concepts/machine_learning/beam_search]]` — duplicate pages from parallel branches; kept the ML path per user, deleted the other with approval, repointed 1 link.
+
 - **2026-11-11 10:08:36** · maintain · Created `[[concepts/ai_engineering/beam_search]]` from general knowledge as a sequence-decoding strategy; approved concept `decoding-strategies` added to taxonomy.md and applied to NCM at user request; linked from Vector Database's HNSW search.
 
 - **2026-11-06 15:49:01** · maintain · Created eight `machine_learning` notes from general knowledge: supervised and unsupervised learning, cost function, least squares, LMS, normal equations, matrix derivative, beam search; approved concepts `learning-paradigms` and `linear-regression` added to taxonomy.md; linked from Gradient Descent and LSTM.
