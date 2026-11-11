@@ -4,14 +4,7 @@
 
 ### Obsidian ###
 # Obsidian workspace state
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-
-# Obsidian cache
-.obsidian/cache/
-
-# Plugin runtime data (optional)
-.obsidian/plugins/*/data.json
+.obsidian/
 
 ### VisualStudioCode ###
 .vscode/*
@@ -21,6 +14,8 @@
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
-### Claude Code ###
+### Agent Code ###
 # per-user; recreate the skills symlink per README "Setup"
 .claude/
+.gemini/
+.github/

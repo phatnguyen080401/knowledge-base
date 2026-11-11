@@ -9,7 +9,7 @@ usage() { echo "Usage: $0 CLAUDE|GEMINI|COPILOT" >&2; exit 1; }
 case "$(printf '%s' "$1" | tr '[:lower:]' '[:upper:]')" in
   CLAUDE)  dir=.claude ;;
   GEMINI)  dir=.gemini ;;
-  COPILOT) dir=.copilot ;;
+  COPILOT) dir=.github ;;
   *)       usage ;;
 esac
 
