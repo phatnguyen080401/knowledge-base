@@ -239,8 +239,18 @@ Folder: `wiki/concepts/linux/`
 
 Folder: `wiki/concepts/machine_learning/`
 
+- [[concepts/machine_learning/beam_search|Beam Search]] — top-B sequence decoding, log-prob scoring, cost, length penalties, beam-size curse, degeneration vs. sampling, diverse beams, uses incl. HNSW.
+- [[concepts/machine_learning/cost_function|Cost Function]] — loss vs. cost vs. objective, least-squares cost, common losses (squared, Huber, cross-entropy, hinge), surrogates, regularization, choosing one.
 - [[concepts/machine_learning/gradient_descent|Gradient Descent]] — update rule and step-size stability, convergence rates, batch vs. minibatch SGD, backpropagation, momentum, AdaGrad/RMSProp/Adam/AdamW, LR schedules, pitfalls.
+- [[concepts/machine_learning/least_mean_squares|Least Mean Squares (LMS) Algorithm]] — Widrow-Hoff/delta rule derivation, batch vs. stochastic forms, convergence, learning-rate bound, NLMS, adaptive filters.
+- [[concepts/machine_learning/least_squares|Least Squares]] — OLS linear regression: model and cost, LMS vs. normal equations, Gaussian-noise MLE view, projection geometry, ridge, locally weighted regression.
+- [[concepts/machine_learning/long_short_term_memory|Long Short-Term Memory (LSTM)]] — vanishing gradients in RNNs, forget/input/output gates and cell state, BPTT, training tips, GRU/bidirectional/seq2seq variants, vs. Transformers.
+- [[concepts/machine_learning/matrix_derivative|Matrix Derivative]] — gradient w.r.t. a matrix, layout conventions, trace properties, core and vector identities, deriving the least-squares gradient.
+- [[concepts/machine_learning/normal_equations|Normal Equations]] — closed-form least squares derivation, Cholesky/QR/SVD solvers, singular X^T X and ridge, vs. gradient descent.
+- [[concepts/machine_learning/supervised_learning|Supervised Learning]] — labelled setup and hypothesis, regression vs. classification problems, binary/multiclass/multilabel, train/val/test, over- and underfitting, algorithms.
+- [[concepts/machine_learning/unsupervised_learning|Unsupervised Learning]] — clustering, dimensionality reduction, density estimation, anomaly detection, k-means, evaluation, self-/semi-supervised and RL paradigms.
 - [[concepts/machine_learning/word2vec|Word2Vec]] — CBOW vs. skip-gram, hierarchical softmax, negative sampling, subsampling and phrases, analogies, hyperparameters, SGNS as PMI factorization, gensim, limits, successors.
+- [[concepts/machine_learning/xgboost|XGBoost (Extreme Gradient Boosting)]] — gradient boosting, regularized second-order objective, split gain, histogram/sparsity-aware split finding, hyperparameters, limits, LightGBM/CatBoost.
 
 ## Software Architecture
 
