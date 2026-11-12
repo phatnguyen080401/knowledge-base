@@ -1,9 +1,8 @@
 ---
 title: Trivy
 tags: [devops, supply-chain-security, ci-cd, trivy, overview]
-sources: ["https://trivy.dev/", "https://trivy.dev/docs/latest/guide/"]
 created: 2026-10-21 15:07:21
-updated: 2026-10-31 11:40:03
+updated: 2026-11-12 21:50:31
 ---
 
 # Trivy

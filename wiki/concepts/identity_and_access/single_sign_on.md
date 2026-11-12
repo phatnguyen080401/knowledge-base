@@ -1,9 +1,8 @@
 ---
 title: Single Sign-On (SSO)
 tags: [identity-and-access, access-management, saml, openid-connect]
-sources: ["https://cheatsheetseries.owasp.org/cheatsheets/SAML_Security_Cheat_Sheet.html"]
 created: 2026-10-29 14:09:46
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # Single Sign-On (SSO)

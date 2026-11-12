@@ -1,9 +1,8 @@
 ---
 title: Tenancy Models
 tags: [software-architecture, architecture-patterns, data-security, cost-management, access-control, partitioning, comparison]
-sources: ["https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models", "https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/silo-pool-and-bridge-models.html", "https://d1.awsstatic.com/whitepapers/saas-tenant-isolation-strategies.pdf"]
 created: 2026-11-12 10:12:40
-updated: 2026-11-12 11:10:37
+updated: 2026-11-12 21:50:31
 ---
 
 # Tenancy Models

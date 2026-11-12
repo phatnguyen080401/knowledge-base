@@ -1,9 +1,8 @@
 ---
 title: Embeddings
 tags: [ai-engineering, llm-applications, retrieval-augmentation]
-sources: ["https://developers.openai.com/api/docs/guides/embeddings", "https://huggingface.co/Qwen/Qwen3-Embedding-8B", "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", "https://arxiv.org/abs/2502.13595"]
 created: 2026-10-25 19:51:25
-updated: 2026-11-03 21:51:42
+updated: 2026-11-12 21:50:31
 ---
 
 # Embeddings
@@ -252,3 +251,6 @@ Two practical consequences follow. Query and corpus vectors must come from the s
 - Kusupati et al. (2022). *Matryoshka Representation Learning.* NeurIPS — truncatable embeddings.
 - Muennighoff et al. (2023). *MTEB: Massive Text Embedding Benchmark.* EACL.
 - Morris et al. (2023). *Text Embeddings Reveal (Almost) As Much As Text.* EMNLP — embedding inversion.
+- [OpenAI: Embeddings guide](https://developers.openai.com/api/docs/guides/embeddings) — `text-embedding-3` input limit, dimensions, and shortening.
+- [Qwen3-Embedding-8B model card](https://huggingface.co/Qwen/Qwen3-Embedding-8B) and [all-MiniLM-L6-v2 model card](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) — the context lengths and output sizes quoted above.
+- [MMTEB (arXiv:2502.13595)](https://arxiv.org/abs/2502.13595) — the maintainers' zero-shot rebuild of the MTEB English suite.

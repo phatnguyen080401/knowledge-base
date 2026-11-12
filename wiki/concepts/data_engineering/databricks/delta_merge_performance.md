@@ -1,9 +1,8 @@
 ---
 title: Delta MERGE Performance (Low-Shuffle MERGE and Photon)
 tags: [data-engineering, data-warehouse, query-optimization, databricks, delta-lake, spark, needs-review]
-sources: ["https://databricks.com/blog/faster-merge-performance-low-shuffle-merge-and-photon", "https://www.databricks.com/blog/2021/09/08/announcing-public-preview-of-low-shuffle-merge.html", "https://docs.databricks.com/aws/en/optimizations/low-shuffle-merge", "https://docs.databricks.com/aws/en/optimizations/predictive-io", "https://docs.databricks.com/aws/en/delta/deletion-vectors"]
 created: 2026-10-31 12:30:00
-updated: 2026-10-31 12:30:00
+updated: 2026-11-12 21:50:31
 ---
 
 # Delta MERGE Performance (Low-Shuffle MERGE and Photon)

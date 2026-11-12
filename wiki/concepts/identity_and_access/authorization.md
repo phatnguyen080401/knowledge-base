@@ -1,9 +1,8 @@
 ---
 title: Authorization
 tags: [identity-and-access, access-management, access-control]
-sources: ["https://top10.owasp.org/2025/A01_2025-Broken_Access_Control", "https://csrc.nist.gov/pubs/sp/800/162/upd2/final", "https://research.google/pubs/zanzibar-googles-consistent-global-authorization-system/"]
 created: 2026-10-29 13:31:59
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # Authorization

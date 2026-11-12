@@ -1,9 +1,8 @@
 ---
 title: Database Tenancy
 tags: [software-architecture, architecture-patterns, data-security, access-control, partitioning, schema-evolution, postgresql, comparison]
-sources: ["https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/approaches/storage-data", "https://www.postgresql.org/docs/current/ddl-rowsecurity.html", "https://docs.citusdata.com/en/stable/use_cases/multi_tenant.html"]
 created: 2026-11-12 10:12:40
-updated: 2026-11-12 11:05:23
+updated: 2026-11-12 21:50:31
 ---
 
 # Database Tenancy

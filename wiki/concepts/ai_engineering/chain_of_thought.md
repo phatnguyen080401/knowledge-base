@@ -1,9 +1,8 @@
 ---
 title: Chain-of-Thought (CoT) Prompting
 tags: [ai-engineering, llm-applications, in-context-learning]
-sources: ["https://arxiv.org/abs/2201.11903", "https://arxiv.org/abs/2205.11916", "https://arxiv.org/abs/2203.11171", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices", "https://arxiv.org/abs/2205.10625", "https://arxiv.org/abs/2305.10601", "https://arxiv.org/abs/2211.10435", "https://arxiv.org/abs/2210.03493", "https://arxiv.org/abs/2305.04388", "https://arxiv.org/abs/2501.12948"]
 created: 2026-10-30 10:57:29
-updated: 2026-11-02 15:16:26
+updated: 2026-11-12 21:50:31
 ---
 
 # Chain-of-Thought (CoT) Prompting

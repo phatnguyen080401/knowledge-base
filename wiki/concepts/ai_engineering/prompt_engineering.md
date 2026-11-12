@@ -1,9 +1,8 @@
 ---
 title: Prompt Engineering
 tags: [ai-engineering, llm-applications, in-context-learning]
-sources: ["https://arxiv.org/abs/2005.14165", "https://arxiv.org/abs/2202.12837", "https://arxiv.org/abs/2201.11903", "https://arxiv.org/abs/2205.11916", "https://arxiv.org/abs/2203.11171", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"]
 created: 2026-10-29 18:52:09
-updated: 2026-10-31 10:49:23
+updated: 2026-11-12 21:50:31
 ---
 
 # Prompt Engineering

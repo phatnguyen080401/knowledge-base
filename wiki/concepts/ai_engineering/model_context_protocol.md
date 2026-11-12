@@ -1,9 +1,8 @@
 ---
 title: Model Context Protocol (MCP)
 tags: [ai-engineering, llm-applications, api-protocols, access-control, model-context-protocol]
-sources: ["https://modelcontextprotocol.io/specification/2026-07-28", "https://modelcontextprotocol.io/specification/2026-07-28/changelog", "https://modelcontextprotocol.io/specification/2026-07-28/basic", "https://modelcontextprotocol.io/specification/2026-07-28/server/tools", "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization", "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation", "https://modelcontextprotocol.io/specification/2024-11-05", "https://modelcontextprotocol.io/specification/2025-03-26/changelog", "https://modelcontextprotocol.io/specification/2025-06-18/changelog", "https://modelcontextprotocol.io/specification/2025-11-25/changelog", "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/2026-07-28/schema.ts"]
 created: 2026-10-25 19:51:25
-updated: 2026-10-31 12:12:46
+updated: 2026-11-12 21:50:31
 ---
 
 # Model Context Protocol (MCP)

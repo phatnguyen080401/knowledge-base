@@ -1,9 +1,8 @@
 ---
 title: JSON Web Token (JWT)
 tags: [identity-and-access, access-management, jwt]
-sources: ["https://www.rfc-editor.org/rfc/rfc8725.html"]
 created: 2026-10-29 14:09:46
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # JSON Web Token (JWT)

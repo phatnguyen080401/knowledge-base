@@ -1,9 +1,8 @@
 ---
 title: OpenID Connect (OIDC)
 tags: [identity-and-access, access-management, openid-connect, oauth, jwt]
-sources: ["https://openid.net/specs/openid-connect-core-1_0.html", "https://www.iso.org/standard/89056.html"]
 created: 2026-10-29 14:09:46
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # OpenID Connect (OIDC)

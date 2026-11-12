@@ -1,9 +1,8 @@
 ---
 title: Conventional Commits
 tags: [version-control, source-history, versioning, conventional-commits, git]
-sources: ["https://www.conventionalcommits.org/en/v1.0.0/"]
 created: 2026-10-21 16:14:26
-updated: 2026-10-22 10:43:17
+updated: 2026-11-12 21:50:31
 ---
 
 # Conventional Commits

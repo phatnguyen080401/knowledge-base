@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-12 21:50:31** · maintain · Updated 26 notes (e.g. `[[concepts/devops/trivy]]`, `[[concepts/ai_engineering/embeddings]]`) — dropped researched URLs from `sources` so it lists only ingested files, adding missing links to `## References` on two notes, per the new `AGENTS.md` §3 rule; user-approved bulk edit.
+
 - **2026-11-12 21:44:34** · maintain · Updated `[[concepts/devops/kubernetes/graceful_shutdown]]` — corrected the claim that stopping a Spark Structured Streaming query lets the last micro-batch commit; `stop()` cancels it, per the Spark source. Linked the Spark shutdown note, per user.
 
 - **2026-11-12 21:10:11** · maintain · Created `[[concepts/data_engineering/spark/structured_streaming_graceful_shutdown]]` — why `stop()` and SIGTERM abort the micro-batch, and boundary-stop patterns, from Spark source, docs, and JIRA; linked from the Spark hub and pod-shutdown note. Six open questions; tagged `needs-review`.

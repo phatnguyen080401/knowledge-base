@@ -1,9 +1,8 @@
 ---
 title: Real-Time Analytics Database
 tags: [databases, indexing, query-optimization, write-optimization, partitioning, clickhouse, druid, pinot, needs-review]
-sources: ["https://clickhouse.com/docs/academic_overview", "https://druid.apache.org/docs/latest/design/", "https://druid.apache.org/docs/latest/design/architecture/", "https://docs.pinot.apache.org/basics/architecture"]
 created: 2026-10-29 18:38:49
-updated: 2026-10-30 11:25:32
+updated: 2026-11-12 21:50:31
 ---
 
 # Real-Time Analytics Database

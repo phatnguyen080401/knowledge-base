@@ -1,9 +1,8 @@
 ---
 title: Cloud Tenancy
 tags: [software-architecture, architecture-patterns, deployment, cost-management, access-control, aws, azure, google-cloud, kubernetes, comparison]
-sources: ["https://kubernetes.io/docs/concepts/security/multi-tenancy/", "https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models", "https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/silo-pool-and-bridge-models.html", "https://d1.awsstatic.com/whitepapers/saas-tenant-isolation-strategies.pdf", "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html", "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html", "https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes", "https://learn.microsoft.com/en-us/azure/virtual-machines/dedicated-hosts/overview", "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html"]
 created: 2026-11-12 10:25:01
-updated: 2026-11-12 11:05:23
+updated: 2026-11-12 21:50:31
 ---
 
 # Cloud Tenancy

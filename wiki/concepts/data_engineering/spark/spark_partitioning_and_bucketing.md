@@ -1,9 +1,8 @@
 ---
 title: Spark Partitioning and Bucketing
 tags: [data-engineering, distributed-systems, partitioning, query-optimization, spark, needs-review]
-sources: ["https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html", "https://spark.apache.org/docs/latest/sql-data-sources-parquet.html", "https://spark.apache.org/docs/latest/sql-ref-syntax-ddl-create-table-datasource.html", "https://spark.apache.org/docs/latest/configuration.html", "https://spark.apache.org/docs/latest/sql-performance-tuning.html", "https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-hints.html", "https://spark.apache.org/docs/latest/sql-migration-guide.html", "https://docs.databricks.com/aws/en/tables/partitions"]
 created: 2026-11-12 20:31:58
-updated: 2026-11-12 20:31:58
+updated: 2026-11-12 21:50:31
 ---
 
 # Spark Partitioning and Bucketing

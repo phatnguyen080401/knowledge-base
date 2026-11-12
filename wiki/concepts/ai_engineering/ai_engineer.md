@@ -1,9 +1,8 @@
 ---
 title: AI Engineer
 tags: [ai-engineering, llm-applications, model-operations, in-context-learning, retrieval-augmentation, overview]
-sources: ["https://github.com/chiphuyen/aie-book", "https://www.latent.space/p/ai-engineer", "https://developers.openai.com/api/docs/guides/model-optimization"]
 created: 2026-10-23 10:53:38
-updated: 2026-10-31 10:49:23
+updated: 2026-11-12 21:50:31
 ---
 
 # AI Engineer
@@ -203,3 +202,9 @@ grows, and the AI engineer is usually the one left holding the end-to-end behavi
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the compatibility reasoning applied to a model dependency that can change behaviour without changing its name
 - [[concepts/data_engineering/bigquery_cost_monitoring|BigQuery Usage and Cost Monitoring]] — the same per-job cost-attribution discipline, applied to tokens instead of bytes scanned
 - [[concepts/ai_engineering/digital_superintelligence|Digital Superintelligence]] — the far end of the capability curve this role works on, and why agent permissions and behavioural evals are already part of the job
+
+## References
+
+- [Chip Huyen, *AI Engineering* (book repository)](https://github.com/chiphuyen/aie-book) — the role's scope and the adapt-a-foundation-model workflow
+- [swyx, "The Rise of the AI Engineer" (Latent Space)](https://www.latent.space/p/ai-engineer) — the essay that named the role and set it apart from ML engineering
+- [OpenAI: Model optimization](https://developers.openai.com/api/docs/guides/model-optimization) — the eval-driven loop and prompting before fine-tuning

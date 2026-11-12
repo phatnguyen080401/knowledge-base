@@ -1,9 +1,8 @@
 ---
 title: Data Platform Tenancy
 tags: [software-architecture, data-warehouse, architecture-patterns, cost-management, access-control, bigquery, snowflake, databricks, comparison]
-sources: ["https://cloud.google.com/bigquery/docs/best-practices-for-multi-tenant-workloads-on-bigquery", "https://docs.snowflake.com/en/user-guide/security-row-intro", "https://docs.snowflake.com/en/user-guide/warehouses-overview", "https://docs.databricks.com/aws/en/data-governance/unity-catalog/filters-and-masks", "https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control/workspace-catalog-binding", "https://docs.databricks.com/aws/en/data-governance/unity-catalog/abac/"]
 created: 2026-11-12 10:25:01
-updated: 2026-11-12 11:05:23
+updated: 2026-11-12 21:50:31
 ---
 
 # Data Platform Tenancy

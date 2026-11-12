@@ -1,9 +1,8 @@
 ---
 title: Agent Reasoning Patterns (ReAct and ReWOO)
 tags: [ai-engineering, llm-applications, in-context-learning]
-sources: ["https://arxiv.org/abs/2210.03629", "https://arxiv.org/abs/2305.18323"]
 created: 2026-10-31 11:07:29
-updated: 2026-10-31 11:07:29
+updated: 2026-11-12 21:50:31
 ---
 
 # Agent Reasoning Patterns (ReAct and ReWOO)

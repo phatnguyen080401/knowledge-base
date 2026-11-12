@@ -1,9 +1,8 @@
 ---
 title: Authentication
 tags: [identity-and-access, access-management, webauthn]
-sources: ["https://pages.nist.gov/800-63-4/sp800-63b.html"]
 created: 2026-10-29 13:31:59
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # Authentication

@@ -1,9 +1,8 @@
 ---
 title: OAuth (Open Authorization)
 tags: [identity-and-access, access-management, api-protocols, access-control, oauth]
-sources: ["https://www.rfc-editor.org/rfc/rfc9700.html", "https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/"]
 created: 2026-10-26 23:17:48
-updated: 2026-10-29 14:09:46
+updated: 2026-11-12 21:50:31
 ---
 
 # OAuth (Open Authorization)

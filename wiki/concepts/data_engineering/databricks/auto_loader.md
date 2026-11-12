@@ -1,9 +1,8 @@
 ---
 title: Auto Loader
 tags: [data-engineering, elt, schema-evolution, databricks, spark, needs-review]
-sources: ["https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/", "https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/file-detection-modes", "https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/directory-listing-mode", "https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/file-notification-mode", "https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/schema", "https://docs.databricks.com/aws/en/ingestion/cloud-object-storage/auto-loader/production"]
 created: 2026-10-31 12:34:01
-updated: 2026-10-31 12:34:01
+updated: 2026-11-12 21:50:31
 ---
 
 # Auto Loader

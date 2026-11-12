@@ -1,9 +1,8 @@
 ---
 title: GitLab Repository Security
 tags: [version-control, source-history, supply-chain-security, access-control, ci-cd, gitlab, how-to]
-sources: ["https://best.openssf.org/SCM-BestPractices/gitlab/", "https://docs.gitlab.com/user/project/repository/branches/protected/", "https://docs.gitlab.com/user/project/repository/push_rules/"]
 created: 2026-10-22 10:43:17
-updated: 2026-10-26 21:39:51
+updated: 2026-11-12 21:50:31
 ---
 
 # GitLab Repository Security
