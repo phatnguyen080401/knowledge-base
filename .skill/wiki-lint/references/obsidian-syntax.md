@@ -66,7 +66,7 @@ The six dimensions, grouped by whether they are checked per record or per datase
 
 Follow every embed with a sentence saying what it shows, so the note reads without the image.
 Size with `|600` or `|600x400` (600 or less for diagrams). Embed a PDF page (`#page=3`) only when
-it carries a figure or table the note discusses; the PDF is still cited in `sources`.
+it carries a figure or table the note discusses; the PDF is still cited in `sources` (if ingested) or `## References`.
 
 ## Diagrams, Math, and Highlights
 
@@ -86,7 +86,7 @@ it carries a figure or table the note discusses; the PDF is still cited in `sour
 | Block-list properties (`tags:` then `- a`) | `tags: [a, b]`, `sources: [x, "https://…"]` |
 | `aliases`, `date`, `status`, `cssclasses`, any other extra property | The §3 schema only; an acronym goes in `title`: `Master Data Management (MDM)` |
 | `%%comment%%` | `## Open Questions & Disagreements`, or delete it |
-| Footnotes `[^1]`, `^[inline]` | `sources` frontmatter plus a `## References` bullet |
+| Footnotes `[^1]`, `^[inline]` | A `## References` bullet |
 | Note transclusion `![[concepts/…]]` | A piped wikilink, with a sentence saying why it matters |
 | `query` code blocks, `![[*.base]]` embeds | A written list of piped wikilinks |
 | External images `![alt](https://…)` | Save the file to `raw/assets/` and embed it |

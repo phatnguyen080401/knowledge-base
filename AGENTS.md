@@ -117,7 +117,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 
 ## References
 
-- Outside URLs or citations.
+- [Primary source title](https://example.org/spec) — the claim it backs
 ```
 
 **Frontmatter**
@@ -125,7 +125,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 - `title` matches the H1.
 - `tags` are chosen with the [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) skill, which sets the facet rules. `stub` marks a placeholder and is removed once the note is substantive.
 - `tags` and `sources` are always inline one-line YAML lists (`[a, b]`), never block lists.
-- `sources` lists every `raw/processed/<file>` and external URL (quoted) that contributed a fact. Append on every ingest; never remove an entry. No `sources` means general knowledge or direct user input.
+- `sources` lists only what `wiki-ingest` archived: each `raw/processed/<file>` and, for a clipped page, its quoted URL. Append on every ingest; never remove an entry. Any other source goes in `## References`. No `sources` means no ingested source.
 - `created` and `updated` use `YYYY-MM-DD HH:mm:ss` from the real clock. `created` is set once; `updated` changes on every content change.
 
 **Body**
@@ -136,6 +136,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 - Link the first meaningful mention of another concept, not every mention.
 - `## Open Questions & Disagreements` appears whenever sources conflict, a claim is unverified, or you extrapolated. Name both positions and their sources; never silently pick a winner. The note carries `needs-review` exactly while this section is non-empty; delete the section once resolved (`wiki-resolve`).
 - `## Related Concepts` explains *why* each link matters. `## References`, if any, comes last.
+- `## References` keeps only links a reader needs, usually the primary source (spec, official docs, paper) behind a key claim: not every page consulted, no duplicates, search results, or secondary rehashes. One bullet each, with the claim it backs. Lean notes cost agents fewer tokens.
 
 ---
 
@@ -216,7 +217,7 @@ exists.
 - [ ] Every wikilink is piped and resolves; new notes are reachable from an existing note.
 - [ ] `wiki/INDEX.md` lists exactly the files in `wiki/concepts/`, with current summaries.
 - [ ] `wiki/log.md` has exactly one short entry for the request (none if nothing under `wiki/` changed, except a `query` or `lint` pass); no past entry was edited.
-- [ ] Ingested sources are in `sources` and in `raw/processed/`; failed ones remain in `raw/`.
+- [ ] Ingested sources are in `sources` and in `raw/processed/`, and nothing else is in `sources`; failed ones remain in `raw/`.
 - [ ] `stub` and `needs-review` tags match the note's actual state.
 - [ ] No duplicate concept pages.
 

@@ -43,7 +43,8 @@ Report each item as *finding → citation → proposed edit*, and wait for appro
 clock reading:
 
 - **Resolved:** merge the answer into the right section, rewriting sentences rather than appending
-  an "Update"; add the quoted URL (or `raw/processed/` file) to `sources`; delete the bullet.
+  an "Update"; cite the primary source as a `## References` bullet unless already listed (never
+  in `sources`, which is ingest-only); delete the bullet.
 - **Still open:** keep the bullet and add, in one clause, what was checked and when.
 - **Section now empty:** delete it and remove `needs-review` (`AGENTS.md` §3).
 - **Stub expanded:** write real sections per `AGENTS.md` §3 and
@@ -62,5 +63,5 @@ One `maintain · Updated` entry per [`wiki-audit-trail`](../wiki-audit-trail/SKI
 
 Every step above is complete and `AGENTS.md` §9 passes on every touched note, plus:
 
-- [ ] Every resolution cites a source in `sources` or records the user's decision.
+- [ ] Every resolution cites a source in `## References` or `sources`, or records the user's decision.
 - [ ] Unsettled items are still listed, and `needs-review` matches the section or the mismatch was reported as a hand edit.

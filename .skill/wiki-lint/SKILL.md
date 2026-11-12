@@ -53,7 +53,7 @@ Each failure is a **defect** (propose a fix) or a **flag** (report for the user 
 | Reachability | Every note has ≥1 outbound link and ≥1 inbound link from another note | Defect |
 | INDEX matches the tree | The diff in [`wiki-audit-trail`](../wiki-audit-trail/SKILL.md) is empty; groups, `Folder:` lines, ordering, summaries (≤ ~160 characters), and `**Stub.**` follow its INDEX spec | Defect |
 | Query routes | Every `wiki/hot.md` link resolves, heading included; at most 40 one-line entries ([`wiki-query`](../wiki-query/SKILL.md)) | Defect |
-| Sources | Every `raw/processed/…` path in `sources` exists | Defect |
+| Sources | Every `raw/processed/…` path in `sources` exists; every URL in `sources` is the `Source:` line of one of those files | Defect |
 | Intake queue | Files sitting in `raw/` outside `processed/` and `assets/` | Flag (pending ingest) |
 | Duplicates | Two notes whose titles, acronyms, or definition paragraphs describe the same concept | Flag (merge needs approval) |
 | Skill registry | Every `.skill/*/SKILL.md` has exactly one `AGENTS.md` §8 row, every row's link exists, and no row describes old behaviour | Defect |
@@ -69,7 +69,8 @@ These are judgement calls. Read the notes involved in full before reporting one.
 | Orphans and weak links | Notes with inbound count 0. Pairs of notes that share two or more `topic`/`concept` tags but do not link each other. |
 | Missing pages | Bolded or unlinked terms that appear across three or more notes with no page of their own. |
 | Hollow hubs | `stub` notes ranked by inbound count. A heavily linked stub is a priority to expand. |
-| Unsourced claims | Specific figures, version numbers, and quotations on notes with no matching `sources` entry or inline citation. |
+| Unsourced claims | Specific figures, version numbers, and quotations on notes with no matching `sources` entry, `## References` bullet, or inline citation. |
+| Bloated References | More than ~5 `## References` bullets, duplicates, or links nothing in the body relies on. Propose a trim; never delete silently. |
 | Next questions | Gaps a new source or web search could close. Always end the report with these. |
 
 ## 4. Report

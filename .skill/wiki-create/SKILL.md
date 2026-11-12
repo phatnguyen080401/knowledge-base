@@ -45,12 +45,13 @@ Choose them with [`tag-taxonomy`](../tag-taxonomy/SKILL.md), reading it and its
 ## 4. Write
 
 **Create:** a new `snake_case.md` in the domain folder, in the `AGENTS.md` §3 shape, with `created`
-and `updated` both set to the clock reading and `sources` only if a URL or file contributed. Write
-the body per [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md).
+and `updated` both set to the clock reading and no `sources` (cite any needed URL or file under
+`## References`, `AGENTS.md` §3). Write the body per
+[obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md).
 
 **Expand:** merge into the right existing sections, rewriting sentences to integrate the new facts;
 never bolt on an "Update" section or replace content wholesale without approval. Re-check the tags,
-append any new `sources`, and set `updated`; never change `created`.
+add any needed `## References` bullet, and set `updated`; never change `created`.
 
 ## 5. Link Both Ways
 
