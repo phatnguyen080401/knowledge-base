@@ -2,7 +2,7 @@
 title: Apache Spark
 tags: [data-engineering, distributed-systems, spark, overview]
 created: 2026-10-22 10:50:05
-updated: 2026-10-31 12:27:52
+updated: 2026-11-12 20:31:58
 ---
 
 # Apache Spark
@@ -100,6 +100,7 @@ Scala and Java run natively on the JVM. **PySpark** drives the same engine from 
 
 ## Related Concepts
 
+- [[concepts/data_engineering/spark/spark_partitioning_and_bucketing|Spark Partitioning and Bucketing]] — the write-time counterpart to the runtime partitions above: `partitionBy` directories for pruning, `bucketBy` files for shuffle-free joins, and their overwrite and small-file traps
 - [[concepts/cloud_computing/aws/glue/aws_glue|AWS Glue]] — AWS's serverless way to run Spark ETL jobs, with job bookmarks for incremental runs
 - [[concepts/data_engineering/databricks/databricks|Databricks]] — the managed platform built by Spark's creators, which runs Spark with the Photon engine, Delta tables, and Unity Catalog governance
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — the usual streaming source, whose replayable offsets are what make Spark's checkpoint-and-restart recovery correct
