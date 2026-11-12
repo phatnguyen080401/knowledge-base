@@ -264,6 +264,15 @@ Folder: `wiki/concepts/software_architecture/`
 - [[concepts/software_architecture/idempotency|Idempotency]] — operations safe to repeat: retries, idempotency keys, at-least-once delivery. **Stub.**
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the increment rules, precedence algorithm, pre-release suffixes, and how it surfaces in data tooling.
 
+### Tenancy
+
+Folder: `wiki/concepts/software_architecture/tenancy/`
+
+- [[concepts/software_architecture/tenancy/tenancy_models|Tenancy Models]] — hub: single-tenant (silo), multi-tenant (pool), hybrid (bridge); isolation spectrum, trade-offs, choosing, security and access control per model, per-layer routing.
+- [[concepts/software_architecture/tenancy/cloud_tenancy|Cloud Tenancy]] — provider-level shared vs. dedicated hosts and hybrid cloud; account, VPC, cluster, namespace, or tenant-scoped IAM per SaaS tenant; AWS, Azure, Google Cloud, Kubernetes.
+- [[concepts/software_architecture/tenancy/data_platform_tenancy|Data Platform Tenancy]] — customer vs. internal tenants; row access policies, dataset or schema per tenant, project or account per tenant; BigQuery, Snowflake, Databricks.
+- [[concepts/software_architecture/tenancy/database_tenancy|Database Tenancy]] — shared schema with PostgreSQL RLS, sharding by tenant, schema per tenant, database per tenant, tiered mix, fleet-wide migrations.
+
 ## Version Control
 
 Folder: `wiki/concepts/version_control/`

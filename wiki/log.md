@@ -1,5 +1,13 @@
 # Activity Log
 
+- **2026-11-12 11:10:37** · maintain · Expanded `[[concepts/software_architecture/tenancy/tenancy_models]]` — replaced the shared-model isolation list with a Security and Access Control section covering shared foundations, each model, and a comparison, per user.
+
+- **2026-11-12 11:05:23** · maintain · Updated the four notes in `tenancy/` (`[[concepts/software_architecture/tenancy/tenancy_models]]` and siblings): joined hard-wrapped paragraphs, list items, and callouts into single lines, and reordered sections to Single → Multi → Hybrid to match the hub, per user.
+
+- **2026-11-12 10:25:01** · maintain · Renamed stub `multi_tenant_database_architecture` to `[[concepts/software_architecture/tenancy/database_tenancy]]` and expanded it, created `[[concepts/software_architecture/tenancy/cloud_tenancy]]` and `[[concepts/software_architecture/tenancy/data_platform_tenancy]]`, and moved `tenancy_models` into new subfolder `tenancy/`, per user; links repointed in 3 notes.
+
+- **2026-11-12 10:12:40** · maintain · Created `[[concepts/software_architecture/tenancy_models]]` and stub `[[concepts/software_architecture/multi_tenant_database_architecture]]` — single-tenant, multi-tenant, and hybrid trade-offs leading to data-tier isolation patterns; split per user, both in software_architecture by user choice.
+
 - **2026-11-11 13:07:11** · maintain · Merged `[[concepts/ai_engineering/beam_search]]` into `[[concepts/machine_learning/beam_search]]` — duplicate pages from parallel branches; kept the ML path per user, deleted the other with approval, repointed 1 link.
 
 - **2026-11-11 10:08:36** · maintain · Created `[[concepts/ai_engineering/beam_search]]` from general knowledge as a sequence-decoding strategy; approved concept `decoding-strategies` added to taxonomy.md and applied to NCM at user request; linked from Vector Database's HNSW search.

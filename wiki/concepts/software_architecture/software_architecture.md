@@ -2,7 +2,7 @@
 title: Software Architecture
 tags: [software-architecture, architecture-patterns, overview]
 created: 2026-10-20 16:09:59
-updated: 2026-10-30 11:09:32
+updated: 2026-11-12 10:25:01
 ---
 
 # Software Architecture
@@ -76,6 +76,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - **Contract evolution.** Breaking changes must be deliberate and announced. A MAJOR version bump, a parallel `/v2` endpoint, or a new event type with a deprecation window — not a silent field change.
 - **Failure handling.** Timeouts, retries with jitter, circuit breakers, and idempotency keys belong to the architecture; added per-call after the fact, they never cover the whole surface.
 - **Security posture.** Authentication, authorization, and encryption at each boundary, designed in rather than bolted on. See [[concepts/data_governance/data_security|Data Security]].
+- **Tenancy.** Whether customers get dedicated infrastructure, share one stack, or a mix of the two sets the isolation, blast radius, and cost per customer of a multi-customer product. Tenancy is hard to retrofit once a tenant identifier has to be threaded through every table. See [[concepts/software_architecture/tenancy/tenancy_models|Tenancy Models]].
 - **Deployment and release.** How a change reaches production — immutable artifacts, environment promotion, rollback by redeploying an older tag — is architectural; [[concepts/data_engineering/dbt/deploy_dbt_cloud_run_github_actions|Deploy dbt and Elementary to Cloud Run with GitHub Actions]] is one worked example of that pattern.
 - **Observability.** Correlation IDs, structured logs, and traces must cross component boundaries, or debugging stops at the first hop. [[concepts/devops/observers|Observers]] covers the tooling for each signal.
 
@@ -100,6 +101,7 @@ Styles compose. A modular monolith publishing events, or a handful of services e
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — how the components chosen here actually talk to one another
 - [[concepts/software_architecture/concurrency_and_parallelism|Concurrency and Parallelism]] — the execution model inside a component: threads, processes, or an event loop, and which races each one admits
 - [[concepts/software_architecture/semantic_versioning|Semantic Versioning (SemVer)]] — the compatibility contract that makes an interface safe to depend on across releases
+- [[concepts/software_architecture/tenancy/tenancy_models|Tenancy Models]] — single-tenant, multi-tenant, or hybrid: how much infrastructure customers share, and what isolation and cost that buys; its subfolder applies the choice to databases, the cloud, and data platforms
 - [[concepts/software_architecture/fix_protocol|FIX Protocol (Financial Information eXchange)]] — a long-lived industry standard, and a case study in what interface decisions cost decades later
 - [[concepts/databases/cap_theorem|CAP Theorem]] — the hard limit on what a distributed architecture can promise during a network partition
 - [[concepts/data_governance/data_security|Data Security]] — the controls each architectural boundary has to enforce

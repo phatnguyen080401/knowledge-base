@@ -2,7 +2,7 @@
 title: Vector Database
 tags: [databases, indexing, retrieval-augmentation, partitioning, query-optimization, pgvector]
 created: 2026-10-25 19:51:25
-updated: 2026-11-11 13:07:11
+updated: 2026-11-12 10:25:01
 ---
 
 # Vector Database
@@ -216,7 +216,9 @@ but needs per-corpus tuning.
   consistency and availability under the [[concepts/databases/cap_theorem|CAP Theorem]].
 - **Multi-tenancy** is either a filter field in a shared index (cheap, weaker isolation, filter
   performance matters) or a separate index or namespace per tenant (strong isolation, overhead per
-  tenant).
+  tenant). This is the same choice between shared and dedicated storage that
+  [[concepts/software_architecture/tenancy/database_tenancy|Database Tenancy]] covers for operational
+  data.
 - **Tiered storage** keeps compressed vectors or the graph in RAM and full-precision vectors on SSD
   or object storage for rescoring.
 
