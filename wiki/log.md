@@ -1,5 +1,9 @@
 # Activity Log
 
+- **2026-11-12 21:44:34** · maintain · Updated `[[concepts/devops/kubernetes/graceful_shutdown]]` — corrected the claim that stopping a Spark Structured Streaming query lets the last micro-batch commit; `stop()` cancels it, per the Spark source. Linked the Spark shutdown note, per user.
+
+- **2026-11-12 21:10:11** · maintain · Created `[[concepts/data_engineering/spark/structured_streaming_graceful_shutdown]]` — why `stop()` and SIGTERM abort the micro-batch, and boundary-stop patterns, from Spark source, docs, and JIRA; linked from the Spark hub and pod-shutdown note. Six open questions; tagged `needs-review`.
+
 - **2026-11-12 20:31:58** · maintain · Created `[[concepts/data_engineering/spark/spark_partitioning_and_bucketing]]` — on-disk `partitionBy` and `bucketBy` layout, checked against the Spark 4.3 and Databricks docs, linked from the Spark hub. Four unverified behaviours recorded; tagged `needs-review`.
 
 - **2026-11-12 11:10:37** · maintain · Expanded `[[concepts/software_architecture/tenancy/tenancy_models]]` — replaced the shared-model isolation list with a Security and Access Control section covering shared foundations, each model, and a comparison, per user.

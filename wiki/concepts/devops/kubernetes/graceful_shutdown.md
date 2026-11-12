@@ -2,7 +2,7 @@
 title: Graceful Shutdown for Streaming Pods
 tags: [devops, deployment, fault-tolerance, kubernetes, grpc, kafka]
 created: 2026-10-31 13:18:48
-updated: 2026-10-31 13:18:48
+updated: 2026-11-12 21:44:34
 ---
 
 # Graceful Shutdown for Streaming Pods
@@ -179,7 +179,7 @@ sequenceDiagram
 - **A kill means reprocessing.** Records processed but not committed before `SIGKILL` are delivered again to the next owner. Sinks must be idempotent or transactional, as explained in [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]].
 - **Reduce rebalance cost.** Cooperative-sticky assignment moves only the departing member's partitions. Static membership (`group.instance.id`) lets a restarted pod reclaim its partitions without a rebalance, as long as it returns within the session timeout.
 - **Producers flush.** Call `flush()` or `close()` on producers during release, or buffered records are lost.
-- **Stateful stream processors** take a final snapshot instead. Flink jobs are stopped with a savepoint, and Spark Structured Streaming queries are stopped so the last micro-batch commits to the checkpoint.
+- **Stateful stream processors** rely on their own snapshots instead. Flink jobs are stopped with a savepoint. Spark Structured Streaming is different: `stop()` and `SIGTERM` cancel the micro-batch in flight rather than letting it commit, so the batch is replayed on restart. Stopping at a batch boundary takes extra work, covered in [[concepts/data_engineering/spark/structured_streaming_graceful_shutdown|Graceful Shutdown for Spark Structured Streaming]].
 
 ## Implementation Sketch
 
@@ -260,6 +260,7 @@ spec:
 - [[concepts/software_architecture/api_integration_protocols|API and Integration Protocols]] — the WebSocket, SSE, gRPC, and long-polling protocols whose close and reconnect mechanics a drain relies on
 - [[concepts/data_engineering/kafka/apache_kafka|Apache Kafka]] — consumer groups, offset commits, and rebalances, which decide what a killed consumer loses or duplicates
 - [[concepts/software_architecture/exactly_once_delivery_and_processing|Exactly-Once Delivery and Processing]] — why an abrupt kill turns at-least-once delivery into duplicates unless sinks are idempotent
+- [[concepts/data_engineering/spark/structured_streaming_graceful_shutdown|Graceful Shutdown for Spark Structured Streaming]] — the Spark driver case: why `SIGTERM` and `stop()` cancel the micro-batch in flight, and the hook priority and grace-period sizing a batch-boundary stop needs
 - [[concepts/devops/kubernetes/pod_sandbox|Pod Sandbox (Pause Container)]] — what is torn down after the containers exit, including the pod's network namespace and IP
 
 ## References

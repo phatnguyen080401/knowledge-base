@@ -113,6 +113,7 @@ Folder: `wiki/concepts/data_engineering/spark/`
 
 - [[concepts/data_engineering/spark/apache_spark|Apache Spark]] — tool overview: driver/executor model, lazy DAG and shuffle cost, Catalyst and AQE, partitions and skew, caching, Structured Streaming, and when not to use it.
 - [[concepts/data_engineering/spark/spark_partitioning_and_bucketing|Spark Partitioning and Bucketing]] — `partitionBy` and `bucketBy` layouts: pruning and DPP, overwrite modes, small files, shuffle-free bucket joins, SPJ, and Delta/Iceberg alternatives.
+- [[concepts/data_engineering/spark/structured_streaming_graceful_shutdown|Graceful Shutdown for Spark Structured Streaming]] — why `stop()` and SIGTERM abort the batch; offset/commit logs, idempotent sinks, AvailableNow, boundary stops, hook priority, grace periods.
 
 ## Data Governance
 
