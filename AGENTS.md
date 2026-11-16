@@ -79,7 +79,7 @@ note `dbt.md` is optional) or a *sub-area subfolder* grouping notes by job or su
 | --- | --- | --- |
 | Folder name | `snake_case` of the `domain` tag | `databases/`, `data_engineering/dbt/` |
 | Concept filename | `snake_case.md`, singular, no dates, no numbering | `master_data_management.md` |
-| Ingested filename | A note created from a `raw/` source (file or clipped URL) takes the source's filename in `snake_case`, extension dropped; further concepts split from the same source, and notes it only updates, keep concept names | `raw/dama_dmbok_ch11.md` → `dama_dmbok_ch11.md` |
+| Ingested filename | A note created from a `raw/` source (a file, or a URL fetched into one) takes the source's filename in `snake_case`, extension dropped; further concepts split from the same source, and notes it only updates, keep concept names | `raw/dama_dmbok_ch11.md` → `dama_dmbok_ch11.md` |
 | `title` | Title Case, may include an acronym | `Master Data Management (MDM)` |
 | Asset filename | `snake_case`, prefixed by the related concept | `data_quality_dimensions.png` |
 | Wikilink | Full vault-relative path, always piped | `[[concepts/data_governance/data_quality\|Data Quality]]` |
@@ -126,7 +126,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 - `title` matches the H1.
 - `tags` are chosen with the [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) skill, which sets the facet rules. `stub` marks a placeholder and is removed once the note is substantive.
 - `tags` and `sources` are always inline one-line YAML lists (`[a, b]`), never block lists.
-- `sources` lists only what `wiki-ingest` archived: each `raw/processed/<file>` and, for a clipped page, its quoted URL. Append on every ingest; never remove an entry. Any other source goes in `## References`. No `sources` means no ingested source.
+- `sources` lists only what `wiki-ingest` archived: each `raw/processed/<file>` and, for a source fetched from a URL, its quoted URL. Append on every ingest; never remove an entry. Any other source goes in `## References`. No `sources` means no ingested source.
 - `created` and `updated` use `YYYY-MM-DD HH:mm:ss` from the real clock. `created` is set once; `updated` changes on every content change.
 
 **Body**
@@ -148,8 +148,9 @@ vault by name and content before writing, and ask when overlap is ambiguous or t
 subject already has a page; put the source's knowledge only in new notes, never a near-duplicate;
 change an existing note only by adding a `## Related Concepts` link to a new note (and its
 `updated`); record conflicts in the new note; archive a source to `raw/processed/` only after its
-notes are written and linked. A URL is clipped into `raw/` first. A direct request with no file or URL
-follows [`wiki-create`](.skill/wiki-create/SKILL.md).
+notes are written and linked. A URL is fetched into `raw/` first: a paper or other PDF as the PDF
+itself, any other page as a markdown clip. A direct request with no file or URL follows
+[`wiki-create`](.skill/wiki-create/SKILL.md).
 
 ## 5. Answering Questions
 

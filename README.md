@@ -77,7 +77,7 @@ The answer workflow is the one most systems skip. Here, answering is a *write* o
 
 The folder rules and the note format are defined once, in [`AGENTS.md`](AGENTS.md) §2 and §3. Three details of the note format carry most of the weight:
 
-- **`sources`** lists the archived files (and clipped URLs) a note was ingested from, and entries are never removed. Anything else a note relies on is cited under `## References`.
+- **`sources`** lists the archived files (and the URLs they were fetched from) a note was ingested from, and entries are never removed. Anything else a note relies on is cited under `## References`.
 - **`## Open Questions & Disagreements`** is where conflicts go. When two sources disagree, the agent never silently picks a winner; both positions are recorded and the note is tagged `needs-review`.
 - **`## Related Concepts`** explains *why* each link matters. A page with no links is treated as a defect.
 
