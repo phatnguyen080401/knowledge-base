@@ -125,6 +125,7 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 - `tags` are chosen with the [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) skill, which sets the facet rules. `stub` marks a placeholder and is removed once the note is substantive.
 - `tags` and `sources` are always inline one-line YAML lists (`[a, b]`), never block lists.
 - `sources` lists only what `wiki-ingest` archived: each `raw/processed/<file>` and, for a source fetched from a URL, its quoted URL. Append on every ingest; never remove an entry. Any other source goes in `## References`. No `sources` means no ingested source.
+- A note with `sources` is **ingested** and owned by `wiki-ingest`: other workflows change it only when the user names that note or approves the change (a lint fix, a §7 operation). Linking *to* it is always fine.
 - `created` and `updated` use `YYYY-MM-DD HH:mm:ss` from the real clock. `created` is set once; `updated` changes on every content change.
 
 **Body**
@@ -141,23 +142,19 @@ A standalone one- or two-sentence definition linking the parent concept, such as
 
 ## 4. Ingesting from `raw/`
 
-Follow [`wiki-ingest`](.skill/wiki-ingest/SKILL.md). Invariants: read each source in full; search the
-vault by name and content before writing, and ask when overlap is ambiguous or the source's own
-subject already has a page; put the source's knowledge only in new notes, never a near-duplicate;
-change an existing note only by adding a `## Related Concepts` link to a new note (and its
-`updated`); record conflicts in the new note; archive a source to `raw/processed/` only after its
-notes are written and linked. A URL is fetched into `raw/` first: a paper or other PDF as the PDF
-itself, any other page as a markdown clip. A direct request with no file or URL follows
-[`wiki-create`](.skill/wiki-create/SKILL.md).
+Follow [`wiki-ingest`](.skill/wiki-ingest/SKILL.md), which holds the steps. Invariants: read each
+source in full; never create a near-duplicate, and ask when overlap is ambiguous or the source's own
+subject already has a page; the source's knowledge goes only into new notes, and an existing note
+changes only by gaining a `## Related Concepts` link to one (and its `updated`); conflicts are
+recorded in the new note; a source is archived to `raw/processed/` only after its notes are written
+and linked. A direct request with no file or URL follows [`wiki-create`](.skill/wiki-create/SKILL.md).
 
 ## 5. Answering Questions
 
-Follow [`wiki-query`](.skill/wiki-query/SKILL.md). Invariants: grep `wiki/hot.md` first and, on a
-fresh route, read only the sections it names; otherwise read `wiki/INDEX.md` before any page; read
-notes over ~15 KB by section; cite every claim with the page's wikilink; label anything from
-general knowledge as *outside the wiki*; file new synthesis, gaps, conflicts, and corrections back;
-record the route in `hot.md`; log one `query` entry even when nothing was filed. Never answer a
-vault question from memory or from `hot.md` alone.
+Follow [`wiki-query`](.skill/wiki-query/SKILL.md), which holds the lookup order. Invariants: cite
+every claim with the page's wikilink; label anything from general knowledge as *outside the wiki*;
+file new synthesis, gaps, conflicts, and corrections back; log one `query` entry even when nothing
+was filed. Never answer a vault question from memory or from `wiki/hot.md` alone.
 
 ## 6. Audit Trail
 
@@ -186,14 +183,14 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | Skill | Read it when |
 | --- | --- |
 | [`git-commit-helper`](.skill/git-commit-helper/SKILL.md) | Committing, staging, or writing, fixing, or amending a commit message |
-| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) | **Every create, update, move, or filing of a note**; choosing tags; tag audits (`references/audit.md`) |
+| [`tag-taxonomy`](.skill/tag-taxonomy/SKILL.md) | **Every new note, and every update that changes what a note covers or its domain**; choosing tags; adding or retiring a tag; tag audits (`references/audit.md`) |
 | [`wiki-audit-trail`](.skill/wiki-audit-trail/SKILL.md) | Writing any `wiki/log.md` entry or editing `wiki/INDEX.md` |
 | [`wiki-create`](.skill/wiki-create/SKILL.md) | Creating, expanding, or stubbing a note on direct request |
 | [`wiki-ingest`](.skill/wiki-ingest/SKILL.md) | Ingesting files from `raw/`, or a web page by URL |
-| [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax; its `references/obsidian-syntax.md` on **every note body write** (§3) |
+| [`wiki-lint`](.skill/wiki-lint/SKILL.md) | Lint pass, vault audit, health check, broken links, orphans, duplicates, Obsidian syntax, applying approved lint fixes; its `references/obsidian-syntax.md` on **every note body write** (§3) |
 | [`wiki-maintain`](.skill/wiki-maintain/SKILL.md) | Renaming, moving, merging, splitting, or deleting notes |
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
-| [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims, expanding stubs |
+| [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims (including a lint report's), expanding stubs |
 
 `.<agent>/skills` (`.claude`, `.gemini`, `.github` for Copilot) links to `.skill/`, so each skill
 is also a slash command named after its folder unless its frontmatter sets `user-invocable: false`.

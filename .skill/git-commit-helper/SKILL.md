@@ -8,7 +8,7 @@ description: Write a Conventional Commits message from the actual diff, then com
 Turn a working tree into one or more **Conventional Commits 1.0.0** messages, derived from the
 diff rather than from what the user said they were doing. You already know the specification;
 when a format rule is genuinely ambiguous, the compiled spec is
-[[concepts/version_control/conventional_commits|Conventional Commits]]. Never bypass a hook with
+`wiki/concepts/version_control/conventional_commits.md`. Never bypass a hook with
 `--no-verify`.
 
 ## Rules
@@ -77,8 +77,6 @@ footers survive quoting:
 git add wiki/concepts/databases/isolation_levels.md wiki/INDEX.md wiki/log.md \
   && git commit -F - <<'EOF'
 docs(databases): add isolation levels note
-
-Co-Authored-By: Name <email>
 EOF
 git log -1 --stat
 ```
@@ -89,11 +87,8 @@ telling the user what landed and what remains uncommitted. **Do not push.**
 
 ## Choosing the Type
 
-Types: `feat` (MINOR), `fix` (PATCH), `docs`, `refactor`, `perf`, `test`, `build`, `ci`, `style`,
-`chore`, `revert` (with a `Refs:` footer naming the SHAs). Any becomes MAJOR with `!` or
-`BREAKING CHANGE:`.
-
-Tie-breakers — these are where mistakes happen:
+The standard types apply (`revert` takes a `Refs:` footer naming the SHAs). Tie-breakers, where
+mistakes happen:
 
 - **`feat` vs `fix`** — did the capability exist and misbehave (`fix`), or not exist (`feat`)?
 - **`fix` vs `refactor`** — would a user notice the difference? Then it is a `fix`, however small.
@@ -123,17 +118,6 @@ Note content is the product here, so `docs` is the common type. Commits from bef
 **Never split a note from its `INDEX.md` and `log.md` updates.** `AGENTS.md` §1.4 makes them one
 transaction, so they belong in the note's commit. Notes in different domains are separate commits
 unless one request produced them together.
-
-## Example
-
-```text
-fix: prevent racing of requests
-
-Dismiss responses from anything but the latest request id. The timeouts
-that previously mitigated this are now obsolete and were removed.
-
-Refs: #123
-```
 
 ## Done When
 

@@ -1,6 +1,6 @@
 ---
 name: wiki-lint
-description: Run a whole-vault lint pass (the AGENTS.md §9 structural and semantic checks), reporting before any fix. Use when the user says "lint the vault", "lint pass", "audit the wiki", "health check", "check the vault", "find broken links", "find orphans", "find duplicates", "what's stale", or "check Obsidian syntax", or asks whether the wiki is consistent or a note renders in Obsidian. For a tags-only audit, use tag-taxonomy.
+description: Run a whole-vault lint pass and apply the approved fixes. Use when the user says "lint the vault", "audit the wiki", "health check", "find broken links", "find orphans", "find duplicates", "what's stale", "check Obsidian syntax", or "apply the lint fixes", or asks whether the wiki is consistent or renders in Obsidian. Tags only → tag-taxonomy; researching stale or unsourced claims → wiki-resolve.
 ---
 
 # Wiki Lint
@@ -75,13 +75,17 @@ These are judgement calls. Read the notes involved in full before reporting one.
 
 ## 4. Report
 
-Present, in this order, then **stop and wait for approval**:
+Present, in this order:
 
 1. **Counts** — one line per defect class, e.g. `3 broken links · 1 orphan · 2 index mismatches`.
 2. **Defects** — a table: `file → check → proposed fix`.
 3. **Flags** — each with a one-line reason.
 4. **Semantic findings** — each with the notes involved and a proposed fix.
 5. **Next questions** — a short list.
+
+Then read the clock and write the pass's one `lint · Audited N notes` log entry, one count per
+defect class, ending `No fixes applied.` ([`wiki-audit-trail`](../wiki-audit-trail/SKILL.md)).
+Only then **stop and wait for approval**.
 
 ## 5. Apply
 
@@ -100,13 +104,8 @@ Only approved fixes. Read the clock once (`AGENTS.md`) and reuse it.
 
 ## 6. Log
 
-One `lint · Audited` entry for the pass; applied fixes add one `maintain` entry
-([`wiki-audit-trail`](../wiki-audit-trail/SKILL.md)):
-
-```markdown
-- **YYYY-MM-DD HH:mm:ss** · lint · Audited 44 notes — 3 broken links, 1 orphan, 2 index mismatches, 1 contradiction, 4 next questions. No fixes applied.
-- **YYYY-MM-DD HH:mm:ss** · maintain · Updated 6 notes — fixed the 3 broken links and 2 index mismatches from the lint pass above; backlinked the orphan.
-```
+Applying fixes is its own request: one `maintain · Updated N notes` entry naming what was fixed,
+per [`wiki-audit-trail`](../wiki-audit-trail/SKILL.md).
 
 ## 7. Verify
 
@@ -118,4 +117,5 @@ defect.
 
 - [ ] Every note in `wiki/concepts/` was checked against both §9 checklists, with tags via audit.md.
 - [ ] The report came before any edit, and only approved fixes were applied.
+- [ ] `wiki/log.md` has the pass's `lint · Audited` entry, written with the report even when nothing was fixed.
 - [ ] Re-verification found every fixed defect gone in the files.

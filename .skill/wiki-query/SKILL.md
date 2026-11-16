@@ -1,13 +1,14 @@
 ---
 name: wiki-query
-description: Answer a question about the wiki's subject matter from the vault, citing pages and filing new synthesis back. Use when the user asks a subject question rather than for an edit, "what does the vault say about X", or "compare X and Y".
+description: Answer a question about the wiki's subject matter from the vault, citing pages and filing new synthesis back. Use when the user asks a subject question rather than for an edit, such as "what is X", "explain X", "how does X work", "what does the vault say about X", or "compare X and Y". To check a note against outside sources, use wiki-resolve.
 argument-hint: "<question>"
 ---
 
 # Wiki Query
 
 Answering is not read-only: per `AGENTS.md` §1.12, an answer that produced something worth keeping
-is filed back.
+is filed back. Read the clock once before the first write (step 5, 6, or 7) and reuse it for every
+timestamp, the `hot.md` entry, and the log.
 
 ## Steps
 
@@ -15,8 +16,9 @@ is filed back.
    (`grep -niE '<term>|<acronym>|<synonym>' wiki/hot.md`); never read it whole. An entry whose gist
    matches the question is **fresh** when no cited note's `updated` (`grep -m1 '^updated:' <note>`)
    is later than the entry's timestamp. Fresh → read only its cited sections and skip the index.
-   No match, stale, or not enough → read `wiki/INDEX.md` and shortlist candidate pages from the
-   summaries before opening any file.
+   No match, stale, or not enough → consult `wiki/INDEX.md` before opening any page: grep it for
+   the same terms, read the matching domain groups (`grep -n '^##' wiki/INDEX.md` gives their line
+   ranges), and shortlist from the summaries. Never read the whole index.
 2. **Read what answers the question.** A note under ~15 KB (`wc -c`) is read in full. For a larger
    one, read its frontmatter and definition (the first ~15 lines) and its heading list
    (`grep -n '^#' <note>`), then only the relevant sections (Read with offset and limit); read it
@@ -38,8 +40,9 @@ is filed back.
    | Exposed a conflict or an unverified claim | An entry under `## Open Questions & Disagreements`, tagged `needs-review` |
    | Corrected a page | Fix the page in the same action and bump `updated` |
 
-   When it is a judgement call, propose the page and ask before writing. Any write follows the
-   usual rules: tags via [`tag-taxonomy`](../tag-taxonomy/SKILL.md), body per
+   When it is a judgement call, propose the page and ask before writing. An ingested page (one
+   with `sources`) is changed only with the user's approval (`AGENTS.md` §3); otherwise file to a
+   new page that links to it. Any write follows the usual rules: tags via [`tag-taxonomy`](../tag-taxonomy/SKILL.md), body per
    [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md), links both ways, `INDEX.md`
    updated.
 6. **Remember the route.** If the vault answered the question, add or refresh its `wiki/hot.md`
@@ -68,7 +71,8 @@ sections.
 
 ## Definition of Done
 
-- [ ] `wiki/hot.md` was grepped first; without a fresh route, `INDEX.md` was read before any page.
+- [ ] `wiki/hot.md` was grepped first; without a fresh route, `INDEX.md` was consulted (grep, then the group) before any page.
+- [ ] Any page filed or stubbed has its `INDEX.md` entry, and the INDEX diff from wiki-audit-trail is empty.
 - [ ] Every substantive claim cites its page; anything else is labelled *outside the wiki*.
 - [ ] New synthesis, missing concepts, conflicts, and corrections were filed, or proposed and asked about; hot.md holds the route.
 - [ ] `wiki/log.md` has one `query · Answered` entry, including when nothing was filed.

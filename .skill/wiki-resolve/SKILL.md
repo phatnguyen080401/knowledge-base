@@ -1,6 +1,6 @@
 ---
 name: wiki-resolve
-description: Resolve a note's open questions, fact-check stale or unsourced claims, or expand stubs, from cited sources. Use when the user says "resolve the open questions on X", "review the needs-review notes", "fact-check X", "is X still current", "expand the stubs", "research the next questions", or "follow up on the lint report".
+description: Resolve a note's open questions, fact-check stale or unsourced claims, or expand stubs, from cited sources. Use when the user says "resolve the open questions on X", "review the needs-review notes", "fact-check X", "is X still current", "expand the stubs", "research the next questions", or asks to research the stale, unsourced, or next-question items of a lint report.
 argument-hint: "[note | needs-review | stubs]"
 ---
 
@@ -56,12 +56,13 @@ clock reading:
 ## 5. Log and Verify
 
 One `maintain · Updated` entry per [`wiki-audit-trail`](../wiki-audit-trail/SKILL.md), e.g.
-"resolved 2 of 3 open questions", with a `Source:` clause naming the main source. Then run
+"resolved 2 of 3 open questions against <main reference>" (no `Source:` clause; that is for
+ingested files). Then run
 `AGENTS.md` §9 and the obsidian-syntax.md Checks on every touched note.
 
 ## Definition of Done
 
 Every step above is complete and `AGENTS.md` §9 passes on every touched note, plus:
 
-- [ ] Every resolution cites a source in `## References` or `sources`, or records the user's decision.
+- [ ] Every resolution cites a source in `## References`, or records the user's decision.
 - [ ] Unsettled items are still listed, and `needs-review` matches the section or the mismatch was reported as a hand edit.

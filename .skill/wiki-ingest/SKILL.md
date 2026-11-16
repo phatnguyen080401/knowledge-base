@@ -19,8 +19,9 @@ Compiles files in `raw/` into `wiki/concepts/`, as ordered steps under `AGENTS.m
 4. **Identify concepts.** One raw file may hold several; split it, one concept per note. Never create
    a note that merely mirrors the source document's shape.
 5. **Search before writing.** Search `wiki/concepts/` by filename *and* by content (name, acronym,
-   plurals, synonyms). Unless a page clearly covers the concept, also read `wiki/INDEX.md` in full
-   and shortlist from its summaries.
+   plurals, synonyms). Unless a page clearly covers the concept, also grep `wiki/INDEX.md` for those
+   terms and read the likely domain group (`grep -n '^##'` gives its range), shortlisting from its
+   summaries. Never read the whole index.
 
    | Result | Action |
    | --- | --- |
@@ -31,9 +32,9 @@ Compiles files in `raw/` into `wiki/concepts/`, as ordered steps under `AGENTS.m
 6. **Write.**
    - **Create:** a new file in the `AGENTS.md` §3 shape, filled in as far as the source supports,
      named after the source per the `AGENTS.md` §2 table.
-   - **Existing notes are read-only.** Never edit their definition, body, `tags`, or `sources`, and
-     never add the source's concepts to them, however relevant: many sources merged into one shared
-     note break it. That knowledge lives in the new notes, which link to the existing ones.
+   - **Existing notes are read-only** (`AGENTS.md` §4). Never add the source's concepts to them,
+     however relevant: many sources merged into one shared note break it. That knowledge lives in
+     the new notes, which link to the existing ones.
    - **Conflict:** never silently pick a winner. Record both positions with their sources, naming
      the existing page if it holds one, under the new note's `## Open Questions & Disagreements`,
      then tag it `needs-review`. A conflict raised only in your chat summary will be forgotten.

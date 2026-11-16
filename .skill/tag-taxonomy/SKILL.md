@@ -1,6 +1,6 @@
 ---
 name: tag-taxonomy
-description: Choose a wiki note's tags across six facets (domain, topic, concept, tech, type, lifecycle) and the folder its domain tag fixes. Use on every note create, update, move, or filing; when the user wants tags fixed, cleaned up, or audited ("fix my tags", "tag audit"); asks which tags to use or how notes are classified; or wants to add or retire a tag.
+description: Choose a wiki note's tags and the folder they fix. Use when writing a new note or changing what a note covers; when the user says "fix my tags", "clean up tags", "tag audit", or "what tags should I use", asks how notes are classified, or wants to add or retire a tag.
 argument-hint: "[scope]"
 ---
 
@@ -17,14 +17,14 @@ mechanisms, which named technologies, what shape, and what state. The vocabulary
 tags: [<domain>, <topic…>, <concept…>, <tech…>, <type>, <lifecycle>, <user…>]
 ```
 
-| Facet | Count | Answers | Vocabulary |
-| --- | --- | --- | --- |
-| `domain` | 1 | Which field? (also decides the folder) | Closed |
-| `topic` | 1–3 | Which sub-area of that field? | Closed |
-| `concept` | 0–4 | Which mechanisms or ideas does it explain? | Closed |
-| `tech` | 0–4 | Which named products, platforms, or standards? | **Open** |
-| `type` | 0–1 | Overview, comparison, or how-to? | Closed |
-| `lifecycle` | 0–1 | Stub, or needs review? | Closed |
+| Facet | Count | Vocabulary |
+| --- | --- | --- |
+| `domain` | 1 (decides the folder) | Closed |
+| `topic` | 1–3 | Closed |
+| `concept` | 0–4 | Closed |
+| `tech` | 0–4 | **Open** |
+| `type` | 0–1 | Closed |
+| `lifecycle` | 0–1 | Closed |
 
 - **Mandatory set:** one `domain` + at least one `topic`. A substantive (non-`stub`) note also needs
   at least one `concept` **or** `tech` tag; `overview` hubs are exempt.
@@ -45,15 +45,23 @@ Ask in this order and stop at the first yes:
 
 ## Tagging a Note
 
-Run this on every create or update. Tag what the body explains, not what the filename suggests.
+Run this on every new note, and on any update that changes what the body covers or its domain. A
+link, a `## Related Concepts` bullet, or a bumped `updated` alone needs no re-tagging. Tag what the
+body explains, not what the filename suggests.
 
-1. **Read** [taxonomy.md](references/taxonomy.md).
-2. **Read the neighbours.** Grep `^tags:` across the target folder (and any subfolder) and
+1. **Read the neighbours.** Grep `^tags:` across the target folder (and any subfolder) and
    match the siblings' choices unless this note genuinely differs.
+2. **Read [taxonomy.md](references/taxonomy.md) by section, not whole** (`grep -n '^## '` gives
+   the ranges). Always read `type` through the end (lifecycle and Banned). Read `domain` only for a
+   new note or a domain change. For `topic` and `concept`, list the names
+   (``grep -noE '^\| `[a-z0-9-]+`' .skill/tag-taxonomy/references/taxonomy.md``), then grep the candidate rows for their
+   Covers and Excludes. Read a whole facet table only when nothing fits and you may propose a tag.
+   Audits and lint read the file whole.
 3. **Domain** — the single field; the *Excludes* column breaks ties. If it still splits two ways,
    the note covers two concepts and should be split.
 4. **Topic** — the most specific approved topic. Add a second or third only while each narrows the
-   note further. If nothing fits, propose a new tag (below); never force a poor match.
+   note further. If nothing fits, propose a new tag ([audit.md](references/audit.md) §8); never
+   force a poor match.
 5. **Concept** — mechanisms the note *explains*, not ones it mentions in passing.
 6. **Tech** — every product or standard the note is substantively about, including the one in its
    own title. A product mentioned once as an example does not count.
@@ -77,7 +85,8 @@ Run this on every create or update. Tag what the body explains, not what the fil
 
 1. **Closed facets are closed.** Every `domain`, `topic`, `concept`, `type`, and `lifecycle` tag
    appears verbatim in [taxonomy.md](references/taxonomy.md). If nothing fits, propose an addition
-   (below); never invent one inline. A tag the user names that is in no table is a user tag (rule 8).
+   ([audit.md](references/audit.md) §8); never invent one inline. A tag the user names that is in
+   no table is a user tag (rule 6).
 2. **`tech` is open.** Add a product on first use without approval, by its canonical lowercase
    name as the vendor writes it (`bigquery`, not `google-bigquery`), never a version (`dbt`, not
    `dbt-1-8`), never a category (`warehouse`, `cloud`). Add a seed-table row once a second note
@@ -92,28 +101,18 @@ Run this on every create or update. Tag what the body explains, not what the fil
    it clusters with its adapter notes.
 5. **The table is the spelling.** Copy tags exactly, number included. The vocabulary holds both
    `data-quality` and `databases`, so never "fix" a plural by rule of thumb.
-6. **Concept tags are shared vocabulary.** A concept already in the taxonomy is usable even if only
-   one note carries it. The two-note bar applies when *proposing* a new concept.
-7. **Lifecycle tags track reality**, per `AGENTS.md` §3.
-8. **User tags are preserved.** Never strip one in an update or audit. They must still be
+6. **User tags are preserved.** Never strip one in an update or audit. They must still be
    `kebab-case`, must not be banned, must not duplicate a facet tag, come last, and count toward the
    ceiling. Before keeping an unknown tag on an existing note as a user tag, check audit.md's
    Retired table and Typo class.
-9. **Respect hand edits; don't fight them.** If the user has left a note's tags in an invalid state
+7. **Respect hand edits; don't fight them.** If the user has left a note's tags in an invalid state
    (e.g. removed `needs-review` while open questions remain), say so in one line of your report and
    leave the tag as they set it. Fix only what your own request touched.
 
 ## Adding or Retiring a Tag
 
-A `tech` tag needs no ceremony. A **closed-facet** tag changes the vocabulary and needs explicit
-user approval. Propose one only when it applies to **three or more** existing or imminent notes
-(**two** for a `concept`), no approved tag or combination already covers it, and it fits cleanly
-into exactly one facet. State the tag, its facet, a one-line **Covers** and **Excludes**, and the
-notes it would apply to. On approval, insert it alphabetically into the right table in
-[taxonomy.md](references/taxonomy.md) and apply it. A new `domain` also needs a folder, a structure
-change (`AGENTS.md` §1).
-
-Retiring a tag: follow [audit.md](references/audit.md) §5.
+A `tech` tag needs no ceremony. Adding or retiring a closed-facet tag follows
+[audit.md](references/audit.md) §8.
 
 ## Definition of Done
 

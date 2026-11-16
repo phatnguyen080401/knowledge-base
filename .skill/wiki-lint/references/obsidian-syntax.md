@@ -35,10 +35,9 @@ External URLs use standard Markdown links: `[dbt docs](https://docs.getdbt.com)`
 > The manifest is uploaded before the run's exit code is checked, so …
 ```
 
-Always give a title (a title-only callout is fine for a one-line warning); keep the body to a short
-paragraph or list; never nest. Use them for what a reader must not miss, not as decoration. Fold
-(`> [!example]-`) only long optional material such as a worked example, and never a `warning`. The
-definition paragraph and open questions are never callouts. Only these types:
+Only for what a reader must not miss. Always titled (title-only is fine), a short body, never
+nested, never the definition or open questions. Fold (`> [!example]-`) only long optional material,
+never a `warning`. Only these types:
 
 | Type | Use for |
 | --- | --- |
@@ -64,9 +63,8 @@ prefix (`AGENTS.md` §2). Never overwrite an existing asset; pick a more specifi
 The six dimensions, grouped by whether they are checked per record or per dataset.
 ```
 
-Follow every embed with a sentence saying what it shows, so the note reads without the image.
-Size with `|600` or `|600x400` (600 or less for diagrams). Embed a PDF page (`#page=3`) only when
-it carries a figure or table the note discusses; the PDF is still cited in `sources` (if ingested) or `## References`.
+Follow every embed with a sentence saying what it shows. Size with `|600` or `|600x400` (≤600 for
+diagrams). Embed a PDF page (`#page=3`) only for a figure or table the note discusses.
 
 ## Diagrams, Math, and Highlights
 

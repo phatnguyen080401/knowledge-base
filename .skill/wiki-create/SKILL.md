@@ -21,8 +21,9 @@ Read it once (`AGENTS.md`) and reuse it for every timestamp and the log entry.
    grep -rli '<term>\|<acronym>\|<synonym>' wiki/concepts
    ```
 
-2. Unless a page clearly covers the concept, read `wiki/INDEX.md` in full and shortlist pages whose
-   summaries touch it before deciding to create.
+2. Unless a page clearly covers the concept, grep `wiki/INDEX.md` for the same terms, then read the
+   likely domain group (`grep -n '^##' wiki/INDEX.md` gives its line range) and shortlist pages
+   whose summaries touch it. Never read the whole index.
 
 | Result | Action |
 | --- | --- |
@@ -33,9 +34,8 @@ Read it once (`AGENTS.md`) and reuse it for every timestamp and the log entry.
 
 A request covering several concepts becomes several notes, or one note plus stubs.
 
-**Ingested notes are read-only here.** A note whose `sources` lists a `raw/processed/` file belongs
-to [`wiki-ingest`](../wiki-ingest/SKILL.md): this skill never expands it, adds links to it, or bumps
-its `updated`, unless the user names that note in the request. Linking *to* it is fine.
+**Ingested notes** (those with `sources`) are expanded, edited, or backlinked here only when the
+user names them (`AGENTS.md` §3).
 
 ## 3. Tags and Folder
 

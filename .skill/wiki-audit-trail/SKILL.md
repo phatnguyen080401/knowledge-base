@@ -1,6 +1,6 @@
 ---
 name: wiki-audit-trail
-description: Exact formats for `wiki/log.md` entries and `wiki/INDEX.md`. Read before writing any log entry or editing INDEX.md, i.e. on every wiki create, update, rename, merge, delete, ingest, answered query, or lint pass.
+description: Exact formats for `wiki/log.md` entries and `wiki/INDEX.md`. Read before writing any log entry or editing INDEX.md.
 user-invocable: false
 ---
 
@@ -26,15 +26,12 @@ Newest entry first, immediately under the `# Activity Log` heading, one line per
 **Writing it: never read the whole log.** Read only its first 3 lines (Read with `limit: 3`, or
 `head -n 3 wiki/log.md`), then insert the entry plus one blank line directly under
 `# Activity Log`. To look something up in the log, grep it. `git diff -U0 wiki/log.md` must show
-only added lines.
-
-**What gets an entry:** every change under `wiki/` (an asset under `raw/assets/` is a clause of the
-entry for the note that embeds it), plus every `query` and every `lint` pass, even when nothing
-changed. Nothing else (`AGENTS.md` §1.5).
+only added lines. What gets an entry is `AGENTS.md` §1.5; a new asset under `raw/assets/` is a
+clause of the entry for the note that embeds it.
 
 ### Keep entries short
 
-An entry points to a change; it never copies it. One sentence, about 40 words at most.
+An entry points to a change; it never copies it (`AGENTS.md` §6).
 
 - Log **what changed, where, and why**, never what the note now says.
 - **Fold routine companion edits in:** the INDEX entry, backlinks, `updated`, `sources`, archiving
@@ -56,8 +53,7 @@ A `query` entry names the question, the pages read, and what was filed:
 A lint pass writes `lint · Audited N notes — <one count per defect class>`; applying the approved
 fixes afterwards is its own request with its own `maintain · Updated` entry.
 
-Older entries use a date-only `- **YYYY-MM-DD**:` prefix, run long, or log `AGENTS.md` and
-`.skill/` changes. That is the expected state; never touch them (`AGENTS.md` §6).
+Older entries in other formats are expected; never touch them (`AGENTS.md` §6).
 
 ## `wiki/INDEX.md`
 

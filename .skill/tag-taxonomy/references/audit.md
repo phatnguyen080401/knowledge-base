@@ -64,24 +64,37 @@ Show the user:
 - the flags, each with a one-line reason
 - any candidate new closed-facet tags, with their Covers/Excludes and the notes they would apply to
 
-Then wait for approval.
+On a standalone audit, write its `lint · Audited` log entry now (§6), then wait for approval. Inside
+a wiki-lint pass, the lint entry covers it.
 
 ## 5. Apply
 
 - **Tag-only change:** rewrite the `tags` line, keeping the inline form, and set `updated` from the
   clock. Touch nothing else in the note; `wiki/INDEX.md` mirrors folders, not tags.
 - **Domain change:** a move, via [`wiki-maintain`](../../wiki-maintain/SKILL.md).
-- **Vocabulary change:** an approved new tag or seed row goes into [taxonomy.md](taxonomy.md).
-- **Retiring a tag:** retag every affected note, then add a Retired row naming the replacement and
-  the reason. That row is the only lasting record of *why*.
+- **Vocabulary change:** an approved new tag or seed row goes into [taxonomy.md](taxonomy.md) (§8).
+- **Retiring a tag:** per §8.
 
 ## 6. Log
 
-One `maintain · Updated N notes` entry for the whole audit, not one per note; a report-only audit
-is one `lint · Audited` entry with a count per defect class. Format in
-[`wiki-audit-trail`](../../wiki-audit-trail/SKILL.md).
+The report (§4) gets one `lint · Audited` entry with a count per defect class, even when nothing is
+applied. Applying approved fixes adds one `maintain · Updated N notes` entry for the whole batch,
+not one per note. Format in [`wiki-audit-trail`](../../wiki-audit-trail/SKILL.md).
 
 ## 7. Verify
 
 Re-run steps 1 and 3. Every defect you fixed is gone in the file itself, and the approved user tags
 are intact.
+
+## 8. Vocabulary Changes
+
+- **Adding a closed-facet tag** changes the vocabulary and needs explicit user approval. Propose one
+  only when it applies to **three or more** existing or imminent notes (**two** for a `concept`),
+  no approved tag or combination already covers it, and it fits cleanly into exactly one facet.
+  State the tag, its facet, a one-line **Covers** and **Excludes**, and the notes it would apply
+  to. On approval, insert it alphabetically into the right table in [taxonomy.md](taxonomy.md) and
+  apply it. A new `domain` also needs a folder, a structure change (`AGENTS.md` §1).
+- **Concept tags are shared vocabulary.** A concept already in the taxonomy is usable even if only
+  one note carries it; the two-note bar applies only when proposing a new one.
+- **Retiring a tag:** retag every affected note, then add a Retired row (§2) naming the replacement
+  and the reason. That row is the only lasting record of *why*.

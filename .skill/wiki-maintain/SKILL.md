@@ -33,7 +33,9 @@ change meaning.
 - **Merge.** Keep the richer page and integrate the other per `AGENTS.md` §1.3, with no appended
   section. Union both `sources` lists and both Open Questions sections, re-check the tags, then
   delete the merged-away file once approved.
-- **Split.** Write the carved-out concept as a new note in the `AGENTS.md` §3 shape; the original
+- **Split.** Write the carved-out concept as a new note in the `AGENTS.md` §3 shape, tagged with
+  [`tag-taxonomy`](../tag-taxonomy/SKILL.md) and written per
+  [obsidian-syntax.md](../wiki-lint/references/obsidian-syntax.md); the original
   keeps a one- or two-sentence summary that links to it. Copy the `sources` that support the moved
   content (never remove one from the original), move the matching Open Questions bullets, and
   recompute `needs-review` on both notes.
