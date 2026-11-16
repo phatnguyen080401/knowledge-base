@@ -50,8 +50,9 @@ user request conflicts with a rule here, say so and ask before proceeding.
 ```text
 .
 ├── AGENTS.md              # This file
+├── README.md              # Human overview and setup
 ├── script/                # setup.sh: links .skill/ into one agent's skills folder (§8)
-├── .<agent>/skills/       # Local, git-ignored symlink to .skill/ (.claude, .gemini, .copilot)
+├── .<agent>/skills/       # Local, git-ignored symlink to .skill/ (.claude, .gemini, .github)
 ├── .skill/                # Skill procedures (§8)
 ├── raw/                   # Intake queue: unprocessed notes, clippings, transcripts
 │   ├── assets/            # Images, PDFs, and other binaries linked from notes
@@ -195,9 +196,10 @@ Each skill's `description` frontmatter lists its full trigger phrases.
 | [`wiki-query`](.skill/wiki-query/SKILL.md) | Answering a question about the wiki's subject matter |
 | [`wiki-resolve`](.skill/wiki-resolve/SKILL.md) | Resolving open questions, fact-checking stale or unsourced claims, expanding stubs |
 
-`.<agent>/skills` (`.claude`, `.gemini`, `.copilot`) links to `.skill/`, so each skill is also a
-slash command named after its folder unless its frontmatter sets `user-invocable: false`. The links
-are git-ignored; each clone creates one per agent with `script/setup.sh` (README "Setup").
+`.<agent>/skills` (`.claude`, `.gemini`, `.github` for Copilot) links to `.skill/`, so each skill
+is also a slash command named after its folder unless its frontmatter sets `user-invocable: false`.
+The links are git-ignored; each clone creates one per agent with `script/setup.sh`
+([README "Setup"](README.md#setup)).
 
 **Keeping the table in sync (§1.11).** A skill is `.skill/<name>/SKILL.md` with `name` (equal to its
 folder) and a `description` of trigger phrases (no unquoted `: `), long material in `references/`,
