@@ -111,8 +111,8 @@ One `lint · Audited` entry for the pass; applied fixes add one `maintain` entry
 ## 7. Verify
 
 Re-run step 1 and every check that produced a fixed defect. Confirm each fix **in the file
-itself**, not in your report: a past pass logged a banned tag as removed when the note still had
-it.
+itself**, not in your report: a report can say a fix landed while the file still has the
+defect.
 
 ## Definition of Done
 

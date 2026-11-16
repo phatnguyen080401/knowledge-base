@@ -1,6 +1,6 @@
 ---
 name: tag-taxonomy
-description: Choose a wiki note's tags across six facets (domain, topic, concept, tech, type, lifecycle) and the folder its domain tag fixes. Use on every note create, update, move, or filing; when the user says "fix my tags", "normalize tags", "clean up tags", "tag audit", "retag", "what tags should I use", "tag taxonomy", or "my tags are a mess"; asks how notes are classified; or wants to add or retire a tag.
+description: Choose a wiki note's tags across six facets (domain, topic, concept, tech, type, lifecycle) and the folder its domain tag fixes. Use on every note create, update, move, or filing; when the user wants tags fixed, cleaned up, or audited ("fix my tags", "tag audit"); asks which tags to use or how notes are classified; or wants to add or retire a tag.
 argument-hint: "[scope]"
 ---
 

@@ -1,6 +1,6 @@
 # Knowledge Base Agent Instructions
 
-**The canonical, non-negotiable constitution for every AI agent in this repository.** It defines
+**The canonical instructions for every AI agent in this repository.** It defines
 the vault's rules, structure, and note format. Apart from `script/setup.sh` there are no scripts or
 plugins: you are the runtime, and the procedures live as markdown skills under `.skill/` (§8).
 
@@ -18,8 +18,6 @@ user request conflicts with a rule here, say so and ask before proceeding.
 ---
 
 ## 1. Mandatory Rules
-
-**These rules are absolute.**
 
 1. **Markdown native.** Every operation is a read or write of a markdown file. Never introduce build scripts, databases, or plugin dependencies; the one exception is `script/setup.sh`, which only links `.skill/` for an agent (§8).
 2. **Agent-driven.** The file system is the only state. Read the vault to learn its state; write to the vault to change it.
