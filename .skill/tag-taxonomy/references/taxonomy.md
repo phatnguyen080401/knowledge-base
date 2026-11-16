@@ -5,6 +5,17 @@ The approved tags; the rules are in [SKILL.md](../SKILL.md). Closed facets (`dom
 needs approval or, when the user asks for it by name, a *user tag* listed last. The `tech` facet is
 open; its table is a seed list.
 
+## Index
+
+Every tag name, for choosing candidates; grep a candidate's row below for its Covers and Excludes.
+
+- **domain:** ai-engineering, cloud-computing, data-architecture, data-engineering, data-governance, data-structures, databases, devops, identity-and-access, linux, machine-learning, software-architecture, version-control
+- **topic:** access-management, ai-safety, api-protocols, architecture-patterns, concurrency, cost-management, data-modeling, data-quality, data-security, data-warehouse, deployment, distributed-systems, elt, generative-models, indexing, llm-applications, master-data, metadata, model-operations, model-training, observers, os-internals, representation-learning, source-history, supply-chain-security, system-administration, transactions, versioning
+- **concept:** access-control, ci-cd, compatibility-contracts, concurrency-control, consistency-models, data-lineage, data-validation, decoding-strategies, entity-resolution, fault-tolerance, in-context-learning, knowledge-graph, learning-paradigms, linear-regression, metric-definition, parallel-decoding, partitioning, prefix-structures, probabilistic-structures, process-isolation, query-optimization, replication, retrieval-augmentation, scaling-laws, schema-evolution, search-trees, sequence-modeling, specification-gaming, stewardship-roles, stochastic-optimization, vector-quantization, write-optimization
+- **tech:** aws, bigquery, cloud-run, databricks, dbt, docker, fix-protocol, flink, git, github-actions, jwt, kafka, kubernetes, oauth, openid-connect, python, spark, terraform (seed list; open)
+- **type:** comparison, how-to, overview
+- **lifecycle:** needs-review, stub
+
 ## Facet: `domain` — exactly one per note
 
 **This table is the authoritative list of domain folders** (`AGENTS.md` §2). Adding a row means
@@ -52,8 +63,8 @@ The area of practice a note sits in, broad enough to hold several concepts.
 | `metadata` | Data about data: catalogs, schema registries, business glossaries | The business data itself (`master-data`); source-to-consumer tracing (tag `data-lineage` too) |
 | `model-operations` | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`) |
 | `model-training` | Fitting a model's parameters to data: loss functions, gradient descent, regularization, backpropagation | What the learned parameters represent (`representation-learning`); serving the trained model (`model-operations`); minibatch, momentum, and adaptive optimizers (tag `stochastic-optimization` too) |
-| `os-internals` | How the operating system runs programs: process lifecycle and signals, file descriptors, standard streams, linking and loading, kernel features | Running work in parallel (`concurrency`); configuring and maintaining a host (`system-administration`); isolating processes with namespaces and cgroups (tag `process-isolation` too) |
 | `observers` | Watching running software to explain its behaviour: logs, metrics, traces, their correlation, dashboards, and alerting | Monitoring a model's quality and drift (`model-operations`); build-time scanning (`supply-chain-security`) |
+| `os-internals` | How the operating system runs programs: process lifecycle and signals, file descriptors, standard streams, linking and loading, kernel features | Running work in parallel (`concurrency`); configuring and maintaining a host (`system-administration`); isolating processes with namespaces and cgroups (tag `process-isolation` too) |
 | `representation-learning` | Learning dense or discrete vector representations of words, text, images, or other inputs: word vectors, sentence encoders, embedding training objectives, codebook tokenizers | Generating outputs from those representations (`generative-models`); applications that search with them (`llm-applications`) |
 | `source-history` | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
 | `supply-chain-security` | Trusting what goes into a build and who can change it: vulnerability, secret, misconfiguration, and licence scanning; SBOMs; signing; branch and pipeline protection | Protecting the business data a system holds (`data-security`) |

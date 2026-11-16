@@ -33,6 +33,18 @@ Tags this vault once used and deliberately dropped. Each row is a real retiremen
 | `roles`, `stewardship` | `stewardship-roles` | Too broad alone; promoted to the `concept` facet with a sharper definition |
 | `security` | `data-security` | Bare `security` reads as infrastructure security, not data security |
 
+### User Tags and Hand Edits
+
+These rules bind every tag write, not only audits.
+
+- **User tags are preserved.** Never strip one in an update or audit. It must still be
+  `kebab-case`, not banned, not a duplicate of a facet tag, listed last, and counted toward the
+  ceiling. Before keeping an unknown tag on an existing note as a user tag, check the Retired table
+  and the Typo class above.
+- **Respect hand edits.** If the user left a note's tags invalid (e.g. removed `needs-review` while
+  open questions remain), say so in one line of your report and leave the tag as they set it. Fix
+  only what your own request touched.
+
 ## 3. Check every note
 
 Each check is a **defect**, which you propose to fix, or a **flag**, which you only report.
@@ -93,9 +105,9 @@ are intact.
   no approved tag or combination already covers it, and it fits cleanly into exactly one facet.
   State the tag, its facet, a one-line **Covers** and **Excludes**, and the notes it would apply
   to. On approval, insert it alphabetically into the right table in [taxonomy.md](taxonomy.md) and
-  apply it. A new `domain` also needs a folder, a structure change (`AGENTS.md` §1), and at least
+  its Index line, then apply it. A new `domain` also needs a folder, a structure change (`AGENTS.md` §1), and at least
   one topic approved with it that fits its first notes, so they never borrow a filler topic.
 - **Concept tags are shared vocabulary.** A concept already in the taxonomy is usable even if only
   one note carries it; the two-note bar applies only when proposing a new one.
-- **Retiring a tag:** retag every affected note, then add a Retired row (§2) naming the replacement
-  and the reason. That row is the only lasting record of *why*.
+- **Retiring a tag:** retag every affected note, drop its row and Index entry, then add a Retired
+  row (§2) naming the replacement and the reason. That row is the only lasting record of *why*.
