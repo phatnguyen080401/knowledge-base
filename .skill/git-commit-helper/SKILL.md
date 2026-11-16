@@ -22,16 +22,15 @@ when a format rule is genuinely ambiguous, the compiled spec is
    three or four lines. Never list files or narrate hunks.
 3. **Describe the effect, not the edit.** `fix(parser): prevent racing of requests`, not
    `fix(parser): change the request handler`. Imperative, lowercase start, no trailing period,
-   aim for 50 characters, 72 at most. If it will not fit, the commit is doing too much — split it.
-4. **One commit, one type.** A diff that honestly needs two types, or a description that needs
-   the word "and", is two commits.
+   aim for 50 characters, 72 at most — count before committing. If it will not fit, the commit is
+   doing too much — split it.
+4. **One commit, one type.** A diff that honestly needs two types, or a description that joins two
+   actions (`trim X and add Y`), is two commits. "And" between nouns (`Oracle and InnoDB`) is fine.
 5. **Only `feat` and `fix` imply a release.** Don't inflate a change to `feat`, and don't hide a
    behaviour-changing fix as `chore`.
-6. **Signal breaks explicitly.** `!` before the colon and/or a `BREAKING CHANGE:` footer (the one
-   token that must be uppercase) whenever something callers rely on is removed, renamed, or changes
-   default or format. With `!` alone, the description itself must say what broke.
-7. **Never commit secrets.** If the diff contains keys, tokens, credentials, or `.env` contents,
-   stop and tell the user; don't quietly unstage.
+6. **Signal breaks** with `!` and/or a `BREAKING CHANGE:` footer when something callers rely on
+   is removed, renamed, or changes default or format; with `!` alone, the description says what broke.
+7. **Never commit secrets** — stop and tell the user.
 8. **Never invent references.** `Closes #123` or a co-author only when the user supplied it.
 
 ## Workflow
@@ -48,8 +47,7 @@ of collapsing new directories.
 
 **2. Read the changes, not the stat.**
 
-- Something staged → that staged set **is** the intended commit. Read `git diff --staged` and leave
-  the rest of the tree alone.
+- Something staged → that staged set is the commit; leave the rest of the tree alone.
 - Nothing staged → read `git diff` **and open every untracked (`??`) file**. `git diff` does not
   show new files, and in this vault new notes are the most common change, so skipping them means
   guessing.
@@ -66,6 +64,9 @@ sentence → one commit; several → a split. Then pick type, scope, and descrip
   then commit in the same turn. The request was the approval.
 - A split, an uncertain classification, a found secret, or the user asked only for a *message* →
   propose and wait.
+- The diff breaks a vault invariant — an orphan note, a `log.md` entry claiming a change the diff
+  lacks, `INDEX.md` out of sync with `wiki/concepts/` — → report it and wait, even when asked to
+  commit. `log.md` is append-only, so a false entry is costly once committed.
 - Amending or rewording an existing commit → read
   [fixing-a-message.md](references/fixing-a-message.md) first.
 
@@ -107,8 +108,9 @@ Note content is the product here, so `docs` is the common type. Commits from bef
 
 | Change | Message shape |
 | --- | --- |
-| New or expanded note under `wiki/concepts/` | `docs(<domain-tag>): …` — kebab-case tag, e.g. `docs(ai-engineering): add RAG note` |
-| Rename, merge, or delete of a note | `refactor(wiki): …` — structure changed, content did not |
+| New, expanded, or corrected note under `wiki/concepts/` | `docs(<domain-tag>): …` — kebab-case tag, e.g. `docs(ai-engineering): add RAG note`; a factual correction is still `docs`, never `fix` |
+| One edit applied to notes in several domains | `docs(wiki): …` |
+| Rename, merge, split, or delete of a note | `refactor(wiki): …` — structure changed, content did not |
 | `wiki/INDEX.md` or `wiki/log.md` alone (with `wiki/hot.md` for a query) | `docs(index): …` / `docs(log): …` |
 | Skill under `.skill/` | `feat(skill): …` new skill · `docs(skill): …` change · `docs(skill)!: …` retirement |
 | `AGENTS.md` | `docs(agents): …`, with `!` when it reverses an existing rule |
