@@ -28,38 +28,43 @@ creating a folder, which needs user approval.
 
 ## Facet: `topic` — one to three per note
 
+The area of practice a note sits in, broad enough to hold several concepts.
+
 | Tag | Covers | Excludes |
 | --- | --- | --- |
-| `access-management` | Proving identity and granting permissions: authentication factors, authorization models, sessions and tokens, federation, single sign-on | Protecting the data itself (`data-security`); build and pipeline protection (`supply-chain-security`) |
+| `access-management` | Proving identity and carrying permissions between systems: authentication factors, sessions and tokens, authorization protocols, federation, single sign-on | The permission model itself (tag `access-control` too); protecting the data itself (`data-security`); build and pipeline protection (`supply-chain-security`) |
 | `ai-safety` | Capability levels beyond today's systems (AGI, superintelligence) and keeping them beneficial: alignment, control, dangerous-capability evaluations, AI risk and governance | Building products on models (`llm-applications`); serving and monitoring models in production (`model-operations`) |
 | `api-protocols` | Interface and messaging styles for system-to-system exchange: REST, gRPC, SOAP, webhooks, queues | Internal representation of the data being exchanged (`data-modeling`) |
 | `architecture-patterns` | Recurring structural shapes of a system: layering, module boundaries, coupling, deployment topology | The named technology realizing the pattern (a `tech` tag) |
 | `concurrency` | Executing work simultaneously inside one system: threads, processes, event loops, synchronization primitives, races, and runtime constraints on parallelism | Coordination across nodes (`distributed-systems`); database transaction semantics (`transactions`) |
 | `cost-management` | Spend visibility and control: pricing models, cost attribution, budgets, slot and credit usage | Making a query faster for its own sake (`query-optimization`) |
 | `data-modeling` | Designing logical and semantic representations: entities, relationships, metrics, dimensional and warehouse models | Physical storage layout (`indexing`) |
-| `data-quality` | Fitness for use — dimensions, profiling, validation rules, quality measurement and remediation | Who is accountable for quality (that is the `data-governance` domain) |
-| `data-security` | Protecting data from unauthorized access, loss, or misuse: access control, encryption, masking | General platform reliability or availability |
+| `data-quality` | Fitness for use: quality dimensions, measurement, and remediation | Who is accountable for quality (the `data-governance` domain); the checks that test data (tag `data-validation` too) |
+| `data-security` | Protecting data from unauthorized access, loss, or misuse: encryption, masking | General platform reliability or availability; who may read or write what (tag `access-control` too) |
 | `data-warehouse` | Cloud warehouse and lakehouse platforms: their storage/compute split, SQL dialects, and platform-specific behaviour | Vendor-neutral engine theory (`transactions`, `distributed-systems`) |
-| `deployment` | Getting code and pipelines into an environment: packaging, release automation, runtime hosting, rollback | Which version number the artifact carries (`versioning`) |
-| `distributed-systems` | Behaviour that only arises when data spans multiple nodes: partitioning, replication, consensus, network partitions | Single-node transactional semantics (`transactions`) |
+| `deployment` | Getting a built artifact running in an environment: packaging, environment provisioning, runtime hosting, rollout and rollback | The pipeline that builds and releases it (tag `ci-cd` too); which version number it carries (`versioning`) |
+| `distributed-systems` | Behaviour that only arises when data spans multiple nodes: consensus, coordination, network partitions | Single-node transactional semantics (`transactions`); splitting or copying the data (tag `partitioning` or `replication` too) |
 | `elt` | Extract-load-transform practice and tooling: models, materializations, tests, scheduling, adapters | The warehouse the transforms run on (`data-warehouse`) |
 | `generative-models` | Architectures and training objectives of models that generate text, images, or audio: autoregressive, diffusion, flow, latent, and quantized generative models | Serving those models in production (`model-operations`); building applications on them (`llm-applications`) |
-| `indexing` | Structures and techniques for locating records quickly: search trees, prefix trees, probabilistic filters, write-optimized stores | Abstract algorithm analysis unrelated to lookup |
-| `llm-applications` | Building products on foundation models: prompting, retrieval-augmented generation, tool use and agents, context handling, output evaluation | Training or fine-tuning the model itself (`model-operations`) |
-| `master-data` | Golden-record disciplines: entity resolution, survivorship, reference data, hierarchies | Descriptive metadata about datasets (`metadata`) |
-| `metadata` | Data about data: catalogs, lineage, schema registries, business glossaries | The business data itself (`master-data`) |
+| `indexing` | Locating records quickly: choosing an index structure, its lookup and update costs | Abstract algorithm analysis unrelated to lookup; each structure family (tag `search-trees`, `prefix-structures`, `probabilistic-structures`, or `write-optimization` too) |
+| `llm-applications` | Building products on foundation models: tool use and agents, context handling, output evaluation | Training or fine-tuning the model itself (`model-operations`); prompting and retrieval techniques (tag `in-context-learning` or `retrieval-augmentation` too) |
+| `master-data` | Golden-record disciplines: one trusted record per entity, reference data, hierarchies | Descriptive metadata about datasets (`metadata`); matching and survivorship (tag `entity-resolution` too) |
+| `metadata` | Data about data: catalogs, schema registries, business glossaries | The business data itself (`master-data`); source-to-consumer tracing (tag `data-lineage` too) |
 | `model-operations` | Getting models into and keeping them in production: serving and inference, versioning and registries, monitoring, drift, cost and latency management | The application logic built on top of the model (`llm-applications`) |
-| `model-training` | Fitting a model's parameters to data: loss functions, gradient-based optimizers, learning-rate schedules, regularization, backpropagation | What the learned parameters represent (`representation-learning`); serving the trained model (`model-operations`) |
+| `model-training` | Fitting a model's parameters to data: loss functions, gradient descent, regularization, backpropagation | What the learned parameters represent (`representation-learning`); serving the trained model (`model-operations`); minibatch, momentum, and adaptive optimizers (tag `stochastic-optimization` too) |
+| `os-internals` | How the operating system runs programs: process lifecycle and signals, file descriptors, standard streams, linking and loading, kernel features | Running work in parallel (`concurrency`); configuring and maintaining a host (`system-administration`); isolating processes with namespaces and cgroups (tag `process-isolation` too) |
 | `observers` | Watching running software to explain its behaviour: logs, metrics, traces, their correlation, dashboards, and alerting | Monitoring a model's quality and drift (`model-operations`); build-time scanning (`supply-chain-security`) |
 | `representation-learning` | Learning dense or discrete vector representations of words, text, images, or other inputs: word vectors, sentence encoders, embedding training objectives, codebook tokenizers | Generating outputs from those representations (`generative-models`); applications that search with them (`llm-applications`) |
 | `source-history` | Recording and reshaping a repository's commit history: staging and committing, branching, merging, rebasing, history rewriting, remotes and synchronization | How the resulting artifact is numbered and released (`versioning`); the pipelines a commit triggers (`ci-cd`) |
 | `supply-chain-security` | Trusting what goes into a build and who can change it: vulnerability, secret, misconfiguration, and licence scanning; SBOMs; signing; branch and pipeline protection | Protecting the business data a system holds (`data-security`) |
-| `transactions` | Transactional guarantees and concurrency control: ACID, BASE, isolation levels, locking, MVCC | Multi-node coordination concerns (`distributed-systems`) |
-| `versioning` | How artifacts are numbered, released, and depended upon: version schemes, compatibility contracts, pinning and lockfiles, deprecation windows | The design of the interface being versioned (`api-protocols`) |
+| `system-administration` | Configuring and maintaining a host: boot and init, services, package and runtime installation, users and permissions | How the kernel runs programs underneath (`os-internals`); provisioning environments as code (`deployment`) |
+| `transactions` | Transactional guarantees: ACID, BASE, isolation levels, commit, durability, and recovery | Multi-node coordination (`distributed-systems`); the locking and MVCC that enforce isolation (tag `concurrency-control` too) |
+| `versioning` | How artifacts are numbered, released, and depended upon: version schemes, pinning and lockfiles | The design of the interface being versioned (`api-protocols`); the compatibility and deprecation promises a version makes (tag `compatibility-contracts` too) |
 
 ## Facet: `concept` — zero to four per note
 
-The mechanisms a note explains; the facet that connects notes across domains.
+Named mechanisms, techniques, structures, and models a note explains, recurring across fields or
+within one. A note takes its concepts alongside the topic it sits in.
 
 | Tag | Covers | Excludes |
 | --- | --- | --- |
@@ -82,6 +87,7 @@ The mechanisms a note explains; the facet that connects notes across domains.
 | `partitioning` | Splitting data across nodes, files, or ranges: sharding, partition keys, pruning, skew | Copying the same data to several nodes (`replication`) |
 | `prefix-structures` | Keys indexed by position in the string: tries, radix and PATRICIA trees, autocomplete | Comparison-based ordered structures (`search-trees`) |
 | `probabilistic-structures` | Structures trading exactness for space: Bloom filters, HyperLogLog, sketches | Exact ordered lookup structures (`search-trees`) |
+| `process-isolation` | Giving a process its own view of system resources and limits on their use: Linux namespaces, cgroups, container and pod sandboxes | Separating tenants by account, database, or cluster (`architecture-patterns`); who may access what (`access-control`) |
 | `query-optimization` | Making a query do less work: planning, pruning, join strategy, clustering, materialization | Reducing spend as a goal in itself (`cost-management`) |
 | `replication` | Maintaining copies of the same data across nodes: leader/follower, sync vs async, lag | Splitting distinct data across nodes (`partitioning`) |
 | `retrieval-augmentation` | Grounding a model's generation in externally retrieved knowledge: chunking, embedding and hybrid search, reranking, context assembly, agent traversal | Encoding knowledge into model weights by training or fine-tuning (`model-operations`) |
@@ -106,6 +112,7 @@ Rules in SKILL.md (*`tech` is open*). Seed list — add a row once a second note
 | `cloud-run` | Google Cloud Run services and jobs |
 | `databricks` | Databricks lakehouse, Unity Catalog, Delta tables |
 | `dbt` | dbt Core and dbt Cloud: models, tests, macros, adapters |
+| `docker` | Docker Engine and CLI: images, containers, Dockerfiles, and the build and run commands |
 | `fix-protocol` | The FIX financial messaging standard |
 | `flink` | Apache Flink: DataStream and Table/SQL APIs, state backends, checkpoints and savepoints |
 | `git` | The Git version-control system: commits, branches, tags, trailers, rebase |

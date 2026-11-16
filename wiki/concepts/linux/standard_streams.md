@@ -1,8 +1,8 @@
 ---
 title: Standard Streams (stdin, stdout, stderr)
-tags: [linux, deployment, bash]
+tags: [linux, os-internals, bash]
 created: 2026-10-31 12:12:46
-updated: 2026-10-31 12:12:46
+updated: 2026-11-16 23:12:53
 ---
 
 # Standard Streams (stdin, stdout, stderr)

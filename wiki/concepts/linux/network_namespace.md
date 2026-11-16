@@ -1,8 +1,8 @@
 ---
 title: Network Namespace
-tags: [linux, deployment, iproute2]
+tags: [linux, os-internals, process-isolation, iproute2]
 created: 2026-10-31 12:02:49
-updated: 2026-10-31 12:02:49
+updated: 2026-11-16 23:12:53
 ---
 
 # Network Namespace

@@ -1,8 +1,8 @@
 ---
 title: Systemd Targets
-tags: [linux, deployment, systemd, sysvinit]
+tags: [linux, system-administration, systemd, sysvinit]
 created: 2026-10-31 11:56:00
-updated: 2026-10-31 11:56:00
+updated: 2026-11-16 23:12:53
 ---
 
 # Systemd Targets

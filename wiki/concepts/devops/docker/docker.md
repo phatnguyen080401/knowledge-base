@@ -1,8 +1,8 @@
 ---
 title: Docker
-tags: [devops, deployment, docker]
+tags: [devops, deployment, process-isolation, docker]
 created: 2026-10-31 11:36:50
-updated: 2026-10-31 19:25:37
+updated: 2026-11-16 23:12:53
 ---
 
 # Docker

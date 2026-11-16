@@ -1,8 +1,8 @@
 ---
 title: Mount Propagation
-tags: [linux, deployment, docker, kubernetes]
+tags: [linux, os-internals, process-isolation, docker, kubernetes]
 created: 2026-10-31 12:00:44
-updated: 2026-10-31 12:02:49
+updated: 2026-11-16 23:12:53
 ---
 
 # Mount Propagation

@@ -7,9 +7,11 @@ argument-hint: "[scope]"
 # Tag Taxonomy
 
 A note's tag line answers six questions in a fixed order: what field, what sub-area, which
-mechanisms, which named technologies, what shape, and what state. The vocabulary is in
-[taxonomy.md](references/taxonomy.md). For an audit (`/tag-taxonomy [scope]`), also read
-[audit.md](references/audit.md) and limit it to the given folder or note, if any.
+mechanisms, which named technologies, what shape, and what state. Folders group notes by field;
+tags are the only index across folders, searched by wiki-query and wiki-lint, so a loose tag pulls
+unrelated notes together. The vocabulary is in [taxonomy.md](references/taxonomy.md). For an
+audit (`/tag-taxonomy [scope]`), also read [audit.md](references/audit.md) and limit it to the
+given folder or note, if any.
 
 ## Quick Card
 
@@ -39,8 +41,10 @@ Ask in this order and stop at the first yes:
 1. A named product, platform, service, or standard? → `tech`
 2. The note's shape (hub, contrast, procedure)? → `type`
 3. The note's state (placeholder, unverified)? → `lifecycle`
-4. A sub-area *within this note's field*? → `topic`
-5. A mechanism or idea that would recur in another field? → `concept`
+4. A named mechanism, technique, structure, or model whose workings the note explains
+   (`concurrency-control`, `linear-regression`)? → `concept`, whether or not it recurs across fields
+5. The area of practice the note sits in, broad enough to hold several concepts (`transactions`,
+   `model-training`)? → `topic`
 6. None of the above → probably the note's title or a banned general word. Leave it off.
 
 ## Tagging a Note
@@ -49,8 +53,9 @@ Run this on every new note, and on any update that changes what the body covers 
 link, a `## Related Concepts` bullet, or a bumped `updated` alone needs no re-tagging. Tag what the
 body explains, not what the filename suggests.
 
-1. **Read the neighbours.** Grep `^tags:` across the target folder (and any subfolder) and
-   match the siblings' choices unless this note genuinely differs.
+1. **Read the neighbours.** Grep `^tags:` across the target folder (and any subfolder) for
+   candidates. A sibling's tag is evidence, not authority: reuse it only once its taxonomy row fits
+   this note, or one filler tag spreads to every new note in the folder.
 2. **Read [taxonomy.md](references/taxonomy.md) by section, not whole** (`grep -n '^## '` gives
    the ranges). Always read `type` through the end (lifecycle and Banned). Read `domain` only for a
    new note or a domain change. For `topic` and `concept`, list the names
@@ -59,9 +64,9 @@ body explains, not what the filename suggests.
    Audits and lint read the file whole.
 3. **Domain** — the single field; the *Excludes* column breaks ties. If it still splits two ways,
    the note covers two concepts and should be split.
-4. **Topic** — the most specific approved topic. Add a second or third only while each narrows the
-   note further. If nothing fits, propose a new tag ([audit.md](references/audit.md) §8); never
-   force a poor match.
+4. **Topic** — the most specific approved topic whose Covers describes this note. Add a second or
+   third only while each narrows the note further. If nothing fits, propose a new tag
+   ([audit.md](references/audit.md) §8); never borrow a poor match to fill the mandatory set.
 5. **Concept** — mechanisms the note *explains*, not ones it mentions in passing.
 6. **Tech** — every product or standard the note is substantively about, including the one in its
    own title. A product mentioned once as an example does not count.

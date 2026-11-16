@@ -1,8 +1,8 @@
 ---
 title: Pod Sandbox (Pause Container)
-tags: [devops, deployment, kubernetes, containerd]
+tags: [devops, deployment, process-isolation, kubernetes, containerd]
 created: 2026-10-30 12:51:48
-updated: 2026-10-31 12:02:49
+updated: 2026-11-16 23:12:53
 ---
 
 # Pod Sandbox (Pause Container)

@@ -1,8 +1,8 @@
 ---
 title: Static vs. Dynamic Linking
-tags: [linux, deployment, glibc, musl, python, comparison]
+tags: [linux, os-internals, glibc, musl, python, comparison]
 created: 2026-10-31 19:25:37
-updated: 2026-10-31 20:02:17
+updated: 2026-11-16 23:12:53
 ---
 
 # Static vs. Dynamic Linking

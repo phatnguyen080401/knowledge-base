@@ -50,7 +50,7 @@ Each check is a **defect**, which you propose to fix, or a **flag**, which you o
 | `needs-review` with no open questions, or open questions with no `needs-review` | Flag if the log or git history shows a user hand edit (`grep -n '<file>' wiki/log.md`, `git log -p -- <note>`; never read the whole log); otherwise defect |
 | A tag that restates the note's own title (not `tech`) | Flag |
 | `overview` on a note that does not route to child notes | Flag |
-| A topic borrowed from another domain to fill a gap | Flag (candidate for a new topic) |
+| A borrowed filler topic: its Covers does not describe the note, or it is on every note of a domain with 3+ notes while most of its uses are in another domain | Flag (candidate for a new topic) |
 | A concept tag used by fewer than two notes | Flag (review only; never auto-remove) |
 | A `tech` tag used by two or more notes with no seed-table row | Defect (add the row) |
 
@@ -93,7 +93,8 @@ are intact.
   no approved tag or combination already covers it, and it fits cleanly into exactly one facet.
   State the tag, its facet, a one-line **Covers** and **Excludes**, and the notes it would apply
   to. On approval, insert it alphabetically into the right table in [taxonomy.md](taxonomy.md) and
-  apply it. A new `domain` also needs a folder, a structure change (`AGENTS.md` §1).
+  apply it. A new `domain` also needs a folder, a structure change (`AGENTS.md` §1), and at least
+  one topic approved with it that fits its first notes, so they never borrow a filler topic.
 - **Concept tags are shared vocabulary.** A concept already in the taxonomy is usable even if only
   one note carries it; the two-note bar applies only when proposing a new one.
 - **Retiring a tag:** retag every affected note, then add a Retired row (§2) naming the replacement

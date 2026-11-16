@@ -1,8 +1,8 @@
 ---
 title: Linux Namespaces
-tags: [linux, deployment, util-linux]
+tags: [linux, os-internals, process-isolation, util-linux]
 created: 2026-10-31 12:02:49
-updated: 2026-10-31 12:02:49
+updated: 2026-11-16 23:12:53
 ---
 
 # Linux Namespaces

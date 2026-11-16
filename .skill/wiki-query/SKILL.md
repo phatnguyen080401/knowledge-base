@@ -18,7 +18,10 @@ timestamp, the `hot.md` entry, and the log.
    is later than the entry's timestamp. Fresh → read only its cited sections and skip the index.
    No match, stale, or not enough → consult `wiki/INDEX.md` before opening any page: grep it for
    the same terms, read the matching domain groups (`grep -n '^##' wiki/INDEX.md` gives their line
-   ranges), and shortlist from the summaries. Never read the whole index.
+   ranges), and shortlist from the summaries. Never read the whole index. The index groups by
+   folder, so when the question names a mechanism or product, or asks what the vault holds on
+   something across fields, also grep the tag lines for its `concept` or `tech` tag
+   (`grep -rlE '^tags:.*\b<tag>\b' wiki/concepts`) to catch notes filed elsewhere.
 2. **Read what answers the question.** A note under ~15 KB (`wc -c`) is read in full. For a larger
    one, read its frontmatter and definition (the first ~15 lines) and its heading list
    (`grep -n '^#' <note>`), then only the relevant sections (Read with offset and limit); read it

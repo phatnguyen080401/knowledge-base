@@ -1,8 +1,8 @@
 ---
 title: Upgrade or Downgrade Python on Ubuntu
-tags: [linux, deployment, python, ubuntu, how-to]
+tags: [linux, system-administration, python, ubuntu, how-to]
 created: 2026-10-31 20:02:17
-updated: 2026-10-31 20:02:17
+updated: 2026-11-16 23:12:53
 ---
 
 # Upgrade or Downgrade Python on Ubuntu
