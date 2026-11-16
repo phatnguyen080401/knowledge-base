@@ -18,4 +18,4 @@
 # per-user; recreate the skills symlink per README "Setup"
 .claude/
 .gemini/
-.github/
+.github/skills/
