@@ -14,10 +14,10 @@ timestamp, the `hot.md` entry, and the log.
 
 1. **Route.** Grep `wiki/hot.md` for two to four distinctive terms of the question
    (`grep -niE '<term>|<acronym>|<synonym>' wiki/hot.md`); never read it whole. An entry whose gist
-   matches the question is **fresh** when no cited note's `updated` (`grep -m1 '^updated:' <note>`)
-   is later than the entry's timestamp. Fresh → read only its cited sections and skip the index.
-   No match, stale, or not enough → consult `wiki/INDEX.md` before opening any page: grep it for
-   the same terms, read the matching domain groups (`grep -n '^##' wiki/INDEX.md` gives their line
+   matches is **usable** while its headings exist (`grep -nE '^#+ (<H1>|<H2>)$' <note>` gives the
+   Read offsets): read only those sections, and grep `INDEX.md` for the terms, lines only, to catch
+   uncited notes. Otherwise consult `wiki/INDEX.md` before opening any page: grep it for
+   the terms, read the matching domain groups (`grep -n '^##' wiki/INDEX.md` gives their line
    ranges), and shortlist from the summaries. Never read the whole index. The index groups by
    folder, so when the question names a mechanism or product, or asks what the vault holds on
    something across fields, also grep the tag lines for its `concept` or `tech` tag
@@ -57,24 +57,23 @@ timestamp, the `hot.md` entry, and the log.
 ## `wiki/hot.md`
 
 A router, never a source: each entry points to the sections that answered a past question, so a
-repeat skips the index and the unread parts of long notes. Answers still read and cite those
-sections.
+repeat skips index groups and unread sections. Answers still read and cite those sections.
 
 ```markdown
-- **<question gist>** → [[concepts/<folder>/<note>#<Heading>|<Note> › <Heading>]], … — <gist of the answer, ≤25 words>. · YYYY-MM-DD HH:mm:ss
+- **<question gist>** → <Note>: [[concepts/<folder>/<note>#<Heading>|<Heading>]], …; <Other note>: … — <gist of the answer, ≤25 words>. · YYYY-MM-DD HH:mm:ss
 ```
 
 - One line per entry, newest first, after the purpose line and one blank line; no blank lines
   between entries. Insert like a log entry: read only the first 5 lines, then edit.
 - Cite the sections that carried the answer; a whole note only when no heading fits. The timestamp
   is the request's clock reading.
-- Refreshing an entry deletes the old line (find it with `grep -n`) and inserts the new one at the
-  top. At most 40 entries: past that, delete the last line.
+- One entry per set of sections: if one cites the same sections (`grep -n`), merge into it and
+  move it to the top. At most 40 entries: past that, delete the last line.
 - It is not listed in `INDEX.md`, and its links do not count toward reachability.
 
 ## Definition of Done
 
-- [ ] `wiki/hot.md` was grepped first; without a fresh route, `INDEX.md` was consulted (grep, then the group) before any page.
+- [ ] `wiki/hot.md` was grepped first; without a usable route, `INDEX.md` was consulted (grep, then the group) before any page.
 - [ ] Any page filed or stubbed has its `INDEX.md` entry, and the INDEX diff from wiki-audit-trail is empty.
 - [ ] Every substantive claim cites its page; anything else is labelled *outside the wiki*.
 - [ ] New synthesis, missing concepts, conflicts, and corrections were filed, or proposed and asked about; hot.md holds the route.

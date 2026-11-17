@@ -1,5 +1,7 @@
 # Activity Log
 
+- **2026-11-17 22:01:12** · maintain · Updated `wiki/hot.md` — reformatted the isolation-levels route and folded in the 2026-10-26 17:27:35 question it had replaced; wiki-query now validates routes by heading existence instead of note `updated`, which had left every route stale.
+
 - **2026-11-16 23:12:53** · maintain · Updated 9 notes (e.g. `[[concepts/linux/standard_streams]]`, `[[concepts/devops/kubernetes/pod_sandbox]]`) — replaced the filler `deployment` topic on all Linux notes with new `os-internals`/`system-administration` topics and added the new `process-isolation` concept, linking namespace notes across `linux/` and `devops/`; user-approved, with tag-taxonomy and wiki-query rules amended.
 
 - **2026-11-12 21:50:31** · maintain · Updated 26 notes (e.g. `[[concepts/devops/trivy]]`, `[[concepts/ai_engineering/embeddings]]`) — dropped researched URLs from `sources` so it lists only ingested files, adding missing links to `## References` on two notes, per the new `AGENTS.md` §3 rule; user-approved bulk edit.

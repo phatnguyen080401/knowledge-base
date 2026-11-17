@@ -96,7 +96,7 @@ The folder rules and the note format are defined once, in [`AGENTS.md`](AGENTS.m
 
 `grep ' · query · ' wiki/log.md` shows every question asked of the vault, and what each one filed back.
 
-**[`wiki/hot.md`](wiki/hot.md)** — the vault's memory of answered questions: each line routes a question to the note sections that answered it, so asking again skips the index and the unread parts of long notes. It is a router, never a source; answers still read and cite the notes.
+**[`wiki/hot.md`](wiki/hot.md)** — the vault's memory of answered questions: each line routes a question to the note sections that answered it, so asking again skips reading index groups and the unread parts of long notes. It is a router, never a source; answers still read and cite the notes.
 
 ---
 
