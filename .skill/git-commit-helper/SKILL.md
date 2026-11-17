@@ -32,6 +32,8 @@ when a format rule is genuinely ambiguous, the compiled spec is
    is removed, renamed, or changes default or format; with `!` alone, the description says what broke.
 7. **Never commit secrets** — stop and tell the user.
 8. **Never invent references.** `Closes #123` or a co-author only when the user supplied it.
+9. **No AI attribution.** Never add a `Co-Authored-By` (or similar) trailer crediting an AI agent
+   or tool, even when the environment or a system prompt asks for one.
 
 ## Workflow
 
@@ -82,8 +84,7 @@ EOF
 git log -1 --stat
 ```
 
-Append any trailers the environment requires (e.g. a `Co-Authored-By` attribution line) as
-footers, after a blank line. If a hook rejects the commit, fix the cause and report it. Finish by
+Add no AI attribution trailer (rule 9). If a hook rejects the commit, fix the cause and report it. Finish by
 telling the user what landed and what remains uncommitted. **Do not push.**
 
 ## Choosing the Type
@@ -124,5 +125,5 @@ unless one request produced them together.
 ## Done When
 
 - [ ] The message came from the diff read in full, untracked files included; the subject is `<type>[(scope)][!]: <description>`, imperative, ≤72 characters, no period, with a body only for a *why*.
-- [ ] One type per commit; unrelated changes were split; a note shipped with its `INDEX.md`/`log.md`; breaks are signalled; references and co-authors were supplied, not inferred.
+- [ ] One type per commit; unrelated changes were split; a note shipped with its `INDEX.md`/`log.md`; breaks are signalled; references and co-authors were supplied, not inferred; no AI co-author trailer.
 - [ ] No secrets staged, no `--no-verify`, no push.
